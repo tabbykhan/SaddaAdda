@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
     android:background="@drawable/bg"
     android:orientation="vertical"
     tools:context=".ReportActivity">
@@ -96,24 +97,18 @@
         android:shadowDx="0.0"
         android:shadowDy="0.0"
         android:shadowRadius="20"
-        android:text="Sign In"
+        android:text="Report"
+        android:textAllCaps="true"
         android:textColor="#a3ffaf"
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <View
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="@font/amazon_bold"
-        android:padding="10dp"
-        android:shadowColor="#a3ffaf"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="20"
-        android:background=""
-        android:textColor="#a3ffaf"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        tool:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_report" />
+
 
 </LinearLayout>
