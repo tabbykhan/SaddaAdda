@@ -1,23 +1,22 @@
-package com.imuons.saddaadda;
+package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.imuons.saddaadda.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_main);
     }
-    @OnClick(R.id.submitBtn)
-    void submitCall(){
+
+    public void login(View view) {
         startActivity(new Intent(this , HomeActivity.class));
     }
 }

@@ -1,9 +1,11 @@
-package com.imuons.saddaadda;
+package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.imuons.saddaadda.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
