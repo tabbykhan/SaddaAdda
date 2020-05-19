@@ -9,7 +9,7 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.imuons.grocery.R;
+
 import com.imuons.saddaadda.R;
 
 public class ViewUtils {
