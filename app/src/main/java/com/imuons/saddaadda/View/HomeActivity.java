@@ -1,10 +1,12 @@
-package com.imuons.saddaadda;
+package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.imuons.saddaadda.R;
 
 public class HomeActivity extends AppCompatActivity {
 

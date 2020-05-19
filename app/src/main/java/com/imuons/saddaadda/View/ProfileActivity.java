@@ -1,14 +1,16 @@
-package com.imuons.saddaadda;
+package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class SplashActivity extends AppCompatActivity {
+import com.imuons.saddaadda.R;
+
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_profile);
     }
 }
