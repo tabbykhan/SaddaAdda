@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.Utils.AppCommon;
 
 public class SelectionPage extends AppCompatActivity {
 
@@ -14,7 +15,9 @@ public class SelectionPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection_page);
+
     }
+
 
     public void signIn(View view) {
         startActivity( new Intent(this , LoginActivity.class));

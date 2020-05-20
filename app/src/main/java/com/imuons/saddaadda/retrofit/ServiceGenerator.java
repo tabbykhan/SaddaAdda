@@ -1,5 +1,8 @@
 package com.imuons.saddaadda.retrofit;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -11,11 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    public static String API_BASE_URL = "https://www.saddaadda.games/saddaadda/public/api/";
+    public static String API_BASE_URL = "https://www.saddaadda.games/saddaddapanel/api/";
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS).
                     writeTimeout(60, TimeUnit.SECONDS);
+
     public static void changeApiBaseUrl(String newApiBaseUrl) {
         API_BASE_URL = newApiBaseUrl;
         builder = new Retrofit.Builder().baseUrl(API_BASE_URL).addConverterFactory(GsonConverterFactory.create());
@@ -23,7 +27,6 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder().baseUrl(API_BASE_URL).addConverterFactory(GsonConverterFactory.create());
-
 
 
     public static <S> S createService(Class<S> serviceClass) {
@@ -40,7 +43,7 @@ public class ServiceGenerator {
 
                     // Request customization: add request headers
                     Request.Builder requestBuilder = original.newBuilder()
-                            .header("Authorization", "Bearer "+authToken)
+                            .header("Authorization", "Bearer " + authToken)
                             // .header("Content-Type","application/x-www-form-urlencoded")
 //                            .header("Content-Type","application/json")
                             .method(original.method(), original.body());
