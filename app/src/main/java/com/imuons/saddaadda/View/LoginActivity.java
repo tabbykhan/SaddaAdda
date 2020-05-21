@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             et_userId.setError("Please enter password");
         } else
             callLoginApi(new LoginEntity(userId, password));
-       // startActivity(new Intent(this , HomeActivity.class));
+        startActivity(new Intent(this , HomeActivity.class));
     }
 
     private void callLoginApi(LoginEntity loginEntity) {
