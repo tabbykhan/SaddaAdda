@@ -20,19 +20,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".View.ProfileActivity"></activity>
-        <activity android:name=".View.ReportActivity" />
         <activity android:name=".View.SevenUpDown" />
         <activity android:name=".View.HomeActivity" />
         <activity android:name=".View.MainActivity" />
         <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.SelectionPage">
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SplashActivity" />
+        <activity android:name=".View.SelectionPage" />
+
     </application>
 
 </manifest>

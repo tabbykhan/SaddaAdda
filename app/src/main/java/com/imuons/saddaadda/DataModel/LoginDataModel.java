@@ -23,9 +23,9 @@ public class LoginDataModel {
     @SerializedName("access_token")
     @Expose
     private String accessToken;
-    @SerializedName("type")
+    @SerializedName("master_pwd")
     @Expose
-    private String type;
+    private String masterPwd;
 
     public String getOtpmode() {
         return otpmode;
@@ -75,11 +75,11 @@ public class LoginDataModel {
         this.accessToken = accessToken;
     }
 
-    public String getType() {
-        return type;
+    public String getMasterPwd() {
+        return masterPwd;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setMasterPwd(String masterPwd) {
+        this.masterPwd = masterPwd;
     }
 }

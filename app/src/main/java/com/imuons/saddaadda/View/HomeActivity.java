@@ -18,9 +18,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void sevenClick(View view) {
-        startActivity(new Intent(this , SevenUpDown.class));
+        startActivity(new Intent(this , ProfileActivity.class));
     }
     public void ReportClick(View view) {
+
         startActivity(new Intent(this , ReportActivity.class));
     }
 }
