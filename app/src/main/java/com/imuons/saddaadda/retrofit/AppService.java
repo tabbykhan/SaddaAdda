@@ -3,10 +3,12 @@ package com.imuons.saddaadda.retrofit;
 
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
+import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
+import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -30,4 +32,10 @@ public interface AppService {
 
     @GET("generate-userid")
     Call<RandomUserIdResponse> GetRendomNumber();
+
+    @POST("user/seven_up_down")
+    Call<SathKaDamResponse> SATH_KA_DAM_RESPONSE_Call(
+            @Body SathKaDamEntity SathKaDamEntity
+    );
+
 }
