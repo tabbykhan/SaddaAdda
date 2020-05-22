@@ -12,13 +12,13 @@ public class SathKaDamData {
     private Double pin;
     @SerializedName("dice1")
     @Expose
-    private Double dice1;
+    private int dice1;
     @SerializedName("dice2")
     @Expose
-    private Double dice2;
+    private int dice2;
     @SerializedName("dice_sum")
     @Expose
-    private Double diceSum;
+    private int diceSum;
     @SerializedName("status")
     @Expose
     private String status;
@@ -27,7 +27,7 @@ public class SathKaDamData {
     private Double winningAmount;
     @SerializedName("top_up_wallet_balance")
     @Expose
-    private Double topUpWalletBalance;
+    private int topUpWalletBalance;
 
     public String getUserId() {
         return userId;
@@ -45,33 +45,7 @@ public class SathKaDamData {
         this.pin = pin;
     }
 
-    public Double getDice1() {
-        return dice1;
-    }
 
-    public void setDice1(Double dice1) {
-        this.dice1 = dice1;
-    }
-
-    public Double getDice2() {
-        return dice2;
-    }
-
-    public void setDice2(Double dice2) {
-        this.dice2 = dice2;
-    }
-
-    public Double getDiceSum() {
-        return diceSum;
-    }
-
-    public void setDiceSum(Double diceSum) {
-        this.diceSum = diceSum;
-    }
-
-    public String getStatus() {
-        return status;
-    }
 
     public void setStatus(String status) {
         this.status = status;
@@ -85,11 +59,39 @@ public class SathKaDamData {
         this.winningAmount = winningAmount;
     }
 
-    public Double getTopUpWalletBalance() {
+    public int getDice1() {
+        return dice1;
+    }
+
+    public void setDice1(int dice1) {
+        this.dice1 = dice1;
+    }
+
+    public int getDice2() {
+        return dice2;
+    }
+
+    public void setDice2(int dice2) {
+        this.dice2 = dice2;
+    }
+
+    public int getDiceSum() {
+        return diceSum;
+    }
+
+    public void setDiceSum(int diceSum) {
+        this.diceSum = diceSum;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getTopUpWalletBalance() {
         return topUpWalletBalance;
     }
 
-    public void setTopUpWalletBalance(Double topUpWalletBalance) {
+    public void setTopUpWalletBalance(int topUpWalletBalance) {
         this.topUpWalletBalance = topUpWalletBalance;
     }
 }
