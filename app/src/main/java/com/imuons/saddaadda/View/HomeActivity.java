@@ -106,4 +106,9 @@ public class HomeActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, ProfileActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }
