@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
+import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
+import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -196,10 +198,10 @@ public class SevenUpDown extends AppCompatActivity {
 
     private void callApi() {
         String id;
-        if (twoClick.isActivated() ) {
+        if (twoClick.isActivated()) {
             Log.i("con", "win 2-6");
             id = "1";
-        } else if (sevenClick.isActivated() ) {
+        } else if (sevenClick.isActivated()) {
             Log.i("con", "win 7");
             id = "2";
         } else if (eightClick.isActivated()) {
@@ -209,20 +211,22 @@ public class SevenUpDown extends AppCompatActivity {
             Log.i("con", "loss");
             id = "1";
         }
+
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(SevenUpDown.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-           // final Dialog dialog = ViewUtils.getProgressBar(SevenUpDown.this);
-            Call call = apiService.SATH_KA_DAM_RESPONSE_Call(new SathKaDamEntity(id , "S101014",bitText.getText().toString().trim()));
+            Call call = apiService.SATH_KA_DAM_RESPONSE_Call(new SathKaDamEntity(id, "S101014", bitText.getText().toString().trim()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(SevenUpDown.this).clearNonTouchableFlags(SevenUpDown.this);
-                    //dialog.dismiss();
+                    dialog.dismiss();
                     SathKaDamResponse authResponse = (SathKaDamResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("LoginResponse::", new Gson().toJson(authResponse));
+                        Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
+                            Toast.makeText(SevenUpDown.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             setData(authResponse);
                         } else {
                             Toast.makeText(SevenUpDown.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -234,7 +238,7 @@ public class SevenUpDown extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                   // dialog.dismiss();
+                    dialog.dismiss();
                     AppCommon.getInstance(SevenUpDown.this).clearNonTouchableFlags(SevenUpDown.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(SevenUpDown.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -246,11 +250,12 @@ public class SevenUpDown extends AppCompatActivity {
             // no internet
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void setData(SathKaDamResponse authResponse) {
-        int dice1 = authResponse.getData().getDice1();
-        int dice2 = authResponse.getData().getDice2();
+        Double dice1 = authResponse.getData().getDice1();
+        Double dice2 = authResponse.getData().getDice2();
 
         Thread thread = new Thread() {
             @Override
@@ -261,10 +266,38 @@ public class SevenUpDown extends AppCompatActivity {
                     int val2 = (int) getRandomDoubleBetweenRange(1, 6);
                     anim.stop();
                     anim2.stop();
-                    int totalVal = dice1 + dice2;
+                    Double totalVal = dice1 + dice2;
 
 
-                    switch (dice1) {
+                    if (dice1 == 1) {
+                        dais_img.setImageResource(R.drawable.single_1);
+                    } else if (dice1 == 2) {
+                        dais_img.setImageResource(R.drawable.single_2);
+                    } else if (dice1 == 3) {
+                        dais_img.setImageResource(R.drawable.single_3);
+                    } else if (dice1 == 4) {
+                        dais_img.setImageResource(R.drawable.single_4);
+                    } else if (dice1 == 5) {
+                        dais_img.setImageResource(R.drawable.single_6);
+                    } else if (dice1 == 6) {
+                        dais_img.setImageResource(R.drawable.single_6);
+                    }
+                    if (dice2 == 1) {
+                        dais_img1.setImageResource(R.drawable.single_1);
+                    } else if (dice2 == 2) {
+                        dais_img1.setImageResource(R.drawable.single_2);
+                    } else if (dice2 == 3) {
+                        dais_img1.setImageResource(R.drawable.single_3);
+                    } else if (dice2 == 4) {
+                        dais_img1.setImageResource(R.drawable.single_4);
+                    } else if (dice2 == 5) {
+                        dais_img1.setImageResource(R.drawable.single_5);
+                    } else if (dice2 == 6) {
+                        dais_img1.setImageResource(R.drawable.single_6);
+                    }
+
+
+     /*               switch (dice1) {
                         case 1:
                             dais_img.setImageResource(R.drawable.single_1);
                             break;
@@ -305,9 +338,7 @@ public class SevenUpDown extends AppCompatActivity {
                             dais_img1.setImageResource(R.drawable.single_6);
                             break;
 
-                    }
-
-
+                    }*/
                     if (tol1.getText().toString().trim().isEmpty()) {
                         tol1.setText(String.valueOf(totalVal));
                     } else if (tol2.getText().toString().trim().isEmpty()) {

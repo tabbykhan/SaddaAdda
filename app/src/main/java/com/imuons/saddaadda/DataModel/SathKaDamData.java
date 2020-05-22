@@ -5,30 +5,31 @@ import com.google.gson.annotations.SerializedName;
 
 public class SathKaDamData {
 
+
     @SerializedName("user_id")
     @Expose
     private String userId;
     @SerializedName("pin")
     @Expose
-    private Integer pin;
+    private Double pin;
     @SerializedName("dice1")
     @Expose
-    private Integer dice1;
+    private Double dice1;
     @SerializedName("dice2")
     @Expose
-    private Integer dice2;
+    private Double dice2;
     @SerializedName("dice_sum")
     @Expose
-    private Integer diceSum;
+    private Double diceSum;
     @SerializedName("status")
     @Expose
     private String status;
     @SerializedName("winning_amount")
     @Expose
-    private Integer winningAmount;
+    private Double winningAmount;
     @SerializedName("top_up_wallet_balance")
     @Expose
-    private Integer topUpWalletBalance;
+    private Double topUpWalletBalance;
 
     public String getUserId() {
         return userId;
@@ -38,35 +39,35 @@ public class SathKaDamData {
         this.userId = userId;
     }
 
-    public Integer getPin() {
+    public Double getPin() {
         return pin;
     }
 
-    public void setPin(Integer pin) {
+    public void setPin(Double pin) {
         this.pin = pin;
     }
 
-    public Integer getDice1() {
+    public Double getDice1() {
         return dice1;
     }
 
-    public void setDice1(Integer dice1) {
+    public void setDice1(Double dice1) {
         this.dice1 = dice1;
     }
 
-    public Integer getDice2() {
+    public Double getDice2() {
         return dice2;
     }
 
-    public void setDice2(Integer dice2) {
+    public void setDice2(Double dice2) {
         this.dice2 = dice2;
     }
 
-    public Integer getDiceSum() {
+    public Double getDiceSum() {
         return diceSum;
     }
 
-    public void setDiceSum(Integer diceSum) {
+    public void setDiceSum(Double diceSum) {
         this.diceSum = diceSum;
     }
 
@@ -78,19 +79,19 @@ public class SathKaDamData {
         this.status = status;
     }
 
-    public Integer getWinningAmount() {
+    public Double getWinningAmount() {
         return winningAmount;
     }
 
-    public void setWinningAmount(Integer winningAmount) {
+    public void setWinningAmount(Double winningAmount) {
         this.winningAmount = winningAmount;
     }
 
-    public Integer getTopUpWalletBalance() {
+    public Double getTopUpWalletBalance() {
         return topUpWalletBalance;
     }
 
-    public void setTopUpWalletBalance(Integer topUpWalletBalance) {
+    public void setTopUpWalletBalance(Double topUpWalletBalance) {
         this.topUpWalletBalance = topUpWalletBalance;
     }
 }

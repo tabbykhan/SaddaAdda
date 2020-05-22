@@ -51,7 +51,7 @@ public interface AppService {
 
     @POST("user/seven_up_down")
     Call<SathKaDamResponse> SATH_KA_DAM_RESPONSE_Call(
-            @Body SathKaDamEntity SathKaDamEntity
+            @Body SathKaDamEntity sathKaDamEntity
     );
 
 }
