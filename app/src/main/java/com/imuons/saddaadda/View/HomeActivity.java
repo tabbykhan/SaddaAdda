@@ -2,6 +2,7 @@ package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends Activity {
     @BindView(R.id.gotoProfile)
     RelativeLayout gotoProfile;
     @BindView(R.id.txUserId)
@@ -43,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        getDashboardInfo();
+
     }
 
     private void getDashboardInfo() {
@@ -95,8 +96,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.gotoProfile)
     void goToProfile() {
-        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-      //  startActivity(new Intent(this, ProfileActivity.class));
+
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 
     public void sevenClick(View view) {
@@ -104,12 +105,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void ReportClick(View view) {
-
-        startActivity(new Intent(this, ProfileActivity.class));
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+       // startActivity(new Intent(this, ProfileActivity.class));
     }
 
     @Override
     public void onBackPressed() {
         finishAffinity();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getDashboardInfo();
     }
 }
