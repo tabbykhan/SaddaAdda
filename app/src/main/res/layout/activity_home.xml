@@ -22,6 +22,7 @@
 
 
             <TextView
+                android:id="@+id/coin"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
@@ -58,6 +59,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/gotoProfile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -72,7 +74,7 @@
                 android:tint="@android:color/white" />
 
             <TextView
-                android:id="@+id/amt"
+                android:id="@+id/txUserId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@id/profile"

@@ -32,6 +32,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Name"
+                android:imeOptions="actionNext"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -40,9 +41,10 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
 
             <EditText
@@ -58,6 +60,9 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Mobile Number"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="10"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -66,6 +71,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
@@ -84,6 +90,9 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Google Pay"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLength="10"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -92,6 +101,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
@@ -109,8 +119,11 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Phone Pay"
-                android:paddingLeft="20dp"
+                android:imeOptions="actionNext"
 
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="10dp"
@@ -118,6 +131,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
@@ -140,7 +154,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/etAccount"
+                android:id="@+id/etAccountName"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
@@ -152,6 +166,9 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Account Name"
+                android:imeOptions="actionNext"
+
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -160,6 +177,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
@@ -177,6 +195,8 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="IFSC Code"
+                android:imeOptions="actionNext"
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -185,6 +205,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
@@ -202,6 +223,8 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Branch Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -227,6 +250,8 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Account Number"
+                android:inputType="text"
+                android:maxLength="20"
                 android:paddingLeft="20dp"
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
@@ -235,6 +260,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp" />
