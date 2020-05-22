@@ -30,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.submitBtn)
     TextView tv_signup;
+    @BindView(R.id.txForgetPass)
+    TextView txForgetPass;
 
     @BindView(R.id.etUserId)
     EditText et_userId;
@@ -44,8 +46,14 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
     }
+
+    @OnClick(R.id.txForgetPass)
+    void gotoForgetPage() {
+        startActivity(new Intent(this, ForgetPassword.class));
+    }
+
     @OnClick(R.id.submitBtn)
-    void submitCall(){
+    void submitCall() {
         String password = et_password.getText().toString().trim();
         String userId = et_userId.getText().toString().trim();
         if (userId.isEmpty()) {
@@ -54,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             et_userId.setError("Please enter password");
         } else
             callLoginApi(new LoginEntity(userId, password));
-       // startActivity(new Intent(this , HomeActivity.class));
+
     }
 
     private void callLoginApi(LoginEntity loginEntity) {
@@ -71,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginResponseModel authResponse = (LoginResponseModel) response.body();
                     if (authResponse != null) {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
-                        if (authResponse.getCode() == 200) {
+                        if (authResponse.getCode() == 200 ) {
                             AppCommon.getInstance(LoginActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(LoginActivity.this).setToken(authResponse.getData().getAccessToken());
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
@@ -81,7 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppCommon.getInstance(LoginActivity.this).showDialog(LoginActivity.this, "Server Error");
+                     //   AppCommon.getInstance(LoginActivity.this).showDialog(LoginActivity.this, "Server Error");
+                        Toast.makeText(LoginActivity.this, "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }
 

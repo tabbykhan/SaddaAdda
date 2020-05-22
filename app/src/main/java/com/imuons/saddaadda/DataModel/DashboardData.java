@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DashboardData {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -244,6 +245,9 @@ public class DashboardData {
     @SerializedName("ref_fullname")
     @Expose
     private String refFullname;
+    @SerializedName("wallet_balance")
+    @Expose
+    private String walletBalance;
     @SerializedName("sponser_id")
     @Expose
     private String sponserId;
@@ -888,6 +892,14 @@ public class DashboardData {
         this.refFullname = refFullname;
     }
 
+    public String getWalletBalance() {
+        return walletBalance;
+    }
+
+    public void setWalletBalance(String walletBalance) {
+        this.walletBalance = walletBalance;
+    }
+
     public String getSponserId() {
         return sponserId;
     }
@@ -895,5 +907,6 @@ public class DashboardData {
     public void setSponserId(String sponserId) {
         this.sponserId = sponserId;
     }
+
 
 }

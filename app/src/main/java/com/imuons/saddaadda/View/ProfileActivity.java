@@ -2,7 +2,10 @@ package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -16,6 +19,7 @@ import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
+import com.imuons.saddaadda.Utils.SharedPreferenceUtils;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
@@ -52,6 +56,10 @@ public class ProfileActivity extends AppCompatActivity {
     EditText etAccountNo;
     @BindView(R.id.submitBtn)
     TextView submitBtn;
+    @BindView(R.id.txUserId)
+    TextView txUserId;
+    @BindView(R.id.logOut)
+    TextView logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +68,10 @@ public class ProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getUserProfileInfo();
     }
-
+    @OnClick(R.id.logOut)
+    void logout() {
+        showAlertDialog();
+    }
     @OnClick(R.id.submitBtn)
     void updateCall() {
         String name = etName.getText().toString().trim();
@@ -89,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
                     dialog.dismiss();
                     UpdateProfileResponse authResponse = (UpdateProfileResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("Response::", new Gson().toJson(authResponse));
+                        Log.i("ResponseUpdate::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             getUserProfileInfo();
@@ -132,7 +143,7 @@ public class ProfileActivity extends AppCompatActivity {
                     dialog.dismiss();
                     ProfileGetResponse authResponse = (ProfileGetResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("CategoryResponse::", new Gson().toJson(authResponse));
+                        Log.i("ResponseProfile::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setProfileInfo(authResponse.getData());
                             // Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -163,12 +174,78 @@ public class ProfileActivity extends AppCompatActivity {
     private void setProfileInfo(ProfileDataModel data) {
         etName.setText(String.valueOf(data.getFullname()));
         etMobile.setText(String.valueOf(data.getMobile()));
-        etGooglePay.setText(String.valueOf(data.getTezNo()));
-        etPhonePay.setText(String.valueOf(data.getPhonepeNo()));
-        etAccountName.setText(String.valueOf(data.getBankName()));
-        etAccountNo.setText(String.valueOf(data.getAccountNo()));
-        etIFSC.setText(String.valueOf(data.getIfscCode()));
-        etBranchName.setText(String.valueOf(data.getBranchName()));
+        if (data.getTezNo() != null) {
+            etGooglePay.setText(String.valueOf(data.getTezNo()));
+        } else {
+            etGooglePay.setText("");
+        }
+        if (data.getPhonepeNo() != null) {
+            etPhonePay.setText(String.valueOf(data.getPhonepeNo()));
+        } else {
+            etPhonePay.setText("");
+        }
+        if (data.getBankName() != null) {
+            etAccountName.setText(String.valueOf(data.getBankName()));
+        } else {
+            etAccountName.setText("");
+        }
+        if (data.getAccountNo() != null) {
+            etAccountNo.setText(String.valueOf(data.getAccountNo()));
+        } else {
+            etAccountNo.setText("");
+        }
+        if (data.getIfscCode() != null) {
+            etIFSC.setText(String.valueOf(data.getIfscCode()));
+        } else {
+            etIFSC.setText("");
+        }
+        if (data.getBranchName() != null) {
+            etBranchName.setText(String.valueOf(data.getBranchName()));
 
+        } else {
+            etBranchName.setText("");
+        }
+
+
+        txUserId.setText(String.valueOf(data.getUserId()));
     }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder builder1 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+            builder1 = new AlertDialog.Builder(ProfileActivity.this, AlertDialog.THEME_HOLO_LIGHT);
+        }
+        builder1.setTitle("Alert");
+        builder1.setMessage("Are you sure you want to Logout ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        ProfileActivity.this.finish();
+                        SharedPreferenceUtils.clearPreferences(ProfileActivity.this);
+                        SharedPreferenceUtils.clearID(ProfileActivity.this);
+                        SharedPreferenceUtils.clearAccess_Token(ProfileActivity.this);
+                        SharedPreferenceUtils.storeSplash(ProfileActivity.this, "stop");
+                        AppCommon.getInstance(ProfileActivity.this).clearPreference();
+                        startActivity(new Intent(ProfileActivity.this, SelectionPage.class));
+                        finishAffinity();
+                        Toast.makeText(ProfileActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 }

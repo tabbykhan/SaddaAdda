@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.ReportActivity;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
@@ -88,13 +89,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setDashboardData(DashboardData data) {
         txUserId.setText(String.valueOf(data.getUserId()));
-        coin.setText(String.valueOf(data.getAmount()));
-        AppCommon.getInstance(this).setUserLogin(data.getUserId());
+        coin.setText(String.valueOf(data.getWalletBalance()));
+
     }
 
     @OnClick(R.id.gotoProfile)
     void goToProfile() {
-        startActivity(new Intent(this, ProfileActivity.class));
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+      //  startActivity(new Intent(this, ProfileActivity.class));
     }
 
     public void sevenClick(View view) {
@@ -104,5 +106,10 @@ public class HomeActivity extends AppCompatActivity {
     public void ReportClick(View view) {
 
         startActivity(new Intent(this, ProfileActivity.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
     }
 }

@@ -18,6 +18,42 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/profile" />
+
+                <TextView
+                    android:id="@+id/txUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    android:shadowColor="#a3ffaf"
+                    android:shadowDx="0.0"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:shadowDy="0.0"
+                    android:shadowRadius="20"
+                    android:text="User ID"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#a3ffaf"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/etName"
@@ -208,7 +244,8 @@
                 android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+               />
 
             <EditText
                 android:id="@+id/etBranchName"
@@ -235,7 +272,8 @@
                 android:shadowRadius="20"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+               />
 
             <EditText
                 android:id="@+id/etAccountNo"
@@ -263,7 +301,24 @@
                 android:singleLine="true"
                 android:textColor="#D8BB4A"
                 android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/logOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Logout"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:textColor="#a3ffaf"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"/>
+
+
 
             <RelativeLayout
                 android:layout_width="200dp"
