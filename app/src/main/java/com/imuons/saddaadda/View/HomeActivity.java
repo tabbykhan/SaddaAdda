@@ -95,7 +95,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @OnClick(R.id.gotoProfile)
     void goToProfile() {
-        startActivity(new Intent(this, ProfileActivity.class));
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+      //  startActivity(new Intent(this, ProfileActivity.class));
     }
 
     public void sevenClick(View view) {
