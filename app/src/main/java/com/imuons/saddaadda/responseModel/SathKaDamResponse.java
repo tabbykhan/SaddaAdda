@@ -7,6 +7,7 @@ import com.imuons.saddaadda.DataModel.SathKaDamData;
 import java.io.Serializable;
 
 public class SathKaDamResponse   {
+
     @SerializedName("code")
     @Expose
     private Integer code;

@@ -236,6 +236,7 @@ public class SevenUpDown extends AppCompatActivity {
                     }
                 }
 
+
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
