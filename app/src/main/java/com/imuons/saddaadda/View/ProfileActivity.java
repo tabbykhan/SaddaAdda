@@ -52,6 +52,8 @@ public class ProfileActivity extends AppCompatActivity {
     EditText etAccountNo;
     @BindView(R.id.submitBtn)
     TextView submitBtn;
+    @BindView(R.id.txUserId)
+    TextView txUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
                     dialog.dismiss();
                     UpdateProfileResponse authResponse = (UpdateProfileResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("Response::", new Gson().toJson(authResponse));
+                        Log.i("ResponseUpdate::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             getUserProfileInfo();
@@ -132,7 +134,7 @@ public class ProfileActivity extends AppCompatActivity {
                     dialog.dismiss();
                     ProfileGetResponse authResponse = (ProfileGetResponse) response.body();
                     if (authResponse != null) {
-                        Log.i("CategoryResponse::", new Gson().toJson(authResponse));
+                        Log.i("ResponseProfile::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setProfileInfo(authResponse.getData());
                             // Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -169,6 +171,7 @@ public class ProfileActivity extends AppCompatActivity {
         etAccountNo.setText(String.valueOf(data.getAccountNo()));
         etIFSC.setText(String.valueOf(data.getIfscCode()));
         etBranchName.setText(String.valueOf(data.getBranchName()));
+        txUserId.setText(String.valueOf(data.getUserId()));
 
     }
 }

@@ -89,7 +89,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setDashboardData(DashboardData data) {
         txUserId.setText(String.valueOf(data.getUserId()));
-        coin.setText(String.valueOf(data.getAmount()));
+        coin.setText(String.valueOf(data.getWalletBalance()));
+
     }
 
     @OnClick(R.id.gotoProfile)

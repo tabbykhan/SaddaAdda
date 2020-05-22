@@ -18,6 +18,39 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/profile" />
+
+                <TextView
+                    android:id="@+id/txUserId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:shadowColor="#a3ffaf"
+                    android:shadowDx="0.0"
+                    android:shadowDy="0.0"
+                    android:shadowRadius="20"
+                    android:text="User ID"
+                    android:textColor="#a3ffaf"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/etName"
