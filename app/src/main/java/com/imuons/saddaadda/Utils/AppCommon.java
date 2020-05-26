@@ -139,14 +139,24 @@ public class AppCommon {
         }
     }
 
-    public int getCount() {
+    public int getAccount() {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getInt(MyPreference.bidCount, 0);
     }
 
-    public void setCount(int count) {
+    public void setAccount(int count) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
         editor.putInt(MyPreference.bidCount, count);
+        editor.apply();
+    }
+    public int getSesstionId() {
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getInt(MyPreference.SeetionId, 0);
+    }
+
+    public void setSesstionId(int count) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putInt(MyPreference.SeetionId, count);
         editor.apply();
     }
 

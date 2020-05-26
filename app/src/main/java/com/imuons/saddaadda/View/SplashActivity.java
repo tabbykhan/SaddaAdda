@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
                     if (token == null || token.isEmpty()) {
                         startActivity(new Intent(SplashActivity.this, SelectionPage.class));
                     } else {
-                        startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                        startActivity(new Intent(SplashActivity.this, PinEnterActivity.class));
                     }
                     finish();
 

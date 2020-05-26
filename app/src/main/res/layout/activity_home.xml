@@ -53,9 +53,11 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/buy_sale" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/add_coin"
+                android:tint="#fce172"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -137,6 +139,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="2"
+            android:onClick="ludo_game"
             android:src="@drawable/ludo_img" />
 
         <ImageView
@@ -146,6 +149,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="2"
+            android:onClick="rummy_game"
             android:src="@drawable/rummy"
             android:layout_marginBottom="20dp"/>
 

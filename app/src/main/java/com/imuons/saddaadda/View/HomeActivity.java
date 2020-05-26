@@ -89,8 +89,16 @@ public class HomeActivity extends Activity {
     }
 
     private void setDashboardData(DashboardData data) {
-        txUserId.setText(String.valueOf(data.getUserId()));
-        coin.setText(String.valueOf(data.getWalletBalance()));
+        if(AppCommon.getInstance(this).getSesstionId() == data.getSession_id()) {
+            txUserId.setText(String.valueOf(data.getUserId()));
+            coin.setText(String.valueOf(data.getWalletBalance()));
+            AppCommon.getInstance(this).setAccount(Integer.parseInt(data.getWalletBalance()));
+        }else {
+            AppCommon.getInstance(HomeActivity.this).clearPreference();
+            startActivity(new Intent(HomeActivity.this, SelectionPage.class));
+            finishAffinity();
+            Toast.makeText(HomeActivity.this, "Session Expire", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -118,5 +126,12 @@ public class HomeActivity extends Activity {
     protected void onResume() {
         super.onResume();
         getDashboardInfo();
+    }
+
+    public void ludo_game(View view) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+    }
+    public void rummy_game(View view) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
     }
 }

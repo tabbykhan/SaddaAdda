@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,6 @@ import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
-import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
@@ -31,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
     @BindView(R.id.etName)
     EditText etName;
@@ -45,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     EditText etPassword;
     @BindView(R.id.etCmfPassword)
     EditText etCmfPassword;
+    @BindView(R.id.pin)
+    EditText pin;
+    @BindView(R.id.c_pin)
+    EditText cpin;
+
     @BindView(R.id.submitBtn)
     TextView submitBtn;
 
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         String mobile = etMobile.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
         String cmf_password = etCmfPassword.getText().toString().trim();
+        String pintxt = pin.getText().toString().trim();
+        String cpintxt = cpin.getText().toString().trim();
 
         if (userId.isEmpty()) {
             etUserId.setError("Please enter User ID");
@@ -79,21 +84,25 @@ public class MainActivity extends AppCompatActivity {
             etCmfPassword.setError("Please enter Confirm password");
         } else if (!cmf_password.matches(password)) {
             etCmfPassword.setError("Confirm Password not match");
+        } else if (pintxt.isEmpty()) {
+            pin.setError("Please enter pin");
+        } else if (!cmf_password.matches(password)) {
+            cpin.setError("Confirm pin not match");
         } else
-            callRegisterApi(userId, name, password, mobile, referralCode);
+            callRegisterApi(userId, name, password, mobile, referralCode , pintxt);
 
     }
 
-    private void callRegisterApi(String userId, String name, String password, String mobile, String referralCode) {
+    private void callRegisterApi(String userId, String name, String password, String mobile, String referralCode , String pin) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(MainActivity.this);
+            Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.RegisterApi(new RegitrationEntity(userId, name, password, mobile, referralCode));
+            Call call = apiService.RegisterApi(new RegitrationEntity(userId, name, password, mobile, referralCode , pin));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     dialog.dismiss();
                     RegisterResponse authResponse = (RegisterResponse) response.body();
                     if (authResponse != null) {
@@ -103,19 +112,19 @@ public class MainActivity extends AppCompatActivity {
 
                             callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword()));
                         } else {
-                            Toast.makeText(MainActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppCommon.getInstance(MainActivity.this).showDialog(MainActivity.this, "Server Error");
+                        AppCommon.getInstance(CreateAccount.this).showDialog(CreateAccount.this, "Server Error");
                     }
                 }
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     // loaderView.setVisibility(View.GONE);
-                    Toast.makeText(MainActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccount.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -132,32 +141,36 @@ public class MainActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Dialog dialog = ViewUtils.getProgressBar(MainActivity.this);
+            Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
             Call call = apiService.LoginApi(loginEntity);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     dialog.dismiss();
                     LoginResponseModel authResponse = (LoginResponseModel) response.body();
                     if (authResponse != null) {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                            AppCommon.getInstance(CreateAccount.this).setUserObject(new Gson().toJson(authResponse.getData()));
+                            AppCommon.getInstance(CreateAccount.this).setToken(authResponse.getData().getAccessToken());
+                            AppCommon.getInstance(CreateAccount.this).setUserLogin(loginEntity.getUser_id());
+                            AppCommon.getInstance(CreateAccount.this).setSesstionId(authResponse.getData().getSession_id());
+                            startActivity(new Intent(CreateAccount.this, HomeActivity.class));
                         } else {
-                            Toast.makeText(MainActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppCommon.getInstance(MainActivity.this).showDialog(MainActivity.this, "Server Error");
+                        AppCommon.getInstance(CreateAccount.this).showDialog(CreateAccount.this, "Server Error");
                     }
                 }
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     // loaderView.setVisibility(View.GONE);
-                    Toast.makeText(MainActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccount.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -172,12 +185,12 @@ public class MainActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Dialog dialog = ViewUtils.getProgressBar(MainActivity.this);
+            Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
             Call call = apiService.GetRendomNumber();
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     dialog.dismiss();
                     RandomUserIdResponse authResponse = (RandomUserIdResponse) response.body();
                     if (authResponse != null) {
@@ -185,19 +198,19 @@ public class MainActivity extends AppCompatActivity {
                         if (authResponse.getCode() == 200) {
                               etUserId.setText(String.valueOf(authResponse.getData().getUserId()));
                         } else {
-                            Toast.makeText(MainActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppCommon.getInstance(MainActivity.this).showDialog(MainActivity.this, "Server Error");
+                        AppCommon.getInstance(CreateAccount.this).showDialog(CreateAccount.this, "Server Error");
                     }
                 }
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
-                    AppCommon.getInstance(MainActivity.this).clearNonTouchableFlags(MainActivity.this);
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     // loaderView.setVisibility(View.GONE);
-                    Toast.makeText(MainActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccount.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 

@@ -2,6 +2,7 @@ package com.imuons.saddaadda.retrofit;
 
 
 import com.imuons.saddaadda.EntityClass.LoginEntity;
+import com.imuons.saddaadda.EntityClass.PinEntitiy;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.ResetPasswordEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
@@ -11,6 +12,7 @@ import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
+import com.imuons.saddaadda.responseModel.PinResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
@@ -60,4 +62,9 @@ public interface AppService {
     Call<ForgetPasswordResponse> FORGET_PASSWORD_CALL(
             @Body ResetPasswordEntity resetPasswordEntity
     );
+    @POST("nuser/verify-pin")
+    Call<PinResponse> pinApi(
+                    @Body PinEntitiy resetPasswordEntity
+            );
+
 }

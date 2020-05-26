@@ -251,6 +251,17 @@ public class DashboardData {
     @SerializedName("sponser_id")
     @Expose
     private String sponserId;
+    @SerializedName("session_id")
+    @Expose
+    private int session_id;
+
+    public int getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(int session_id) {
+        this.session_id = session_id;
+    }
 
     public Integer getId() {
         return id;

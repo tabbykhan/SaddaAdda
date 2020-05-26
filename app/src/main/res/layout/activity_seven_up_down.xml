@@ -78,7 +78,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="200"
+                    android:text="20"
                     android:textColor="#a3ffaf"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -141,7 +141,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="300"
+                    android:text="30"
                     android:textColor="#a3ffaf"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -204,7 +204,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="200"
+                    android:text="20"
                     android:textColor="#a3ffaf"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -242,15 +242,19 @@
                     android:background="@drawable/bet_img_new">
 
 
-                    <TextView
+                    <EditText
                         android:id="@+id/bitText"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center"
-                        android:text="100"
+                        android:text="10"
+                        android:maxLength="4"
+                        android:digits="1234567890"
+                        android:inputType="number"
                         android:textColor="#ffa4c6"
+                        android:background="@null"
                         android:textSize="16sp"
                         android:textStyle="bold" />
                 </RelativeLayout>
