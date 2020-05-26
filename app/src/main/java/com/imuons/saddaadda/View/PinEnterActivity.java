@@ -192,6 +192,11 @@ public class PinEnterActivity extends AppCompatActivity {
                                startActivity(new Intent(PinEnterActivity.this , HomeActivity.class));
                                finishAffinity();
                             } else {
+                                et1.setText("");
+                                et2.setText("");
+                                et3.setText("");
+                                et4.setText("");
+                                et1.requestFocus();
                                 Toast.makeText(PinEnterActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         } else {
