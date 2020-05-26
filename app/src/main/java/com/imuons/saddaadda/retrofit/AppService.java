@@ -62,7 +62,7 @@ public interface AppService {
     Call<ForgetPasswordResponse> FORGET_PASSWORD_CALL(
             @Body ResetPasswordEntity resetPasswordEntity
     );
-    @POST("nuser/verify-pin")
+    @POST("user/verify-pin")
     Call<PinResponse> pinApi(
                     @Body PinEntitiy resetPasswordEntity
             );
