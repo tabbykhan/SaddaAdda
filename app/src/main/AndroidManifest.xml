@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".View.ForgetPassword"></activity>
+        <activity android:name=".View.RulesActivity"></activity>
+        <activity android:name=".View.DusKaDamActivity" />
+        <activity android:name=".View.ForgetPassword" />
         <activity android:name=".View.ProfileActivity" />
         <activity android:name=".View.SevenUpDown" />
         <activity android:name=".View.HomeActivity" />

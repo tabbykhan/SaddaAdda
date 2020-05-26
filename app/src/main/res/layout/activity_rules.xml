@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".View.RulesActivity">
+
+    <LinearLayout
+        android:id="@+id/linar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.5">
+
+
+            <ImageView
+                android:id="@+id/coin"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:src="@drawable/zerotonine" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center"
+                android:shadowColor="@color/yellow"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Dus Ka Dam"
+                android:textColor="@color/yellow"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/gotoRules"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical">
+
+
+            <ImageView
+                android:id="@+id/txUserId"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center|end"
+                android:src="@drawable/rules" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_below="@+id/linar"
+        android:layout_marginTop="2dp"
+        android:background="#dba3ff"
+        android:shadowColor="#dba3ff"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="20" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+
+            <include layout="@layout/layout_rules" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#dba3ff"
+                android:shadowColor="#dba3ff"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20" />
+            <include layout="@layout/layout_rule_one" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#dba3ff"
+                android:shadowColor="#dba3ff"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20" />
+            <include layout="@layout/layout_rule_two" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#dba3ff"
+                android:shadowColor="#dba3ff"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20" />
+            <include layout="@layout/layout_rule_three" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="5dp"
+                android:background="#dba3ff"
+                android:shadowColor="#dba3ff"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20" />
+            <include layout="@layout/layout_rule_four" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
