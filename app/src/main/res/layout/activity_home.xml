@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:background="#7e4e37">
 
         <RelativeLayout
@@ -71,6 +71,7 @@
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_person_"
+                android:layout_centerInParent="true"
                 android:tint="@android:color/white" />
 
             <TextView

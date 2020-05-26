@@ -36,6 +36,7 @@ public class AppCommon {
     MediaPlayer mediaPlayer = null;
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     public static final int ENABLE_LOCATION_SERVICES_REQUEST_CODE = 205;
+
     public static AppCommon getInstance(Context _Context) {
         if (mInstance == null) {
             mInstance = new AppCommon();
@@ -69,7 +70,8 @@ public class AppCommon {
         }
         return false;
     }
-    public void setUserLogin(String userId ) {
+
+    public void setUserLogin(String userId) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
         editor.putBoolean(MyPreference.login, true);
         editor.putString(MyPreference.userId, userId);
@@ -80,10 +82,12 @@ public class AppCommon {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getBoolean(MyPreference.login, false);
     }
+
     public String getPassword() {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getString(MyPreference.password, "");
     }
+
     public void onHideKeyBoard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -117,6 +121,7 @@ public class AppCommon {
         editorLogin.apply();
 
     }
+
     public void showDialog(Activity mactivity, String title) {
         if (!mactivity.isFinishing()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(mactivity);
@@ -138,6 +143,7 @@ public class AppCommon {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getInt(MyPreference.bidCount, 0);
     }
+
     public void setCount(int count) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
         editor.putInt(MyPreference.bidCount, count);
@@ -156,26 +162,31 @@ public class AppCommon {
         editor.putString(MyPreference.TokenValue, token);
         editor.apply();
     }
-    public void setAddress(String token , String prizm) {
+
+    public void setAddress(String token, String prizm) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
         editor.putString(MyPreference.BTCAddress, token);
         editor.putString(MyPreference.PrizmAddress, prizm);
         editor.apply();
 
     }
+
     public String getAddress() {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getString(MyPreference.BTCAddress, "");
     }
+
     public String getPrizmAddress() {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getString(MyPreference.PrizmAddress, "");
     }
+
     public String getToken() {
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getString(MyPreference.TokenValue, "");
     }
-  public DraweeController getDraweeController(SimpleDraweeView mImageView, String vendorImg, int i) {
+
+    public DraweeController getDraweeController(SimpleDraweeView mImageView, String vendorImg, int i) {
         Uri uri = Uri.parse(vendorImg);
 
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
