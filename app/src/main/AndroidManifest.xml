@@ -24,7 +24,9 @@
         <activity android:name=".View.ProfileActivity" />
         <activity android:name=".View.SevenUpDown" />
         <activity android:name=".View.HomeActivity" />
-        <activity android:name=".View.MainActivity" />
+        <activity android:name=".View.DusKaDamActivity" />
+        <activity android:name=".View.RulesActivity" />
+        <activity android:name=".View.CreateAccount" />
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.SplashActivity">
             <intent-filter>
