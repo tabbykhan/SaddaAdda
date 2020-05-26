@@ -2,10 +2,12 @@ package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -211,6 +213,34 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
+
+
+            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+            adb.setTitle(getResources().getString(R.string.app_name));
+            adb.setIcon(R.mipmap.ic_launcher_round);
+            adb.setMessage("Are you sure you want to Logout?");
+            adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AppCommon.getInstance(ProfileActivity.this).clearPreference();
+                    startActivity(new Intent(ProfileActivity.this, SelectionPage.class));
+                    finishAffinity();
+                    Toast.makeText(ProfileActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                    //startActivity(new Intent());
+                    // finishAffinity();
+                }
+
+            });
+            adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            adb.show();
+
+       /*
         AlertDialog.Builder builder1 = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             builder1 = new AlertDialog.Builder(ProfileActivity.this, AlertDialog.THEME_HOLO_LIGHT);
@@ -230,9 +260,7 @@ public class ProfileActivity extends AppCompatActivity {
                         SharedPreferenceUtils.clearAccess_Token(ProfileActivity.this);
                         SharedPreferenceUtils.storeSplash(ProfileActivity.this, "stop");
                         AppCommon.getInstance(ProfileActivity.this).clearPreference();
-                        startActivity(new Intent(ProfileActivity.this, SelectionPage.class));
-                        finishAffinity();
-                        Toast.makeText(ProfileActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -245,7 +273,7 @@ public class ProfileActivity extends AppCompatActivity {
                 });
 
         AlertDialog alert11 = builder1.create();
-        alert11.show();
+        alert11.show();*/
     }
 
 }

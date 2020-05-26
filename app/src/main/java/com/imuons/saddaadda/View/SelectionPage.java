@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.imuons.saddaadda.R;
-import com.imuons.saddaadda.Utils.AppCommon;
 
 public class SelectionPage extends AppCompatActivity {
 
@@ -24,6 +23,6 @@ public class SelectionPage extends AppCompatActivity {
     }
 
     public void createAccount(View view) {
-        startActivity( new Intent(this , MainActivity.class));
+        startActivity( new Intent(this , CreateAccount.class));
     }
 }

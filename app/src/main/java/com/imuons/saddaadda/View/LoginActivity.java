@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                         if (authResponse.getCode() == 200 ) {
                             AppCommon.getInstance(LoginActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(LoginActivity.this).setToken(authResponse.getData().getAccessToken());
+                            AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim());
+                            AppCommon.getInstance(LoginActivity.this).setSesstionId(authResponse.getData().getSession_id());
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                             finish();
                             Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();

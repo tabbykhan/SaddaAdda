@@ -26,6 +26,17 @@ public class LoginDataModel {
     @SerializedName("master_pwd")
     @Expose
     private String masterPwd;
+    @SerializedName("session_id")
+    @Expose
+    private int session_id;
+
+    public int getSession_id() {
+        return session_id;
+    }
+
+    public void setSession_id(int session_id) {
+        this.session_id = session_id;
+    }
 
     public String getOtpmode() {
         return otpmode;

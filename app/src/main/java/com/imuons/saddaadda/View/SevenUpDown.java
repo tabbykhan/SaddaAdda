@@ -12,10 +12,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -62,7 +65,7 @@ public class SevenUpDown extends AppCompatActivity {
     TextView times;
 
     @BindView(R.id.bitText)
-    TextView bitText;
+    EditText bitText;
     @BindView(R.id.two_2x)
     TextView two_2x;
     @BindView(R.id.seven_3x)
@@ -111,32 +114,50 @@ public class SevenUpDown extends AppCompatActivity {
         setContentView(R.layout.activity_seven_up_down);
         ButterKnife.bind(this);
         twoClick.setActivated(true);
+        bitText.setSelection(bitText.getText().length());
+        bitText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String valStr = s.toString().trim();
+                if (s != null && !valStr.isEmpty()) {
+                    int val = Integer.parseInt(s.toString().trim());
+                    two_2x.setText(String.valueOf(val * 2));
+                    seven_3x.setText(String.valueOf(val * 3));
+                    eight_2x.setText(String.valueOf(val * 2));
+                } else {
+                    two_2x.setText("0");
+                    seven_3x.setText("0");
+                    eight_2x.setText("0");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         //Animation();
+
     }
 
     private void Animation() {
-
+        dais_img.setImageDrawable(null);
+        dais_img1.setImageDrawable(null);
+        dais_img.clearAnimation();
+        dais_img1.clearAnimation();
+        dais_img.setImageResource(R.drawable.firstlevelanimation);
+        dais_img1.setImageResource(R.drawable.firstlevelanimation1);
         anim = (AnimationDrawable) dais_img.getDrawable();
         anim2 = (AnimationDrawable) dais_img1.getDrawable();
         dais_img.post(run);
         dais_img1.post(run);
         isOn = true;
-       /* try {
-            synchronized(run) {
-                run.wait(3000);
-                anim.stop();
-                anim2.stop();
-                dais_img.setImageResource(R.drawable.dice_0);
-                dais_img1.setImageResource(R.drawable.dice_0);
-            }*/
 
-           /* anim.stop();
-            anim2.stop();
-            dais_img.setImageResource(R.drawable.dice_0);
-            dais_img.setImageResource(R.drawable.dice_0);*/
-       /* } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
     }
 
     Runnable run = new Runnable() {
@@ -208,10 +229,28 @@ public class SevenUpDown extends AppCompatActivity {
 
     @OnClick({R.id.dais_img1, R.id.dais_img})
     void roll() {
-        dais_img.setImageResource(R.drawable.firstlevelanimation);
-        dais_img1.setImageResource(R.drawable.firstlevelanimation1);
-        Animation();
-        callApi();
+        if (bitText.getText().toString().trim().isEmpty()) {
+            Toast.makeText(this, "Please enter you bit", Toast.LENGTH_SHORT).show();
+
+        } else {
+            int val = Integer.parseInt(bitText.getText().toString().trim());
+            if (AppCommon.getInstance(this).getAccount() >= val) {
+                if (val % 10 == 0) {
+                    if (val <= 1000 && val >= 10) {
+                        dais_img.setImageResource(R.drawable.firstlevelanimation);
+                        dais_img1.setImageResource(R.drawable.firstlevelanimation1);
+                        Animation();
+                        callApi();
+                    } else {
+                        Toast.makeText(this, "Bit limit is 10 - 1000 only", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(this, "Please enter you bit multiply by 10", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Insufficient Balance!! ", Toast.LENGTH_SHORT).show();
+            }
+        }
 
     }
 
@@ -249,6 +288,7 @@ public class SevenUpDown extends AppCompatActivity {
                             //Toast.makeText(SevenUpDown.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 setData(authResponse);
+
                             }
                         } else {
                             dais_img.setImageResource(R.drawable.firstlevelanimation);
@@ -291,7 +331,7 @@ public class SevenUpDown extends AppCompatActivity {
         anim.stop();
         anim2.stop();
         int totalVal = dice1 + dice2;
-
+        AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
 
         if (dice1 == 1) {
             dais_img.setImageResource(R.drawable.single_1);
@@ -348,27 +388,28 @@ public class SevenUpDown extends AppCompatActivity {
 
         fullImage.setVisibility(View.VISIBLE);
         if (authResponse.getData().getStatus().equalsIgnoreCase("Win")) {
-         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
-        }
-        }else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
+            }
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 fullImage.setImageDrawable(getDrawable(R.drawable.lose));
             }
         }
         setAnimtion();
-        }
+    }
 
     private void setAnimtion() {
-        Animation aniFade = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        Animation aniFade = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         fullImage.startAnimation(aniFade);
 
         Handler handler = new Handler();
         Runnable r = new Runnable() {
             public void run() {
-                Animation aniFade1 = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
+                Animation aniFade1 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
                 fullImage.startAnimation(aniFade1);
                 fullImage.setVisibility(View.GONE);
+                fullImage.setImageDrawable(null);
                  /*   animation = AnimationUtils.loadAnimation(SelectUserTypeActivity.this, R.anim.fade_in);
                     logo.startAnimation(animation);
                     logo.setVisibility(View.VISIBLE);
@@ -383,5 +424,6 @@ public class SevenUpDown extends AppCompatActivity {
         double x = (int) (Math.random() * ((max - min) + 1)) + min;
         return x;
     }
+
 
 }

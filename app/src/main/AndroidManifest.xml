@@ -15,25 +15,46 @@
     <application
         android:name=".SaddaAdda"
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".View.ForgetPassword"></activity>
-        <activity android:name=".View.ProfileActivity" />
-        <activity android:name=".View.SevenUpDown" />
-        <activity android:name=".View.HomeActivity" />
-        <activity android:name=".View.MainActivity" />
-        <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.SplashActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".View.PinEnterActivity">
+
+        </activity>
+        <activity
+            android:name=".View.ForgetPassword"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".View.ProfileActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".View.SevenUpDown"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.CreateAccount"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.SelectionPage" />
+        <activity
+            android:name=".View.SelectionPage"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
