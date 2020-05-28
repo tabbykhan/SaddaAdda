@@ -70,7 +70,7 @@ public class BuyCoinActivity extends AppCompatActivity {
                         Log.i("ResponseUpdate::", new Gson().toJson(buyCoinResponse));
                         if (buyCoinResponse.getCode() == 200) {
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            etAmount.setText("");
                         } else {
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
