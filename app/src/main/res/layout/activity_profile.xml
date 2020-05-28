@@ -31,15 +31,18 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:src="@drawable/profile" />
-
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
                 <TextView
                     android:id="@+id/txUserId"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="start"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:shadowColor="#a3ffaf"
                     android:shadowDx="0.0"
                     android:layout_marginStart="10dp"
@@ -49,9 +52,32 @@
                     android:text="User ID"
                     android:layout_marginTop="5dp"
                     android:textColor="#a3ffaf"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/ChangePin"
+                    android:layout_below="@id/txUserId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="start"
+                    android:shadowColor="#feb6b2"
+                    android:shadowDx="0.0"
+                    android:onClick="changePin"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:shadowDy="0.0"
+                    android:shadowRadius="20"
+                    android:text="Change Pin"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#feb6b2"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
+</RelativeLayout>
 
             </LinearLayout>
 
@@ -310,6 +336,20 @@
                 android:textColorHint="#D8BB4A"
                 android:textSize="16sp"
                 />
+            <TextView
+                android:id="@+id/report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Report"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:textColor="#a3ffaf"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"/>
             <TextView
                 android:id="@+id/logOut"
                 android:layout_width="match_parent"

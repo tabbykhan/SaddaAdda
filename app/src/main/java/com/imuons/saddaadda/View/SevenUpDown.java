@@ -100,6 +100,11 @@ public class SevenUpDown extends AppCompatActivity {
     TextView tol12;
     @BindView(R.id.fullImage)
     ImageView fullImage;
+    @BindView(R.id.rolldice)
+    ImageView rolldice;
+
+    @BindView(R.id.tv_balance)
+    TextView tv_balance;
 
 
     AnimationDrawable anim;
@@ -114,7 +119,11 @@ public class SevenUpDown extends AppCompatActivity {
         setContentView(R.layout.activity_seven_up_down);
         ButterKnife.bind(this);
         twoClick.setActivated(true);
+        dais_img.setVisibility(View.GONE);
+        dais_img1.setVisibility(View.GONE);
+        rolldice.setVisibility(View.VISIBLE);
         bitText.setSelection(bitText.getText().length());
+        tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
         bitText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -227,25 +236,29 @@ public class SevenUpDown extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.dais_img1, R.id.dais_img})
+    @OnClick({R.id.dais_img1, R.id.dais_img , R.id.rolldice})
     void roll() {
+        AppCommon.getInstance(this).onHideKeyBoard(this);
         if (bitText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Please enter you bit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter you bet", Toast.LENGTH_SHORT).show();
 
         } else {
             int val = Integer.parseInt(bitText.getText().toString().trim());
             if (AppCommon.getInstance(this).getAccount() >= val) {
                 if (val % 10 == 0) {
                     if (val <= 1000 && val >= 10) {
+                        dais_img.setVisibility(View.VISIBLE);
+                        dais_img1.setVisibility(View.VISIBLE);
+                        rolldice.setVisibility(View.GONE);
                         dais_img.setImageResource(R.drawable.firstlevelanimation);
                         dais_img1.setImageResource(R.drawable.firstlevelanimation1);
                         Animation();
                         callApi();
                     } else {
-                        Toast.makeText(this, "Bit limit is 10 - 1000 only", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Bet limit is 10 - 1000 only", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(this, "Please enter you bit multiply by 10", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Please enter you bet multiply by 10", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(this, "Insufficient Balance!! ", Toast.LENGTH_SHORT).show();
@@ -291,11 +304,17 @@ public class SevenUpDown extends AppCompatActivity {
 
                             }
                         } else {
+                            dais_img.setVisibility(View.GONE);
+                            dais_img1.setVisibility(View.GONE);
+                            rolldice.setVisibility(View.VISIBLE);
                             dais_img.setImageResource(R.drawable.firstlevelanimation);
                             dais_img1.setImageResource(R.drawable.firstlevelanimation1);
                             Toast.makeText(SevenUpDown.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
+                        dais_img.setVisibility(View.GONE);
+                        dais_img1.setVisibility(View.GONE);
+                        rolldice.setVisibility(View.VISIBLE);
                         dais_img.setImageResource(R.drawable.firstlevelanimation);
                         dais_img1.setImageResource(R.drawable.firstlevelanimation1);
                         AppCommon.getInstance(SevenUpDown.this).showDialog(SevenUpDown.this, "Server Error");
@@ -306,6 +325,9 @@ public class SevenUpDown extends AppCompatActivity {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     // dialog.dismiss();
+                    dais_img.setVisibility(View.GONE);
+                    dais_img1.setVisibility(View.GONE);
+                    rolldice.setVisibility(View.VISIBLE);
                     dais_img.setImageResource(R.drawable.firstlevelanimation);
                     dais_img1.setImageResource(R.drawable.firstlevelanimation1);
                     AppCommon.getInstance(SevenUpDown.this).clearNonTouchableFlags(SevenUpDown.this);
@@ -332,7 +354,7 @@ public class SevenUpDown extends AppCompatActivity {
         anim2.stop();
         int totalVal = dice1 + dice2;
         AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
-
+        tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
         if (dice1 == 1) {
             dais_img.setImageResource(R.drawable.single_1);
         } else if (dice1 == 2) {
@@ -384,6 +406,20 @@ public class SevenUpDown extends AppCompatActivity {
             tol11.setText(String.valueOf(totalVal));
         } else if (tol12.getText().toString().trim().isEmpty()) {
             tol12.setText(String.valueOf(totalVal));
+        }else {
+            tol1.setText("");
+            tol2.setText("");
+            tol3.setText("");
+            tol4.setText("");
+            tol5.setText("");
+            tol6.setText("");
+            tol7.setText("");
+            tol8.setText("");
+            tol9.setText("");
+            tol10.setText("");
+            tol11.setText("");
+            tol12.setText("");
+            tol1.setText(String.valueOf(totalVal));
         }
 
         fullImage.setVisibility(View.VISIBLE);
@@ -400,6 +436,7 @@ public class SevenUpDown extends AppCompatActivity {
     }
 
     private void setAnimtion() {
+        AppCommon.getInstance(this).setNonTouchableFlags(this);
         Animation aniFade = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
         fullImage.startAnimation(aniFade);
 
@@ -410,10 +447,11 @@ public class SevenUpDown extends AppCompatActivity {
                 fullImage.startAnimation(aniFade1);
                 fullImage.setVisibility(View.GONE);
                 fullImage.setImageDrawable(null);
-                 /*   animation = AnimationUtils.loadAnimation(SelectUserTypeActivity.this, R.anim.fade_in);
-                    logo.startAnimation(animation);
-                    logo.setVisibility(View.VISIBLE);
-                    engAnim();//what ever you do here will be done after 3 seconds delay.*/
+                AppCommon.getInstance(SevenUpDown.this).clearNonTouchableFlags(SevenUpDown.this);
+                dais_img.setVisibility(View.GONE);
+                dais_img1.setVisibility(View.GONE);
+                rolldice.setVisibility(View.VISIBLE);
+
             }
         };
         handler.postDelayed(r, 1000);

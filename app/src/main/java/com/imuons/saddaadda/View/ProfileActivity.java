@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,12 +18,14 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
+import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.SharedPreferenceUtils;
 import com.imuons.saddaadda.Utils.ViewUtils;
+import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
@@ -276,4 +279,47 @@ public class ProfileActivity extends AppCompatActivity {
         alert11.show();*/
     }
 
+    public void changePin(View view) {
+        callsendOtp();
+    }
+    private void callsendOtp() {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class , AppCommon.getInstance(this).getToken());
+            Call call = apiService.SendOTP_FOR_PIN(new OtpEnitity(AppCommon.getInstance(this).getUserId()));
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(ProfileActivity.this).clearNonTouchableFlags(ProfileActivity.this);
+                    dialog.dismiss();
+                    OptResponse authResponse = (OptResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(ProfileActivity.this,ChangePin.class));
+                        } else {
+                            Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(ProfileActivity.this).showDialog(ProfileActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(ProfileActivity.this).clearNonTouchableFlags(ProfileActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(ProfileActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

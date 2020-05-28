@@ -3,18 +3,23 @@ package com.imuons.saddaadda.View;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
+import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.R;
@@ -22,6 +27,7 @@ import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.GenericTextWatcher;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
+import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
 import com.imuons.saddaadda.retrofit.AppService;
@@ -29,6 +35,7 @@ import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -192,6 +199,11 @@ public class PinEnterActivity extends AppCompatActivity {
                                startActivity(new Intent(PinEnterActivity.this , HomeActivity.class));
                                finishAffinity();
                             } else {
+                                et1.setText("");
+                                et2.setText("");
+                                et3.setText("");
+                                et4.setText("");
+                                et1.requestFocus();
                                 Toast.makeText(PinEnterActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         } else {
@@ -217,4 +229,84 @@ public class PinEnterActivity extends AppCompatActivity {
 
     }
 
+    public void forgotPin(View view) {
+        callsendOtp();
+        startActivity(new Intent(this , ForgotPin.class));
+    }
+
+    private void callsendOtp() {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(PinEnterActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class , AppCommon.getInstance(this).getToken());
+            Call call = apiService.SendOTP_FOR_PIN(new OtpEnitity(AppCommon.getInstance(this).getUserId()));
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(PinEnterActivity.this).clearNonTouchableFlags(PinEnterActivity.this);
+                    dialog.dismiss();
+                    OptResponse authResponse = (OptResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            Toast.makeText(PinEnterActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PinEnterActivity.this , ForgotPin.class));
+                        } else {
+                            Toast.makeText(PinEnterActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(PinEnterActivity.this).showDialog(PinEnterActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(PinEnterActivity.this).clearNonTouchableFlags(PinEnterActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(PinEnterActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick({R.id.logoutImage , R.id.logoutText})
+    void logout(){
+        showAlertDialog();
+    }
+    private void showAlertDialog() {
+
+
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(getResources().getString(R.string.app_name));
+        adb.setIcon(R.mipmap.ic_launcher_round);
+        adb.setMessage("Are you sure you want to Logout?");
+        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppCommon.getInstance(PinEnterActivity.this).clearPreference();
+                startActivity(new Intent(PinEnterActivity.this, SelectionPage.class));
+                finishAffinity();
+                Toast.makeText(PinEnterActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent());
+                // finishAffinity();
+            }
+
+        });
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        adb.show();
+
+
+    }
 }
