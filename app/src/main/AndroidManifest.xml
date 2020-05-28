@@ -22,15 +22,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.PinEnterActivity">
-
-        </activity>
+        <activity android:name=".View.BuyCoinActivity"></activity>
+        <activity android:name=".View.PinEnterActivity"></activity>
         <activity
             android:name=".View.ForgetPassword"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.ProfileActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.SevenUpDown"
             android:screenOrientation="portrait" />

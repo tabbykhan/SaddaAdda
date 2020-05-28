@@ -83,84 +83,26 @@
         android:shadowDy="0.0"
         android:shadowRadius="20" />
 
-    <RelativeLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linar"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
+        android:background="@drawable/green_box">
 
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="185dp"
-            android:layout_marginLeft="185dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="252dp"
-            android:layout_marginLeft="252dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
-            android:layout_marginLeft="315dp"
-            android:layout_marginTop="70dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="105dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="252dp"
-            android:layout_marginLeft="252dp"
-            android:layout_marginTop="105dp"
-            android:src="@drawable/plus_green" />
-
-
-        <LinearLayout
-            android:id="@+id/first"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@drawable/green_box"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/txtZero"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:shadowColor="@color/lightgreen"
                 android:shadowDx="0.0"
@@ -168,87 +110,135 @@
                 android:shadowRadius="20"
                 android:text="0"
                 android:textColor="@color/lightgreen"
-                android:textSize="36sp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="145dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="145dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="185dp"
-            android:layout_marginLeft="185dp"
-            android:layout_marginTop="145dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="252dp"
-            android:layout_marginLeft="252dp"
-            android:layout_marginTop="145dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
-            android:layout_marginLeft="315dp"
-            android:layout_marginTop="145dp"
-            android:src="@drawable/plus_green" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="190dp"
-            android:src="@drawable/plus_green" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="252dp"
-            android:layout_marginLeft="252dp"
-            android:layout_marginTop="190dp"
-            android:src="@drawable/plus_green" />
-
-        <LinearLayout
-            android:id="@+id/one"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/txtZero"
+                android:layout_toRightOf="@+id/txtZero"
+                android:layout_weight="0.5"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:src="@drawable/plus_red" />
+        </RelativeLayout>
+        <!--row one-->
+        <TableRow
+            android:id="@+id/row1"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_below="@+id/first"
-            android:background="@drawable/green_box"
-            android:weightSum="3.012">
+            android:layout_height="20dp"
+            android:weightSum="3">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -260,35 +250,51 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -300,35 +306,50 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -340,84 +361,158 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/plus_green" />
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/plus_green" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="185dp"
-            android:layout_marginLeft="185dp"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/plus_green" />
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="252dp"
-            android:layout_marginLeft="252dp"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/plus_green" />
+        </TableRow>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
-            android:layout_marginLeft="315dp"
-            android:layout_marginTop="225dp"
-            android:src="@drawable/plus_green" />
+        <!--row two-->
 
-        <LinearLayout
-            android:id="@+id/two"
+        <TableRow
+            android:id="@+id/row2"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_below="@id/one"
-            android:background="@drawable/green_box"
-            android:weightSum="3.012">
+            android:layout_height="20dp"
+            android:weightSum="3">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -429,35 +524,51 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -469,35 +580,50 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -509,68 +635,158 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="305dp"
-            android:src="@drawable/plus_green" />
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="185dp"
-            android:layout_marginLeft="185dp"
-            android:layout_marginTop="305dp"
-            android:src="@drawable/plus_green" />
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="315dp"
-            android:layout_marginLeft="315dp"
-            android:layout_marginTop="305dp"
-            android:src="@drawable/plus_green" />
+        </TableRow>
 
-        <LinearLayout
+        <!--row three-->
+
+        <TableRow
+            android:id="@+id/row3"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_below="@+id/two"
-            android:background="@drawable/green_box"
-            android:weightSum="3.012">
+            android:layout_height="20dp"
+            android:weightSum="3">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -582,35 +798,51 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
+
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -622,35 +854,50 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_height="100dp"
+                android:layout_weight="1">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:shadowColor="@color/lightgreen"
                     android:shadowDx="0.0"
@@ -662,25 +909,129 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginRight="0dp"
-                    android:scaleType="center"
+                    android:layout_weight="0.5"
                     android:src="@drawable/plus_red" />
+
 
             </LinearLayout>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_weight="0.04"
-                android:background="@color/lightgreen" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="2">
 
-    </RelativeLayout>
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/plus_green" />
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green">
+
+                </ImageView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:weightSum="2">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/plus_green" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/lightgreen" />
+            </LinearLayout>
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
