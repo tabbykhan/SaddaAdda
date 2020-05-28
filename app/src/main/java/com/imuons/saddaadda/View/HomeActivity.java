@@ -15,11 +15,13 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
+import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.ReportActivity;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
+import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -133,5 +135,58 @@ public class HomeActivity extends Activity {
     }
     public void rummy_game(View view) {
         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+    }
+
+    public void changeMoneyType(boolean isDemo){
+        LoginEntity loginEntity =  new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword());
+        if(isDemo){
+             ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
+
+        }else {
+            ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
+        }
+
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class);
+            final Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            Call call = apiService.LoginApi(loginEntity);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    dialog.dismiss();
+                    LoginResponseModel authResponse = (LoginResponseModel) response.body();
+                    if (authResponse != null) {
+                        Log.i("LoginResponse::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200 ) {
+                            AppCommon.getInstance(HomeActivity.this).setToken(authResponse.getData().getAccessToken());
+                            AppCommon.getInstance(HomeActivity.this).setSesstionId(authResponse.getData().getSession_id());
+                            startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                            finish();
+                            Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                           AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
+                        //Toast.makeText(HomeActivity.this, "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(HomeActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -15,18 +15,18 @@
         android:layout_centerInParent="true">
 
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/logo" />
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_animation" />
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:src="@drawable/sa_logo" />
+            android:src="@drawable/sa_logo" />-->
     </LinearLayout>
 
 </RelativeLayout>

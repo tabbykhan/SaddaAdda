@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
+import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
@@ -19,6 +22,7 @@ import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
+import com.imuons.saddaadda.responseModel.VerifyUserResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -56,7 +60,67 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        etRefralCode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(start >11){
+                    etRefralCode.setError("Please enter valid id");
+                }else if(start == 11){
+                    callVarifyId(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         callRendomNumberAPI();
+    }
+
+    private void callVarifyId(String id) {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+           // Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
+            AppService apiService = ServiceGenerator.createService(AppService.class);
+            Call call = apiService.checkUserApi(new OtpEnitity(id));
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
+                   // dialog.dismiss();
+                    VerifyUserResponse authResponse = (VerifyUserResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+
+                        } else {
+                            etRefralCode.setError(authResponse.getMessage());
+                           // Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                       // AppCommon.getInstance(CreateAccount.this).showDialog(CreateAccount.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    //dialog.dismiss();
+                    AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
+                    // loaderView.setVisibility(View.GONE);
+                   // Toast.makeText(CreateAccount.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @OnClick(R.id.submitBtn)
@@ -108,8 +172,6 @@ public class CreateAccount extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            etUserId.setText(String.valueOf(authResponse.getData()));
-
                             callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword()));
                         } else {
                             Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();

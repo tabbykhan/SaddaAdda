@@ -45,20 +45,37 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/coin" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/add_coin"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:tint="#fce172"/>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Demo"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/amazon_bold"/>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/gotoProfile"
@@ -83,7 +100,7 @@
                 android:layout_toLeftOf="@id/profile"
                 android:fontFamily="@font/amazon_regular"
                 android:gravity="center|end"
-                android:text="0000"
+                android:textSize="10sp"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
 
@@ -95,36 +112,46 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+      <!--  <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
             android:layout_marginTop="20dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo" />-->
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gidFile"
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo_animation"
+            />
 
-        <ImageView
+      <!--  <ImageView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="2"
-            android:src="@drawable/sa_logo" />
+            android:src="@drawable/sa_logo" />-->
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="2"
+            android:scaleType="fitCenter"
             android:onClick="sevenClick"
             android:src="@drawable/seven_up"
             tools:ignore="OnClick" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -134,7 +161,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -144,7 +171,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"

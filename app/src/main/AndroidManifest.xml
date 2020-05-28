@@ -61,6 +61,8 @@
         <activity
             android:name=".View.SelectionPage"
             android:screenOrientation="portrait" />
+        <activity android:name=".View.BuyCoinActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
