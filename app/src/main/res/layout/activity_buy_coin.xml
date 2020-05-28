@@ -29,7 +29,7 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        
+
         <EditText
             android:id="@+id/etAmount"
             android:layout_width="match_parent"
