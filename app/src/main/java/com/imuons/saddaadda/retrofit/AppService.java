@@ -1,6 +1,7 @@
 package com.imuons.saddaadda.retrofit;
 
 
+import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
@@ -11,6 +12,7 @@ import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.View.ForgetPassword;
+import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
@@ -20,6 +22,7 @@ import com.imuons.saddaadda.responseModel.PinResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
+import com.imuons.saddaadda.responseModel.ReportResponse;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
@@ -92,12 +95,32 @@ public interface AppService {
             @Body OtpEnitity resetPasswordEntity
     );
     @POST("user/all-transactions-report")
-    Call<VerifyUserResponse> REPORT_CALL (
-            @Body OtpEnitity resetPasswordEntity
+    Call<ReportResponse> REPORT_CALL (
     );
     @POST("user/buy-balance")
     Call<BuyCoinResponse> buyCoin(
             @Body BuyCoinEntity buyCoinEntity
+    );
+
+    @POST("user/buy-balance")
+    Call<BuyCoinResponse> buyCoin(
+            @Body BuyCoinEntity buyCoinEntity
+    );
+
+    //tabish
+    @POST("user/sell-wallet-balance")
+    Call<SellResponseModel> sellCoin(
+            @Body SellCoinEntity sellCoinEntity
+    );
+
+    //tabish
+    @GET("user/get-wallet-balance")
+    Call<CoinsResponseModel> get_Coins_Details();
+
+    //tabish
+    @POST("user/change-newpassword")
+    Call<ChangePasswordResponse> change_password(
+            @Body ChangePasswordEntity changePasswordEntity
     );
 
 

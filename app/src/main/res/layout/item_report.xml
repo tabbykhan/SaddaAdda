@@ -2,44 +2,163 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
    >
-
+<RelativeLayout
+    android:id="@+id/top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
     <View
         android:layout_width="wrap_content"
-        android:layout_height="8dp"
-        android:background="@drawable/bg_outer"
+        android:layout_height="0.5dp"
+        android:background="#a3ffaf"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <View
-            android:layout_width="8dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_outer"
+            android:background="#a3ffaf"
             />
+
         <TextView
+
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_weight="0.5"
             android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
             android:shadowColor="#a3ffaf"
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="5"
-            android:text="1000"
+            android:text="S.No"
             android:textColor="#a3ffaf"
-            android:textSize="16sp"
-          />
+            android:textSize="8sp" />
         <View
-            android:layout_width="8dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_outer"
+            android:background="#a3ffaf"
             />
+
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="P.Bal"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Type"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Amount"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="DR/CR"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Balance"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Tran. Date"
+            android:textColor="#a3ffaf"
+            android:textSize="12sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+      <!--  <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -53,34 +172,201 @@
             android:textColor="#a3ffaf"
             android:textSize="16sp"/>
         <View
-            android:layout_width="8dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_outer"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:fontFamily="@font/amazon_regular"
-            android:shadowColor="#a3ffaf"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="5"
-            android:text="1000"
-            android:textColor="#a3ffaf"
-            android:textSize="16sp"/>
-        <View
-            android:layout_width="8dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_outer"
-            />
+            android:background="#a3ffaf"
+            />-->
     </LinearLayout>
 
     <View
         android:layout_width="wrap_content"
-        android:layout_height="8dp"
-        android:background="@drawable/bg_outer"
+        android:layout_height="0.5dp"
+        android:background="#a3ffaf"
         android:layout_alignParentBottom="true"
         />
+</RelativeLayout>
+<RelativeLayout
+    android:id="@+id/nxt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+
+            android:id="@+id/sno"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="S.No"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/pBal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="P.Bal"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Type"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/amt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Amount"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/tranType"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="DR/CR"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/cBal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Balance"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+
+        <TextView
+            android:id="@+id/tranDate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="Tran. Date"
+            android:textColor="#a3ffaf"
+            android:textSize="8sp" />
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />
+      <!--  <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:fontFamily="@font/amazon_regular"
+            android:shadowColor="#a3ffaf"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="5"
+            android:text="1000"
+            android:textColor="#a3ffaf"
+            android:textSize="16sp"/>
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf"
+            />-->
+    </LinearLayout>
+
+    <View
+        android:id="@+id/botto_line"
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        android:background="#a3ffaf"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
+
 </RelativeLayout>

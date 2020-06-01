@@ -60,8 +60,16 @@
         <activity
             android:name=".View.SelectionPage"
             android:screenOrientation="portrait" />
-        <activity android:name=".View.BuyCoinActivity"
+        <activity
+            android:name=".View.ReportActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".View.ChangePassword"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".View.SellHistoryReportActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.SellCoinActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
