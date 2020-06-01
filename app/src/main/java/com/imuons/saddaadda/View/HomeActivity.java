@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.R;
-import com.imuons.saddaadda.ReportActivity;
+
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
@@ -40,6 +41,9 @@ public class HomeActivity extends Activity {
     TextView txUserId;
     @BindView(R.id.coin)
     TextView coin;
+
+    @BindView(R.id.coinBuy)
+    ImageView coinBuy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,13 +114,19 @@ public class HomeActivity extends Activity {
         startActivity(new Intent(this, ProfileActivity.class));
     }
 
+  @OnClick(R.id.coinBuy)
+    void goToBuyCoin() {
+
+        startActivity(new Intent(this, BuyCoinActivity.class));
+    }
+
     public void sevenClick(View view) {
         startActivity(new Intent(this, SevenUpDown.class));
     }
 
-    public void ReportClick(View view) {
-        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-       // startActivity(new Intent(this, ProfileActivity.class));
+    public void duskaDum(View view) {
+       // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, DusKaDamActivity.class));
     }
 
     @Override
