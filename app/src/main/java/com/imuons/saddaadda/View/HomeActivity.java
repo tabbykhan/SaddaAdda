@@ -25,12 +25,14 @@ import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
+import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.R;
 
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
+import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -146,8 +148,8 @@ public class HomeActivity extends Activity {
     }
 
     public void duskaDum(View view) {
-        // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, DusKaDamActivity.class));
+         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        //startActivity(new Intent(this, DusKaDamActivity.class));
     }
 
     @Override
@@ -262,7 +264,8 @@ public class HomeActivity extends Activity {
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ChangePassword.class));
+                callsendOtp();
+                //startActivity(new Intent(getApplicationContext(), ChangePassword.class));
             }
         });
         changePin.setOnClickListener(new View.OnClickListener() {
@@ -305,40 +308,46 @@ public class HomeActivity extends Activity {
             }
         });
         adb.show();
+    }
 
-       /*
-        AlertDialog.Builder builder1 = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
-            builder1 = new AlertDialog.Builder(ProfileActivity.this, AlertDialog.THEME_HOLO_LIGHT);
+    private void callsendOtp() {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
+            Call call = apiService.SendOTP_FOR_PIN(new OtpEnitity(AppCommon.getInstance(this).getUserId()));
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    dialog.dismiss();
+                    OptResponse authResponse = (OptResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(HomeActivity.this, ChangePassword.class));
+                        } else {
+                            Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(HomeActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
-        builder1.setTitle("Alert");
-        builder1.setMessage("Are you sure you want to Logout ?");
-        builder1.setCancelable(true);
-
-        builder1.setPositiveButton(
-                "Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        ProfileActivity.this.finish();
-                        SharedPreferenceUtils.clearPreferences(ProfileActivity.this);
-                        SharedPreferenceUtils.clearID(ProfileActivity.this);
-                        SharedPreferenceUtils.clearAccess_Token(ProfileActivity.this);
-                        SharedPreferenceUtils.storeSplash(ProfileActivity.this, "stop");
-                        AppCommon.getInstance(ProfileActivity.this).clearPreference();
-
-                    }
-                });
-
-        builder1.setNegativeButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alert11 = builder1.create();
-        alert11.show();*/
     }
 }
