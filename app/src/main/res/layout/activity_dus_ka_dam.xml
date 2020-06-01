@@ -84,6 +84,7 @@
         android:shadowRadius="20" />
 
     <TableLayout
+        android:id="@+id/table_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -114,6 +115,7 @@
                 android:textStyle="bold" />
 
             <ImageView
+                android:id="@+id/zeroRed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -250,6 +252,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/oneRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -306,6 +309,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/twoRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -361,6 +365,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/threeRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -524,6 +529,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/fourRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -580,6 +586,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/fiveRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -635,6 +642,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/sixRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -781,7 +789,6 @@
                 android:layout_height="100dp"
                 android:layout_weight="1">
 
-
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -798,6 +805,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/sevenRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -854,6 +862,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/eightRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -909,6 +918,7 @@
                     android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/nineRed"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -1034,4 +1044,17 @@
 
     </TableLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/table_layout"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_blue_line"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
 </RelativeLayout>

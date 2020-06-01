@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     void submitCall() {
         String password = et_password.getText().toString().trim();
         String userId = et_userId.getText().toString().trim();
+
         if (userId.isEmpty()) {
             et_userId.setError("Please enter User ID");
         } else if (password.isEmpty()) {

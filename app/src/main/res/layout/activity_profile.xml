@@ -55,6 +55,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/ChangePin"
                     android:layout_below="@id/txUserId"
                     android:layout_width="wrap_content"
@@ -337,6 +338,7 @@
                 android:textSize="16sp"
                 />
             <TextView
+                android:visibility="gone"
                 android:id="@+id/report"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -351,6 +353,7 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="20"/>
             <TextView
+                android:visibility="gone"
                 android:id="@+id/logOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

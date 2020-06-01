@@ -2,13 +2,21 @@ package com.imuons.saddaadda.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,12 +53,24 @@ public class HomeActivity extends Activity {
     @BindView(R.id.coinBuy)
     ImageView coinBuy;
 
+    @BindView(R.id.img_menu)
+    ImageView img_menu;
+    private PopupWindow mypopupWindow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        setPopUpWindow();
+        img_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                mypopupWindow.showAsDropDown(v, -153, 0);
+
+            }
+        });
     }
 
     private void getDashboardInfo() {
@@ -95,11 +115,11 @@ public class HomeActivity extends Activity {
     }
 
     private void setDashboardData(DashboardData data) {
-        if(AppCommon.getInstance(this).getSesstionId() == data.getSession_id()) {
+        if (AppCommon.getInstance(this).getSesstionId() == data.getSession_id()) {
             txUserId.setText(String.valueOf(data.getUserId()));
             coin.setText(String.valueOf(data.getWalletBalance()));
             AppCommon.getInstance(this).setAccount(Integer.parseInt(data.getWalletBalance()));
-        }else {
+        } else {
             AppCommon.getInstance(HomeActivity.this).clearPreference();
             startActivity(new Intent(HomeActivity.this, SelectionPage.class));
             finishAffinity();
@@ -114,10 +134,11 @@ public class HomeActivity extends Activity {
         startActivity(new Intent(this, ProfileActivity.class));
     }
 
-  @OnClick(R.id.coinBuy)
+
+    @OnClick(R.id.coinBuy)
     void goToBuyCoin() {
 
-        startActivity(new Intent(this, BuyCoinActivity.class));
+        startActivity(new Intent(this, SellCoinActivity.class));
     }
 
     public void sevenClick(View view) {
@@ -125,7 +146,7 @@ public class HomeActivity extends Activity {
     }
 
     public void duskaDum(View view) {
-       // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, DusKaDamActivity.class));
     }
 
@@ -143,16 +164,17 @@ public class HomeActivity extends Activity {
     public void ludo_game(View view) {
         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
     }
+
     public void rummy_game(View view) {
         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
     }
 
-    public void changeMoneyType(boolean isDemo){
-        LoginEntity loginEntity =  new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword());
-        if(isDemo){
-             ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
+    public void changeMoneyType(boolean isDemo) {
+        LoginEntity loginEntity = new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword());
+        if (isDemo) {
+            ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
 
-        }else {
+        } else {
             ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
         }
 
@@ -169,7 +191,7 @@ public class HomeActivity extends Activity {
                     LoginResponseModel authResponse = (LoginResponseModel) response.body();
                     if (authResponse != null) {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
-                        if (authResponse.getCode() == 200 ) {
+                        if (authResponse.getCode() == 200) {
                             AppCommon.getInstance(HomeActivity.this).setToken(authResponse.getData().getAccessToken());
                             AppCommon.getInstance(HomeActivity.this).setSesstionId(authResponse.getData().getSession_id());
                             startActivity(new Intent(HomeActivity.this, HomeActivity.class));
@@ -179,7 +201,7 @@ public class HomeActivity extends Activity {
                             Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                           AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
+                        AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
                         //Toast.makeText(HomeActivity.this, "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -198,5 +220,125 @@ public class HomeActivity extends Activity {
             // no internet
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    private void setPopUpWindow() {
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.menu_item_view, null);
+
+        LinearLayout profile = view.findViewById(R.id.menu_profile);
+        LinearLayout all_Transaction = view.findViewById(R.id.menu_allTransaction);
+        LinearLayout withdrawal = view.findViewById(R.id.menu_withdraw);
+        LinearLayout sellHistory = view.findViewById(R.id.menu_sellHistory);
+        LinearLayout changePassword = view.findViewById(R.id.menu_changePassword);
+        LinearLayout changePin = view.findViewById(R.id.menu_changePin);
+        LinearLayout logout = view.findViewById(R.id.menu_logout);
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
+        });
+        all_Transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ReportActivity.class));
+            }
+        });
+        withdrawal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SellCoinActivity.class));
+            }
+        });
+        sellHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SellHistoryReportActivity.class));
+            }
+        });
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ChangePassword.class));
+            }
+        });
+        changePin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ChangePin.class));
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialog();
+            }
+        });
+        mypopupWindow = new PopupWindow(view, 500, RelativeLayout.LayoutParams.WRAP_CONTENT, true);
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(getResources().getString(R.string.app_name));
+        adb.setIcon(R.mipmap.ic_launcher_round);
+        adb.setMessage("Are you sure you want to Logout?");
+        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppCommon.getInstance(HomeActivity.this).clearPreference();
+                startActivity(new Intent(HomeActivity.this, SelectionPage.class));
+                finishAffinity();
+                Toast.makeText(HomeActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent());
+                // finishAffinity();
+            }
+
+        });
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        adb.show();
+
+       /*
+        AlertDialog.Builder builder1 = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
+            builder1 = new AlertDialog.Builder(ProfileActivity.this, AlertDialog.THEME_HOLO_LIGHT);
+        }
+        builder1.setTitle("Alert");
+        builder1.setMessage("Are you sure you want to Logout ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        ProfileActivity.this.finish();
+                        SharedPreferenceUtils.clearPreferences(ProfileActivity.this);
+                        SharedPreferenceUtils.clearID(ProfileActivity.this);
+                        SharedPreferenceUtils.clearAccess_Token(ProfileActivity.this);
+                        SharedPreferenceUtils.storeSplash(ProfileActivity.this, "stop");
+                        AppCommon.getInstance(ProfileActivity.this).clearPreference();
+
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();*/
     }
 }

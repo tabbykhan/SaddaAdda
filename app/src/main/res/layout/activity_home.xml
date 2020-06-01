@@ -45,17 +45,18 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/coin" />
+
             <ImageView
                 android:id="@+id/coinBuy"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/add_coin"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:tint="#fce172"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/add_coin"
+                android:tint="#fce172" />
         </RelativeLayout>
-        
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -66,16 +67,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="@font/amazon_bold"
                 android:text="Demo"
                 android:textColor="@color/white"
-                android:visibility="gone"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/amazon_bold"/>
+                android:visibility="gone" />
+
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginLeft="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -91,8 +93,8 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_person_"
                 android:layout_centerInParent="true"
+                android:src="@drawable/ic_person_"
                 android:tint="@android:color/white" />
 
             <TextView
@@ -102,9 +104,20 @@
                 android:layout_toLeftOf="@id/profile"
                 android:fontFamily="@font/amazon_regular"
                 android:gravity="center|end"
-                android:textSize="10sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_menu"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/svg_menu"
+            android:tint="@color/white"
+
+            />
 
 
     </LinearLayout>
@@ -114,30 +127,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-      <!--  <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/logo" />-->
+        <!--  <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="3"
+              android:layout_marginTop="20dp"
+              android:src="@drawable/logo" />-->
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/gidFile"
             android:layout_width="250dp"
             android:layout_height="0dp"
-            android:layout_weight="5"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/logo_animation"
-            />
+            android:layout_weight="5"
+            android:src="@drawable/logo_animation" />
 
-      <!--  <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="2"
-            android:src="@drawable/sa_logo" />-->
+        <!--  <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_gravity="center_horizontal"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:layout_weight="2"
+              android:src="@drawable/sa_logo" />-->
 
         <ImageView
             android:layout_width="match_parent"
@@ -146,8 +158,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_weight="2"
-            android:scaleType="fitCenter"
             android:onClick="sevenClick"
+            android:scaleType="fitCenter"
             android:src="@drawable/seven_up"
             tools:ignore="OnClick" />
 
@@ -177,10 +189,10 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="2"
             android:onClick="rummy_game"
-            android:src="@drawable/rummy"
-            android:layout_marginBottom="20dp"/>
+            android:src="@drawable/rummy" />
 
     </LinearLayout>
 

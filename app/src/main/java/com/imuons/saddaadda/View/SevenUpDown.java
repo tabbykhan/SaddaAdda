@@ -451,7 +451,6 @@ public class SevenUpDown extends AppCompatActivity {
                 dais_img.setVisibility(View.GONE);
                 dais_img1.setVisibility(View.GONE);
                 rolldice.setVisibility(View.VISIBLE);
-
             }
         };
         handler.postDelayed(r, 1000);
@@ -462,6 +461,4 @@ public class SevenUpDown extends AppCompatActivity {
         double x = (int) (Math.random() * ((max - min) + 1)) + min;
         return x;
     }
-
-
 }

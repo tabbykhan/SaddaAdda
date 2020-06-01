@@ -2,9 +2,10 @@ package com.imuons.saddaadda.responseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.imuons.saddaadda.DataModel.VerifyData;
+import com.imuons.saddaadda.DataModel.CoinsDataModel;
 
-public class VerifyUserResponse {
+public class CoinsResponseModel {
+
     @SerializedName("code")
     @Expose
     private Integer code;
@@ -16,7 +17,8 @@ public class VerifyUserResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private VerifyData data;
+    private CoinsDataModel data;
+
     public Integer getCode() {
         return code;
     }
@@ -41,11 +43,11 @@ public class VerifyUserResponse {
         this.message = message;
     }
 
-    public VerifyData getData() {
+    public CoinsDataModel getData() {
         return data;
     }
 
-    public void setData(VerifyData data) {
+    public void setData(CoinsDataModel data) {
         this.data = data;
     }
 }
