@@ -4,4 +4,7 @@
     <string name="ruletwo">Alex invests 100/- on two numbers (for e.g. 2 &amp; 3) and then either of them is the winning number, he will win 450/-</string>
     <string name="rulethree">Alex invests 100/- on three numbers (for e.g. 1,2 &amp; 3) and then either of them is the winning number, he will win 300/-</string>
     <string name="rulefour">Alex invests 100/- on four numbers (for e.g. 0, 1, 2 &amp; 3) and then either of them is the winning number, he will win 200/-</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
