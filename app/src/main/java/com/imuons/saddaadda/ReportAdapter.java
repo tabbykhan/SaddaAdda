@@ -64,6 +64,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
             } else {
                 holder.tranType.setText("CR");
             }*/
+
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
             //holder.type.setText(reportData.getType());
            /* if(position == reportDataArrayList.size()-1){

@@ -122,6 +122,7 @@ public class HomeActivity extends Activity {
             txUserId.setText(String.valueOf(data.getUserId()));
             coin.setText(String.valueOf(data.getWalletBalance()));
             AppCommon.getInstance(this).setAccount(Integer.parseInt(data.getWalletBalance()));
+
         } else {
             AppCommon.getInstance(HomeActivity.this).clearPreference();
             startActivity(new Intent(HomeActivity.this, SelectionPage.class));
@@ -136,12 +137,17 @@ public class HomeActivity extends Activity {
 
         startActivity(new Intent(this, ProfileActivity.class));
     }
+    @OnClick(R.id.goProfile)
+    void goProfile() {
+
+        startActivity(new Intent(this, ProfileActivity.class));
+    }
 
 
     @OnClick(R.id.coinBuy)
     void goToBuyCoin() {
 
-        startActivity(new Intent(this, SellCoinActivity.class));
+        startActivity(new Intent(this, BuyCoinActivity.class));
     }
 
     public void sevenClick(View view) {
@@ -149,8 +155,8 @@ public class HomeActivity extends Activity {
     }
 
     public void duskaDum(View view) {
-         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-        //startActivity(new Intent(this, DusKaDamActivity.class));
+        // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, DusKaDamActivity.class));
     }
 
     @Override

@@ -52,14 +52,14 @@ public class ReportActivity extends AppCompatActivity {
         coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
         txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
         reportData = new ArrayList<>();
-        reportAdapter = new ReportAdapter(this , reportData);
+        reportAdapter = new ReportAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
         recycleView.setAdapter(reportAdapter);
         CallApiForReport();
-                
+
     }
 
     private void CallApiForReport() {
@@ -71,21 +71,21 @@ public class ReportActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(ReportActivity.this).clearNonTouchableFlags(ReportActivity.this);
-                   dialog.dismiss();
+                    dialog.dismiss();
                     ReportResponse authResponse = (ReportResponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData();
-                            if(reportData.size() !=0) {
-                                reportData.add(0 ,new ReportData());
+                            if (reportData.size() != 0) {
+                                reportData.add(0, new ReportData());
                                 reportAdapter.update(reportData);
                             }
                         } else {
-                             Toast.makeText(ReportActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ReportActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                         AppCommon.getInstance(ReportActivity.this).showDialog(ReportActivity.this, "Server Error");
+                        AppCommon.getInstance(ReportActivity.this).showDialog(ReportActivity.this, "Server Error");
                     }
                 }
 
@@ -94,7 +94,7 @@ public class ReportActivity extends AppCompatActivity {
                     dialog.dismiss();
                     AppCommon.getInstance(ReportActivity.this).clearNonTouchableFlags(ReportActivity.this);
                     // loaderView.setVisibility(View.GONE);
-                     Toast.makeText(ReportActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReportActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -105,11 +105,11 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     public void checkOpen(int adapterPosition) {
-        if(reportData.get(adapterPosition).isOpen()){
+        if (reportData.get(adapterPosition).isOpen()) {
             reportData.get(adapterPosition).setOpen(false);
-        }else {
+        } else {
             reportData.get(adapterPosition).setOpen(true);
         }
-        reportAdapter.update(reportData , adapterPosition);
+        reportAdapter.update(reportData, adapterPosition);
     }
 }

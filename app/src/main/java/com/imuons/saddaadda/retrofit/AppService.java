@@ -10,6 +10,7 @@ import com.imuons.saddaadda.EntityClass.PinEntitiy;
 import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.ResetPasswordEntity;
 import com.imuons.saddaadda.EntityClass.ResetPinEntity;
+import com.imuons.saddaadda.EntityClass.SaddaXEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
@@ -28,6 +29,8 @@ import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
 import com.imuons.saddaadda.responseModel.ReportResponse;
+import com.imuons.saddaadda.responseModel.SaddaXResponse;
+import com.imuons.saddaadda.responseModel.SaddaxReportResponse;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
@@ -97,27 +100,30 @@ public interface AppService {
     Call<PinResponse> ResetPinApi(
             @Body ResetPinEntity resetPasswordEntity
     );
+
     @POST("user/change-pin")
     Call<PinResponse> ChangePinApi(
             @Body ChangePinEntity resetPasswordEntity
     );
+
     @POST("checkuserexist")
-    Call<VerifyUserResponse> checkUserApi (
+    Call<VerifyUserResponse> checkUserApi(
             @Body OtpEnitity resetPasswordEntity
     );
 
     @POST("user/all-transactions-report")
-    Call<ReportResponse> REPORT_CALL (
+    Call<ReportResponse> REPORT_CALL(
     );
+
     @FormUrlEncoded
     @POST("user/sell-report")
-    Call<SellHistoryReport> SellREPORT_CALL (
+    Call<SellHistoryReport> SellREPORT_CALL(
             @FieldMap Map<String, String> loginMap
     );
 
     @FormUrlEncoded
     @POST("user/buy-report")
-    Call<BuyHistoryResponse> BuyREPORT_CALL (
+    Call<BuyHistoryResponse> BuyREPORT_CALL(
             @FieldMap Map<String, String> loginMap
     );
 
@@ -143,5 +149,14 @@ public interface AppService {
             @Body ChangePasswordEntity changePasswordEntity
     );
 
+    //tabish
+    @POST("user/zero_to_nine")
+    Call<SaddaXResponse> SADDA_X_RESPONSE_CALL(
+            @Body SaddaXEntity saddaXEntity
+    );
+
+    //tabish
+    @GET("user/get-zerotonine-topup")
+    Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL();
 
 }
