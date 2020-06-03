@@ -111,7 +111,7 @@ public class SevenUpDown extends AppCompatActivity {
     AnimationDrawable anim2;
     boolean isOn;
 
-    int selectedType = -1;
+    int selectedType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,7 +236,7 @@ public class SevenUpDown extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.dais_img1, R.id.dais_img , R.id.rolldice})
+    @OnClick({R.id.dais_img1, R.id.dais_img, R.id.rolldice})
     void roll() {
         AppCommon.getInstance(this).onHideKeyBoard(this);
         if (bitText.getText().toString().trim().isEmpty()) {
@@ -348,7 +348,32 @@ public class SevenUpDown extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setData(SathKaDamResponse authResponse) {
-        int dice1 = authResponse.getData().getDice1();
+        String  status = authResponse.getData().getStatus();;
+        AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
+        tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
+
+        if(selectedType == 0 )
+        {
+            if(status.equalsIgnoreCase("win")){
+                two_six(status);
+            }else {
+                eight_twielw(status);
+            }
+        }else if (selectedType == 1){
+            if(status.equalsIgnoreCase("win")){
+                seven(status);
+            }else {
+                two_six(status);
+            }
+        }else {
+            if(status.equalsIgnoreCase("win")){
+                eight_twielw(status);
+            }else {
+                two_six(status);
+            }
+        }
+
+       /*int dice1 = authResponse.getData().getDice1();
         int dice2 = authResponse.getData().getDice2();
         anim.stop();
         anim2.stop();
@@ -406,7 +431,7 @@ public class SevenUpDown extends AppCompatActivity {
             tol11.setText(String.valueOf(totalVal));
         } else if (tol12.getText().toString().trim().isEmpty()) {
             tol12.setText(String.valueOf(totalVal));
-        }else {
+        } else {
             tol1.setText("");
             tol2.setText("");
             tol3.setText("");
@@ -421,8 +446,8 @@ public class SevenUpDown extends AppCompatActivity {
             tol12.setText("");
             tol1.setText(String.valueOf(totalVal));
         }
-
-        fullImage.setVisibility(View.VISIBLE);
+*/
+       /* fullImage.setVisibility(View.VISIBLE);
         if (authResponse.getData().getStatus().equalsIgnoreCase("Win")) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
@@ -432,7 +457,7 @@ public class SevenUpDown extends AppCompatActivity {
                 fullImage.setImageDrawable(getDrawable(R.drawable.lose));
             }
         }
-        setAnimtion();
+        setAnimtion();*/
     }
 
     private void setAnimtion() {
@@ -461,4 +486,267 @@ public class SevenUpDown extends AppCompatActivity {
         double x = (int) (Math.random() * ((max - min) + 1)) + min;
         return x;
     }
+
+    public void two_six(String status) {
+        int caseVal = (int) getRandomDoubleBetweenRange(1, 14);
+        int total =0;
+        anim.stop();
+        anim2.stop();
+        switch (caseVal) {
+            case 1:
+                dais_img.setImageResource(R.drawable.single_1);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 2;
+                break;
+            case 2:
+                dais_img.setImageResource(R.drawable.single_1);
+                dais_img1.setImageResource(R.drawable.single_2);
+                total = 3;
+                break;
+            case 3:
+                dais_img.setImageResource(R.drawable.single_1);
+                dais_img1.setImageResource(R.drawable.single_3);
+                total = 4;
+                break;
+            case 4:
+                dais_img.setImageResource(R.drawable.single_1);
+                dais_img1.setImageResource(R.drawable.single_4);
+                total = 5;
+                break;
+            case 5:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 3;
+                break;
+            case 6:
+                dais_img.setImageResource(R.drawable.single_3);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 4;
+                break;
+            case 7:
+                dais_img.setImageResource(R.drawable.single_4);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 5;
+                break;
+            case 8:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 6;
+                break;
+            case 9:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_2);
+                total = 4;
+                break;
+            case 10:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_3);
+                total = 5;
+
+                break;
+            case 11:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_4);
+                total = 6;
+                break;
+            case 12:
+                dais_img.setImageResource(R.drawable.single_3);
+                dais_img1.setImageResource(R.drawable.single_2);
+                total = 5;
+                break;
+            case 13:
+                dais_img.setImageResource(R.drawable.single_4);
+                dais_img1.setImageResource(R.drawable.single_2);
+                total = 6;
+                break;
+            case 14:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_1);
+                total = 6;
+                break;
+
+        }
+        setBottomText(total  , status);
+
+
+
+
+    }
+
+    public void seven(String status) {
+        anim.stop();
+        anim2.stop();
+        int caseVal = (int) getRandomDoubleBetweenRange(1, 6);
+        int total = 7;
+        switch (caseVal) {
+            case 1:
+                dais_img.setImageResource(R.drawable.single_1);
+                dais_img1.setImageResource(R.drawable.single_6);
+
+                break;
+            case 2:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_5);
+                break;
+            case 3:
+                dais_img.setImageResource(R.drawable.single_3);
+                dais_img1.setImageResource(R.drawable.single_4);
+                break;
+            case 4:
+                dais_img.setImageResource(R.drawable.single_4);
+                dais_img1.setImageResource(R.drawable.single_3);
+                break;
+            case 5:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_2);
+                break;
+            case 6:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_1);
+                break;
+
+
+        }
+        setBottomText(7 , status);
+
+
+    }
+
+    public void eight_twielw(String status) {
+        int caseVal = (int) getRandomDoubleBetweenRange(1, 14);
+        int total = 0;
+        anim.stop();
+        anim2.stop();
+        switch (caseVal) {
+            case 1:
+                dais_img.setImageResource(R.drawable.single_2);
+                dais_img1.setImageResource(R.drawable.single_6);
+                total = 8;
+                break;
+            case 2:
+                dais_img.setImageResource(R.drawable.single_3);
+                dais_img1.setImageResource(R.drawable.single_5);
+                total = 8;
+                break;
+            case 3:
+                dais_img.setImageResource(R.drawable.single_3);
+                dais_img1.setImageResource(R.drawable.single_6);
+                total = 9;
+
+                break;
+            case 4:
+                dais_img.setImageResource(R.drawable.single_4);
+                dais_img1.setImageResource(R.drawable.single_4);
+                total = 8;
+                break;
+            case 5:
+                dais_img.setImageResource(R.drawable.single_4);
+                dais_img1.setImageResource(R.drawable.single_6);
+                total = 10;
+                break;
+            case 6:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_3);
+                total = 8;
+                break;
+            case 7:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_4);
+                total = 9;
+                break;
+            case 8:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_5);
+                total = 10;
+                break;
+            case 9:
+                dais_img.setImageResource(R.drawable.single_5);
+                dais_img1.setImageResource(R.drawable.single_6);
+                total = 11;
+                break;
+            case 10:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_2);
+                total = 8;
+                break;
+            case 11:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_3);
+                total = 9;
+                break;
+            case 12:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_4);
+                total = 10;
+                break;
+            case 13:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_5);
+                total = 11;
+                break;
+            case 14:
+                dais_img.setImageResource(R.drawable.single_6);
+                dais_img1.setImageResource(R.drawable.single_6);
+                total = 12;
+                break;
+        }
+        // 8-12
+        setBottomText(total , status);
+
+    }
+
+    public void  setBottomText(int totalVal , String staus){
+        if (tol1.getText().toString().trim().isEmpty()) {
+            tol1.setText(String.valueOf(totalVal));
+        } else if (tol2.getText().toString().trim().isEmpty()) {
+            tol2.setText(String.valueOf(totalVal));
+        } else if (tol3.getText().toString().trim().isEmpty()) {
+            tol3.setText(String.valueOf(totalVal));
+        } else if (tol4.getText().toString().trim().isEmpty()) {
+            tol4.setText(String.valueOf(totalVal));
+        } else if (tol5.getText().toString().trim().isEmpty()) {
+            tol5.setText(String.valueOf(totalVal));
+        } else if (tol6.getText().toString().trim().isEmpty()) {
+            tol6.setText(String.valueOf(totalVal));
+        } else if (tol7.getText().toString().trim().isEmpty()) {
+            tol7.setText(String.valueOf(totalVal));
+        } else if (tol8.getText().toString().trim().isEmpty()) {
+            tol8.setText(String.valueOf(totalVal));
+        } else if (tol9.getText().toString().trim().isEmpty()) {
+            tol9.setText(String.valueOf(totalVal));
+        } else if (tol10.getText().toString().trim().isEmpty()) {
+            tol10.setText(String.valueOf(totalVal));
+        } else if (tol11.getText().toString().trim().isEmpty()) {
+            tol11.setText(String.valueOf(totalVal));
+        } else if (tol12.getText().toString().trim().isEmpty()) {
+            tol12.setText(String.valueOf(totalVal));
+        } else {
+            tol1.setText("");
+            tol2.setText("");
+            tol3.setText("");
+            tol4.setText("");
+            tol5.setText("");
+            tol6.setText("");
+            tol7.setText("");
+            tol8.setText("");
+            tol9.setText("");
+            tol10.setText("");
+            tol11.setText("");
+            tol12.setText("");
+            tol1.setText(String.valueOf(totalVal));
+        }
+        fullImage.setVisibility(View.VISIBLE);
+        if (staus.equalsIgnoreCase("Win")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                fullImage.setImageDrawable(getDrawable(R.drawable.lose));
+            }
+        }
+        setAnimtion();
+    }
+
+
 }

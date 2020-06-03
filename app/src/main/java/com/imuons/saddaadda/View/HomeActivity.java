@@ -62,7 +62,8 @@ public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        //setContentView(R.layout.activity_home);
+        setContentView(R.layout.home_new);
         ButterKnife.bind(this);
         setPopUpWindow();
         img_menu.setOnClickListener(new View.OnClickListener() {
@@ -236,6 +237,7 @@ public class HomeActivity extends Activity {
         LinearLayout changePassword = view.findViewById(R.id.menu_changePassword);
         LinearLayout changePin = view.findViewById(R.id.menu_changePin);
         LinearLayout logout = view.findViewById(R.id.menu_logout);
+        LinearLayout buyHistory = view.findViewById(R.id.menu_buyHistory);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,6 +263,13 @@ public class HomeActivity extends Activity {
                 startActivity(new Intent(getApplicationContext(), SellHistoryReportActivity.class));
             }
         });
+        buyHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), BuyActivityHistory.class));
+            }
+        });
+
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -351,3 +360,4 @@ public class HomeActivity extends Activity {
         }
     }
 }
+

@@ -2,6 +2,7 @@ package com.imuons.saddaadda.retrofit;
 
 
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
+import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
@@ -10,9 +11,13 @@ import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.ResetPasswordEntity;
 import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
+import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.View.ForgetPassword;
 import com.imuons.saddaadda.responseModel.BuyCoinResponse;
+import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
+import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
+import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
@@ -24,11 +29,17 @@ import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
 import com.imuons.saddaadda.responseModel.RegisterResponse;
 import com.imuons.saddaadda.responseModel.ReportResponse;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
+import com.imuons.saddaadda.responseModel.SellHistoryReport;
+import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -94,18 +105,27 @@ public interface AppService {
     Call<VerifyUserResponse> checkUserApi (
             @Body OtpEnitity resetPasswordEntity
     );
+
     @POST("user/all-transactions-report")
     Call<ReportResponse> REPORT_CALL (
     );
-    @POST("user/buy-balance")
-    Call<BuyCoinResponse> buyCoin(
-            @Body BuyCoinEntity buyCoinEntity
+    @FormUrlEncoded
+    @POST("user/sell-report")
+    Call<SellHistoryReport> SellREPORT_CALL (
+            @FieldMap Map<String, String> loginMap
+    );
+
+    @FormUrlEncoded
+    @POST("user/buy-report")
+    Call<BuyHistoryResponse> BuyREPORT_CALL (
+            @FieldMap Map<String, String> loginMap
     );
 
     @POST("user/buy-balance")
     Call<BuyCoinResponse> buyCoin(
             @Body BuyCoinEntity buyCoinEntity
     );
+
 
     //tabish
     @POST("user/sell-wallet-balance")

@@ -69,6 +69,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".View.SellCoinActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".View.ChangePin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ForgotPin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.BuyActivityHistory"
+            android:screenOrientation="portrait"/>
 
     </application>
 
