@@ -164,6 +164,45 @@
 
             </TextView>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="#8E2856"
+            android:shadowColor="#8E2856"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="20" />
+        <LinearLayout
+            android:id="@+id/menu_buyHistory"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_sellhistory" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Buy History"
+                android:textColor="@color/lightgreen">
+
+            </TextView>
+        </LinearLayout>
 
 
         <LinearLayout

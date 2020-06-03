@@ -139,152 +139,181 @@
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_weight="5"
+            android:layout_weight="1"
             android:src="@drawable/logo_animation" />
 
 
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="2"
-            android:onClick="sevenClick"
-            android:scaleType="fitCenter"
-            android:src="@drawable/seven_up"
-            tools:ignore="OnClick" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="20dp">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="2"
-            android:onClick="duskaDum"
-            android:src="@drawable/dam_img" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="sevenClick"
+                android:src="@drawable/sadda_img" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="2"
-            android:onClick="ludo_game"
-            android:src="@drawable/ludo_img" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="duskaDum"
+                android:src="@drawable/sadda_x" />
 
-        <ImageView
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
-            android:layout_weight="2"
-            android:onClick="rummy_game"
-            android:src="@drawable/rummy" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/shatak_img" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/quiz_img" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="ludo_game"
+                android:src="@drawable/ludo_img" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="rummy_game"
+                android:src="@drawable/rummy_img" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/bottom_bg">
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" >
+                android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/imageHome"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/home_img"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/home_img" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textSize="12sp"
+                    android:layout_below="@id/imageHome"
+                    android:layout_centerHorizontal="true"
                     android:shadowColor="#ffffff"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="20"
+                    android:text="Home"
                     android:textColor="#ffffff"
-                    android:layout_below="@id/imageHome"
-                    android:layout_centerHorizontal="true"
-                    />
+                    android:textSize="12sp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/accountImage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/accunt_img"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/accunt_img" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Account"
-                    android:textSize="12sp"
+                    android:layout_below="@id/accountImage"
+                    android:layout_centerHorizontal="true"
                     android:shadowColor="#ffffff"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="20"
+                    android:text="Account"
                     android:textColor="#ffffff"
-                    android:layout_below="@id/accountImage"
-                    android:layout_centerHorizontal="true"
-                    />
+                    android:textSize="12sp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/chatImage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/chat_img"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/chat_img" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chat"
-                    android:textSize="12sp"
+                    android:layout_below="@id/chatImage"
+                    android:layout_centerHorizontal="true"
                     android:shadowColor="#ffffff"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="20"
+                    android:text="Chat"
                     android:textColor="#ffffff"
-                    android:layout_below="@id/chatImage"
-                    android:layout_centerHorizontal="true"
-                    />
+                    android:textSize="12sp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
+
                 <ImageView
                     android:id="@+id/moreImage"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/more_img"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/more_img" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="More"
-                    android:textSize="12sp"
+                    android:layout_below="@id/moreImage"
+                    android:layout_centerHorizontal="true"
                     android:shadowColor="#ffffff"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="20"
+                    android:text="More"
                     android:textColor="#ffffff"
-                    android:layout_below="@id/moreImage"
-                    android:layout_centerHorizontal="true"
-                    />
+                    android:textSize="12sp" />
             </RelativeLayout>
 
         </LinearLayout>
