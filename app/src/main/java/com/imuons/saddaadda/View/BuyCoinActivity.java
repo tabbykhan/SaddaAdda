@@ -52,6 +52,8 @@ public class BuyCoinActivity extends AppCompatActivity {
 
     @BindView(R.id.submitBtn)
     TextView tv_signup;
+    @BindView(R.id.ticket)
+    TextView ticket;
 
     @BindView(R.id.etAmount)
     EditText etAmount;
@@ -78,25 +80,24 @@ public class BuyCoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_coin);
         ButterKnife.bind(this);
-        ticketAdapter = new TicketAdapter(getApplicationContext(), records, BuyCoinActivity.this);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(BuyCoinActivity.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(ticketAdapter);
         //getTickets(new TicketEntity("10", "0", "0"));
-        callgetLevelView(0, 0, 0);
+        // callgetLevelView(new TicketEntity("10"));
+        getTickets(new TicketEntity("10"));
     }
 
 
-
-    private void setAdapter(ArrayList<TicketRecordModel> data) {
+    private void setAdapter(List<TicketRecordModel> data) {
         TicketAdapter ticketAdapter = new TicketAdapter(this, data, BuyCoinActivity.this);
         recyclerView.setAdapter(ticketAdapter);
-
     }
 
     public void callapi(int position) {
         offsetLevel = offsetLevel + 1;
-        callgetLevelView(position - 1, records.size(), 0);
+        //callgetLevelView(position - 1, records.size(), 0);
         bottomProgressBar.setVisibility(View.VISIBLE);
     }
 
@@ -155,11 +156,7 @@ public class BuyCoinActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-  /*  private void getTickets(TicketEntity ticketEntity) {
+    private void getTickets(TicketEntity ticketEntity) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
@@ -176,7 +173,7 @@ public class BuyCoinActivity extends AppCompatActivity {
                         if (authResponse.getCode() == 200) {
                             setAdapter(authResponse.getData().getRecords());
                             Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            ticket.setVisibility(View.VISIBLE);
                         } else {
                             Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -202,9 +199,8 @@ public class BuyCoinActivity extends AppCompatActivity {
 
 
     }
-*/
 
-    private void callgetLevelView(int position, int start, int open) {
+    private void callgetLevelView(TicketEntity ticketEntity) {
         boolean isupdate = false;
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
@@ -215,7 +211,7 @@ public class BuyCoinActivity extends AppCompatActivity {
                 isupdate = false;
             }
 
-            Call call = apiService.TICKET_RESPONSE_CALL(new TicketEntity("10", "0", "0"));
+            Call call = apiService.TICKET_RESPONSE_CALL(ticketEntity);
             boolean finalIsupdate = isupdate;
             call.enqueue(new Callback() {
                 @Override

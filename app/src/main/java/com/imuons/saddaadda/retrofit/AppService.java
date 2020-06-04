@@ -164,8 +164,7 @@ public interface AppService {
     //tabish
     @POST("user/link-report")
     Call<TicketResponse> TICKET_RESPONSE_CALL(
-            @Body TicketEntity ticketEntity
-           //@FieldMap Map<String, String> loginMap
+          @Body TicketEntity ticketEntity
     );
 
 }

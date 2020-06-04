@@ -4,11 +4,10 @@ import java.io.Serializable;
 
 public class TicketEntity implements Serializable {
 
-    String lenght,open,start;
+    String lenght;
 
-    public TicketEntity(String lenght, String open, String start) {
+    public TicketEntity(String lenght) {
         this.lenght = lenght;
-        this.open = open;
-        this.start = start;
+
     }
 }
