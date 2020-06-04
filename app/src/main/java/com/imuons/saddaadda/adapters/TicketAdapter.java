@@ -62,6 +62,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
             }
             if (ticketRecordModel.getToMobile() != null) {
                 holder.txtBuy.setText(String.valueOf(ticketRecordModel.getToMobile()));
+
             } else {
                 holder.txtBuy.setText("");
 
@@ -84,6 +85,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.txtAssignDate.setText("");
 
             }
+
             holder.relativeLayout.setBackgroundResource(R.drawable.ticketbg_yellow);
             holder.btn_SendSMS.setBackgroundResource(R.drawable.btn_ticketbuy);
             holder.btn_Details.setBackgroundResource(R.drawable.btn_ticketbuy);
@@ -96,11 +98,13 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
             }
             if (ticketRecordModel.getFromFullname() != null) {
                 holder.txtRecName.setText(String.valueOf(ticketRecordModel.getFromFullname()));
+                holder.name.setText("Giver's Name");
             } else {
                 holder.txtRecName.setText("");
             }
             if (ticketRecordModel.getFromMobile() != null) {
                 holder.txtBuy.setText(String.valueOf(ticketRecordModel.getFromMobile()));
+                holder.status.setText("Sell");
             } else {
                 holder.txtBuy.setText("");
             }
@@ -163,6 +167,11 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
         TextView btn_SendSMS;
         @BindView(R.id.relativeLayout)
         RelativeLayout relativeLayout;
+
+        @BindView(R.id.name)
+        TextView name;
+        @BindView(R.id.status)
+        TextView status;
 
         public TicketHolder(@NonNull View itemView) {
             super(itemView);

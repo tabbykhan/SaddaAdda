@@ -86,7 +86,7 @@ public class BuyCoinActivity extends AppCompatActivity {
         recyclerView.setAdapter(ticketAdapter);
         //getTickets(new TicketEntity("10", "0", "0"));
         // callgetLevelView(new TicketEntity("10"));
-        getTickets(new TicketEntity("10"));
+        getTickets(new TicketEntity("10","0", "0"));
     }
 
 

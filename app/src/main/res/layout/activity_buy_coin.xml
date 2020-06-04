@@ -109,7 +109,7 @@
             android:textColor="#a3ffaf"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
