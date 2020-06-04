@@ -1,30 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#11091F"
-    android:orientation="vertical">
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    >
 
+    <TextView
+        android:id="@+id/txUserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/amazon_bold"
+        android:gravity="center"
+        android:padding="5dp"
+        android:shadowColor="#a3ffaf"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:text="More"
+        android:textColor="#a3ffaf"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:background="@drawable/pup_up_border"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        >
 
         <LinearLayout
             android:id="@+id/menu_profile"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_profile" />
+                android:background="@drawable/ic_profile"
+                android:backgroundTint="#a3ffaf"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -37,242 +63,38 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
                 android:text="Profile"
-                android:textColor="@color/lightgreen" />
+                android:textColor="@color/lightgreen"
+                />
 
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
-        <LinearLayout
-            android:id="@+id/menu_allTransaction"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_alltransactions" />
-
-            <TextView
-                android:id="@+id/mune_my_order"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/amazon_bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:shadowColor="#a3ffaf"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:text="All Transactions"
-                android:textColor="@color/lightgreen" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
-        <LinearLayout
-            android:id="@+id/menu_withdraw"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_sell" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/amazon_bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:shadowColor="#a3ffaf"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:text="Withdrawal"
-                android:textColor="@color/lightgreen" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
-        <LinearLayout
-            android:id="@+id/menu_sellHistory"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_sellhistory" />
-
-            <TextView
-                android:id="@+id/mune_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/amazon_bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:shadowColor="#a3ffaf"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:text="Sell History"
-                android:textColor="@color/lightgreen">
-
-            </TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-        <LinearLayout
-            android:id="@+id/menu_buyHistory"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_sellhistory" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/amazon_bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:shadowColor="#a3ffaf"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:text="Buy History"
-                android:textColor="@color/lightgreen">
-
-            </TextView>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
-
-        <LinearLayout
-            android:id="@+id/menu_changePassword"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="5dp"
-                android:src="@drawable/ic_changepassword" />
-
-            <TextView
-                android:id="@+id/change_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/amazon_bold"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:shadowColor="#a3ffaf"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:text="Change Password"
-                android:textColor="@color/lightgreen">
-
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
+            android:background="@drawable/bg_shadow"
+            />
 
         <LinearLayout
             android:id="@+id/menu_changePin"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_changepin" />
+                android:background="@drawable/ic_changepin"
+                android:backgroundTint="#a3ffaf"
+                />
 
             <TextView
                 android:id="@+id/change_pin"
@@ -286,36 +108,259 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
                 android:text="Change Pin"
-                android:textColor="@color/lightgreen" />
+                android:textColor="@color/lightgreen"
+                />
 
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
-            android:background="#8E2856"
-            android:shadowColor="#8E2856"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="20" />
-
+            android:background="@drawable/bg_shadow"
+            />
 
         <LinearLayout
-            android:id="@+id/menu_logout"
+            android:id="@+id/menu_changePassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp">
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_logout" />
+                android:background="@drawable/ic_changepassword"
+                android:backgroundTint="#a3ffaf"
+                />
+
+            <TextView
+                android:id="@+id/change_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Change Password"
+                android:textColor="@color/lightgreen"
+                >
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"
+            />
+
+        <LinearLayout
+            android:id="@+id/menu_allTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_alltransactions"
+                android:backgroundTint="#a3ffaf"
+                />
+
+            <TextView
+                android:id="@+id/mune_my_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="All Transactions"
+                android:textColor="@color/lightgreen"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"
+            />
+
+        <LinearLayout
+            android:id="@+id/menu_withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_sell"
+                android:backgroundTint="#a3ffaf"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Withdrawal"
+                android:textColor="@color/lightgreen"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"
+            />
+
+        <LinearLayout
+            android:id="@+id/menu_sellHistory"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_sellhistory"
+                android:backgroundTint="#a3ffaf"
+                />
+
+            <TextView
+                android:id="@+id/mune_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Sell History"
+                android:textColor="@color/lightgreen"
+                >
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"
+            />
+
+        <LinearLayout
+            android:id="@+id/menu_buyHistory"
+            android:layout_width="match_parent"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_sellhistory"
+                android:backgroundTint="#a3ffaf"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:shadowColor="#a3ffaf"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Buy History"
+                android:textColor="@color/lightgreen"
+                >
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"
+            />
+
+        <LinearLayout
+            android:id="@+id/menu_logout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:background="@drawable/ic_logout"
+                android:backgroundTint="#a3ffaf"
+                />
 
             <TextView
 
@@ -329,7 +374,15 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
                 android:text="Logout"
-                android:textColor="@color/lightgreen" />
+                android:textColor="@color/lightgreen"
+                />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_shadow"/>
     </LinearLayout>
 </LinearLayout>
