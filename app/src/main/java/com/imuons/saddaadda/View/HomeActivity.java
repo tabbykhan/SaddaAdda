@@ -1,7 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -23,17 +21,14 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.DashboardData;
-import com.imuons.saddaadda.DataModel.ProfileDataModel;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.R;
-
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
-import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -137,12 +132,17 @@ public class HomeActivity extends Activity {
 
         startActivity(new Intent(this, ProfileActivity.class));
     }
+
     @OnClick(R.id.goProfile)
     void goProfile() {
 
         startActivity(new Intent(this, ProfileActivity.class));
     }
 
+    @OnClick(R.id.more)
+    void more() {
+        startActivity(new Intent(getApplicationContext(),ActivityMore.class));
+    }
 
     @OnClick(R.id.coinBuy)
     void goToBuyCoin() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,13 +11,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -25,191 +28,343 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/profile" />
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    >
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/profile"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:gravity="center">
-                <TextView
-                    android:id="@+id/txUserId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/amazon_bold"
-                    android:gravity="start"
-                    android:padding="5dp"
-                    android:shadowColor="#a3ffaf"
-                    android:shadowDx="0.0"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="20"
-                    android:text="User ID"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#a3ffaf"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/ChangePin"
-                    android:layout_below="@id/txUserId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:fontFamily="@font/amazon_bold"
-                    android:gravity="start"
-                    android:shadowColor="#feb6b2"
-                    android:shadowDx="0.0"
-                    android:onClick="changePin"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="20"
-                    android:text="Change Pin"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#feb6b2"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_weight="0.6"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    >
 
-</RelativeLayout>
+                    <TextView
+                        android:id="@+id/txUserId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/amazon_bold"
+                        android:gravity="start"
+                        android:padding="5dp"
+                        android:shadowColor="#a3ffaf"
+                        android:shadowDx="0.0"
+                        android:shadowDy="0.0"
+                        android:shadowRadius="20"
+                        android:text="User ID"
+                        android:textColor="#a3ffaf"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:drawableLeft="@drawable/person"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/amazon_regular"
+                        android:hint="Name"
+                        android:imeOptions="actionNext"
+                        android:shadowColor="#D8BB4A"
+                        android:shadowDx="0.0"
+                        android:shadowDy="0.0"
+                        android:background="@color/transparent_color"
+                        android:shadowRadius="20"
+                        android:singleLine="true"
+                        android:textColor="#D8BB4A"
+                        android:textColorHint="#D8BB4A"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/ChangePin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txUserId"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/amazon_bold"
+                        android:gravity="start"
+                        android:onClick="changePin"
+                        android:shadowColor="#feb6b2"
+                        android:shadowDx="0.0"
+                        android:shadowDy="0.0"
+                        android:shadowRadius="20"
+                        android:text="Change Pin"
+                        android:textColor="#feb6b2"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/etName"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="40dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/person"
-                android:drawableLeft="@drawable/person"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Name"
-                android:imeOptions="actionNext"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
+                android:weightSum="1"
+                >
+
+                <TextView
+                    android:id="@+id/txt_change_password"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_rounded_white_30"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#7dcb92"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="center_vertical"
+                    android:text="Change Password"
+                    android:textColor="#7dcb92"
+                    android:textSize="10dp"
+                    ></TextView>
+
+                <TextView
+                    android:id="@+id/txt_changePin"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_rounded_white_30"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawableRight="@drawable/ic_edit"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="#7dcb92"
+                    android:fontFamily="@font/amazon_bold"
+                    android:gravity="center_vertical"
+                    android:text="Change PIN"
+                    android:textColor="#7dcb92"
+                    android:textSize="10dp"
+                    ></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+               android:showDividers="beginning"
+                android:orientation="horizontal"
                 android:shadowDx="0.0"
+                android:background="@drawable/bg_green_border"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                android:weightSum="3"
+                >
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:background="@drawable/phone"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="70dp">
+                    </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Mobile Number"
+                            android:textSize="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/amazon_bold"
+                            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/etMobile"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/mobile"
-                android:drawableLeft="@drawable/mobile"
-                android:drawablePadding="10dp"
-                android:layout_marginTop="-20dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Mobile Number"
-                android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:maxLength="10"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                        </TextView>
+                    <EditText
+                        android:id="@+id/etMobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="5dp"
+                        android:background="@color/transparent_color"
+                        android:fontFamily="@font/amazon_regular"
+                        android:hint="enter numner"
+                        android:imeOptions="actionNext"
+                        android:shadowColor="#D8BB4A"
+                        android:shadowDx="0.0"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:ems="10"
+                        android:shadowDy="0.0"
+                        android:shadowRadius="20"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="#9c27b0"
+                        android:textColorHint="#9c27b0"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#7dcb92"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent">
 
-            <EditText
+                </View>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:background="@drawable/ppay"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="70dp">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Phone Pay Number"
+                        android:textSize="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/amazon_bold"
+                        android:layout_height="wrap_content">
 
-                android:id="@+id/etGooglePay"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="-20dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/googlepay"
-                android:drawableLeft="@drawable/googlepay"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Google Pay"
-                android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:maxLength="10"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                    </TextView>
+                    <EditText
+                        android:id="@+id/etPhonePay"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="5dp"
+                        android:background="@color/transparent_color"
+                        android:fontFamily="@font/amazon_regular"
+                        android:hint="enter numner"
+                        android:imeOptions="actionNext"
+                        android:shadowColor="#D8BB4A"
+                        android:shadowDx="0.0"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:ems="10"
+                        android:shadowDy="0.0"
+                        android:shadowRadius="20"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="#9c27b0"
+                        android:textColorHint="#9c27b0"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#7dcb92"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/etPhonePay"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="-20dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/phonepay"
-                android:drawableLeft="@drawable/phonepay"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Phone Pay"
-                android:imeOptions="actionNext"
+                </View>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:background="@drawable/google"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="70dp">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Phone Pay Number"
+                        android:textSize="10dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/amazon_bold"
+                        android:layout_height="wrap_content">
 
-                android:inputType="phone"
-                android:maxLength="10"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
+                    </TextView>
+                    <EditText
+                        android:id="@+id/etGooglePay"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@color/transparent_color"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/amazon_regular"
+                        android:hint="enter numner"
+                        android:imeOptions="actionNext"
+                        android:shadowColor="#D8BB4A"
+                        android:shadowDx="0.0"
+                        android:gravity="center"
+                        android:maxLength="10"
+                        android:ems="10"
+                        android:shadowDy="0.0"
+                        android:shadowRadius="20"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="#9c27b0"
+                        android:textColorHint="#9c27b0"
+                        android:textSize="14sp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/glowingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginRight="30dp"
                 android:fontFamily="@font/amazon_bold"
-                android:padding="10dp"
+               android:layout_marginTop="10dp"
                 android:shadowColor="#a3ffaf"
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
@@ -217,165 +372,272 @@
                 android:text="Bank Details"
                 android:textColor="#a3ffaf"
                 android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etAccountName"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="-20dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/bank"
-                android:drawableLeft="@drawable/bank"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Account Name"
-                android:imeOptions="actionNext"
-
-                android:inputType="text"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/etIFSC"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="-20dp"
-                android:background="@drawable/ed_bg"
-                android:drawableStart="@drawable/ifsc"
-                android:drawableLeft="@drawable/ifsc"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="IFSC Code"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp"
-               />
-
-            <EditText
-                android:id="@+id/etBranchName"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/ed_bg"
-                android:layout_marginTop="-20dp"
-                android:drawableStart="@drawable/branch"
-                android:drawableLeft="@drawable/branch"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Branch Name"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp"
-               />
-
-            <EditText
-                android:id="@+id/etAccountNo"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/ed_bg"
-                android:layout_marginTop="-20dp"
-                android:drawableStart="@drawable/account"
-                android:drawableLeft="@drawable/account"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/amazon_regular"
-                android:hint="Account Number"
-                android:inputType="text"
-                android:maxLength="20"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="10dp"
-                android:shadowColor="#D8BB4A"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="20"
-                android:singleLine="true"
-                android:textColor="#D8BB4A"
-                android:textColorHint="#D8BB4A"
-                android:textSize="16sp"
+                android:textStyle="bold"
                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                android:backgroundTint="@color/yellow"
+                android:layout_marginEnd="20dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:weightSum="2"
+                    android:layout_height="160dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_yellow_border"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:background="@drawable/account_name"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="90dp">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Account Holder Name"
+                            android:textSize="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/amazon_bold"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/etAccountName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/transparent_color"
+                            android:drawableRight="@drawable/ic_edit"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/amazon_regular"
+                            android:gravity="center"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:hint="enter name"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#D8BB4A"
+                            android:shadowDx="0.0"
+                            android:shadowDy="0.0"
+                            android:shadowRadius="20"
+                            android:singleLine="true"
+                            android:textColor="#9c27b0"
+                            android:textColorHint="#9c27b0"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/bg_yellow_border"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:background="@drawable/ifsc_number"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="90dp">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="IFSC Code"
+                            android:textSize="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/amazon_bold"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+                        <EditText
+                            android:id="@+id/etIFSC"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:drawableRight="@drawable/ic_edit"
+                            android:drawablePadding="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@color/transparent_color"
+                            android:fontFamily="@font/amazon_regular"
+                            android:hint="enter ifsc code"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#D8BB4A"
+                            android:shadowDx="0.0"
+                            android:gravity="center"
+                            android:maxLength="12"
+                            android:ems="10"
+                            android:shadowDy="0.0"
+                            android:shadowRadius="20"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:textColor="#9c27b0"
+                            android:textColorHint="#9c27b0"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:weightSum="2"
+                    android:layout_height="160dp">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_yellow_border"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:background="@drawable/bank"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="90dp">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Branch Name"
+                            android:textSize="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/amazon_bold"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+                        <EditText
+                            android:id="@+id/etBranchName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:drawableRight="@drawable/ic_edit"
+                            android:drawablePadding="5dp"
+                            android:fontFamily="@font/amazon_regular"
+                            android:hint="7507828337"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:background="@color/transparent_color"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#D8BB4A"
+                            android:shadowDx="0.0"
+                            android:gravity="center"
+                            android:shadowDy="0.0"
+                            android:shadowRadius="20"
+                            android:singleLine="true"
+                            android:textColor="#9c27b0"
+                            android:textColorHint="#9c27b0"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/bg_yellow_border"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:background="@drawable/number"
+                            android:layout_marginTop="10dp"
+                            android:layout_height="90dp">
+                        </ImageView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Account Number"
+                            android:textSize="10dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/amazon_bold"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+                        <EditText
+                            android:id="@+id/etAccountNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:drawableRight="@drawable/ic_edit"
+                            android:drawablePadding="5dp"
+                            android:background="@color/transparent_color"
+                            android:fontFamily="@font/amazon_regular"
+                            android:hint="enter account number"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#D8BB4A"
+                            android:shadowDx="0.0"
+                            android:gravity="center"
+                            android:shadowDy="0.0"
+                            android:shadowRadius="20"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:textColor="#9c27b0"
+                            android:textColorHint="#9c27b0"
+                            android:textSize="14sp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView
-                android:visibility="gone"
                 android:id="@+id/report"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="Report"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:textColor="#a3ffaf"
-                android:textSize="20sp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="end"
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
-                android:shadowRadius="20"/>
+                android:shadowRadius="20"
+                android:text="Report"
+                android:textColor="#a3ffaf"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
             <TextView
-                android:visibility="gone"
                 android:id="@+id/logOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="Logout"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:textColor="#a3ffaf"
-                android:textSize="20sp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="end"
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
-                android:shadowRadius="20"/>
-
+                android:shadowRadius="20"
+                android:text="Logout"
+                android:textColor="#a3ffaf"
+                android:textSize="20sp"
+                android:visibility="gone"
+                />
 
 
             <RelativeLayout
                 android:layout_width="200dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="-40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/button_bg">
+                android:layout_marginTop="-40dp"
+                android:background="@drawable/button_bg"
+                >
 
                 <TextView
                     android:id="@+id/submitBtn"
@@ -394,7 +656,8 @@
                     android:textAllCaps="false"
                     android:textColor="#a3ffaf"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

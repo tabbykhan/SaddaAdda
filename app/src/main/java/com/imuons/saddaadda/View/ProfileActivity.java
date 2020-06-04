@@ -1,7 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -15,20 +13,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.ProfileDataModel;
-import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
-import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
-import com.imuons.saddaadda.Utils.SharedPreferenceUtils;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
-import com.imuons.saddaadda.responseModel.RandomUserIdResponse;
-import com.imuons.saddaadda.responseModel.RegisterResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -72,6 +67,14 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
         getUserProfileInfo();
+    }
+    @OnClick(R.id.txt_changePin)
+    void changePin(){
+        callsendOtp(false);
+    }
+    @OnClick(R.id.txt_change_password)
+    void changePwd(){
+        callsendOtp(true);
     }
     @OnClick(R.id.logOut)
     void logout() {
@@ -280,9 +283,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void changePin(View view) {
-        callsendOtp();
+      //  callsendOtp();
     }
-    private void callsendOtp() {
+    private void callsendOtp(boolean flag) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
@@ -298,7 +301,12 @@ public class ProfileActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ProfileActivity.this,ChangePin.class));
+                            if(flag){
+                                startActivity(new Intent(ProfileActivity.this,ChangePin.class));
+                            }else{
+                                startActivity(new Intent(ProfileActivity.this,ChangePassword.class));
+                            }
+
                         } else {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -322,4 +330,8 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
+
 }
