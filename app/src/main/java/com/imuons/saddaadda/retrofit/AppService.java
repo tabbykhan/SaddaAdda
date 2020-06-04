@@ -13,6 +13,7 @@ import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
+import com.imuons.saddaadda.EntityClass.TicketEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.View.ForgetPassword;
 import com.imuons.saddaadda.responseModel.BuyCoinResponse;
@@ -34,6 +35,7 @@ import com.imuons.saddaadda.responseModel.SaddaxReportResponse;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
+import com.imuons.saddaadda.responseModel.TicketResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
 
@@ -158,5 +160,11 @@ public interface AppService {
     //tabish
     @GET("user/get-zerotonine-topup")
     Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL();
+
+    //tabish
+    @POST("user/link-report")
+    Call<TicketResponse> TICKET_RESPONSE_CALL(
+            @Body TicketEntity ticketEntity
+    );
 
 }

@@ -49,7 +49,7 @@ public class BuyActivityHistory extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sell_history_report);
+        setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
         coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
         txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
