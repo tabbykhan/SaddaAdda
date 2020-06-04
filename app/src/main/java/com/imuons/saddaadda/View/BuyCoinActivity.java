@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,9 @@ import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,72 +62,43 @@ public class BuyCoinActivity extends AppCompatActivity {
     ArrayList<TicketRecordModel> records;
     TicketAdapter ticketAdapter;
 
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.bottomProgressBar)
+    ProgressBar bottomProgressBar;
+
+    int lenght = 10;
+    int start = 0;
+    int open = 0;
+    int level = 1;
+    int offsetLevel = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_coin);
         ButterKnife.bind(this);
-        ticketAdapter = new TicketAdapter(getApplicationContext(), records);
+        ticketAdapter = new TicketAdapter(getApplicationContext(), records, BuyCoinActivity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(BuyCoinActivity.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(ticketAdapter);
-        getTickets(new TicketEntity("10", "0", "0"));
+        //getTickets(new TicketEntity("10", "0", "0"));
+        callgetLevelView(0, 0, 0);
     }
 
-    private void getTickets(TicketEntity ticketEntity) {
-        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
-            AppCommon.getInstance(this).setNonTouchableFlags(this);
-            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-            Call call = apiService.TICKET_RESPONSE_CALL(ticketEntity);
-            call.enqueue(new Callback() {
-                @Override
-                public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
-                    dialog.dismiss();
-                    TicketResponse authResponse = (TicketResponse) response.body();
-                    if (authResponse != null) {
-                        Log.i("Response::", new Gson().toJson(authResponse));
-                        if (authResponse.getCode() == 200) {
-                               setAdapter(authResponse.getData().getRecords());
-                           Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        AppCommon.getInstance(BuyCoinActivity.this).showDialog(BuyCoinActivity.this, "Server Error");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
-                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
-                    // loaderView.setVisibility(View.GONE);
-                    Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
-        } else {
-            // no internet
-            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
-        }
-
-
-    }
 
     private void setAdapter(ArrayList<TicketRecordModel> data) {
-        TicketAdapter ticketAdapter = new TicketAdapter(this, data);
+        TicketAdapter ticketAdapter = new TicketAdapter(this, data, BuyCoinActivity.this);
         recyclerView.setAdapter(ticketAdapter);
 
     }
 
-  /*  private void setAdapter(ArrayList<TicketRecordModel> data) {
-        TicketAdapter ticketAdapter = new TicketAdapter(this, data);
-        recyclerView.setAdapter(ticketAdapter);
-    }*/
+    public void callapi(int position) {
+        offsetLevel = offsetLevel + 1;
+        callgetLevelView(position - 1, records.size(), 0);
+        bottomProgressBar.setVisibility(View.VISIBLE);
+    }
 
 
     @OnClick(R.id.submitBtn)
@@ -177,6 +152,115 @@ public class BuyCoinActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+
+
+
+
+
+  /*  private void getTickets(TicketEntity ticketEntity) {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
+            Call call = apiService.TICKET_RESPONSE_CALL(ticketEntity);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    dialog.dismiss();
+                    TicketResponse authResponse = (TicketResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            setAdapter(authResponse.getData().getRecords());
+                            Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(BuyCoinActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(BuyCoinActivity.this).showDialog(BuyCoinActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+*/
+
+    private void callgetLevelView(int position, int start, int open) {
+        boolean isupdate = false;
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
+            if (bottomProgressBar.getVisibility() != View.VISIBLE) {
+                isupdate = true;
+            } else {
+                isupdate = false;
+            }
+
+            Call call = apiService.TICKET_RESPONSE_CALL(new TicketEntity("10", "0", "0"));
+            boolean finalIsupdate = isupdate;
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    if (bottomProgressBar.getVisibility() != View.VISIBLE)
+                        progressBar.setVisibility(View.GONE);
+                    else
+                        bottomProgressBar.setVisibility(View.GONE);
+                    TicketResponse authResponse = (TicketResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("MyTeamResponse::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            setAdapter(authResponse.getData().getRecords());
+                        } else {
+                            if (records.size() == 0)
+                                ticketAdapter.upDateList(records, 0);
+                        }
+                    } else {
+                        if (finalIsupdate)
+                            AppCommon.getInstance(BuyCoinActivity.this).showDialog(BuyCoinActivity.this, "Data Not Found");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    if (bottomProgressBar.getVisibility() != View.VISIBLE)
+                        progressBar.setVisibility(View.GONE);
+                    else
+                        bottomProgressBar.setVisibility(View.GONE);
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(BuyCoinActivity.this, "Data Not Found", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            if (bottomProgressBar.getVisibility() == View.VISIBLE)
+                progressBar.setVisibility(View.GONE);
+            else
+                bottomProgressBar.setVisibility(View.GONE);
+            Toast.makeText(BuyCoinActivity.this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

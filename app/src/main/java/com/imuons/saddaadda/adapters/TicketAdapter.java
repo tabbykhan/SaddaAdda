@@ -1,16 +1,20 @@
 package com.imuons.saddaadda.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.saddaadda.DataModel.TicketRecordModel;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.View.BuyCoinActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +22,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHolder>{
+public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHolder> {
     Context context;
-    ArrayList<TicketRecordModel> records=null;
+    ArrayList<TicketRecordModel> records = null;
     int offset = 9;
+    Activity activity;
 
-    public TicketAdapter(Context context, ArrayList<TicketRecordModel> records) {
+    public TicketAdapter(Context context, ArrayList<TicketRecordModel> records, Activity activity) {
         this.context = context;
         this.records = records;
+        this.activity = activity;
     }
 
     @NonNull
@@ -39,12 +45,34 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
     @Override
     public void onBindViewHolder(@NonNull TicketHolder holder, int position) {
         TicketRecordModel ticketRecordModel = records.get(position);
-        holder.txtAmount.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
-        holder.txtRecName.setText(String.valueOf(ticketRecordModel.getToFullname()));
-        holder.txtBuy.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
-        holder.txtToUserId.setText(String.valueOf(ticketRecordModel.getToUser()));
-        holder.txt_trasactionID.setText("Transaction ID "+String.valueOf(ticketRecordModel.getTranid()));
-        holder.txtAssignDate.setText(String.valueOf(ticketRecordModel.getAssignDate()));
+
+        if (ticketRecordModel.getRemark().equals("BUY Coin")) {
+            holder.txtAmount.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
+            holder.txtRecName.setText(String.valueOf(ticketRecordModel.getToFullname()));
+            holder.txtBuy.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
+            holder.txtToUserId.setText(String.valueOf(ticketRecordModel.getToUser()));
+            holder.txt_trasactionID.setText("Transaction ID " + String.valueOf(ticketRecordModel.getTranid()));
+            holder.txtAssignDate.setText(String.valueOf(ticketRecordModel.getAssignDate()));
+            holder.relativeLayout.setBackgroundResource(R.drawable.ticketbg_yellow);
+            holder.btn_SendSMS.setBackgroundResource(R.drawable.btn_ticketbuy);
+            holder.btn_Details.setBackgroundResource(R.drawable.btn_ticketbuy);
+
+        } else if (ticketRecordModel.getRemark().equals("SELL Coin")) {
+            holder.txtAmount.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
+            holder.txtRecName.setText(String.valueOf(ticketRecordModel.getToFullname()));
+            holder.txtBuy.setText(String.valueOf(ticketRecordModel.getBuyAmount()));
+            holder.txtToUserId.setText(String.valueOf(ticketRecordModel.getToUser()));
+            holder.txt_trasactionID.setText("Transaction ID " + String.valueOf(ticketRecordModel.getTranid()));
+            holder.txtAssignDate.setText(String.valueOf(ticketRecordModel.getAssignDate()));
+            holder.relativeLayout.setBackgroundResource(R.drawable.ticketbg_green);
+            holder.btn_SendSMS.setBackgroundResource(R.drawable.btn_ticketbuy_green);
+            holder.btn_Details.setBackgroundResource(R.drawable.btn_ticketbuy_green);
+        }
+
+
+        if (position == offset) {
+            ((BuyCoinActivity) activity).callapi(position);
+        }
     }
 
     @Override
@@ -53,6 +81,12 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
         return (records == null) ? 0 : records.size();
     }
 
+    public void upDateList(ArrayList<TicketRecordModel> records, int offsetLevel) {
+        offset = 9 * (offsetLevel + 1);
+        this.records = records;
+
+        notifyDataSetChanged();
+    }
 
     public class TicketHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txtAmount)
@@ -67,6 +101,12 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
         TextView txtToUserId;
         @BindView(R.id.txt_trasactionID)
         TextView txt_trasactionID;
+        @BindView(R.id.btn_Details)
+        TextView btn_Details;
+        @BindView(R.id.btn_SendSMS)
+        TextView btn_SendSMS;
+        @BindView(R.id.relativeLayout)
+        RelativeLayout relativeLayout;
 
         public TicketHolder(@NonNull View itemView) {
             super(itemView);

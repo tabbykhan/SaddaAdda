@@ -165,6 +165,7 @@ public interface AppService {
     @POST("user/link-report")
     Call<TicketResponse> TICKET_RESPONSE_CALL(
             @Body TicketEntity ticketEntity
+           //@FieldMap Map<String, String> loginMap
     );
 
 }
