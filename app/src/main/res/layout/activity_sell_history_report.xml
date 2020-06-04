@@ -120,7 +120,7 @@
         android:shadowDx="0.0"
         android:shadowDy="0.0"
         android:shadowRadius="20"
-        android:text="Buy History"
+        android:text="Sell History"
         android:textAllCaps="true"
         android:textColor="#a3ffaf"
         android:textSize="30sp"

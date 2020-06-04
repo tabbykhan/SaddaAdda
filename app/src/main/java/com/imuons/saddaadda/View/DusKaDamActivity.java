@@ -96,6 +96,7 @@ public class DusKaDamActivity extends AppCompatActivity {
 
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +104,7 @@ public class DusKaDamActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         userId = AppCommon.getInstance(this).getUserId();
         reportData = new ArrayList<>();
-        reportAdapter = new SaddaXReportAdapters(this,reportData);
+        reportAdapter = new SaddaXReportAdapters(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setAdapter(reportAdapter);
@@ -125,10 +126,10 @@ public class DusKaDamActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
 
-                            if (authResponse.getData()!=null){
+                            if (authResponse.getData() != null) {
 
                                 setAdapter((ArrayList<SaddaxReportDataModel>) authResponse.getData());
-                            }else {
+                            } else {
                                 Toast.makeText(DusKaDamActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                             }
@@ -148,7 +149,7 @@ public class DusKaDamActivity extends AppCompatActivity {
                     dialog.dismiss();
                     AppCommon.getInstance(DusKaDamActivity.this).clearNonTouchableFlags(DusKaDamActivity.this);
                     // loaderView.setVisibility(View.GONE);
-                  //  Toast.makeText(DusKaDamActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(DusKaDamActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -160,7 +161,7 @@ public class DusKaDamActivity extends AppCompatActivity {
     }
 
     private void setAdapter(ArrayList<SaddaxReportDataModel> data) {
-        SaddaXReportAdapters saddaXReportAdapters =new SaddaXReportAdapters(this,data);
+        SaddaXReportAdapters saddaXReportAdapters = new SaddaXReportAdapters(this, data);
         recycleView.setAdapter(saddaXReportAdapters);
     }
 
