@@ -40,6 +40,7 @@ public class SellCoinActivity extends AppCompatActivity {
 
     @BindView(R.id.etAmount)
     EditText etAmount;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class SellCoinActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getUserCoinsInfo();
     }
+
     @OnClick(R.id.submitBtn)
     void submitCall() {
         String amount = etAmount.getText().toString().trim();
@@ -58,7 +60,7 @@ public class SellCoinActivity extends AppCompatActivity {
 
     }
 
-    private void  callSellCoinApi(SellCoinEntity buyCoinEntity) {
+    private void callSellCoinApi(SellCoinEntity buyCoinEntity) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(SellCoinActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
@@ -142,6 +144,11 @@ public class SellCoinActivity extends AppCompatActivity {
     }
 
     private void setProfileInfo(CoinsDataModel data) {
-        txtAvailableAmount.setText(String.valueOf(data.getBalance()));
+        if (data.getPurchaseWallet() != null) {
+            txtAvailableAmount.setText(String.valueOf(data.getPurchaseWallet()));
+        } else {
+            txtAvailableAmount.setText("0");
+
+        }
     }
 }

@@ -81,7 +81,7 @@ public class BuyCoinActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(ticketAdapter);
 
-        getTickets(new TicketEntity("10","0", "0"));
+        getTickets(new TicketEntity("10", "0", "0"));
     }
 
 

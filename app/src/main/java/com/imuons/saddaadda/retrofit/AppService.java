@@ -39,6 +39,7 @@ import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.responseModel.TicketResponse;
+import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
 
@@ -167,7 +168,7 @@ public interface AppService {
     //tabish
     @POST("user/link-report")
     Call<TicketResponse> TICKET_RESPONSE_CALL(
-          @Body TicketEntity ticketEntity
+            @Body TicketEntity ticketEntity
     );
 
     @POST("user/fetch-message")
@@ -179,4 +180,9 @@ public interface AppService {
     Call<CommonResponse> sendMessage(
             @Body SendMessage sendMessage
     );
+
+    //tabish
+    @GET("user/upcoming_zero_to_nine_slots")
+    Call<UpcomingSlotResponse> UPCOMING_SLOT_RESPONSE_CALL();
+
 }

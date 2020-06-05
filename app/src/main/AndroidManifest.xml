@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.ChatActivity"></activity>
+        <activity android:name=".View.UpcomingSlotActivity"></activity>
+        <activity android:name=".View.ChatActivity" />
         <activity android:name=".View.ActivityMore" />
         <activity android:name=".View.BuyCoinActivity" />
         <activity android:name=".View.PinEnterActivity" />

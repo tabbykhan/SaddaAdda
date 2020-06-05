@@ -30,8 +30,9 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:background="#FDA938"
-        android:layout_above="@+id/sendLayout"/>
+        android:layout_above="@+id/sendLayout"
+        android:background="#FDA938" />
+
     <LinearLayout
         android:id="@+id/sendLayout"
         android:layout_width="match_parent"
@@ -100,7 +101,7 @@
                 android:layout_weight="0.25"
                 android:padding="10dp"
                 android:src="@drawable/ic_attachment"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
 
             <ImageView
@@ -108,7 +109,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.25"
+                android:layout_weight="0.50"
                 android:padding="7dp"
                 android:src="@drawable/ic_chat_send" />
 
