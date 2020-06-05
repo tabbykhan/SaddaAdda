@@ -23,7 +23,7 @@ public class FetchChatDataModel {
     private String type;
     @SerializedName("attachment")
     @Expose
-    private Object attachment;
+    private String attachment;
     @SerializedName("status")
     @Expose
     private String status;
@@ -92,11 +92,11 @@ public class FetchChatDataModel {
         this.type = type;
     }
 
-    public Object getAttachment() {
+    public String getAttachment() {
         return attachment;
     }
 
-    public void setAttachment(Object attachment) {
+    public void setAttachment(String attachment) {
         this.attachment = attachment;
     }
 
@@ -171,5 +171,6 @@ public class FetchChatDataModel {
     public void setPosition(String position) {
         this.position = position;
     }
+
 
 }

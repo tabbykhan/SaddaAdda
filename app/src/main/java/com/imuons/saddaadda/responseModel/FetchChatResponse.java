@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.imuons.saddaadda.DataModel.FetchChatDataModel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 public class FetchChatResponse {
@@ -18,7 +20,7 @@ public class FetchChatResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private List<FetchChatDataModel> data = null;
+    private ArrayList<FetchChatDataModel> data = null;
 
     public Integer getCode() {
         return code;
@@ -44,12 +46,13 @@ public class FetchChatResponse {
         this.message = message;
     }
 
-    public List<FetchChatDataModel> getData() {
+    public ArrayList<FetchChatDataModel> getData() {
         return data;
     }
 
-    public void setData(List<FetchChatDataModel> data) {
+    public void setData(ArrayList<FetchChatDataModel> data) {
         this.data = data;
     }
+
 
 }

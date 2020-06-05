@@ -68,18 +68,22 @@ public class ProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getUserProfileInfo();
     }
+
     @OnClick(R.id.txt_changePin)
-    void changePin(){
+    void changePin() {
         callsendOtp(false);
     }
+
     @OnClick(R.id.txt_change_password)
-    void changePwd(){
+    void changePwd() {
         callsendOtp(true);
     }
+
     @OnClick(R.id.logOut)
     void logout() {
         showAlertDialog();
     }
+
     @OnClick(R.id.submitBtn)
     void updateCall() {
         String name = etName.getText().toString().trim();
@@ -221,30 +225,30 @@ public class ProfileActivity extends AppCompatActivity {
     private void showAlertDialog() {
 
 
-            AlertDialog.Builder adb = new AlertDialog.Builder(this);
-            adb.setTitle(getResources().getString(R.string.app_name));
-            adb.setIcon(R.mipmap.ic_launcher_round);
-            adb.setMessage("Are you sure you want to Logout?");
-            adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    AppCommon.getInstance(ProfileActivity.this).clearPreference();
-                    startActivity(new Intent(ProfileActivity.this, SelectionPage.class));
-                    finishAffinity();
-                    Toast.makeText(ProfileActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent());
-                    // finishAffinity();
-                }
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(getResources().getString(R.string.app_name));
+        adb.setIcon(R.mipmap.ic_launcher_round);
+        adb.setMessage("Are you sure you want to Logout?");
+        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppCommon.getInstance(ProfileActivity.this).clearPreference();
+                startActivity(new Intent(ProfileActivity.this, SelectionPage.class));
+                finishAffinity();
+                Toast.makeText(ProfileActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent());
+                // finishAffinity();
+            }
 
-            });
-            adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-            adb.show();
+        });
+        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        adb.show();
 
        /*
         AlertDialog.Builder builder1 = null;
@@ -283,13 +287,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void changePin(View view) {
-      //  callsendOtp();
+        //  callsendOtp();
     }
+
     private void callsendOtp(boolean flag) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
-            AppService apiService = ServiceGenerator.createService(AppService.class , AppCommon.getInstance(this).getToken());
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.SendOTP_FOR_PIN(new OtpEnitity(AppCommon.getInstance(this).getUserId()));
             call.enqueue(new Callback() {
                 @Override
@@ -301,10 +306,10 @@ public class ProfileActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            if(flag){
-                                startActivity(new Intent(ProfileActivity.this,ChangePin.class));
-                            }else{
-                                startActivity(new Intent(ProfileActivity.this,ChangePassword.class));
+                            if (flag) {
+                                startActivity(new Intent(ProfileActivity.this, ChangePin.class));
+                            } else {
+                                startActivity(new Intent(ProfileActivity.this, ChangePassword.class));
                             }
 
                         } else {
@@ -330,8 +335,6 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
 
 }

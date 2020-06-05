@@ -69,10 +69,6 @@ public class BuyCoinActivity extends AppCompatActivity {
     @BindView(R.id.bottomProgressBar)
     ProgressBar bottomProgressBar;
 
-    int lenght = 10;
-    int start = 0;
-    int open = 0;
-    int level = 1;
     int offsetLevel = 0;
 
     @Override
@@ -84,8 +80,7 @@ public class BuyCoinActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(BuyCoinActivity.this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(ticketAdapter);
-        //getTickets(new TicketEntity("10", "0", "0"));
-        // callgetLevelView(new TicketEntity("10"));
+
         getTickets(new TicketEntity("10","0", "0"));
     }
 
