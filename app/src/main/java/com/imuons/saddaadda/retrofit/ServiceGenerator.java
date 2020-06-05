@@ -1,8 +1,5 @@
 package com.imuons.saddaadda.retrofit;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -35,6 +32,7 @@ public class ServiceGenerator {
     }
 
     public static <S> S createService(Class<S> serviceClass, final String authToken) {
+
         if (authToken != null) {
             httpClient.interceptors().add(new Interceptor() {
                 @Override

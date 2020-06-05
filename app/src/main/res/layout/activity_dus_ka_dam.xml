@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".View.DusKaDamActivity">
+    tools:context=".View.DusKaDamActivity"
+    >
 
     <LinearLayout
         android:id="@+id/linar"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        >
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            >
 
 
             <ImageView
@@ -29,7 +33,8 @@
                 android:layout_marginRight="10dp"
                 android:ellipsize="end"
                 android:gravity="center"
-                android:src="@drawable/zerotonine" />
+                android:src="@drawable/zerotonine"
+                />
 
         </RelativeLayout>
 
@@ -37,7 +42,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            >
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,7 +58,8 @@
                 android:text="Sadda X"
                 android:textColor="#F2D837"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
         </RelativeLayout>
 
         <RelativeLayout
@@ -60,7 +67,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            >
 
 
             <ImageView
@@ -68,7 +76,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:gravity="center|end"
-                android:src="@drawable/rules" />
+                android:src="@drawable/rules"
+                />
         </RelativeLayout>
 
     </LinearLayout>
@@ -83,7 +92,8 @@
         android:shadowColor="#dba3ff"
         android:shadowDx="0.0"
         android:shadowDy="0.0"
-        android:shadowRadius="20" />
+        android:shadowRadius="20"
+        />
 
 
     <ScrollView
@@ -91,14 +101,16 @@
         android:layout_height="match_parent"
         android:layout_below="@id/view"
         android:layout_marginTop="70dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
 
             android:orientation="vertical"
-            android:paddingBottom="60dp">
+            android:paddingBottom="60dp"
+            >
 
             <TableLayout
                 android:id="@+id/table_layout"
@@ -108,12 +120,13 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/green_box"
                 android:gravity="fill"
-              >
+                >
 
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="100dp"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    >
 
                     <TextView
                         android:id="@+id/txtZero"
@@ -130,7 +143,8 @@
                         android:text="0"
                         android:textColor="@color/lightgreen"
                         android:textSize="40sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                     <ImageView
                         android:id="@+id/one"
@@ -142,121 +156,165 @@
                         android:layout_weight="0.5"
                         android:paddingStart="20dp"
                         android:paddingLeft="20dp"
-                        android:src="@drawable/plus_red" />
+                        android:src="@drawable/plus_red"
+                        />
                 </RelativeLayout>
-                <!--row one-->
-                <TableRow
-                    android:id="@+id/row1"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:weightSum="3">
+                <!--row one--><TableRow
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:weightSum="3"
+                >
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:weightSum="2"
+                    >
+
+
+                    <View
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="2dp"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:background="@color/lightgreen"
+                        />
 
+                    <ImageView
+                        android:id="@+id/eleven"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/plus_green"
+                        />
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
-                        <ImageView
-                            android:id="@+id/eleven"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
-                        <ImageView
-                            android:id="@+id/twentySix"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <View
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="2dp"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:background="@color/lightgreen"
+                        />
+
+                    <ImageView
+                        android:id="@+id/twentySix"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/plus_green"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:weightSum="2"
+                    >
 
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
-                        <ImageView
-                            android:id="@+id/twelve"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
-                        <ImageView
-                            android:id="@+id/twentySeven"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <View
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="2dp"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:background="@color/lightgreen"
+                        />
+
+                    <ImageView
+                        android:id="@+id/twelve"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/plus_green"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="1"
+                        android:background="@color/lightgreen"
+                        />
+
+                    <ImageView
+                        android:id="@+id/twentySeven"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/plus_green"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:weightSum="2"
+                    >
 
 
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="0.9"
+                        android:background="@color/lightgreen"
+                        />
+
+                    <ImageView
+                        android:id="@+id/thirteen"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/plus_green"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_weight="0.86"
+                        android:background="@color/lightgreen"
+                        />
+                    <LinearLayout
+                        android:layout_width="2dp"
+                        android:weightSum="1"
+                        android:layout_height="match_parent">
                         <View
                             android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
-                        <ImageView
-                            android:id="@+id/thirteen"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
-
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
+                            android:layout_weight="0.5"
+                            android:background="@color/lightgreen"
+                            android:layout_height="2dp">
+                        </View>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:layout_height="0dp">
+                            </View>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="0dp">
+                            </View>
+                        </LinearLayout>
                     </LinearLayout>
-                </TableRow>
+                </LinearLayout>
+            </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
 
                         <TextView
@@ -272,7 +330,8 @@
                             android:text="1"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/two"
@@ -280,7 +339,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -290,31 +350,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/fifteen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
 
                         <TextView
@@ -330,7 +395,8 @@
                             android:text="2"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/three"
@@ -338,7 +404,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -348,31 +415,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/sixteen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -387,7 +459,8 @@
                             android:text="3"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/four"
@@ -395,7 +468,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -405,25 +479,29 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyEight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                 </TableRow>
@@ -434,39 +512,45 @@
                     android:id="@+id/row2"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/fourteen"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtyFour"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                     </LinearLayout>
 
@@ -475,32 +559,37 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/seventeen"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtyFive"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                     </LinearLayout>
 
@@ -509,39 +598,62 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:layout_weight="0.9"
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/eighteen"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:layout_weight="0.86"
+                            android:background="@color/lightgreen"
+                            />
 
+                        <LinearLayout
+                            android:layout_width="2dp"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="2dp">
+                            </View>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="match_parent">
+                            </View>
+                        </LinearLayout>
                     </LinearLayout>
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
 
                         <TextView
@@ -557,7 +669,8 @@
                             android:text="4"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/five"
@@ -565,7 +678,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -575,31 +689,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/nineteen"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
 
                         <TextView
@@ -615,7 +734,8 @@
                             android:text="5"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/six"
@@ -623,7 +743,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -633,31 +754,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyOne"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -672,7 +798,8 @@
                             android:text="6"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/seven"
@@ -680,7 +807,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -690,25 +818,29 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyNine"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                 </TableRow>
@@ -719,39 +851,45 @@
                     android:id="@+id/row3"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twenty"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtySix"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                     </LinearLayout>
 
@@ -760,32 +898,37 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyTwo"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtySeven"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                     </LinearLayout>
 
@@ -794,39 +937,61 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:layout_weight="0.9"
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyThree"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
+                            android:layout_weight="0.86"
+                            android:background="@color/lightgreen"
+                            />
+                        <LinearLayout
+                            android:layout_width="2dp"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="2dp">
+                            </View>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="match_parent">
+                            </View>
+                        </LinearLayout>
                     </LinearLayout>
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -841,7 +1006,8 @@
                             android:text="7"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/eight"
@@ -849,7 +1015,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -859,31 +1026,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyFour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
 
                         <TextView
@@ -899,7 +1071,8 @@
                             android:text="8"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/nine"
@@ -907,7 +1080,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -917,31 +1091,36 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/twentyFive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        >
 
                         <TextView
                             android:layout_width="0dp"
@@ -956,7 +1135,8 @@
                             android:text="9"
                             android:textColor="@color/lightgreen"
                             android:textSize="30sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            />
 
                         <ImageView
                             android:id="@+id/ten"
@@ -964,7 +1144,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="0.5"
-                            android:src="@drawable/plus_red" />
+                            android:src="@drawable/plus_red"
+                            />
 
 
                     </LinearLayout>
@@ -974,25 +1155,29 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirty"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="2dp"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
                     </LinearLayout>
 
                 </TableRow>
@@ -1000,34 +1185,57 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtyOne"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
-
+                            android:background="@color/lightgreen"
+                            />
+                        <LinearLayout
+                            android:layout_width="30dp"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="0dp">
+                            </View>
+                            <View
+                                android:layout_width="match_parent"
+                                android:background="@color/lightgreen"
+                                android:layout_height="2dp">
+                            </View>
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -1035,26 +1243,49 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtyTwo"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
                             android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:background="@color/lightgreen"
+                            />
+                        <LinearLayout
+                            android:layout_width="30dp"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_marginLeft="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="0dp">
+                            </View>
+                            <View
+                                android:layout_width="match_parent"
+                                android:background="@color/lightgreen"
+                                android:layout_height="2dp">
+                            </View>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -1063,25 +1294,46 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:weightSum="2">
+                        android:weightSum="2"
+                        >
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:layout_weight="0.9"
+                            android:background="@color/lightgreen"
+                            />
 
                         <ImageView
                             android:id="@+id/thirtyThree"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/plus_green" />
+                            android:src="@drawable/plus_green"
+                            />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="1"
-                            android:background="@color/lightgreen" />
+                            android:layout_weight="0.86"
+                            android:background="@color/lightgreen"
+                            />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical"
+                            android:weightSum="1"
+                            android:layout_height="match_parent">
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:background="@color/lightgreen"
+                                android:layout_height="0dp">
+                            </View>
+                            <View
+                                android:layout_width="2dp"
+                                android:layout_weight="0.5"
+                                android:layout_height="0dp">
+                            </View>
+                        </LinearLayout>
                     </LinearLayout>
                 </TableRow>
 
@@ -1095,7 +1347,8 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/bg_blue_line"
-                tools:listitem="@layout/item_saddax_list" />
+                tools:listitem="@layout/item_saddax_list"
+                />
 
 
         </LinearLayout>
@@ -1108,6 +1361,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

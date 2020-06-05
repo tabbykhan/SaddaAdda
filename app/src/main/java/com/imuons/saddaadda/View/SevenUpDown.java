@@ -1,17 +1,9 @@
 package com.imuons.saddaadda.View;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,24 +12,19 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
-import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
-import com.imuons.saddaadda.Utils.ViewUtils;
-import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
-import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
-
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,8 +32,6 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static java.lang.Thread.sleep;
 
 public class SevenUpDown extends AppCompatActivity {
 
@@ -352,8 +337,7 @@ public class SevenUpDown extends AppCompatActivity {
         AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
         tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
 
-        if(selectedType == 0 )
-        {
+        if(selectedType == 0 ) {
             if(status.equalsIgnoreCase("win")){
                 two_six(status);
             }else {
@@ -567,9 +551,6 @@ public class SevenUpDown extends AppCompatActivity {
 
         }
         setBottomText(total  , status);
-
-
-
 
     }
 

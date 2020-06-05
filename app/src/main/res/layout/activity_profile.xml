@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".View.ProfileActivity">
+    tools:context=".View.ProfileActivity"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,39 +67,51 @@
                         android:gravity="start"
                         android:padding="5dp"
                         android:shadowColor="#a3ffaf"
-                        android:shadowDx="0.0"
-                        android:shadowDy="0.0"
-                        android:shadowRadius="20"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
                         android:text="User ID"
                         android:textColor="#a3ffaf"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
+                        android:translationY="10dp"
                         />
 
-                    <EditText
-                        android:id="@+id/etName"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_height="85dp"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
-                        android:drawableLeft="@drawable/person"
-                        android:drawableRight="@drawable/ic_edit"
-                        android:drawablePadding="10dp"
-                        android:fontFamily="@font/amazon_regular"
-                        android:hint="Name"
-                        android:imeOptions="actionNext"
-                        android:shadowColor="#D8BB4A"
-                        android:shadowDx="0.0"
-                        android:shadowDy="0.0"
-                        android:background="@color/transparent_color"
-                        android:shadowRadius="20"
-                        android:singleLine="true"
-                        android:textColor="#D8BB4A"
-                        android:textColorHint="#D8BB4A"
-                        android:textSize="16sp"
-                        />
+                        android:background="@drawable/bg_ed"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="30dp"
+                        android:paddingRight="10dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/transparent_color"
+                            android:drawableLeft="@drawable/person"
+                            android:drawableRight="@drawable/ic_edit"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/amazon_regular"
+                            android:hint="Name"
+                            android:layout_margin="5dp"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#D8BB4A"
+                            android:shadowRadius="20"
+                            android:singleLine="true"
+                            android:textColor="#D8BB4A"
+                            android:textColorHint="#D8BB4A"
+                            android:textSize="16sp"
+                            />
+                    </LinearLayout>
+
 
                     <TextView
                         android:id="@+id/ChangePin"
@@ -122,6 +135,7 @@
                         android:textColor="#feb6b2"
                         android:textSize="14sp"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         />
 
                 </LinearLayout>
@@ -138,41 +152,65 @@
                 android:weightSum="1"
                 >
 
-                <TextView
-                    android:id="@+id/txt_change_password"
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/bg_rounded_white_30"
-                    android:drawableLeft="@drawable/ic_lock"
-                    android:drawableRight="@drawable/ic_edit"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="#7dcb92"
-                    android:fontFamily="@font/amazon_bold"
-                    android:gravity="center_vertical"
-                    android:text="Change Password"
-                    android:textColor="#7dcb92"
-                    android:textSize="10dp"
-                    ></TextView>
+                    android:layout_marginTop="-30dp"
+                    android:gravity="center"
+                    android:background="@drawable/pink_bg"
+                    android:layout_height="90dp">
+                    <TextView
+                        android:id="@+id/txt_change_password"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="40dp"
+                        android:drawableLeft="@drawable/ic_lock"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="#7dcb92"
+                        android:fontFamily="@font/amazon_bold"
+                        android:gravity="center_vertical"
+                        android:shadowColor="#e535cd"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:text="Change Password"
+                        android:textColor="#7dcb92"
+                        android:textSize="10dp"
+                        ></TextView>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txt_changePin"
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/bg_rounded_white_30"
-                    android:drawableLeft="@drawable/ic_lock"
-                    android:drawableRight="@drawable/ic_edit"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="#7dcb92"
-                    android:fontFamily="@font/amazon_bold"
-                    android:gravity="center_vertical"
-                    android:text="Change PIN"
-                    android:textColor="#7dcb92"
-                    android:textSize="10dp"
-                    ></TextView>
+                    android:layout_marginTop="-30dp"
+                    android:gravity="center"
+                    android:background="@drawable/pink_bg"
+                    android:layout_height="90dp">
+                    <TextView
+                        android:id="@+id/txt_changePin"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="40dp"
+                        android:drawableLeft="@drawable/ic_lock"
+                        android:drawableRight="@drawable/ic_edit"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="#7dcb92"
+                        android:fontFamily="@font/amazon_bold"
+                        android:gravity="center_vertical"
+                        android:shadowColor="#e535cd"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:text="Change PIN"
+                        android:textColor="#7dcb92"
+                        android:textSize="10dp"
+                        ></TextView>
+                </LinearLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -180,179 +218,198 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-               android:showDividers="beginning"
+                android:background="@drawable/bg_green_border"
                 android:orientation="horizontal"
                 android:shadowDx="0.0"
-                android:background="@drawable/bg_green_border"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
+                android:showDividers="beginning"
                 android:weightSum="3"
                 >
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:gravity="center_horizontal"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical"
-                    android:layout_weight="1">
+                    >
+
                     <ImageView
                         android:layout_width="70dp"
-                        android:background="@drawable/phone"
+                        android:layout_height="70dp"
                         android:layout_marginTop="10dp"
-                        android:layout_height="70dp">
-                    </ImageView>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:text="Mobile Number"
-                            android:textSize="10dp"
-                            android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/amazon_bold"
-                            android:layout_height="wrap_content">
+                        android:background="@drawable/phone"
+                        ></ImageView>
 
-                        </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/amazon_bold"
+                        android:text="Mobile Number"
+                        android:textColor="@color/white"
+                        android:textSize="10dp"
+                        >
+
+                    </TextView>
+
                     <EditText
                         android:id="@+id/etMobile"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/transparent_color"
                         android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="5dp"
-                        android:background="@color/transparent_color"
-                        android:fontFamily="@font/amazon_regular"
-                        android:hint="enter number"
-                        android:imeOptions="actionNext"
-                        android:shadowColor="#D8BB4A"
-                        android:shadowDx="0.0"
-                        android:gravity="center"
-                        android:maxLength="10"
                         android:ems="10"
-                        android:shadowDy="0.0"
-                        android:shadowRadius="20"
+                        android:fontFamily="@font/amazon_regular"
+                        android:gravity="center"
+                        android:hint="Enter Number"
+                        android:imeOptions="actionNext"
                         android:inputType="phone"
+                        android:maxLength="10"
+                        android:shadowColor="#642e77"
+                        android:shadowDx="1.0"
+                        android:shadowDy="1.0"
+                        android:shadowRadius="20"
                         android:singleLine="true"
-                        android:textColor="#9c27b0"
-                        android:textColorHint="#9c27b0"
-                        android:textSize="14sp"
+                        android:textColor="#e535cd"
+                        android:textColorHint="#e535cd"
+                        android:textSize="12sp"
                         />
                 </LinearLayout>
+
                 <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#7dcb92"
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent">
+                    >
 
                 </View>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_weight="1">
+                    android:orientation="vertical"
+                    >
+
                     <ImageView
                         android:layout_width="70dp"
-                        android:background="@drawable/ppay"
+                        android:layout_height="70dp"
                         android:layout_marginTop="10dp"
-                        android:layout_height="70dp">
-                    </ImageView>
+                        android:background="@drawable/ppay"
+                        ></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="Phone Pay Number"
-                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/amazon_bold"
-                        android:layout_height="wrap_content">
+                        android:text="Phone Pay Number"
+                        android:textColor="@color/white"
+                        android:textSize="10dp"
+                        ></TextView>
 
-                    </TextView>
                     <EditText
                         android:id="@+id/etPhonePay"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp"
                         android:layout_marginBottom="10dp"
+                        android:background="@color/transparent_color"
                         android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="5dp"
-                        android:background="@color/transparent_color"
-                        android:fontFamily="@font/amazon_regular"
-                        android:hint="enter number"
-                        android:imeOptions="actionNext"
-                        android:shadowColor="#D8BB4A"
-                        android:shadowDx="0.0"
-                        android:gravity="center"
-                        android:maxLength="10"
                         android:ems="10"
+                        android:fontFamily="@font/amazon_regular"
+                        android:gravity="center"
+                        android:hint="Enter Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:shadowColor="#e535cd"
+                        android:shadowDx="0.0"
                         android:shadowDy="0.0"
                         android:shadowRadius="20"
-                        android:inputType="phone"
                         android:singleLine="true"
-                        android:textColor="#9c27b0"
-                        android:textColorHint="#9c27b0"
-                        android:textSize="14sp"
+                        android:textColor="#e535cd"
+                        android:textColorHint="#e535cd"
+                        android:textSize="12sp"
                         />
                 </LinearLayout>
+
                 <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="#7dcb92"
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent">
+                    >
 
                 </View>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:layout_weight="1">
+                    android:orientation="vertical"
+                    >
+
                     <ImageView
                         android:layout_width="70dp"
-                        android:background="@drawable/google"
+                        android:layout_height="70dp"
                         android:layout_marginTop="10dp"
-                        android:layout_height="70dp">
-                    </ImageView>
+                        android:background="@drawable/google"
+                        ></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
-                        android:text="Phone Pay Number"
-                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/white"
                         android:fontFamily="@font/amazon_bold"
-                        android:layout_height="wrap_content">
+                        android:text="Google Pay Number"
+                        android:textColor="@color/white"
+                        android:textSize="10dp"
+                        >
 
                     </TextView>
+
                     <EditText
                         android:id="@+id/etGooglePay"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginRight="5dp"
                         android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@color/transparent_color"
                         android:drawableRight="@drawable/ic_edit"
                         android:drawablePadding="5dp"
-                        android:fontFamily="@font/amazon_regular"
-                        android:hint="enter number"
-                        android:imeOptions="actionNext"
-                        android:shadowColor="#D8BB4A"
-                        android:shadowDx="0.0"
-                        android:gravity="center"
-                        android:maxLength="10"
                         android:ems="10"
+                        android:fontFamily="@font/amazon_regular"
+                        android:gravity="center"
+                        android:hint="Enter Number"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:shadowColor="#e535cd"
+                        android:shadowDx="0.0"
                         android:shadowDy="0.0"
                         android:shadowRadius="20"
-                        android:inputType="phone"
                         android:singleLine="true"
-                        android:textColor="#9c27b0"
-                        android:textColorHint="#9c27b0"
-                        android:textSize="14sp"
+                        android:textColor="#e535cd"
+                        android:textColorHint="#e535cd"
+                        android:textSize="12sp"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -362,9 +419,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:fontFamily="@font/amazon_bold"
-               android:layout_marginTop="10dp"
                 android:shadowColor="#a3ffaf"
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
@@ -377,40 +434,48 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:visibility="visible"
-                android:backgroundTint="@color/yellow"
                 android:layout_marginEnd="20dp"
-                android:layout_height="wrap_content">
+                android:backgroundTint="@color/yellow"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="160dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:weightSum="2"
-                    android:layout_height="160dp">
+                    >
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:gravity="center_horizontal"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:layout_weight="1"
                         android:background="@drawable/bg_yellow_border"
-                        android:layout_weight="1">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        >
+
                         <ImageView
                             android:layout_width="90dp"
-                            android:background="@drawable/account_name"
+                            android:layout_height="90dp"
                             android:layout_marginTop="10dp"
-                            android:layout_height="90dp">
-                        </ImageView>
+                            android:background="@drawable/account_name"
+                            ></ImageView>
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Account Holder Name"
-                            android:textSize="10dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
                             android:fontFamily="@font/amazon_bold"
-                            android:layout_height="wrap_content">
+                            android:text="Account Holder Name"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            >
 
                         </TextView>
 
@@ -418,180 +483,200 @@
                             android:id="@+id/etAccountName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
                             android:background="@color/transparent_color"
                             android:drawableRight="@drawable/ic_edit"
                             android:drawablePadding="5dp"
                             android:fontFamily="@font/amazon_regular"
                             android:gravity="center"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:hint="enter name"
+                            android:hint="Enter Name"
                             android:imeOptions="actionNext"
-                            android:shadowColor="#D8BB4A"
+                            android:shadowColor="#e535cd"
                             android:shadowDx="0.0"
                             android:shadowDy="0.0"
                             android:shadowRadius="20"
                             android:singleLine="true"
-                            android:textColor="#9c27b0"
-                            android:textColorHint="#9c27b0"
-                            android:textSize="14sp"
+                            android:textColor="#e535cd"
+                            android:textColorHint="#e535cd"
+                            android:textSize="12sp"
                             />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:gravity="center_horizontal"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
                         android:background="@drawable/bg_yellow_border"
-                        android:layout_weight="1">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        >
+
                         <ImageView
                             android:layout_width="90dp"
-                            android:background="@drawable/ifsc_number"
+                            android:layout_height="90dp"
                             android:layout_marginTop="10dp"
-                            android:layout_height="90dp">
-                        </ImageView>
+                            android:background="@drawable/ifsc_number"
+                            ></ImageView>
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="IFSC Code"
-                            android:textSize="10dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
                             android:fontFamily="@font/amazon_bold"
-                            android:layout_height="wrap_content">
+                            android:text="IFSC Code"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            >
 
                         </TextView>
+
                         <EditText
                             android:id="@+id/etIFSC"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/transparent_color"
                             android:drawableRight="@drawable/ic_edit"
                             android:drawablePadding="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="@color/transparent_color"
-                            android:fontFamily="@font/amazon_regular"
-                            android:hint="enter ifsc code"
-                            android:imeOptions="actionNext"
-                            android:shadowColor="#D8BB4A"
-                            android:shadowDx="0.0"
-                            android:gravity="center"
-                            android:maxLength="12"
                             android:ems="10"
+                            android:fontFamily="@font/amazon_regular"
+                            android:gravity="center"
+                            android:hint="Enter Ifsc Code"
+                            android:imeOptions="actionNext"
+                            android:lines="1"
+                            android:maxLength="12"
+                            android:shadowColor="#e535cd"
+                            android:shadowDx="0.0"
                             android:shadowDy="0.0"
                             android:shadowRadius="20"
-                            android:lines="1"
                             android:singleLine="true"
-                            android:textColor="#9c27b0"
-                            android:textColorHint="#9c27b0"
-                            android:textSize="14sp"
+                            android:textColor="#e535cd"
+                            android:textColorHint="#e535cd"
+                            android:textSize="12sp"
                             />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="160dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="10dp"
                     android:weightSum="2"
-                    android:layout_height="160dp">
+                    >
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:gravity="center_horizontal"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
+                        android:layout_weight="1"
                         android:background="@drawable/bg_yellow_border"
-                        android:layout_weight="1">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        >
+
                         <ImageView
                             android:layout_width="90dp"
-                            android:background="@drawable/bank"
+                            android:layout_height="90dp"
                             android:layout_marginTop="10dp"
-                            android:layout_height="90dp">
-                        </ImageView>
+                            android:background="@drawable/bank"
+                            ></ImageView>
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Branch Name"
-                            android:textSize="10dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
                             android:fontFamily="@font/amazon_bold"
-                            android:layout_height="wrap_content">
+                            android:text="Branch Name"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            >
 
                         </TextView>
+
                         <EditText
                             android:id="@+id/etBranchName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/transparent_color"
                             android:drawableRight="@drawable/ic_edit"
                             android:drawablePadding="5dp"
                             android:fontFamily="@font/amazon_regular"
-                            android:hint="enter branch name"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:background="@color/transparent_color"
-                            android:imeOptions="actionNext"
-                            android:shadowColor="#D8BB4A"
-                            android:shadowDx="0.0"
                             android:gravity="center"
+                            android:hint="Enter Branch Name"
+                            android:imeOptions="actionNext"
+                            android:shadowColor="#e535cd"
+                            android:shadowDx="0.0"
                             android:shadowDy="0.0"
                             android:shadowRadius="20"
                             android:singleLine="true"
-                            android:textColor="#9c27b0"
-                            android:textColorHint="#9c27b0"
-                            android:textSize="14sp"
+                            android:textColor="#e535cd"
+                            android:textColorHint="#e535cd"
+                            android:textSize="12sp"
                             />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:gravity="center_horizontal"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
                         android:background="@drawable/bg_yellow_border"
-                        android:layout_weight="1">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        >
+
                         <ImageView
                             android:layout_width="90dp"
-                            android:background="@drawable/number"
+                            android:layout_height="90dp"
                             android:layout_marginTop="10dp"
-                            android:layout_height="90dp">
-                        </ImageView>
+                            android:background="@drawable/number"
+                            ></ImageView>
+
                         <TextView
                             android:layout_width="wrap_content"
-                            android:text="Account Number"
-                            android:textSize="10dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/white"
                             android:fontFamily="@font/amazon_bold"
-                            android:layout_height="wrap_content">
+                            android:text="Account Number"
+                            android:textColor="@color/white"
+                            android:textSize="10dp"
+                            >
 
                         </TextView>
+
                         <EditText
                             android:id="@+id/etAccountNo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/transparent_color"
                             android:drawableRight="@drawable/ic_edit"
                             android:drawablePadding="5dp"
-                            android:background="@color/transparent_color"
                             android:fontFamily="@font/amazon_regular"
-                            android:hint="enter account number"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:imeOptions="actionNext"
-                            android:shadowColor="#D8BB4A"
-                            android:shadowDx="0.0"
                             android:gravity="center"
+                            android:hint="Enter Account Number"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:shadowColor="#e535cd"
+                            android:shadowDx="0.0"
                             android:shadowDy="0.0"
                             android:shadowRadius="20"
-                            android:inputType="number"
                             android:singleLine="true"
-                            android:textColor="#9c27b0"
-                            android:textColorHint="#9c27b0"
-                            android:textSize="14sp"
+                            android:textColor="#e535cd"
+                            android:textColorHint="#e535cd"
+                            android:textSize="12sp"
                             />
                     </LinearLayout>
                 </LinearLayout>
@@ -611,7 +696,8 @@
                 android:text="Report"
                 android:textColor="#a3ffaf"
                 android:textSize="20sp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                />
 
             <TextView
                 android:id="@+id/logOut"
@@ -649,7 +735,6 @@
                     android:fontFamily="@font/amazon_bold"
                     android:shadowColor="#a3ffaf"
                     android:shadowDx="0.0"
-
                     android:shadowDy="0.0"
                     android:shadowRadius="20"
                     android:text="Submit"
