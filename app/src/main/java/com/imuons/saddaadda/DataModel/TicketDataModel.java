@@ -3,7 +3,7 @@ package com.imuons.saddaadda.DataModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 public class TicketDataModel {
@@ -16,7 +16,7 @@ public class TicketDataModel {
     private Integer recordsFiltered;
     @SerializedName("records")
     @Expose
-    private ArrayList<TicketRecordModel> records = null;
+    private List<TicketRecordModel> records = null;
     @SerializedName("start")
     @Expose
     private Integer start;
@@ -37,11 +37,11 @@ public class TicketDataModel {
         this.recordsFiltered = recordsFiltered;
     }
 
-    public ArrayList<TicketRecordModel> getRecords() {
+    public List<TicketRecordModel> getRecords() {
         return records;
     }
 
-    public void setRecords(ArrayList<TicketRecordModel> records) {
+    public void setRecords(List<TicketRecordModel> records) {
         this.records = records;
     }
 

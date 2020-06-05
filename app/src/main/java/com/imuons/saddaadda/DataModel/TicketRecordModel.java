@@ -52,7 +52,7 @@ public class TicketRecordModel {
     private String linkType;
     @SerializedName("current_date")
     @Expose
-    private CurrentDateModel currentDate;
+    private CurrentDate currentDate;
     @SerializedName("status")
     @Expose
     private String status;
@@ -225,11 +225,11 @@ public class TicketRecordModel {
         this.linkType = linkType;
     }
 
-    public CurrentDateModel getCurrentDate() {
+    public CurrentDate getCurrentDate() {
         return currentDate;
     }
 
-    public void setCurrentDate(CurrentDateModel currentDate) {
+    public void setCurrentDate(CurrentDate currentDate) {
         this.currentDate = currentDate;
     }
 
@@ -368,4 +368,5 @@ public class TicketRecordModel {
     public void setAssignDateonly(String assignDateonly) {
         this.assignDateonly = assignDateonly;
     }
+
 }

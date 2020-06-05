@@ -4,6 +4,7 @@ package com.imuons.saddaadda.retrofit;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
+import com.imuons.saddaadda.EntityClass.ChatEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
@@ -13,6 +14,7 @@ import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
+import com.imuons.saddaadda.EntityClass.SendMessage;
 import com.imuons.saddaadda.EntityClass.TicketEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.View.ForgetPassword;
@@ -22,6 +24,7 @@ import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
+import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
@@ -164,7 +167,16 @@ public interface AppService {
     //tabish
     @POST("user/link-report")
     Call<TicketResponse> TICKET_RESPONSE_CALL(
-            @Body TicketEntity ticketEntity
+          @Body TicketEntity ticketEntity
     );
 
+    @POST("user/fetch-message")
+    Call<FetchChatResponse> getChatList(
+            @Body ChatEntity chatEntity
+    );
+
+    @POST("user/send-message")
+    Call<CommonResponse> sendMessage(
+            @Body SendMessage sendMessage
+    );
 }

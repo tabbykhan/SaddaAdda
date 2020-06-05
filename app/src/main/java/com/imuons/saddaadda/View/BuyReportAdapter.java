@@ -29,6 +29,7 @@ import butterknife.OnClick;
 public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyHolder> {
     Activity activity;
     ArrayList<BuyRecord> reportDataArrayList;
+
     public BuyReportAdapter(Activity activity, ArrayList<BuyRecord> sellRecordArrayList) {
         this.activity = activity;
         this.reportDataArrayList = sellRecordArrayList;
@@ -72,7 +73,6 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
     }
 
 
-
     private String parseDate(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
         String outputPattern = "dd-MMM-yy";
@@ -96,6 +96,7 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }
+
     public void update(ArrayList<BuyRecord> reportData, int pos) {
         reportDataArrayList = reportData;
         notifyItemChanged(pos);

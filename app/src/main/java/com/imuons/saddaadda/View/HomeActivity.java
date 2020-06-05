@@ -141,7 +141,7 @@ public class HomeActivity extends Activity {
 
     @OnClick(R.id.more)
     void more() {
-        startActivity(new Intent(getApplicationContext(),ActivityMore.class));
+        startActivity(new Intent(getApplicationContext(), ActivityMore.class));
     }
 
     @OnClick(R.id.coinBuy)
@@ -159,14 +159,16 @@ public class HomeActivity extends Activity {
         startActivity(new Intent(this, DusKaDamActivity.class));
     }
 
-    public void saddaShatak(View view){
-         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+    public void saddaShatak(View view) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
     }
-    public void saddaQuiz(View view){
-         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+
+    public void saddaQuiz(View view) {
+        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
     }
-    public void chat(View view){
-         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+
+    public void chat(View view) {
+        startActivity(new Intent(this, ChatActivity.class));
     }
 
     @Override

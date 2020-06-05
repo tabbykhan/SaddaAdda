@@ -39,13 +39,14 @@ public class BuyActivityHistory extends Activity {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
     //SellReportAdapter reportAdapter;
-   BuyReportAdapter reportAdapter;
+    BuyReportAdapter reportAdapter;
 
     ArrayList<BuyRecord> reportData;
     @BindView(R.id.txUserId)
     TextView txUserId;
     @BindView(R.id.coin)
     TextView coin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +84,8 @@ public class BuyActivityHistory extends Activity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData().getRecords();
-                            if(reportData.size() !=0) {
-                                reportData.add(0 ,new BuyRecord());
+                            if (reportData.size() != 0) {
+                                reportData.add(0, new BuyRecord());
                                 reportAdapter.update(reportData);
                             }
 
