@@ -18,7 +18,7 @@ public class SellRecord {
     private String remark;
     @SerializedName("withdraw_id")
     @Expose
-    private Integer withdrawId;
+    private double withdrawId;
     @SerializedName("sell_date")
     @Expose
     private String sellDate;
@@ -88,7 +88,7 @@ public class SellRecord {
         this.remark = remark;
     }
 
-    public Integer getWithdrawId() {
+    public double getWithdrawId() {
         return withdrawId;
     }
 

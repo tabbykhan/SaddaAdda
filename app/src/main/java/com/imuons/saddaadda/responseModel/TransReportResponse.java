@@ -2,13 +2,9 @@ package com.imuons.saddaadda.responseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.imuons.saddaadda.DataModel.FetchChatDataModel;
+import com.imuons.saddaadda.DataModel.TransReportData;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.List;
-
-public class FetchChatResponse {
+public class TransReportResponse {
     @SerializedName("code")
     @Expose
     private Integer code;
@@ -20,7 +16,7 @@ public class FetchChatResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private ArrayList<FetchChatDataModel> data;
+    private TransReportData data;
 
     public Integer getCode() {
         return code;
@@ -46,13 +42,11 @@ public class FetchChatResponse {
         this.message = message;
     }
 
-    public ArrayList<FetchChatDataModel> getData() {
+    public TransReportData getData() {
         return data;
     }
 
-    public void setData(ArrayList<FetchChatDataModel> data) {
+    public void setData(TransReportData data) {
         this.data = data;
     }
-
-
 }

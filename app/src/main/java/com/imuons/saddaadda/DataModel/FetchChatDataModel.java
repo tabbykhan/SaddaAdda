@@ -47,7 +47,7 @@ public class FetchChatDataModel {
     private String currentTiming;
     @SerializedName("files")
     @Expose
-    private List<String> files = null;
+    private List<String> files;
     @SerializedName("position")
     @Expose
     private String position;

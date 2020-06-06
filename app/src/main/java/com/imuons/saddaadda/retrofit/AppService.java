@@ -1,6 +1,8 @@
 package com.imuons.saddaadda.retrofit;
 
 
+import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
+import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
@@ -12,6 +14,7 @@ import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.EntityClass.ResetPasswordEntity;
 import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
+import com.imuons.saddaadda.EntityClass.SaddaXTopUp;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.EntityClass.SendMessage;
@@ -22,6 +25,7 @@ import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponse;
+import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
@@ -38,6 +42,7 @@ import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.responseModel.TicketResponse;
+import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
@@ -160,8 +165,10 @@ public interface AppService {
     );
 
     //tabish
-    @GET("user/get-zerotonine-topup")
-    Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL();
+    @POST("user/get-zerotonine-topup")
+    Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL(
+            @Body SaddaXTopUp saddaXTopUp);
+
 
     //tabish
     @POST("user/link-report")
@@ -173,14 +180,35 @@ public interface AppService {
     Call<FetchChatResponse> getChatList(
             @Body ChatEntity chatEntity
     );
+    //azhar
 
-    @POST("user/send-message")
-    Call<CommonResponse> sendMessage(
-            @Body SendMessage sendMessage
+    @FormUrlEncoded
+    @POST("user/all-transactions-report")
+    Call<TransReportResponse> BuyTransREPORT_CALL(
+            @FieldMap Map<String, String> loginMap
     );
-
     //tabish
     @GET("user/upcoming_zero_to_nine_slots")
     Call<UpcomingSlotResponse> UPCOMING_SLOT_RESPONSE_CALL();
 
+    //Rahul
+    @POST("user/pay-on-link")
+    Call<DetailsTicketResponseModel> GetPayPnLink(@Body Map<String, Object> map);
+
+    @POST("user/confirmlink")
+    Call<CommonResponseModel> GetConfirmLink(@Body Map<String, Object> map);
+
+    @POST("user/rejectlink")
+    Call<CommonResponseModel> GetRejectLink(@Body Map<String, Object> map);
+
+    @POST("user/send-sms")
+    Call<CommonResponseModel> GetSendSms(@Body Map<String, Object> map);
+
+    @POST("user/transaction-slip")
+    Call<TransactionSlipResponseModel> GetSlip(@Body Map<String, Object> map);
+
+    @POST("user/send-message")
+    Call<PinResponse> sendMessage(
+            @Body SendMessage sendMessage
+    );
 }

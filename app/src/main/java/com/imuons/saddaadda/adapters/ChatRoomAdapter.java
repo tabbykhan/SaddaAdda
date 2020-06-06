@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -78,9 +79,9 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ChatRo
         @BindView(R.id.adminimage)
         ImageView adminimage;
         @BindView(R.id.adminLayout)
-        CardView adminLayout;
+        LinearLayout adminLayout;
         @BindView(R.id.userLayout)
-        CardView userLayout;
+        LinearLayout userLayout;
         @BindView(R.id.msg)
         TextView adminmsg;
         @BindView(R.id.time)

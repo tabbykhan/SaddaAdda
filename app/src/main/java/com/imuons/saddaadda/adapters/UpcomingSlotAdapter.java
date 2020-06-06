@@ -1,6 +1,7 @@
 package com.imuons.saddaadda.adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.View.DusKaDamActivity;
 import com.imuons.saddaadda.View.UpcomingSlotActivity;
 
 import java.text.ParseException;
@@ -49,10 +51,20 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         UpcomingSlotData upcomingSlotData = reportDataArrayList.get(position);
         holder.price.setText(String.valueOf(upcomingSlotData.getSlotNo()));
         holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
-        holder.starDate.setText(parseDate(String.valueOf(upcomingSlotData.getFromTime())));
-        holder.starTime.setText(parseDate2(String.valueOf(upcomingSlotData.getToTime())));
-       // holder.ticketPrice.setText(String.valueOf(upcomingSlotData.getSlotNo()));
-
+        holder.starDate.setText(String.valueOf(upcomingSlotData.getFromDate()));
+        holder.starTime.setText(String.valueOf(upcomingSlotData.getFromTime()));
+        holder.endDate.setText(String.valueOf(upcomingSlotData.getToDate()));
+        holder.endTime.setText(String.valueOf(upcomingSlotData.getToTime()));
+        holder.btnJoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int slotid = upcomingSlotData.getSlotNo(); // get Id
+                Intent intent = new Intent(activity, DusKaDamActivity.class);
+                intent.putExtra("pos", slotid); // Pass Id
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(intent);
+            }
+        });
 
     }
     private String parseDate1(String entryTime) {
@@ -134,8 +146,10 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         TextView starDate;
         @BindView(R.id.starTime)
         TextView starTime;
-        @BindView(R.id.ticketPrice)
-        TextView ticketPrice;
+        @BindView(R.id.endDate)
+        TextView endDate;
+        @BindView(R.id.endTime)
+        TextView endTime;
         @BindView(R.id.btnJoin)
         TextView btnJoin;
 
@@ -145,9 +159,9 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
             ButterKnife.bind(this, itemView);
         }
 
-      /*  @OnClick({R.id.expend_list ,R.id.expend_image , R.id.sno })
+       /* @OnClick(R.id.btnJoin)
         void expend() {
-            ((UpcomingSlotActivity) activity).checkOpen(getAdapterPosition());
+            ((UpcomingSlotActivity) activity).Open(getAdapterPosition());
 
         }*/
     }

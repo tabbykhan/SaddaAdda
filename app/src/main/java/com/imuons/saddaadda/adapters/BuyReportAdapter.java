@@ -1,4 +1,4 @@
-package com.imuons.saddaadda.View;
+package com.imuons.saddaadda.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -13,9 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.saddaadda.DataModel.BuyRecord;
-import com.imuons.saddaadda.DataModel.SellRecord;
 import com.imuons.saddaadda.R;
-import com.imuons.saddaadda.SellReportAdapter;
+import com.imuons.saddaadda.View.BuyActivityHistory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

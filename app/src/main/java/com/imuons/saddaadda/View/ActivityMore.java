@@ -23,6 +23,8 @@ import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +35,7 @@ public class ActivityMore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_item_view);
+        ButterKnife.bind(this);
 
         LinearLayout profile = findViewById(R.id.menu_profile);
         LinearLayout all_Transaction = findViewById(R.id.menu_allTransaction);
@@ -74,7 +77,6 @@ public class ActivityMore extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), BuyActivityHistory.class));
             }
         });
-
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,5 +169,14 @@ public class ActivityMore extends AppCompatActivity {
             }
         });
         adb.show();
+    }
+
+    @OnClick(R.id.menu_buyTransReport)
+    void buyTransReport(){
+        startActivity(new Intent(getApplicationContext(), BuyTransReportActivity.class));
+    }
+    @OnClick(R.id.menu_withTransReport)
+    void withTransReport(){
+        startActivity(new Intent(getApplicationContext(), WithDrawTransReportActivity.class));
     }
 }

@@ -4,28 +4,27 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginTop="10dp"
-    android:layout_marginEnd="20dp"
-   >
+    android:layout_marginEnd="20dp">
 
 
     <LinearLayout
         android:id="@+id/whiteBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="-30dp"
         android:layout_below="@id/topll"
-        android:orientation="vertical"
-        android:background="@drawable/bg_slot_white">
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/bg_slot_white"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="@font/amazon_bold"
-            android:text="Start At,"
+            android:text="Start At"
             android:textColor="#000000"
             android:textSize="12sp" />
 
@@ -45,11 +44,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:drawableStart="@drawable/date_img"
                 android:drawableLeft="@drawable/date_img"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
                 android:text="30 may 2020"
                 android:textColor="#6C1772"
                 android:textSize="12sp" />
@@ -60,11 +59,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
                 android:drawableStart="@drawable/time_img"
                 android:drawableLeft="@drawable/time_img"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
                 android:text="4:00pm"
                 android:textColor="#6C1772"
                 android:textSize="12sp" />
@@ -81,27 +80,77 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/coins"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/amazon_bold"
+            android:text="End At"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="15dp"
+            android:weightSum="3">
 
             <TextView
-                android:id="@+id/ticketPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:id="@+id/endDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/date_img"
+                android:drawableLeft="@drawable/date_img"
+                android:drawablePadding="5dp"
                 android:fontFamily="@font/amazon_bold"
-                android:gravity="center"
-                android:paddingBottom="10dp"
-                android:text="25 Coins/ Ticket"
-                android:textColor="#350027"
-                android:layout_marginBottom="10dp"
-                android:textSize="18sp" />
+                android:gravity="center_vertical"
+                android:text="30 may 2020"
+                android:textColor="#6C1772"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/endTime"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/time_img"
+                android:drawableLeft="@drawable/time_img"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:text="4:00pm"
+                android:textColor="#6C1772"
+                android:textSize="12sp" />
+            <TextView
+               android:visibility="invisible"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/time_img"
+                android:drawableLeft="@drawable/time_img"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center_vertical"
+                android:text="4:00pm"
+                android:textColor="#6C1772"
+                android:textSize="12sp" />
+
         </LinearLayout>
 
+
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/topll"
         android:layout_width="match_parent"
@@ -143,6 +192,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:visibility="gone"
             android:weightSum="2">
 
             <TextView
@@ -168,18 +218,17 @@
     </LinearLayout>
 
 
-
     <TextView
         android:id="@+id/btnJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/whiteBox"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="-10dp"
         android:background="@drawable/btn_bg_pink"
         android:fontFamily="@font/amazon_bold"
         android:gravity="center"
         android:padding="6dp"
-        android:layout_marginTop="-10dp"
         android:text="JOIN NOW"
         android:textColor="@color/white"
         android:textSize="14sp"
