@@ -7,17 +7,21 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.BuyRecord;
+import com.imuons.saddaadda.DataModel.TransRecord;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.BuyReportAdapter;
+import com.imuons.saddaadda.adapters.BuyTransAdapter;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
+import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -31,75 +35,74 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BuyActivityHistory extends Activity {
-
+public class BuyTransReportActivity extends Activity {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
     //SellReportAdapter reportAdapter;
-    BuyReportAdapter reportAdapter;
+    BuyTransAdapter reportAdapter;
 
-    ArrayList<BuyRecord> reportData;
-    @BindView(R.id.txUserId)
-    TextView txUserId;
-    @BindView(R.id.coin)
-    TextView coin;
+    ArrayList<TransRecord> reportData;
+
+    @BindView(R.id.glowingText)
+    TextView glowingText;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
-        coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
-        txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
+        glowingText.setText("Buy Transaction Report");
         reportData = new ArrayList<>();
-        reportAdapter = new BuyReportAdapter(this, reportData);
+        reportAdapter = new BuyTransAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
         recycleView.setAdapter(reportAdapter);
         CallApiForReport();
-
     }
 
     private void CallApiForReport() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(BuyActivityHistory.this);
+            Dialog dialog = ViewUtils.getProgressBar(BuyTransReportActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, String> roiMap = new HashMap<>();
 
-            roiMap.put("provide", "1");
+            roiMap.put("table_name", "buy_sell");
+            roiMap.put("tr_type", "Credit");
             roiMap.put("start", "0");
-            Call call = apiService.BuyREPORT_CALL(roiMap);
+            roiMap.put("length", "10");
+            Call call = apiService.BuyTransREPORT_CALL(roiMap);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(BuyActivityHistory.this).clearNonTouchableFlags(BuyActivityHistory.this);
+                    AppCommon.getInstance(BuyTransReportActivity.this).clearNonTouchableFlags(BuyTransReportActivity.this);
                     dialog.dismiss();
-                    BuyHistoryResponse authResponse = (BuyHistoryResponse) response.body();
+                    TransReportResponse authResponse = (TransReportResponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData().getRecords();
                             if (reportData.size() != 0) {
-                                reportData.add(0, new BuyRecord());
+                                reportData.add(0, new TransRecord());
                                 reportAdapter.update(reportData);
                             }
 
                         } else {
-                            Toast.makeText(BuyActivityHistory.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BuyTransReportActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppCommon.getInstance(BuyActivityHistory.this).showDialog(BuyActivityHistory.this, "Server Error");
+                        AppCommon.getInstance(BuyTransReportActivity.this).showDialog(BuyTransReportActivity.this, "Server Error");
                     }
                 }
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
-                    AppCommon.getInstance(BuyActivityHistory.this).clearNonTouchableFlags(BuyActivityHistory.this);
+                    AppCommon.getInstance(BuyTransReportActivity.this).clearNonTouchableFlags(BuyTransReportActivity.this);
                     // loaderView.setVisibility(View.GONE);
-                    Toast.makeText(BuyActivityHistory.this, "Server Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BuyTransReportActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -117,5 +120,4 @@ public class BuyActivityHistory extends Activity {
         }
         reportAdapter.update(reportData, adapterPosition);
     }
-
 }
