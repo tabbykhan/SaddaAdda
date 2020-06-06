@@ -42,6 +42,7 @@ import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.responseModel.TicketResponse;
+import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
