@@ -1,6 +1,8 @@
 package com.imuons.saddaadda.retrofit;
 
 
+import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
+import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
@@ -23,6 +25,7 @@ import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponse;
+import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
