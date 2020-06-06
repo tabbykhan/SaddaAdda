@@ -5,23 +5,25 @@
     android:layout_marginStart="20dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="20dp"
-    android:background="@drawable/bg_slot_white">
+   >
 
 
     <LinearLayout
         android:id="@+id/whiteBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginTop="-30dp"
+        android:layout_below="@id/topll"
+        android:orientation="vertical"
+        android:background="@drawable/bg_slot_white">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/amazon_bold"
             android:text="Start At,"
             android:textColor="#000000"
@@ -38,11 +40,12 @@
             <TextView
                 android:id="@+id/starDate"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:drawableStart="@drawable/date_img"
                 android:drawableLeft="@drawable/date_img"
                 android:drawablePadding="5dp"
@@ -54,9 +57,10 @@
             <TextView
                 android:id="@+id/starTime"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:drawableStart="@drawable/time_img"
                 android:drawableLeft="@drawable/time_img"
                 android:drawablePadding="5dp"
@@ -93,13 +97,13 @@
                 android:paddingBottom="10dp"
                 android:text="25 Coins/ Ticket"
                 android:textColor="#350027"
+                android:layout_marginBottom="10dp"
                 android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
-
-
     <LinearLayout
+        android:id="@+id/topll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_slot"
@@ -164,6 +168,7 @@
     </LinearLayout>
 
 
+
     <TextView
         android:id="@+id/btnJoin"
         android:layout_width="wrap_content"
@@ -174,9 +179,11 @@
         android:fontFamily="@font/amazon_bold"
         android:gravity="center"
         android:padding="6dp"
+        android:layout_marginTop="-10dp"
         android:text="JOIN NOW"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />
+
 
 </RelativeLayout>

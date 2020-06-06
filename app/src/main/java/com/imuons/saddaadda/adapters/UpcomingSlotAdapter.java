@@ -17,7 +17,10 @@ import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.View.UpcomingSlotActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,12 +47,66 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
     @Override
     public void onBindViewHolder(@NonNull UpcomingSlotHolder holder, int position) {
         UpcomingSlotData upcomingSlotData = reportDataArrayList.get(position);
-        holder.price.setText(String.valueOf(upcomingSlotData.getEntryTime()));
-        holder.dateTime.setText(String.valueOf(upcomingSlotData.getEntryTime()));
-        holder.starDate.setText(String.valueOf(upcomingSlotData.getFromTime()));
-        holder.starTime.setText(String.valueOf(upcomingSlotData.getToTime()));
+        holder.price.setText(String.valueOf(upcomingSlotData.getSlotNo()));
+        holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
+        holder.starDate.setText(parseDate(String.valueOf(upcomingSlotData.getFromTime())));
+        holder.starTime.setText(parseDate2(String.valueOf(upcomingSlotData.getToTime())));
        // holder.ticketPrice.setText(String.valueOf(upcomingSlotData.getSlotNo()));
 
+
+    }
+    private String parseDate1(String entryTime) {
+        String inputPattern = "yyyy-MM-dd HH:mm:ss";
+        String outputPattern = "EEEE , h:mm a";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(entryTime);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+
+    }
+    private String parseDate(String entryTime) {
+        String inputPattern = "yyyy-MM-dd HH:mm:ss";
+        String outputPattern = "dd MMM yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(entryTime);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+
+    }
+    private String parseDate2(String entryTime) {
+        String inputPattern = "yyyy-MM-dd HH:mm:ss";
+        String outputPattern = "h : mm a";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(entryTime);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
 
     }
 
