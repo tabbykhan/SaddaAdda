@@ -39,18 +39,18 @@ public class BuyActivityHistory extends Activity {
     BuyReportAdapter reportAdapter;
 
     ArrayList<BuyRecord> reportData;
-    @BindView(R.id.txUserId)
+  /*  @BindView(R.id.txUserId)
     TextView txUserId;
     @BindView(R.id.coin)
-    TextView coin;
+    TextView coin;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
-        coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
-        txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
+      //  coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
+       // txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
         reportData = new ArrayList<>();
         reportAdapter = new BuyReportAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
