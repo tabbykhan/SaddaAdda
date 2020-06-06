@@ -18,7 +18,6 @@ import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.EntityClass.SendMessage;
 import com.imuons.saddaadda.EntityClass.TicketEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
-import com.imuons.saddaadda.View.ForgetPassword;
 import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
@@ -51,7 +50,6 @@ import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /*

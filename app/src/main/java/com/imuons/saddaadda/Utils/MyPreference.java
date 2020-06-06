@@ -4,6 +4,7 @@ package com.imuons.saddaadda.Utils;
  */
 public class MyPreference {
 
+    static final String ID = "id";
     public static String mUserLogin = "UserLogin";
     public static String login = "Login";
     public static String userId = "UserId";

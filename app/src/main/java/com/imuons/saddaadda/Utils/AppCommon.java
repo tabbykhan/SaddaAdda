@@ -216,4 +216,13 @@ public class AppCommon {
     }
 
 
+   public void setID(Integer id) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putInt(MyPreference.ID, id);
+        editor.apply();
+    }
+    public int  getID(){
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getInt(MyPreference.ID, 0);
+    }
 }

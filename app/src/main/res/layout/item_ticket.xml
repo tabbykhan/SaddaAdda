@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/relativeLayout"
-   >
+    android:padding="15dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
-        android:layout_centerInParent="true"
-     >
+        >
 
         <TextView
             android:id="@+id/txt_trasactionID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/amazon_bold"
             android:shadowColor="@color/yellows"
             android:shadowDx="0.0"
@@ -26,16 +29,17 @@
             android:shadowRadius="20"
             android:text="Buy No.   "
             android:textColor="@color/yellows"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_marginLeft="10dp"/>
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="0dp"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -49,12 +53,14 @@
                 android:shadowRadius="20"
                 android:text="Amount"
                 android:textColor="@color/yellows"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#FFAA31" />
+                android:background="#FFAA31"
+                />
 
             <TextView
                 android:id="@+id/txtAmount"
@@ -69,20 +75,23 @@
                 android:shadowRadius="20"
                 android:text=""
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFAA31" />
+            android:background="#FFAA31"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 android:id="@+id/name"
@@ -97,12 +106,14 @@
                 android:shadowRadius="20"
                 android:text="Receiver Name"
                 android:textColor="@color/yellows"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#FFAA31" />
+                android:background="#FFAA31"
+                />
 
             <TextView
                 android:id="@+id/txtRecName"
@@ -117,20 +128,23 @@
                 android:shadowRadius="20"
                 android:text=""
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFAA31" />
+            android:background="#FFAA31"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 android:id="@+id/status"
@@ -145,12 +159,14 @@
                 android:shadowRadius="20"
                 android:text="Buy"
                 android:textColor="@color/yellows"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#FFAA31" />
+                android:background="#FFAA31"
+                />
 
             <TextView
                 android:id="@+id/txtBuy"
@@ -165,20 +181,23 @@
                 android:shadowRadius="20"
                 android:text=""
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFAA31" />
+            android:background="#FFAA31"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -192,12 +211,14 @@
                 android:shadowRadius="20"
                 android:text="Assign Date"
                 android:textColor="@color/yellows"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#FFAA31" />
+                android:background="#FFAA31"
+                />
 
             <TextView
                 android:id="@+id/txtAssignDate"
@@ -212,20 +233,23 @@
                 android:shadowRadius="20"
                 android:text=""
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFAA31" />
+            android:background="#FFAA31"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            >
 
             <TextView
                 android:layout_width="0dp"
@@ -239,12 +263,14 @@
                 android:shadowRadius="20"
                 android:text="To User ID"
                 android:textColor="@color/yellows"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#FFAA31" />
+                android:background="#FFAA31"
+                />
 
             <TextView
                 android:id="@+id/txtToUserId"
@@ -259,22 +285,26 @@
                 android:shadowRadius="20"
                 android:text=""
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFAA31" />
+            android:background="#FFAA31"
+            />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:weightSum="2"
-            android:layout_marginTop="20dp">
+            android:weightSum="3"
+            >
 
             <TextView
                 android:id="@+id/btn_Details"
@@ -288,9 +318,9 @@
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
                 android:text="Details"
-
                 android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
 
             <TextView
@@ -309,7 +339,82 @@
                 android:textStyle="bold"
                 />
 
+            <TextView
+                android:id="@+id/btn_reject"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Reject"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+
+            android:weightSum="3"
+            >
+
+            <TextView
+                android:id="@+id/btn_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Confirm"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/btn_view_slip"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="View Slip"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/btn_upload"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_bold"
+                android:gravity="center"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:text="Upload Slip"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 
