@@ -6,38 +6,36 @@
     android:layout_marginBottom="2dp">
 
 
-
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        >
+        android:layout_height="50dp">
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/sr_no"
-            />
+            android:src="@drawable/sr_no" />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@drawable/date"
-            />
+            android:src="@drawable/date" />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@drawable/confirm_date"
-            />
+            android:src="@drawable/confirm_date" />
 
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/nxt"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_below="@id/top_bar"
-        >
+        android:layout_below="@id/top_bar">
 
         <View
             android:layout_width="wrap_content"
@@ -143,8 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nxt"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -246,6 +243,7 @@
                     android:background="#a3ffaf" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="20dp">
@@ -295,7 +293,6 @@
                     android:background="#a3ffaf" />
 
             </LinearLayout>
-
 
 
             <View

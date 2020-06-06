@@ -7,6 +7,7 @@ import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
 import com.imuons.saddaadda.EntityClass.ChatEntity;
+import com.imuons.saddaadda.EntityClass.CompleteSlotEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
@@ -26,6 +27,7 @@ import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.CommonResponseModel;
+import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
@@ -187,6 +189,7 @@ public interface AppService {
     Call<TransReportResponse> BuyTransREPORT_CALL(
             @FieldMap Map<String, String> loginMap
     );
+
     //tabish
     @GET("user/upcoming_zero_to_nine_slots")
     Call<UpcomingSlotResponse> UPCOMING_SLOT_RESPONSE_CALL();
@@ -211,4 +214,10 @@ public interface AppService {
     Call<PinResponse> sendMessage(
             @Body SendMessage sendMessage
     );
+
+    //tabish
+    @POST("user/zero_to_nine_completed_slots")
+    Call<CompleteSlotResponse> COMPLETE_SLOT_RESPONSE_CALL(
+            @Body CompleteSlotEntity completeSlotEntity);
+
 }

@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +56,14 @@ public class UpcomingSlotActivity extends AppCompatActivity {
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setAdapter(upcomingSlotAdapter);
         CallApiUpcomingSlot();
+    }
+
+    @OnClick(R.id.leaderBoard)
+    void learderBoard() {
+      //  startActivity(new Intent(this, LeaderBoardActivity.class));
+        Toast.makeText(this, "Work In progress", Toast.LENGTH_SHORT).show();
+
+
     }
 
     private void CallApiUpcomingSlot() {

@@ -67,6 +67,7 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         });
 
     }
+
     private String parseDate1(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
         String outputPattern = "EEEE , h:mm a";
@@ -85,6 +86,7 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         return str;
 
     }
+
     private String parseDate(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
         String outputPattern = "dd MMM yyyy";
@@ -103,6 +105,7 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         return str;
 
     }
+
     private String parseDate2(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
         String outputPattern = "h : mm a";
