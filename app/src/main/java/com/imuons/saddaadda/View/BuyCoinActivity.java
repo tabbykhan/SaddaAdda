@@ -35,6 +35,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.TicketRecordModel;
+import com.imuons.saddaadda.DataModel.TransactionDataModel;
+import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.TicketEntity;
 import com.imuons.saddaadda.R;
@@ -42,7 +44,7 @@ import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.TicketAdapter;
 import com.imuons.saddaadda.responseModel.BuyCoinResponse;
-import com.imuons.saddaadda.responseModel.CommonResponse;
+import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.TicketResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.MultipartRequest;
@@ -214,11 +216,12 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     dialog.dismiss();
-                    CommonResponse buyCoinResponse = (CommonResponse) response.body();
+                    CommonResponseModel buyCoinResponse = (CommonResponseModel) response.body();
                     if (buyCoinResponse != null) {
                         Log.i("ResponseUpdate::", new Gson().toJson(buyCoinResponse));
                         if (buyCoinResponse.getCode() == 200) {
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            getTickets(new TicketEntity("10", "0", "0"));
                         } else {
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -230,6 +233,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.d("fail rq", t.getMessage());
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -277,10 +281,11 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     dialog.dismiss();
-                    CommonResponse buyCoinResponse = (CommonResponse) response.body();
+                    CommonResponseModel buyCoinResponse = (CommonResponseModel) response.body();
                     if (buyCoinResponse != null) {
                         Log.i("ResponseUpdate::", new Gson().toJson(buyCoinResponse));
                         if (buyCoinResponse.getCode() == 200) {
+                            getTickets(new TicketEntity("10", "0", "0"));
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -293,6 +298,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.d("fail rq", t.getMessage());
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -484,7 +490,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
 
     @Override
     public void clickUpload(TicketRecordModel recordModel) {
-        tickt_model=recordModel;
+        tickt_model = recordModel;
         is_layerOpen = true;
         ll_upload.setVisibility(View.VISIBLE);
         filePath = "";
@@ -494,7 +500,57 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
 
     @Override
     public void viewSlip(TicketRecordModel recordModel) {
+        tickt_model = recordModel;
+        viewImage();
+    }
 
+    private void viewImage() {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class);
+            Map<String, Object> param = new HashMap<>();
+            param.put("transaction_id", tickt_model.getTranid());
+            Call call = apiService.GetSlip(param);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    dialog.dismiss();
+                    TransactionSlipResponseModel buyCoinResponse = (TransactionSlipResponseModel) response.body();
+                    if (buyCoinResponse != null) {
+                        Log.i("ResponseUpdate::", new Gson().toJson(buyCoinResponse));
+                        if (buyCoinResponse.getCode() == 200) {
+                            callIntent(buyCoinResponse.getData());
+                        } else {
+                            Toast.makeText(BuyCoinActivity.this, buyCoinResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(BuyCoinActivity.this).showDialog(BuyCoinActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    Log.d("fail rq", t.getMessage());
+                    AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void callIntent(TransactionDataModel data) {
+        Intent intent = new Intent(getApplicationContext(), ViewSlipActivity.class);
+        intent.putExtra("url", data.getAttachment());
+        startActivity(intent);
     }
 
     @Override
@@ -508,15 +564,15 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
             Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-           Map<String, Object>param = new HashMap<>();
-           param.put("transaction_id",recordModel.getTranid());
+            Map<String, Object> param = new HashMap<>();
+            param.put("transaction_id", recordModel.getTranid());
             Call call = apiService.GetSendSms(param);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     dialog.dismiss();
-                    CommonResponse authResponse = (CommonResponse) response.body();
+                    CommonResponseModel authResponse = (CommonResponseModel) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
@@ -533,6 +589,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
+                    Log.d("fail rq", t.getMessage());
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -556,7 +613,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
             ll_upload.setVisibility(View.GONE);
             txt_file_name.setText("");
             filePath = "";
-        }else{
+        } else {
             finish();
         }
     }
@@ -822,8 +879,8 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
     }
 
     @OnClick(R.id.iv_send)
-    void uploadFile()  {
-        if(filePath.equals("")){
+    void uploadFile() {
+        if (filePath.equals("")) {
             Toast.makeText(getBaseContext(), "Choose File ", Toast.LENGTH_LONG).show();
             return;
         }
@@ -929,15 +986,17 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
         MultipartRequest multipartRequest = new MultipartRequest(url, params, mimeType, multipartBody, response -> {
             String resultResponse = new String(response.data);
             try {
-                Log.d("response--", "-------------" + new JSONObject(resultResponse));
+
                 AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(BuyCoinActivity.this);
-                if (isFinishing())
+                if (isFinishing()) {
                     return;
+                }
 
                 JSONObject jsonObject = new JSONObject(resultResponse);
                 handleResponse(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
+                Toast.makeText(getBaseContext(), "Upload fail", Toast.LENGTH_LONG).show();
                 AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(BuyCoinActivity.this);
             }
         }, new com.android.volley.Response.ErrorListener() {
@@ -952,13 +1011,17 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
     }
 
     private void handleResponse(JSONObject jsonObject) throws JSONException {
-        if (jsonObject.getString("code").equals("409")) {
+        if (jsonObject.getInt("code") == 409) {
             Toast.makeText(getBaseContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
-        } else if (jsonObject.getString("code").equals("200")) {
+
+        } else if (jsonObject.getInt("code") == 200) {
             Toast.makeText(getBaseContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+            ll_upload.setVisibility(View.GONE);
+            is_layerOpen = false;
+            filePath = "";
+            getTickets(new TicketEntity("10", "0", "0"));
             if (jsonObject.has("data")) {
                 JSONObject dataobj = jsonObject.getJSONObject("data");
-
             }
         } else {
             //  {"code":404,"status":"Not Found","message":"You can make only one investment!",

@@ -96,6 +96,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.btn_reject.setVisibility(View.VISIBLE);
             } else {
                 holder.btn_reject.setVisibility(View.GONE);
+
             }
             if (ticketRecordModel.getStatus().equals("Pending") && ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() && ticketRecordModel.getReceiptStatus() > 0) {
                 holder.btn_confirm.setBackgroundResource(R.drawable.btn_ticketbuy);
@@ -160,6 +161,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.btn_reject.setVisibility(View.VISIBLE);
             } else {
                 holder.btn_reject.setVisibility(View.GONE);
+
             }
             if (ticketRecordModel.getStatus().equals("Pending") && ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() && ticketRecordModel.getReceiptStatus() > 0) {
                 holder.btn_confirm.setBackgroundResource(R.drawable.btn_ticketbuy_green);
@@ -168,11 +170,14 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.btn_confirm.setVisibility(View.GONE);
             }
 
-            if (ticketRecordModel.getStatus().equals("Pending") && ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() && ticketRecordModel.getReceiptStatus() == 0) {
+            if (ticketRecordModel.getStatus().equals("Pending") &&
+                    ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() &&
+                    ticketRecordModel.getReceiptStatus() == 0) {
                 holder.btn_upload.setBackgroundResource(R.drawable.btn_ticketbuy_green);
                 holder.btn_upload.setVisibility(View.VISIBLE);
             } else {
                 holder.btn_upload.setVisibility(View.GONE);
+
             }
             if (ticketRecordModel.getReceiptStatus() > 0) {
                 holder.btn_view_slip.setBackgroundResource(R.drawable.btn_ticketbuy_green);
