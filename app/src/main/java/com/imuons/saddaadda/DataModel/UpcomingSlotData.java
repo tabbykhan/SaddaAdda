@@ -16,12 +16,33 @@ public class UpcomingSlotData {
     @SerializedName("to_time")
     @Expose
     private String toTime;
+    @SerializedName("product_id")
+    @Expose
+    private Object productId;
+    @SerializedName("product_name")
+    @Expose
+    private Object productName;
+    @SerializedName("winner_count")
+    @Expose
+    private Integer winnerCount;
     @SerializedName("status")
     @Expose
     private String status;
     @SerializedName("entry_time")
     @Expose
     private String entryTime;
+    @SerializedName("from_date")
+    @Expose
+    private String fromDate;
+    @SerializedName("from_daytime")
+    @Expose
+    private String fromDaytime;
+    @SerializedName("to_date")
+    @Expose
+    private String toDate;
+    @SerializedName("to_daytime")
+    @Expose
+    private String toDaytime;
 
     public Integer getId() {
         return id;
@@ -55,6 +76,30 @@ public class UpcomingSlotData {
         this.toTime = toTime;
     }
 
+    public Object getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Object productId) {
+        this.productId = productId;
+    }
+
+    public Object getProductName() {
+        return productName;
+    }
+
+    public void setProductName(Object productName) {
+        this.productName = productName;
+    }
+
+    public Integer getWinnerCount() {
+        return winnerCount;
+    }
+
+    public void setWinnerCount(Integer winnerCount) {
+        this.winnerCount = winnerCount;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -71,4 +116,35 @@ public class UpcomingSlotData {
         this.entryTime = entryTime;
     }
 
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(String fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public String getFromDaytime() {
+        return fromDaytime;
+    }
+
+    public void setFromDaytime(String fromDaytime) {
+        this.fromDaytime = fromDaytime;
+    }
+
+    public String getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(String toDate) {
+        this.toDate = toDate;
+    }
+
+    public String getToDaytime() {
+        return toDaytime;
+    }
+
+    public void setToDaytime(String toDaytime) {
+        this.toDaytime = toDaytime;
+    }
 }

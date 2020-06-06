@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -69,7 +70,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            reportData = authResponse.getData();
+                            reportData = authResponse.getData().getRecords();
                             if (reportData.size() != 0) {
                                 upcomingSlotAdapter.update(reportData);
                             }
@@ -94,5 +95,12 @@ public class UpcomingSlotActivity extends AppCompatActivity {
             // no internet
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void Open(int adapterPosition) {
+        reportData.get(adapterPosition).getSlotNo();
+        upcomingSlotAdapter.update(reportData, adapterPosition);
+        startActivity(new Intent(this, DusKaDamActivity.class));
+
     }
 }

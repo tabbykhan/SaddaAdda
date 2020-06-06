@@ -2,6 +2,7 @@ package com.imuons.saddaadda.responseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.imuons.saddaadda.DataModel.UpcomingSlot;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class UpcomingSlotResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private ArrayList<UpcomingSlotData> data = null;
+    private UpcomingSlot data;
 
     public Integer getCode() {
         return code;
@@ -45,12 +46,13 @@ public class UpcomingSlotResponse {
         this.message = message;
     }
 
-    public ArrayList<UpcomingSlotData> getData() {
+    public UpcomingSlot getData() {
         return data;
     }
 
-    public void setData(ArrayList<UpcomingSlotData> data) {
+    public void setData(UpcomingSlot data) {
         this.data = data;
     }
+
 
 }

@@ -20,8 +20,10 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.SaddaxReportDataModel;
+import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
+import com.imuons.saddaadda.EntityClass.SaddaXTopUp;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
@@ -91,11 +93,14 @@ public class DusKaDamActivity extends AppCompatActivity {
     String Product_idThirtySeven = "37";
     AlertDialog dialogBuilder;
     String userId;
+
     ArrayList<SaddaxReportDataModel> reportData;
     SaddaXReportAdapters reportAdapter;
-
+    UpcomingSlotData upcomingSlotData;
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
+    int mSlotId;
+    String slotId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,19 +108,23 @@ public class DusKaDamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dus_ka_dam);
         ButterKnife.bind(this);
         userId = AppCommon.getInstance(this).getUserId();
+        mSlotId = getIntent().getIntExtra("pos", 0);
+        slotId = String.valueOf(mSlotId);
         reportData = new ArrayList<>();
         reportAdapter = new SaddaXReportAdapters(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
+        recycleView.setNestedScrollingEnabled(false);
         recycleView.setAdapter(reportAdapter);
-        CallApiForSaddaxReport();
+        CallApiForSaddaxReport(slotId);
     }
 
-    private void CallApiForSaddaxReport() {
+
+    private void CallApiForSaddaxReport(String slotId) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL();
+            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL(new SaddaXTopUp(slotId));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -183,7 +192,7 @@ public class DusKaDamActivity extends AppCompatActivity {
                     editView.setError("Please Enter Amount");
                 } else {
                     dialogBuilder.dismiss();
-                    betApi(product_id, amount, userId);
+                    betApi(product_id, amount, userId, slotId);
                 }
             }
         });
@@ -200,12 +209,12 @@ public class DusKaDamActivity extends AppCompatActivity {
         dialogBuilder.show();
     }
 
-    private void betApi(String product_id, String amount, String id) {
+    private void betApi(String product_id, String amount, String id, String slotid) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id));
+            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id, slotid));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -217,7 +226,7 @@ public class DusKaDamActivity extends AppCompatActivity {
                         if (authResponse.getCode() == 200) {
 
                             Toast.makeText(DusKaDamActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            CallApiForSaddaxReport();
+                            CallApiForSaddaxReport(slotId);
                         } else {
                             Toast.makeText(DusKaDamActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
