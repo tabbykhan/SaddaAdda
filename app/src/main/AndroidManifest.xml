@@ -2,18 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.imuons.saddaadda">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <application
-        android:name=".SaddaAdda"
+    <application android:name=".SaddaAdda"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
@@ -22,67 +21,51 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.ChatActivity"></activity>
-        <activity android:name=".View.ActivityMore" />
-        <activity android:name=".View.BuyCoinActivity" />
-        <activity android:name=".View.PinEnterActivity" />
-        <activity
-            android:name=".View.ForgetPassword"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.ProfileActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.SevenUpDown"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.HomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.CreateAccount"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.LoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.DusKaDamActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.RulesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.SplashActivity"
+        <activity android:name=".View.HelpDetailsActivity"></activity>
+        <activity android:name=".View.ChatActivity"/>
+        <activity android:name=".View.ActivityMore"/>
+        <activity android:name=".View.BuyCoinActivity"/>
+        <activity android:name=".View.PinEnterActivity"/>
+        <activity android:name=".View.ForgetPassword"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.SevenUpDown"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.CreateAccount"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.DusKaDamActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.RulesActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".View.SelectionPage"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.ReportActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.ChangePassword"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.SellHistoryReportActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.SellCoinActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.ChangePin"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.ForgotPin"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".View.BuyActivityHistory"
-            android:screenOrientation="portrait" />
+        <activity android:name=".View.SelectionPage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ReportActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ChangePassword"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.SellHistoryReportActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.SellCoinActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ChangePin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.ForgotPin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View.BuyActivityHistory"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

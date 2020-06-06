@@ -10,5 +10,6 @@
     <color name="mehroon">#5B1B46</color>
     <color name="darkGry">#FF910F</color>
     <color name="transparent_color">#00ffffff</color>
+    <color name="blackTransparent">#66000000</color>
     <color name="yellows">#FFFC02</color>
 </resources>

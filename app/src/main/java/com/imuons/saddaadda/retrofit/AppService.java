@@ -1,6 +1,7 @@
 package com.imuons.saddaadda.retrofit;
 
 
+import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
@@ -17,7 +18,6 @@ import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.EntityClass.SendMessage;
 import com.imuons.saddaadda.EntityClass.TicketEntity;
 import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
-import com.imuons.saddaadda.View.ForgetPassword;
 import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
@@ -49,7 +49,6 @@ import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 /*
@@ -179,4 +178,16 @@ public interface AppService {
     Call<CommonResponse> sendMessage(
             @Body SendMessage sendMessage
     );
+    @POST("user/pay-on-link")
+    Call<DetailsTicketResponseModel> GetPayPnLink(@Body Map<String, Object> map);
+
+    @POST("user/confirmlink")
+    Call<CommonResponse> GetConfirmLink(@Body Map<String, Object> map);
+
+    @POST("user/rejectlink")
+    Call<CommonResponse> GetRejectLink(@Body Map<String, Object> map);
+
+    @POST("user/send-sms")
+    Call<CommonResponse> GetSendSms(@Body Map<String, Object> map);
+
 }

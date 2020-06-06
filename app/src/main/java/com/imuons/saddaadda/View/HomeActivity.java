@@ -72,6 +72,7 @@ public class HomeActivity extends Activity {
     }
 
     private void getDashboardInfo() {
+        Log.d("token", AppCommon.getInstance(getApplicationContext()).getToken());
         if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
             AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
@@ -112,11 +113,14 @@ public class HomeActivity extends Activity {
         }
     }
 
+
+
     private void setDashboardData(DashboardData data) {
         if (AppCommon.getInstance(this).getSesstionId() == data.getSession_id()) {
             txUserId.setText(String.valueOf(data.getUserId()));
             coin.setText(String.valueOf(data.getWalletBalance()));
             AppCommon.getInstance(this).setAccount(Integer.parseInt(data.getWalletBalance()));
+            AppCommon.getInstance(this).setID(data.getId());
 
         } else {
             AppCommon.getInstance(HomeActivity.this).clearPreference();
