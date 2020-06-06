@@ -1346,6 +1346,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:nestedScrollingEnabled="false"
                 android:background="@drawable/bg_blue_line"
                 tools:listitem="@layout/item_saddax_list"
                 />

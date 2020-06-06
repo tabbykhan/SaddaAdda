@@ -1,14 +1,11 @@
-package com.imuons.saddaadda.responseModel;
+package com.imuons.saddaadda.DataModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.imuons.saddaadda.DataModel.UpcomingSlot;
-import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class UpcomingSlotResponse {
-
+public class DetailsTicketResponseModel {
     @SerializedName("code")
     @Expose
     private Integer code;
@@ -20,7 +17,8 @@ public class UpcomingSlotResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private UpcomingSlot data;
+    private List<TicketDetailDataModel> data = null;
+    private final static long serialVersionUID = -6113926778474026299L;
 
     public Integer getCode() {
         return code;
@@ -46,13 +44,12 @@ public class UpcomingSlotResponse {
         this.message = message;
     }
 
-    public UpcomingSlot getData() {
+    public List<TicketDetailDataModel> getData() {
         return data;
     }
 
-    public void setData(UpcomingSlot data) {
+    public void setData(List<TicketDetailDataModel> data) {
         this.data = data;
     }
-
 
 }
