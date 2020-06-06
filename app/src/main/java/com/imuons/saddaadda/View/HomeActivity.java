@@ -160,7 +160,7 @@ public class HomeActivity extends Activity {
 
     public void duskaDum(View view) {
         // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, DusKaDamActivity.class));
+        startActivity(new Intent(this, UpcomingSlotActivity.class));
     }
 
     public void saddaShatak(View view) {

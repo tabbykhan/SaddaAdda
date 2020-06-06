@@ -34,7 +34,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/amazon_regular"
             android:gravity="center"
-            android:text="Available Coins 1000"
+            android:text="Available Coins "
             android:textColor="@color/yellow" />
 
         <EditText

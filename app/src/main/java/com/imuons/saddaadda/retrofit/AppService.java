@@ -1,7 +1,6 @@
 package com.imuons.saddaadda.retrofit;
 
 
-import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
@@ -39,6 +38,7 @@ import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.responseModel.SellHistoryReport;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.responseModel.TicketResponse;
+import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
 
@@ -166,7 +166,7 @@ public interface AppService {
     //tabish
     @POST("user/link-report")
     Call<TicketResponse> TICKET_RESPONSE_CALL(
-          @Body TicketEntity ticketEntity
+            @Body TicketEntity ticketEntity
     );
 
     @POST("user/fetch-message")
@@ -178,16 +178,9 @@ public interface AppService {
     Call<CommonResponse> sendMessage(
             @Body SendMessage sendMessage
     );
-    @POST("user/pay-on-link")
-    Call<DetailsTicketResponseModel> GetPayPnLink(@Body Map<String, Object> map);
 
-    @POST("user/confirmlink")
-    Call<CommonResponse> GetConfirmLink(@Body Map<String, Object> map);
-
-    @POST("user/rejectlink")
-    Call<CommonResponse> GetRejectLink(@Body Map<String, Object> map);
-
-    @POST("user/send-sms")
-    Call<CommonResponse> GetSendSms(@Body Map<String, Object> map);
+    //tabish
+    @GET("user/upcoming_zero_to_nine_slots")
+    Call<UpcomingSlotResponse> UPCOMING_SLOT_RESPONSE_CALL();
 
 }
