@@ -48,6 +48,7 @@ import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.responseModel.VerifyUserResponse;
+import com.imuons.saddaadda.responseModel.WinningDateResponse;
 
 import java.util.Map;
 
@@ -219,5 +220,9 @@ public interface AppService {
     @POST("user/zero_to_nine_completed_slots")
     Call<CompleteSlotResponse> COMPLETE_SLOT_RESPONSE_CALL(
             @Body CompleteSlotEntity completeSlotEntity);
+
+    //tabish
+    @GET("user/zero_to_nine_last_winning_date")
+    Call<WinningDateResponse> WINNING_DATE_RESPONSE_CALL();
 
 }
