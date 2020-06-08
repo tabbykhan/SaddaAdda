@@ -295,7 +295,6 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }else {
             //comingDate.setText(String.valueOf(data.getWinnerDate()));
             comingDate.setText("--");
-
         }
     }
 
