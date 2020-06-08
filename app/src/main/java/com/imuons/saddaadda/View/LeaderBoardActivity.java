@@ -286,14 +286,12 @@ public class LeaderBoardActivity extends AppCompatActivity {
         if (data.getProductName() != null) {
             wonNumber.setText(String.valueOf(data.getProductName()));
         } else {
-           // wonNumber.setText(String.valueOf(data.getProductName()));
             wonNumber.setText("_ _");
         }
         if (data.getWinnerDate() !=null){
             comingDate.setText(String.valueOf(data.getWinnerDate()));
 
         }else {
-            //comingDate.setText(String.valueOf(data.getWinnerDate()));
             comingDate.setText("--");
         }
     }
