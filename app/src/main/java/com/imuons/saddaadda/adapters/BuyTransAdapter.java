@@ -31,6 +31,7 @@ import butterknife.OnClick;
 public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHolder> {
     Activity activity;
     ArrayList<TransRecord> reportDataArrayList;
+    int offset = 20;
 
     public BuyTransAdapter(Activity activity, ArrayList<TransRecord> sellRecordArrayList) {
         this.activity = activity;
@@ -61,7 +62,7 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
             }
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getAmount()));
-            holder.status.setText(reportData.getRemark());
+            holder.status.setText(reportData.getRemark().trim());
             holder.tranDate_new.setText(parseDate(reportData.getEntryTime()));
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
             holder.remark.setText(reportData.getPin());
@@ -69,9 +70,14 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
         }
+        if(position == offset){
+            if (activity instanceof BuyTransReportActivity)
+                ((BuyTransReportActivity) activity).callapi(position);
+            else
+                ((WithDrawTransReportActivity) activity).callapi(position);
+
+        }
     }
-
-
 
     private String parseDate(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
@@ -91,7 +97,8 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
 
     }
 
-    public void update(ArrayList<TransRecord> reportData) {
+    public void updateList(ArrayList<TransRecord> reportData , int offsetLevel) {
+        offset = 20*(offsetLevel+1);
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }
@@ -109,30 +116,22 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
     public class BuyHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.sno)
         TextView sno;
-
         @BindView(R.id.amt)
         TextView amt;
-
-
         @BindView(R.id.tranDate)
         TextView tranDate;
         @BindView(R.id.tranDate_new)
         TextView tranDate_new;
-
         @BindView(R.id.rmark)
         TextView remark;
         @BindView(R.id.status)
         TextView status;
-
         @BindView(R.id.nxt)
         RelativeLayout nxt;
-
         @BindView(R.id.expend_image)
         ImageView expend_image;
-
         @BindView(R.id.top_bar)
         LinearLayout top_bar;
-
         @BindView(R.id.dropdown_menu)
         RelativeLayout dropdown_menu;
 

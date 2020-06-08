@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.imuons.saddaadda.DataModel.BuyHistoryData;
 import com.imuons.saddaadda.DataModel.BuyRecord;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
@@ -39,18 +41,14 @@ public class BuyActivityHistory extends Activity {
     BuyReportAdapter reportAdapter;
 
     ArrayList<BuyRecord> reportData;
-  /*  @BindView(R.id.txUserId)
-    TextView txUserId;
-    @BindView(R.id.coin)
-    TextView coin;*/
+
+    int offsetLevel = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
-      //  coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
-       // txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
         reportData = new ArrayList<>();
         reportAdapter = new BuyReportAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -58,34 +56,42 @@ public class BuyActivityHistory extends Activity {
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
         recycleView.setAdapter(reportAdapter);
-        CallApiForReport();
+        CallApiForReport(0);
 
     }
 
-    private void CallApiForReport() {
+    private void CallApiForReport(int start) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(BuyActivityHistory.this);
+            Dialog dialog = null;
+            if(start == 0)
+                 dialog = ViewUtils.getProgressBar(BuyActivityHistory.this);
+            else
+                dialog = ViewUtils.getBottomProgress(BuyActivityHistory.this);
+
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, String> roiMap = new HashMap<>();
-
             roiMap.put("provide", "1");
-            roiMap.put("start", "0");
+            roiMap.put("start", String.valueOf(start));
+            roiMap.put("length", "20");
             Call call = apiService.BuyREPORT_CALL(roiMap);
+            Dialog finalDialog = dialog;
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(BuyActivityHistory.this).clearNonTouchableFlags(BuyActivityHistory.this);
-                    dialog.dismiss();
+                    finalDialog.dismiss();
                     BuyHistoryResponse authResponse = (BuyHistoryResponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            reportData = authResponse.getData().getRecords();
-                            if (reportData.size() != 0) {
-                                reportData.add(0, new BuyRecord());
-                                reportAdapter.update(reportData);
+                            if (authResponse.getCode() == 200) {
+                                setData(authResponse.getData());
+                            } else {
+                                if(reportData.size() == 0)
+                                    reportAdapter.updateList(reportData , 0);
+                            /*if (finalIsupdate)
+                            Toast.makeText(MyTeamFragment.this.getContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();*/
                             }
-
                         } else {
                             Toast.makeText(BuyActivityHistory.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -96,7 +102,7 @@ public class BuyActivityHistory extends Activity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                    finalDialog.dismiss();
                     AppCommon.getInstance(BuyActivityHistory.this).clearNonTouchableFlags(BuyActivityHistory.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(BuyActivityHistory.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -109,6 +115,17 @@ public class BuyActivityHistory extends Activity {
         }
     }
 
+    private void setData(BuyHistoryData data) {
+//reportData.add(0, new BuyRecord());
+        if (reportData.size()!=0)
+            reportData.addAll(data.getRecords());
+        else {
+            reportData = data.getRecords();
+            reportData.add(0, new BuyRecord());
+        }
+        reportAdapter.updateList(reportData , offsetLevel);
+    }
+
     public void checkOpen(int adapterPosition) {
         if (reportData.get(adapterPosition).isOpen()) {
             reportData.get(adapterPosition).setOpen(false);
@@ -116,6 +133,11 @@ public class BuyActivityHistory extends Activity {
             reportData.get(adapterPosition).setOpen(true);
         }
         reportAdapter.update(reportData, adapterPosition);
+    }
+
+    public void callapi(int position) {
+        offsetLevel = offsetLevel+1;
+        CallApiForReport( reportData.size());
     }
 
 }

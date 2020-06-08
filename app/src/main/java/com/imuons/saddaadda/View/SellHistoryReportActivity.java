@@ -7,13 +7,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.ReportData;
+import com.imuons.saddaadda.DataModel.SellHistoryData;
 import com.imuons.saddaadda.DataModel.SellRecord;
+import com.imuons.saddaadda.DataModel.TransRecord;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.ReportAdapter;
 import com.imuons.saddaadda.SellReportAdapter;
@@ -42,18 +45,14 @@ public class SellHistoryReportActivity extends AppCompatActivity {
     SellReportAdapter reportAdapter;
 
     ArrayList<SellRecord> reportData;
-    @BindView(R.id.txUserId)
-    TextView txUserId;
-    @BindView(R.id.coin)
-    TextView coin;
+    int offsetLevel = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_history_report);
         ButterKnife.bind(this);
-        coin.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
-        txUserId.setText(String.valueOf(AppCommon.getInstance(this).getUserId()));
         reportData = new ArrayList<>();
         reportAdapter = new SellReportAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -61,33 +60,40 @@ public class SellHistoryReportActivity extends AppCompatActivity {
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
         recycleView.setAdapter(reportAdapter);
-        CallApiForReport();
+        CallApiForReport(0);
 
     }
 
-    private void CallApiForReport() {
+    private void CallApiForReport(int start) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(SellHistoryReportActivity.this);
+            Dialog dialog = null;
+            if(start == 0)
+                dialog = ViewUtils.getProgressBar(SellHistoryReportActivity.this);
+            else
+                dialog = ViewUtils.getBottomProgress(SellHistoryReportActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, String> roiMap = new HashMap<>();
-
             roiMap.put("provide", "1");
             roiMap.put("start", "0");
+            roiMap.put("start", String.valueOf(start));
+            roiMap.put("length", "20");
             Call call = apiService.SellREPORT_CALL(roiMap);
+            Dialog finalDialog = dialog;
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(SellHistoryReportActivity.this).clearNonTouchableFlags(SellHistoryReportActivity.this);
-                    dialog.dismiss();
+                    finalDialog.dismiss();
                     SellHistoryReport authResponse = (SellHistoryReport) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            reportData = authResponse.getData().getRecords();
-                            if(reportData.size() !=0) {
+                            setData(authResponse.getData());
+                          //  reportData = authResponse.getData().getRecords();
+                          /*  if(reportData.size() !=0) {
                                 reportData.add(0 ,new SellRecord());
                                 reportAdapter.update(reportData);
-                            }
+                            }*/
 
                         } else {
                             Toast.makeText(SellHistoryReportActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -99,7 +105,7 @@ public class SellHistoryReportActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                    finalDialog.dismiss();
                     AppCommon.getInstance(SellHistoryReportActivity.this).clearNonTouchableFlags(SellHistoryReportActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(SellHistoryReportActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -112,6 +118,16 @@ public class SellHistoryReportActivity extends AppCompatActivity {
         }
     }
 
+    private void setData(SellHistoryData data) {
+        if (reportData.size()!=0)
+            reportData.addAll(data.getRecords());
+        else {
+            reportData = data.getRecords();
+            reportData.add(0, new SellRecord());
+        }
+        reportAdapter.updateList(reportData , offsetLevel);
+    }
+
     public void checkOpen(int adapterPosition) {
         if (reportData.get(adapterPosition).isOpen()) {
             reportData.get(adapterPosition).setOpen(false);
@@ -119,5 +135,10 @@ public class SellHistoryReportActivity extends AppCompatActivity {
             reportData.get(adapterPosition).setOpen(true);
         }
         reportAdapter.update(reportData, adapterPosition);
+    }
+
+    public void callapi(int position) {
+        offsetLevel = offsetLevel + 1;
+        CallApiForReport(reportData.size());
     }
 }

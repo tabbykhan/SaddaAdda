@@ -16,6 +16,7 @@ import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.SellRecord;
 import com.imuons.saddaadda.View.ReportActivity;
 import com.imuons.saddaadda.View.SellHistoryReportActivity;
+import com.imuons.saddaadda.responseModel.SellHistoryReport;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ import butterknife.OnClick;
 public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.SellHolder> {
     Activity activity;
     ArrayList<SellRecord> reportDataArrayList;
+    int offset = 20;
 
     public SellReportAdapter(Activity activity, ArrayList<SellRecord> sellRecordArrayList) {
         this.activity = activity;
@@ -60,16 +62,20 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getAmount()));
             holder.cBal.setText(String.valueOf(reportData.getAmount()));
-            //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
+         //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
 
-            //holder.tranDate.setText(parseDate(reportData.getEntryTime()));
+            holder.tranDate.setText(parseDate(reportData.getSellDate()));
             //holder.type.setText(reportData.getType());
 
 
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+        }
+        if(position == offset){
+            if (activity instanceof SellHistoryReportActivity)
+                ((SellHistoryReportActivity) activity).callapi(position);
         }
     }
 
@@ -92,11 +98,11 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
 
     }
 
-    public void update(ArrayList<SellRecord> reportData) {
+    public void updateList(ArrayList<SellRecord> reportData , int offsetLevel) {
+        offset = 20*(offsetLevel+1);
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }
-
     public void update(ArrayList<SellRecord> reportData, int pos) {
         reportDataArrayList = reportData;
         notifyItemChanged(pos);
@@ -142,6 +148,7 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
         @OnClick({R.id.expend_list, R.id.expend_image, R.id.sno})
         void expend() {
             ((SellHistoryReportActivity) activity).checkOpen(getAdapterPosition());
+
         }
     }
 }
