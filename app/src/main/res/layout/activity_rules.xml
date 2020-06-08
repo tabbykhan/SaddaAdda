@@ -49,7 +49,7 @@
                 android:shadowDx="0.0"
                 android:shadowDy="0.0"
                 android:shadowRadius="20"
-                android:text="Dus Ka Dam"
+                android:text="Sadda X"
                 android:textColor="@color/yellow"
                 android:textSize="30sp"
                 android:textStyle="bold" />

@@ -175,7 +175,7 @@
             android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="5dp"
-            >
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="30dp"
@@ -211,7 +211,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/bg_shadow"
-            />
+            android:visibility="gone"/>
 
         <LinearLayout
             android:id="@+id/menu_withdraw"

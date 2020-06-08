@@ -28,6 +28,7 @@ import butterknife.OnClick;
 public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyHolder> {
     Activity activity;
     ArrayList<BuyRecord> reportDataArrayList;
+    int offset = 20;
 
     public BuyReportAdapter(Activity activity, ArrayList<BuyRecord> sellRecordArrayList) {
         this.activity = activity;
@@ -61,13 +62,16 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
             //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
 
-            //holder.tranDate.setText(parseDate(reportData.getEntryTime()));
+            holder.tranDate.setText(parseDate(reportData.getEntryTime()));
             //holder.type.setText(reportData.getType());
 
 
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+        }
+        if(position == offset){
+            ((BuyActivityHistory)activity).callapi(position);
         }
     }
 
@@ -91,7 +95,8 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
 
     }
 
-    public void update(ArrayList<BuyRecord> reportData) {
+    public void updateList(ArrayList<BuyRecord> reportData , int offsetLevel) {
+        offset = 20*(offsetLevel+1);
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }
