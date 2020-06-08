@@ -29,6 +29,7 @@ import butterknife.OnClick;
 public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.SellHolder> {
     Activity activity;
     ArrayList<SellRecord> reportDataArrayList;
+
     public SellReportAdapter(Activity activity, ArrayList<SellRecord> sellRecordArrayList) {
         this.activity = activity;
         this.reportDataArrayList = sellRecordArrayList;
@@ -59,7 +60,7 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getAmount()));
             holder.cBal.setText(String.valueOf(reportData.getAmount()));
-         //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
+            //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
 
             //holder.tranDate.setText(parseDate(reportData.getEntryTime()));
@@ -95,6 +96,7 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }
+
     public void update(ArrayList<SellRecord> reportData, int pos) {
         reportDataArrayList = reportData;
         notifyItemChanged(pos);
@@ -140,7 +142,6 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
         @OnClick({R.id.expend_list, R.id.expend_image, R.id.sno})
         void expend() {
             ((SellHistoryReportActivity) activity).checkOpen(getAdapterPosition());
-
         }
     }
 }

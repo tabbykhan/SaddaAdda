@@ -111,6 +111,11 @@ public class UpcomingSlotActivity extends AppCompatActivity {
         reportData.get(adapterPosition).getSlotNo();
         upcomingSlotAdapter.update(reportData, adapterPosition);
         startActivity(new Intent(this, DusKaDamActivity.class));
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        CallApiUpcomingSlot();
     }
 }

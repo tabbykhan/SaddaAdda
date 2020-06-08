@@ -1,9 +1,14 @@
 package com.imuons.saddaadda.adapters;
 
 import android.app.Activity;
+import android.graphics.drawable.AnimationDrawable;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,15 +17,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.imuons.saddaadda.DataModel.CompleteSlotRecord;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.Utils.AppCommon;
+import com.imuons.saddaadda.View.LeaderBoardActivity;
+import com.imuons.saddaadda.View.SevenUpDown;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.LeaderBoardHolder> {
 
-
+    AnimationDrawable anim;
     Activity activity;
     ArrayList<CompleteSlotRecord> reportDataArrayList;
 
@@ -40,16 +49,16 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     @Override
     public void onBindViewHolder(@NonNull LeaderBoardHolder holder, int position) {
         CompleteSlotRecord completeSlotRecord = reportDataArrayList.get(position);
-        if (completeSlotRecord.getDate()!=null){
+        if (completeSlotRecord.getDate() != null) {
             holder.date.setText(String.valueOf(completeSlotRecord.getDate()));
 
-        }else {
+        } else {
             holder.date.setText("");
         }
-        if (completeSlotRecord.getTime()!=null){
+        if (completeSlotRecord.getTime() != null) {
             holder.time.setText(String.valueOf(completeSlotRecord.getTime()));
 
-        }else {
+        } else {
             holder.time.setText("");
         }
     }
@@ -75,10 +84,19 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
         TextView date;
         @BindView(R.id.time)
         TextView time;
+        @BindView(R.id.slot)
+        LinearLayout slot;
 
         public LeaderBoardHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+        @OnClick(R.id.slot)
+        void selectSlot(){
+
+            ((LeaderBoardActivity)activity).selectedSlot(getAdapterPosition());
+        }
+
     }
+
 }
