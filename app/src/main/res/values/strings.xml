@@ -15,5 +15,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date_time"><![CDATA[Date & Time  -]]></string>
+    <string name="saven_up_r_1">"You can place bet  on the number between 2 to 6 or number 7 or between 8 to 12"</string>
+    <string name="saven_up_r_2">Player is free to place bet on any slot of his choice</string>
+    <string name="saven_up_r_3">Amount in multiples of 10(from 10/- to 1000/-)</string>
+    <string name="saven_up_r_4">"You just have to select number between 2 to 6 or number 7 or between 8 to 12 and click on roll dice "</string>
+    <string name="saven_up_r_5">" If you place a bet of 100/- on number between 2 to 6  and if the number comes between 2 to 6 then you win 200/- .which means your winning amount is doubled ."</string>
+    <string name="saven_up_r_6">"If you place a bet of 100/- on number between 8 to 12  and if the number comes between 8 to 12 then you win 200/- .which means your winning amount is doubled. "</string>
+    <string name="saven_up_r_7">If you place a bet of 100/- on number 7  and if the number comes exatact 7 then you win 300/- .which means your winning amount is tripled.</string>
 
 </resources>

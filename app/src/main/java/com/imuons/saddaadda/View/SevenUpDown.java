@@ -1,5 +1,6 @@
 package com.imuons.saddaadda.View;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -97,6 +98,19 @@ public class SevenUpDown extends AppCompatActivity {
     boolean isOn;
 
     int selectedType = 0;
+    Runnable run = new Runnable() {
+        @Override
+        public void run() {
+            anim.start();
+            anim2.start();
+
+        }
+    };
+
+    public static double getRandomDoubleBetweenRange(double min, double max) {
+        double x = (int) (Math.random() * ((max - min) + 1)) + min;
+        return x;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,15 +167,6 @@ public class SevenUpDown extends AppCompatActivity {
         isOn = true;
 
     }
-
-    Runnable run = new Runnable() {
-        @Override
-        public void run() {
-            anim.start();
-            anim2.start();
-
-        }
-    };
 
     @OnClick(R.id.twoClick)
     void twoClick() {
@@ -220,6 +225,10 @@ public class SevenUpDown extends AppCompatActivity {
         }
     }
 
+    @OnClick(R.id.rule)
+    void ruleactivity() {
+        startActivity(new Intent(getApplicationContext(),Activity7_up_Rules.class));
+    }
 
     @OnClick({R.id.dais_img1, R.id.dais_img, R.id.rolldice})
     void roll() {
@@ -333,26 +342,26 @@ public class SevenUpDown extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void setData(SathKaDamResponse authResponse) {
-        String  status = authResponse.getData().getStatus();;
+        String status = authResponse.getData().getStatus();
         AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
         tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
 
-        if(selectedType == 0 ) {
-            if(status.equalsIgnoreCase("win")){
+        if (selectedType == 0) {
+            if (status.equalsIgnoreCase("win")) {
                 two_six(status);
-            }else {
+            } else {
                 eight_twielw(status);
             }
-        }else if (selectedType == 1){
-            if(status.equalsIgnoreCase("win")){
+        } else if (selectedType == 1) {
+            if (status.equalsIgnoreCase("win")) {
                 seven(status);
-            }else {
+            } else {
                 two_six(status);
             }
-        }else {
-            if(status.equalsIgnoreCase("win")){
+        } else {
+            if (status.equalsIgnoreCase("win")) {
                 eight_twielw(status);
-            }else {
+            } else {
                 two_six(status);
             }
         }
@@ -466,14 +475,9 @@ public class SevenUpDown extends AppCompatActivity {
 
     }
 
-    public static double getRandomDoubleBetweenRange(double min, double max) {
-        double x = (int) (Math.random() * ((max - min) + 1)) + min;
-        return x;
-    }
-
     public void two_six(String status) {
         int caseVal = (int) getRandomDoubleBetweenRange(1, 14);
-        int total =0;
+        int total = 0;
         anim.stop();
         anim2.stop();
         switch (caseVal) {
@@ -550,7 +554,7 @@ public class SevenUpDown extends AppCompatActivity {
                 break;
 
         }
-        setBottomText(total  , status);
+        setBottomText(total, status);
 
     }
 
@@ -588,7 +592,7 @@ public class SevenUpDown extends AppCompatActivity {
 
 
         }
-        setBottomText(7 , status);
+        setBottomText(7, status);
 
 
     }
@@ -672,11 +676,11 @@ public class SevenUpDown extends AppCompatActivity {
                 break;
         }
         // 8-12
-        setBottomText(total , status);
+        setBottomText(total, status);
 
     }
 
-    public void  setBottomText(int totalVal , String staus){
+    public void setBottomText(int totalVal, String staus) {
         if (tol1.getText().toString().trim().isEmpty()) {
             tol1.setText(String.valueOf(totalVal));
         } else if (tol2.getText().toString().trim().isEmpty()) {

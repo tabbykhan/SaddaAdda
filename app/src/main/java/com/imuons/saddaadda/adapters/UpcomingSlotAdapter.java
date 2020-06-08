@@ -5,19 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.View.DusKaDamActivity;
-import com.imuons.saddaadda.View.UpcomingSlotActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +21,6 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapter.UpcomingSlotHolder> {
 

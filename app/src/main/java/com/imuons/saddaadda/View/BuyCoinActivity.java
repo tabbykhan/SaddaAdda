@@ -18,6 +18,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -109,7 +110,8 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
     LinearLayout ll_upload;
     @BindView(R.id.txt_file_name)
     TextView txt_file_name;
-
+    @BindView(R.id.iv_image_preview)
+    ImageView iv_image_preview;
     int offsetLevel = 0;
     private boolean is_layerOpen;
     private TicketRecordModel tickt_model;
@@ -495,6 +497,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
         ll_upload.setVisibility(View.VISIBLE);
         filePath = "";
         txt_file_name.setText("No File Chosen");
+        iv_image_preview.setImageBitmap(null);
     }
 
 
@@ -620,6 +623,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
 
     @OnClick(R.id.txt_choose_file)
     public void showPictureDialog() {
+
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(BuyCoinActivity.this);
         pictureDialog.setTitle("Select Action");
         String[] pictureDialogItems = {getResources().getString(R.string.Select_photo_from_gallery), getResources().getString(R.string.Capture_photo_from_camera)};
@@ -767,7 +771,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                     filePath = getPath(data.getData());
                     txt_file_name.setText(new File(filePath).getName());
                     bitmapImge = decodeSampledBitmapFromFile(filePath, 600, 800);
-
+                    iv_image_preview.setImageBitmap(bitmapImge);
                 } else if (resultCode == RESULT_CANCELED) {
                     // user cancelled recording
 
@@ -844,7 +848,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
         bitmapImge = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmapImge.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-
+        iv_image_preview.setImageBitmap(bitmapImge);
         destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
 
         Log.d("destination", "" + destination.getName());
@@ -882,6 +886,8 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
     void uploadFile() {
         if (filePath.equals("")) {
             Toast.makeText(getBaseContext(), "Choose File ", Toast.LENGTH_LONG).show();
+            txt_file_name.setError("Please Choose File");
+            txt_file_name.requestFocus();
             return;
         }
         try {

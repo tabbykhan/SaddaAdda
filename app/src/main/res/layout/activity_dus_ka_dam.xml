@@ -264,43 +264,59 @@
                         android:id="@+id/thirteen"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:layout_weight="0.1"
                         android:src="@drawable/plus_green"
                         />
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="2dp"
-                        android:layout_weight="0.86"
+                        android:layout_weight="0.9"
                         android:background="@color/lightgreen"
                         />
-                    <LinearLayout
-                        android:layout_width="2dp"
-                        android:weightSum="1"
-                        android:layout_height="match_parent">
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:background="@color/lightgreen"
-                            android:layout_height="2dp">
-                        </View>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:orientation="vertical"
-                            android:weightSum="1"
-                            android:layout_height="match_parent">
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="0dp">
-                            </View>
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="0dp">
-                            </View>
-                        </LinearLayout>
-                    </LinearLayout>
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="0.1"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:weightSum="1"-->
+<!--                        >-->
+
+<!--                        <View-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="2dp"-->
+<!--                            android:layout_weight="0.8"-->
+<!--                            android:background="@color/lightgreen"-->
+<!--                            ></View>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_weight="0.2"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:weightSum="1"-->
+<!--                            >-->
+
+<!--                            <View-->
+<!--                                android:layout_width="2dp"-->
+<!--                                android:layout_height="0dp"-->
+<!--                                android:layout_weight="0.5"-->
+
+<!--                                ></View>-->
+
+<!--                            <View-->
+<!--                                android:layout_width="3dp"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                android:layout_height="0dp"-->
+<!--                                android:layout_weight="0.5"-->
+<!--                                ></View>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout> -->
+
+
                 </LinearLayout>
             </TableRow>
 
@@ -613,33 +629,37 @@
                             android:id="@+id/eighteen"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:layout_weight="0.1"
                             android:src="@drawable/plus_green"
                             />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="0.86"
+                            android:layout_weight="0.9"
                             android:background="@color/lightgreen"
                             />
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.1"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:weightSum="1"-->
+<!--                            >-->
 
-                        <LinearLayout
-                            android:layout_width="2dp"
-                            android:weightSum="1"
-                            android:layout_height="match_parent">
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="2dp">
-                            </View>
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="match_parent">
-                            </View>
-                        </LinearLayout>
+<!--                            <View-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="2dp"-->
+<!--                                android:layout_weight="0.8"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                ></View>-->
+
+<!--                            <View-->
+<!--                                android:layout_width="2dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                ></View>-->
+<!--                        </LinearLayout>-->
                     </LinearLayout>
                 </TableRow>
 
@@ -952,32 +972,38 @@
                             android:id="@+id/twentyThree"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
+                            android:layout_weight="0.1"
                             android:src="@drawable/plus_green"
                             />
 
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="0.86"
+                            android:layout_weight="0.9"
                             android:background="@color/lightgreen"
                             />
-                        <LinearLayout
-                            android:layout_width="2dp"
-                            android:weightSum="1"
-                            android:layout_height="match_parent">
-                            <View
-                                android:layout_width="0dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="2dp">
-                            </View>
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="match_parent">
-                            </View>
-                        </LinearLayout>
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.1"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:weightSum="1"-->
+<!--                            >-->
+
+<!--                            <View-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="2dp"-->
+<!--                                android:layout_weight="0.8"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                ></View>-->
+
+<!--                            <View-->
+<!--                                android:layout_width="2dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                ></View>-->
+<!--                        </LinearLayout>-->
                     </LinearLayout>
                 </TableRow>
 
@@ -1217,24 +1243,28 @@
                             android:layout_weight="1"
                             android:background="@color/lightgreen"
                             />
+
                         <LinearLayout
                             android:layout_width="30dp"
-                            android:orientation="vertical"
+                            android:layout_height="match_parent"
                             android:gravity="center_horizontal"
+                            android:orientation="vertical"
                             android:weightSum="1"
-                            android:layout_height="match_parent">
+                            >
+
                             <View
                                 android:layout_width="2dp"
+                                android:layout_height="0dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_weight="0.5"
                                 android:background="@color/lightgreen"
-                                android:layout_height="0dp">
-                            </View>
+                                ></View>
+
                             <View
                                 android:layout_width="match_parent"
+                                android:layout_height="2dp"
                                 android:background="@color/lightgreen"
-                                android:layout_height="2dp">
-                            </View>
+                                ></View>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -1267,24 +1297,28 @@
                             android:layout_weight="1"
                             android:background="@color/lightgreen"
                             />
+
                         <LinearLayout
                             android:layout_width="30dp"
-                            android:orientation="vertical"
+                            android:layout_height="match_parent"
                             android:gravity="center_horizontal"
+                            android:orientation="vertical"
                             android:weightSum="1"
-                            android:layout_height="match_parent">
+                            >
+
                             <View
                                 android:layout_width="2dp"
+                                android:layout_height="0dp"
                                 android:layout_marginLeft="2dp"
                                 android:layout_weight="0.5"
                                 android:background="@color/lightgreen"
-                                android:layout_height="0dp">
-                            </View>
+                                ></View>
+
                             <View
                                 android:layout_width="match_parent"
+                                android:layout_height="2dp"
                                 android:background="@color/lightgreen"
-                                android:layout_height="2dp">
-                            </View>
+                                ></View>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -1307,6 +1341,7 @@
                         <ImageView
                             android:id="@+id/thirtyThree"
                             android:layout_width="30dp"
+                            android:layout_weight="0.1"
                             android:layout_height="30dp"
                             android:src="@drawable/plus_green"
                             />
@@ -1314,26 +1349,47 @@
                         <View
                             android:layout_width="0dp"
                             android:layout_height="2dp"
-                            android:layout_weight="0.86"
+                            android:layout_weight="0.9"
                             android:background="@color/lightgreen"
                             />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:orientation="vertical"
-                            android:weightSum="1"
-                            android:layout_height="match_parent">
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:background="@color/lightgreen"
-                                android:layout_height="0dp">
-                            </View>
-                            <View
-                                android:layout_width="2dp"
-                                android:layout_weight="0.5"
-                                android:layout_height="0dp">
-                            </View>
-                        </LinearLayout>
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_weight="0.1"-->
+<!--                            android:gravity="center_vertical"-->
+<!--                            android:weightSum="1"-->
+<!--                            >-->
+
+<!--                            <View-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="2dp"-->
+<!--                                android:layout_weight="0.8"-->
+<!--                                android:background="@color/lightgreen"-->
+<!--                                ></View>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="2dp"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:weightSum="1"-->
+<!--                                >-->
+
+<!--                                <View-->
+<!--                                    android:layout_width="2dp"-->
+<!--                                    android:layout_height="0dp"-->
+<!--                                    android:layout_weight="0.5"-->
+<!--                                    android:background="@color/lightgreen"-->
+<!--                                    ></View>-->
+
+<!--                                <View-->
+<!--                                    android:layout_width="2dp"-->
+<!--                                    android:layout_height="0dp"-->
+<!--                                    android:layout_weight="0.5"-->
+<!--                                    ></View>-->
+<!--                            </LinearLayout>-->
+
+<!--                        </LinearLayout>-->
                     </LinearLayout>
                 </TableRow>
 
@@ -1346,8 +1402,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:nestedScrollingEnabled="false"
                 android:background="@drawable/bg_blue_line"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/item_saddax_list"
                 />
 

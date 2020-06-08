@@ -167,7 +167,7 @@
                         android:layout_height="40dp"
                         android:drawableLeft="@drawable/ic_lock"
                         android:drawableRight="@drawable/ic_edit"
-                        android:drawablePadding="10dp"
+
                         android:drawableTint="#7dcb92"
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center_vertical"

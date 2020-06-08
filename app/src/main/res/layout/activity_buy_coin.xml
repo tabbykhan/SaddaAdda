@@ -409,6 +409,8 @@
                     android:fontFamily="@font/amazon_bold"
                     android:shadowColor="@color/white"
                     android:shadowDx="1"
+                    android:lines="1"
+                    android:gravity="center_vertical"
                     android:shadowDy="1"
                     android:shadowRadius="2"
                     android:text="No File Chosen"
@@ -426,6 +428,13 @@
                     android:layout_height="30dp">
                 </ImageView>
             </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_image_preview"
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:layout_height="180dp">
+            </ImageView>
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
