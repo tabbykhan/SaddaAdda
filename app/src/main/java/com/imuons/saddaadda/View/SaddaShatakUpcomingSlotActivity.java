@@ -59,7 +59,7 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
 
     @OnClick(R.id.leaderBoard)
     void learderBoard() {
-        startActivity(new Intent(this, LeaderBoardActivity.class));
+        startActivity(new Intent(this, SaddaShatakLeaderBoardActivity.class));
       //  Toast.makeText(this, "Work In progress", Toast.LENGTH_SHORT).show();
 
 

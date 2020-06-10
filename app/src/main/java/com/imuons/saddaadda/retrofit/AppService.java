@@ -2,6 +2,7 @@ package com.imuons.saddaadda.retrofit;
 
 
 import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
+import com.imuons.saddaadda.DataModel.ShatakProductResponseModel;
 import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
@@ -27,7 +28,6 @@ import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
-import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
@@ -239,5 +239,30 @@ public interface AppService {
     @POST("user/transfer-fund")
     Call<FundTransferResponse> FUND_TRANSFER_RESPONSE_CALL(
             @Body FundTransEntity fundTransEntity);
+
+
+    @GET("user/get-products-damdarshatak")
+    Call<ShatakProductResponseModel> GetShatakProduct();
+
+    @POST("user/damdar_shatak")
+    Call<CommonResponseModel> DumdarShatak(@Body Map<String, Object> param);
+
+    @POST("user/get-damdatshatak-topup")
+    Call<SaddaxReportResponse> GetShtakReport(@Body  SaddaXTopUp saddaXTopUp);
+
+    @POST("user/upcoming_damdar_shatak_slots")
+    Call <UpcomingSlotResponse>GetShatakUpcomingSolt(@Body Map<String, Object> paparam);
+
+    @GET("user/damdar_shatak_last_winning_date")
+    Call<WinningDateResponse> ShatakWinningDate();
+
+    @POST("user/damdar_shatak_completed_slots")
+    Call<CompleteSlotResponse> ShatakCompleteSolts(
+            @Body CompleteSlotEntity completeSlotEntity);
+
+    //tabish
+    @POST("user/damdar_shatak_leadership")
+    Call<WinningNumberResponse> ShatakLeadership(
+            @Body WinningNumberEntity winningNumberEntity);
 
 }

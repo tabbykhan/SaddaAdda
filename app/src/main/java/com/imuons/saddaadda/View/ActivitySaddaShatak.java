@@ -55,6 +55,7 @@ public class ActivitySaddaShatak extends AppCompatActivity {
     private TextView last_click_text;
     private int slot_number;
     private List<ShatakProductRecord> reportData;
+    private boolean is_invest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +64,12 @@ public class ActivitySaddaShatak extends AppCompatActivity {
         ButterKnife.bind(this);
         CallProduct();
         slot_number = getIntent().getIntExtra("pos", 0);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recycler_view.setLayoutManager(mLayoutManager);
-        recycler_view.setItemAnimator(new DefaultItemAnimator());
-        recycler_view.setNestedScrollingEnabled(true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setLayer();
         }
         CallShatakReport(slot_number);
+
     }
 
     private void CallProduct() {
@@ -113,6 +112,10 @@ public class ActivitySaddaShatak extends AppCompatActivity {
     }
 
     private void setAdapter(ArrayList<SaddaxReportDataModel> data) {
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recycler_view.setLayoutManager(mLayoutManager);
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
+        recycler_view.setNestedScrollingEnabled(true);
         ItemSaddaShatakListView adapter = new ItemSaddaShatakListView(getApplicationContext(), ActivitySaddaShatak.this, data);
         recycler_view.setAdapter(adapter);
     }
@@ -199,6 +202,9 @@ public class ActivitySaddaShatak extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        if (is_invest) {
+            finish();
+        }
         if (last_click_numbre != null) {
             last_click_numbre.setSelected(false);
             last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
@@ -267,6 +273,7 @@ public class ActivitySaddaShatak extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
+                            is_invest = true;
                             CallShatakReport(slot_number);
                             Toast.makeText(ActivitySaddaShatak.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
