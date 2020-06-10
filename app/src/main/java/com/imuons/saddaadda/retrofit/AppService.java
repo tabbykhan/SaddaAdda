@@ -2,6 +2,7 @@ package com.imuons.saddaadda.retrofit;
 
 
 import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
+import com.imuons.saddaadda.DataModel.ShatakProductResponseModel;
 import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
@@ -26,7 +27,6 @@ import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
-import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
@@ -231,5 +231,18 @@ public interface AppService {
     //tabish
     @GET("user/zero_to_nine_last_winning_date")
     Call<WinningDateResponse> WINNING_DATE_RESPONSE_CALL();
+
+    @POST("user/damdar_shatak")
+    Call<CommonResponseModel> DumdarShatak(@Body Map<String, Object>  param);
+
+    @GET("user/get-products-damdarshatak")
+    Call<ShatakProductResponseModel> GetShatakProduct();
+
+    @POST("user/upcoming_damdar_shatak_slots")
+    Call<UpcomingSlotResponse> GetShatakUpcomingSolt(@Body Map<String, Object>param);
+
+    @POST("user/get-damdatshatak-topup")
+    Call<SaddaxReportResponse> GetShtakReport(
+            @Body SaddaXTopUp saddaXTopUp);
 
 }
