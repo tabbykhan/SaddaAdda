@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.SellRecord;
@@ -48,8 +47,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
     RecyclerView recycleView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-    @BindView(R.id.spin_kit)
-    SpinKitView progress;
+
 
     LinearLayoutManager mLayoutManager;
     UpcomingSlotAdapter upcomingSlotAdapter;
@@ -108,7 +106,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
     }
 
     private void CallApiUpcomingSlot() {
-        progress.setVisibility(View.VISIBLE);
+
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
 
             Dialog dialog = ViewUtils.getProgressBar(UpcomingSlotActivity.this);
@@ -121,7 +119,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
                     dialog.dismiss();
                     UpcomingSlotResponse authResponse = (UpcomingSlotResponse) response.body();
                     if (authResponse != null) {
-                        progress.setVisibility(View.GONE);
+
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData().getRecords();
@@ -140,7 +138,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     dialog.dismiss();
-                    progress.setVisibility(View.GONE);
+
                     AppCommon.getInstance(UpcomingSlotActivity.this).clearNonTouchableFlags(UpcomingSlotActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(UpcomingSlotActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
