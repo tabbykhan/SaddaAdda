@@ -36,7 +36,7 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
     @Override
     public UpcomingSlotHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_upcoming_slot, parent, false);
+                .inflate(R.layout.item_shatak_upcoming_slot, parent, false);
         return new UpcomingSlotHolder(itemView);
     }
 

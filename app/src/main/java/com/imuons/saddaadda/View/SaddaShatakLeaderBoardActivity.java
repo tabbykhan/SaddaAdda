@@ -89,7 +89,7 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leader_board);
+        setContentView(R.layout.activity_shatak_leader_board);
         ButterKnife.bind(this);
         datelistPopupWindow = new ListPopupWindow(SaddaShatakLeaderBoardActivity.this);
         reportData = new ArrayList<>();
