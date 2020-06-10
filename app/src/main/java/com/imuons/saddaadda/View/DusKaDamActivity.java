@@ -1,9 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -12,32 +8,29 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
-import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.SaddaxReportDataModel;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
-import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXTopUp;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
-
 import com.imuons.saddaadda.adapters.SaddaXReportAdapters;
-import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
-import com.imuons.saddaadda.responseModel.ReportResponse;
 import com.imuons.saddaadda.responseModel.SaddaXResponse;
 import com.imuons.saddaadda.responseModel.SaddaxReportResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -114,7 +107,7 @@ public class DusKaDamActivity extends AppCompatActivity {
         reportAdapter = new SaddaXReportAdapters(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
-        recycleView.setNestedScrollingEnabled(false);
+        recycleView.setNestedScrollingEnabled(true);
         recycleView.setAdapter(reportAdapter);
         CallApiForSaddaxReport(slotId);
     }

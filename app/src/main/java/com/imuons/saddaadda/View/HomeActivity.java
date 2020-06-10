@@ -164,7 +164,8 @@ public class HomeActivity extends Activity {
     }
 
     public void saddaShatak(View view) {
-        Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(),SaddaShatakUpcomingSlotActivity.class));
     }
 
     public void saddaQuiz(View view) {
