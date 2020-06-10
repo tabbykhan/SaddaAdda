@@ -1,5 +1,6 @@
 package com.imuons.saddaadda.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -10,6 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.R;
@@ -38,12 +43,33 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.etPassword)
     EditText et_password;
+    String fireBase = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.i("getInstanceId failed::", task.getException().toString());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        fireBase= task.getResult().getToken();
+
+                        // Log and toast
+                       // String msg = getString(R.string.msg_token_fmt, token);
+                        Log.i("token::", fireBase);
+                     //   Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
 
     }
 
@@ -62,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         } else if (password.isEmpty()) {
             et_userId.setError("Please enter password");
         } else
-            callLoginApi(new LoginEntity(userId, password));
+            callLoginApi(new LoginEntity(userId, password , fireBase) );
 
     }
 
