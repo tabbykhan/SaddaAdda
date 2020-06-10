@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,8 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
     @Override
     public void onBindViewHolder(@NonNull UpcomingSlotHolder holder, int position) {
         UpcomingSlotData upcomingSlotData = reportDataArrayList.get(position);
+
+        holder.row.setAnimation(AnimationUtils.loadAnimation(activity,R.anim.item_animation_fall_down));
         holder.price.setText(String.valueOf(upcomingSlotData.getSlotNo()));
      //   holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
         holder.dateTime.setText(String.valueOf(upcomingSlotData.getFromDaytime()));
@@ -154,6 +158,8 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
         TextView endTime;
         @BindView(R.id.btnJoin)
         TextView btnJoin;
+        @BindView(R.id.row)
+        RelativeLayout row;
 
 
         public UpcomingSlotHolder(@NonNull View itemView) {
