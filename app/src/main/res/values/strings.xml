@@ -22,5 +22,13 @@
     <string name="saven_up_r_5">" If you place a bet of 100/- on number between 2 to 6  and if the number comes between 2 to 6 then you win 200/- .which means your winning amount is doubled ."</string>
     <string name="saven_up_r_6">"If you place a bet of 100/- on number between 8 to 12  and if the number comes between 8 to 12 then you win 200/- .which means your winning amount is doubled. "</string>
     <string name="saven_up_r_7">If you place a bet of 100/- on number 7  and if the number comes exatact 7 then you win 300/- .which means your winning amount is tripled.</string>
-
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="true">SaddaAdda</string>
+    <!-- [END fcm_default_icon_string] -->
+    <string name="fcm_message">FCM Message</string>
 </resources>

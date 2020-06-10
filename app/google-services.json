@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "198238621489",
+    "firebase_url": "https://saddadda-9c385.firebaseio.com",
+    "project_id": "saddadda-9c385",
+    "storage_bucket": "saddadda-9c385.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198238621489:android:5bbaa6a17c5c2605dbaa10",
+        "android_client_info": {
+          "package_name": "com.imuons.saddaadda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198238621489-4aakj3bifhkm2ef5ueo7r252c3olqohq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKeSGPPEeX7JHzlFRP75hsDIK3hrK5Y9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198238621489-4aakj3bifhkm2ef5ueo7r252c3olqohq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

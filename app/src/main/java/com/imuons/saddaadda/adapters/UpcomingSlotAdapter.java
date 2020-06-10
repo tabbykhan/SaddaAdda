@@ -10,9 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.imuons.saddaadda.DataModel.SellRecord;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.View.DusKaDamActivity;
+import com.imuons.saddaadda.View.SellHistoryReportActivity;
+import com.imuons.saddaadda.View.UpcomingSlotActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +29,7 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
 
     Activity activity;
     ArrayList<UpcomingSlotData> reportDataArrayList;
-
+    int offset = 10;
     public UpcomingSlotAdapter(Activity activity, ArrayList<UpcomingSlotData> reportDataArrayList) {
         this.activity = activity;
         this.reportDataArrayList = reportDataArrayList;
@@ -44,7 +47,8 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
     public void onBindViewHolder(@NonNull UpcomingSlotHolder holder, int position) {
         UpcomingSlotData upcomingSlotData = reportDataArrayList.get(position);
         holder.price.setText(String.valueOf(upcomingSlotData.getSlotNo()));
-        holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
+     //   holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
+        holder.dateTime.setText(String.valueOf(upcomingSlotData.getFromDaytime()));
         holder.starDate.setText(String.valueOf(upcomingSlotData.getFromDate()));
         holder.starTime.setText(String.valueOf(upcomingSlotData.getFromTime()));
         holder.endDate.setText(String.valueOf(upcomingSlotData.getToDate()));
@@ -59,6 +63,8 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
                 activity.startActivity(intent);
             }
         });
+
+
 
     }
 
@@ -123,7 +129,6 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
     public int getItemCount() {
         return reportDataArrayList.size();
     }
-
     public void update(ArrayList<UpcomingSlotData> reportData) {
         reportDataArrayList = reportData;
         notifyDataSetChanged();

@@ -196,7 +196,7 @@ public class HomeActivity extends Activity {
     }
 
     public void changeMoneyType(boolean isDemo) {
-        LoginEntity loginEntity = new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword());
+        LoginEntity loginEntity = new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword() , "");
         if (isDemo) {
             ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
 

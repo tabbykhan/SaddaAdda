@@ -62,7 +62,7 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
             }
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getAmount()));
-            holder.status.setText(reportData.getRemark().trim());
+            holder.status.setText(reportData.getStatus().trim());
             holder.tranDate_new.setText(parseDate(reportData.getEntryTime()));
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
             holder.remark.setText(reportData.getPin());

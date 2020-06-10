@@ -15,16 +15,22 @@
         android:scaleType="centerInside"
         android:src="@drawable/chat" />
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/chatimg"
+        android:layout_above="@+id/view">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/view"
-        android:layout_below="@+id/chatimg"
         android:padding="5dp"
         android:paddingBottom="5dp"
         android:transcriptMode="alwaysScroll"
         tools:listitem="@layout/adapter_chat_view" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <View
         android:id="@+id/view"

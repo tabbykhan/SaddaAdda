@@ -64,10 +64,10 @@ public class SellHistoryReportActivity extends AppCompatActivity {
 
     }
 
-    private void CallApiForReport(int start) {
+        private void CallApiForReport(int start) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = null;
-            if(start == 0)
+            if (start == 0)
                 dialog = ViewUtils.getProgressBar(SellHistoryReportActivity.this);
             else
                 dialog = ViewUtils.getBottomProgress(SellHistoryReportActivity.this);
@@ -89,7 +89,7 @@ public class SellHistoryReportActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setData(authResponse.getData());
-                          //  reportData = authResponse.getData().getRecords();
+                            //  reportData = authResponse.getData().getRecords();
                           /*  if(reportData.size() !=0) {
                                 reportData.add(0 ,new SellRecord());
                                 reportAdapter.update(reportData);
@@ -119,13 +119,13 @@ public class SellHistoryReportActivity extends AppCompatActivity {
     }
 
     private void setData(SellHistoryData data) {
-        if (reportData.size()!=0)
+        if (reportData.size() != 0)
             reportData.addAll(data.getRecords());
         else {
             reportData = data.getRecords();
             reportData.add(0, new SellRecord());
         }
-        reportAdapter.updateList(reportData , offsetLevel);
+        reportAdapter.updateList(reportData, offsetLevel);
     }
 
     public void checkOpen(int adapterPosition) {

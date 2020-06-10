@@ -42,7 +42,7 @@ public class TransRecord {
     private String wallet;
     @SerializedName("status")
     @Expose
-    private Object status;
+    private String status;
     @SerializedName("entry_time")
     @Expose
     private String entryTime;
@@ -152,11 +152,11 @@ public class TransRecord {
         this.wallet = wallet;
     }
 
-    public Object getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Object status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

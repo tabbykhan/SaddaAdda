@@ -2,9 +2,9 @@ package com.imuons.saddaadda.responseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.imuons.saddaadda.DataModel.WinningNumberData;
+import com.imuons.saddaadda.DataModel.FundTransData;
 
-public class WinningNumberResponse {
+public class FundTransferResponse {
 
     @SerializedName("code")
     @Expose
@@ -17,7 +17,7 @@ public class WinningNumberResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private WinningNumberData data;
+    private FundTransData data;
 
     public Integer getCode() {
         return code;
@@ -43,11 +43,11 @@ public class WinningNumberResponse {
         this.message = message;
     }
 
-    public WinningNumberData getData() {
+    public FundTransData getData() {
         return data;
     }
 
-    public void setData(WinningNumberData data) {
+    public void setData(FundTransData data) {
         this.data = data;
     }
 }

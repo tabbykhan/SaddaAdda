@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.R;
@@ -22,6 +23,8 @@ import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
+
+import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -153,12 +156,15 @@ public class ActivityMore extends AppCompatActivity {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                try {
+                    FirebaseInstanceId.getInstance().deleteInstanceId();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 AppCommon.getInstance(ActivityMore.this).clearPreference();
                 startActivity(new Intent(ActivityMore.this, SelectionPage.class));
                 finishAffinity();
                 Toast.makeText(ActivityMore.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent());
-                // finishAffinity();
             }
 
         });
@@ -175,6 +181,7 @@ public class ActivityMore extends AppCompatActivity {
     void buyTransReport(){
         startActivity(new Intent(getApplicationContext(), BuyTransReportActivity.class));
     }
+
     @OnClick(R.id.menu_withTransReport)
     void withTransReport(){
         startActivity(new Intent(getApplicationContext(), WithDrawTransReportActivity.class));

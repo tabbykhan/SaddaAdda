@@ -2,13 +2,13 @@ package com.imuons.saddaadda.retrofit;
 
 
 import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
-import com.imuons.saddaadda.DataModel.ShatakProductResponseModel;
 import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
 import com.imuons.saddaadda.EntityClass.ChatEntity;
 import com.imuons.saddaadda.EntityClass.CompleteSlotEntity;
+import com.imuons.saddaadda.EntityClass.FundTransEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
@@ -27,11 +27,13 @@ import com.imuons.saddaadda.responseModel.BuyCoinResponse;
 import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
+import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
+import com.imuons.saddaadda.responseModel.FundTransferResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
@@ -232,17 +234,10 @@ public interface AppService {
     @GET("user/zero_to_nine_last_winning_date")
     Call<WinningDateResponse> WINNING_DATE_RESPONSE_CALL();
 
-    @POST("user/damdar_shatak")
-    Call<CommonResponseModel> DumdarShatak(@Body Map<String, Object>  param);
 
-    @GET("user/get-products-damdarshatak")
-    Call<ShatakProductResponseModel> GetShatakProduct();
-
-    @POST("user/upcoming_damdar_shatak_slots")
-    Call<UpcomingSlotResponse> GetShatakUpcomingSolt(@Body Map<String, Object>param);
-
-    @POST("user/get-damdatshatak-topup")
-    Call<SaddaxReportResponse> GetShtakReport(
-            @Body SaddaXTopUp saddaXTopUp);
+    //tabish
+    @POST("user/transfer-fund")
+    Call<FundTransferResponse> FUND_TRANSFER_RESPONSE_CALL(
+            @Body FundTransEntity fundTransEntity);
 
 }
