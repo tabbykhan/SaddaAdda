@@ -3,6 +3,7 @@ package com.imuons.saddaadda;
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.firebase.FirebaseApp;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -13,6 +14,7 @@ public class SaddaAdda extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        FirebaseApp.initializeApp(this);
         if(imageLoader==null){
             intImageLoader();
         }

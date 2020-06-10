@@ -1,5 +1,6 @@
 package com.imuons.saddaadda.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -12,6 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
@@ -55,6 +60,8 @@ public class CreateAccount extends AppCompatActivity {
     @BindView(R.id.submitBtn)
     TextView submitBtn;
 
+    String fireBase = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +88,24 @@ public class CreateAccount extends AppCompatActivity {
             }
         });
         callRendomNumberAPI();
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.i("getInstanceId failed::", task.getException().toString());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        fireBase= task.getResult().getToken();
+
+                        // Log and toast
+                        // String msg = getString(R.string.msg_token_fmt, token);
+                        Log.i("token::", fireBase);
+                        //   Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void callVarifyId(String id) {
@@ -172,7 +197,7 @@ public class CreateAccount extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword()));
+                            callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword() , fireBase));
                         } else {
                             Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -47,6 +48,9 @@ public class ChatActivity extends AppCompatActivity {
     @BindView(R.id.etMessage)
     EditText etMessage;
 
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     ChatRoomAdapter chatRoomAdapter;
     ArrayList<FetchChatDataModel> chatDataArrayList;
@@ -62,20 +66,37 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(chatRoomAdapter);
-         callChatApi();
+        callChatApi();
+        swipeRefreshLayout.setColorSchemeColors(
+                getResources().getColor(R.color.lightgreen) ,
+                getResources().getColor(R.color.pink) ,
+                getResources().getColor(R.color.darkGry)
+        );
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                callChatApi();
+            }
+        });
     }
 
     private void callChatApi() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(ChatActivity.this);
+            Dialog dialog = null;
+            if(!swipeRefreshLayout.isRefreshing())
+             dialog = ViewUtils.getProgressBar(ChatActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.getChatList(new ChatEntity("1"));
+            Dialog finalDialog = dialog;
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags(ChatActivity.this);
-                    dialog.dismiss();
+                    if(finalDialog != null)
+                     finalDialog.dismiss();
+                    else
+                        swipeRefreshLayout.setRefreshing(false);
                     FetchChatResponse authResponse = (FetchChatResponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
@@ -93,7 +114,10 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                    if(finalDialog != null)
+                        finalDialog.dismiss();
+                    else
+                        swipeRefreshLayout.setRefreshing(false);
                     AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags(ChatActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(ChatActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
