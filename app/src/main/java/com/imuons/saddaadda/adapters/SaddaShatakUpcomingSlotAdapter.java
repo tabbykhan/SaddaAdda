@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -152,7 +153,7 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
         @BindView(R.id.btnJoin)
         TextView btnJoin;
         @BindView(R.id.row)
-        TextView row;
+        RelativeLayout row;
 
 
         public UpcomingSlotHolder(@NonNull View itemView) {
