@@ -12,10 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.imuons.saddaadda.DataModel.BuyRecord;
 import com.imuons.saddaadda.DataModel.TransRecord;
 import com.imuons.saddaadda.R;
-import com.imuons.saddaadda.View.BuyActivityHistory;
 import com.imuons.saddaadda.View.BuyTransReportActivity;
 import com.imuons.saddaadda.View.WithDrawTransReportActivity;
 
@@ -65,7 +63,8 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
             holder.status.setText(reportData.getStatus().trim());
             holder.tranDate_new.setText(parseDate(reportData.getEntryTime()));
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
-            holder.remark.setText(reportData.getPin());
+            holder.helpId.setText(reportData.getPin());
+            holder.remark.setText(reportData.getRemark().trim());
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
@@ -123,6 +122,8 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
         @BindView(R.id.tranDate_new)
         TextView tranDate_new;
         @BindView(R.id.rmark)
+        TextView helpId;
+        @BindView(R.id.remark)
         TextView remark;
         @BindView(R.id.status)
         TextView status;
