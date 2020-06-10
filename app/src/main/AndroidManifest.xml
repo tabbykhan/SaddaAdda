@@ -21,8 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.Activity7_up_Rules"></activity>
+        <activity android:name=".View.ActivitySaddaShatak"></activity>
+        <activity android:name=".View.Activity7_up_Rules"/>
         <activity android:name=".View.LeaderBoardActivity"/>
+        <activity android:name=".View.SaddaShatakLeaderBoardActivity"/>
+        <activity android:name=".View.SaddaShatakUpcomingSlotActivity"/>
         <activity android:name=".View.UpcomingSlotActivity"/>
         <activity android:name=".View.ChatActivity"/>
         <activity android:name=".View.ActivityMore"/>
