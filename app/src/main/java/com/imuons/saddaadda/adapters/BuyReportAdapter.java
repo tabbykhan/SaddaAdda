@@ -58,7 +58,7 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
             }
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getBuyAmount()));
-            //holder.cBal.setText(String.valueOf(reportData.getAmount()));
+            holder.cBal.setText(String.valueOf(reportData.getOldBalance()));
             //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
 
