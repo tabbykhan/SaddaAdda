@@ -3,6 +3,7 @@ package com.imuons.saddaadda.DataModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumberData {
@@ -11,7 +12,7 @@ public class WinningNumberData {
     private Integer slotNo;
     @SerializedName("product_name")
     @Expose
-    private Object productName;
+    private String productName;
     @SerializedName("winner_count")
     @Expose
     private Integer winnerCount;
@@ -20,13 +21,22 @@ public class WinningNumberData {
     private String status;
     @SerializedName("winner_datetime")
     @Expose
-    private Object winnerDatetime;
+    private String winnerDatetime;
     @SerializedName("winner_date")
     @Expose
     private String winnerDate;
     @SerializedName("winner_time")
     @Expose
     private String winnerTime;
+    @SerializedName("winning_status")
+    @Expose
+    private String winningStatus;
+    @SerializedName("winning_amount")
+    @Expose
+    private Integer winningAmount;
+    @SerializedName("topup_data")
+    @Expose
+    private ArrayList<TopupDatum> topupData = null;
 
     public Integer getSlotNo() {
         return slotNo;
@@ -36,11 +46,11 @@ public class WinningNumberData {
         this.slotNo = slotNo;
     }
 
-    public Object getProductName() {
+    public String getProductName() {
         return productName;
     }
 
-    public void setProductName(Object productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
 
@@ -60,11 +70,11 @@ public class WinningNumberData {
         this.status = status;
     }
 
-    public Object getWinnerDatetime() {
+    public String getWinnerDatetime() {
         return winnerDatetime;
     }
 
-    public void setWinnerDatetime(Object winnerDatetime) {
+    public void setWinnerDatetime(String winnerDatetime) {
         this.winnerDatetime = winnerDatetime;
     }
 
@@ -83,4 +93,29 @@ public class WinningNumberData {
     public void setWinnerTime(String winnerTime) {
         this.winnerTime = winnerTime;
     }
+
+    public String getWinningStatus() {
+        return winningStatus;
+    }
+
+    public void setWinningStatus(String winningStatus) {
+        this.winningStatus = winningStatus;
+    }
+
+    public Integer getWinningAmount() {
+        return winningAmount;
+    }
+
+    public void setWinningAmount(Integer winningAmount) {
+        this.winningAmount = winningAmount;
+    }
+
+    public ArrayList<TopupDatum> getTopupData() {
+        return topupData;
+    }
+
+    public void setTopupData(ArrayList<TopupDatum> topupData) {
+        this.topupData = topupData;
+    }
+
 }

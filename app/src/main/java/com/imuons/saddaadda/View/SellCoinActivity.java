@@ -12,12 +12,14 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.CoinsDataModel;
 import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
+import com.imuons.saddaadda.EntityClass.FundTransEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
+import com.imuons.saddaadda.responseModel.FundTransferResponse;
 import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.retrofit.AppService;
@@ -37,9 +39,13 @@ public class SellCoinActivity extends AppCompatActivity {
 
     @BindView(R.id.txtAvailableAmount)
     TextView txtAvailableAmount;
+    @BindView(R.id.top_up_wallet_balance)
+    TextView top_up_wallet_balance;
 
     @BindView(R.id.etAmount)
     EditText etAmount;
+    @BindView(R.id.etAmountTrans)
+    EditText etAmountTrans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,15 @@ public class SellCoinActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getUserCoinsInfo();
     }
+        @OnClick(R.id.transferBtn)
+        void transfercall(){
+            String amount = etAmountTrans.getText().toString().trim();
+            if (amount.isEmpty()) {
+                etAmountTrans.setError("Please enter Amount");
+            } else
+                callFundTransferApi(new FundTransEntity(amount));
 
+        }
     @OnClick(R.id.submitBtn)
     void submitCall() {
         String amount = etAmount.getText().toString().trim();
@@ -144,11 +158,61 @@ public class SellCoinActivity extends AppCompatActivity {
     }
 
     private void setProfileInfo(CoinsDataModel data) {
-        if (data.getPurchaseWallet() != null) {
-            txtAvailableAmount.setText(String.valueOf(data.getPurchaseWallet()));
+        if (data.getWinningWallet() != null) {
+            txtAvailableAmount.setText(String.valueOf(data.getWinningWallet()));
         } else {
             txtAvailableAmount.setText("0");
-
+        }
+        if (data.getPurchaseWallet() != null) {
+            top_up_wallet_balance.setText(String.valueOf(data.getPurchaseWallet()));
+        } else {
+            top_up_wallet_balance.setText("0");
         }
     }
+
+
+    //fund Transfer Api
+
+    private void callFundTransferApi(FundTransEntity fundTransEntity) {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(SellCoinActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class);
+            Call call = apiService.FUND_TRANSFER_RESPONSE_CALL(fundTransEntity);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(SellCoinActivity.this).clearNonTouchableFlags(SellCoinActivity.this);
+                    dialog.dismiss();
+                    FundTransferResponse sellResponse = (FundTransferResponse) response.body();
+                    if (sellResponse != null) {
+                        Log.i("ResponseUpdate::", new Gson().toJson(sellResponse));
+                        if (sellResponse.getCode() == 200) {
+                            Toast.makeText(SellCoinActivity.this, sellResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            etAmountTrans.setText("");
+                            getUserCoinsInfo();
+                        } else {
+                            Toast.makeText(SellCoinActivity.this, sellResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(SellCoinActivity.this).showDialog(SellCoinActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(SellCoinActivity.this).clearNonTouchableFlags(SellCoinActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(SellCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }

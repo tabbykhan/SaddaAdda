@@ -17,12 +17,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListPopupWindow;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.CompleteSlotRecord;
+import com.imuons.saddaadda.DataModel.TopupDatum;
 import com.imuons.saddaadda.DataModel.WinningDataModel;
 import com.imuons.saddaadda.DataModel.WinningDateRecord;
 import com.imuons.saddaadda.DataModel.WinningNumberData;
@@ -33,8 +35,10 @@ import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.LeaderBoardAdapter;
+import com.imuons.saddaadda.adapters.SaddaXReportAdapters;
 import com.imuons.saddaadda.adapters.UpcomingSlotAdapter;
 import com.imuons.saddaadda.adapters.WinningDateAdapter;
+import com.imuons.saddaadda.adapters.WonPriceAdapter;
 import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.UpcomingSlotResponse;
 import com.imuons.saddaadda.responseModel.WinningDateResponse;
@@ -64,11 +68,16 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerview)
     RecyclerView recycleView;
+
+    @BindView(R.id.recycleViewWonNUmber)
+    RecyclerView recycleViewWonNUmber;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
     @BindView(R.id.windate)
     EditText windate;
+    @BindView(R.id.nxt)
+    RelativeLayout nxt;
 
     @BindView(R.id.comingDate)
     TextView comingDate;
@@ -78,11 +87,13 @@ public class LeaderBoardActivity extends AppCompatActivity {
     TextView wonNumber;
 
     LeaderBoardAdapter leaderBoardAdapter;
+    WonPriceAdapter wonPriceAdapter;
     ArrayList<CompleteSlotRecord> reportData;
+    ArrayList<TopupDatum> topupData;
     ArrayList<WinningDateRecord> levelDataArrayList;
 
     String level, getdatecode, selectedDate;
-    String strDate = "08/06/2020";
+    String strDate = "";
 
     ListPopupWindow datelistPopupWindow;
     List<String> listDateName = new ArrayList<>();
@@ -96,11 +107,21 @@ public class LeaderBoardActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         datelistPopupWindow = new ListPopupWindow(LeaderBoardActivity.this);
         reportData = new ArrayList<>();
+
         levelDataArrayList = new ArrayList<>();
         leaderBoardAdapter = new LeaderBoardAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setAdapter(leaderBoardAdapter);
+
+
+        topupData = new ArrayList<>();
+        wonPriceAdapter = new WonPriceAdapter(this, topupData);
+        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this);
+        recycleViewWonNUmber.setLayoutManager(mLayoutManager1);
+        recycleViewWonNUmber.setNestedScrollingEnabled(false);
+        recycleViewWonNUmber.setAdapter(wonPriceAdapter);
+
         datelistPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -131,20 +152,11 @@ public class LeaderBoardActivity extends AppCompatActivity {
             }
         });
 
-        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateObj = null;
-        try {
-            dateObj = curFormater.parse(strDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat postFormater = new SimpleDateFormat("MMMM dd, yyyy");
-
-        String newDateStr = postFormater.format(dateObj);
-
-
+        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Date dateobj = new Date();
+        System.out.println(df.format(dateobj));
         CallWinningDate();
-        CallApiCompleteSlot(newDateStr);
+        CallApiCompleteSlot(String.valueOf(dateobj));
 
     }
 
@@ -259,6 +271,11 @@ public class LeaderBoardActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setWonNumber(authResponse.getData());
+                            if (authResponse.getData().getTopupData() != null) {
+                                setWonNoAdapter(authResponse.getData().getTopupData());
+                            } else {
+                                nxt.setVisibility(View.GONE);
+                            }
                         } else {
                             Toast.makeText(LeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -282,18 +299,26 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }
     }
 
+    private void setWonNoAdapter(ArrayList<TopupDatum> topupData) {
+        nxt.setVisibility(View.VISIBLE);
+        WonPriceAdapter wonPriceAdapter = new WonPriceAdapter(this, topupData);
+        recycleViewWonNUmber.setAdapter(wonPriceAdapter);
+    }
+
     private void setWonNumber(WinningNumberData data) {
         if (data.getProductName() != null) {
             wonNumber.setText(String.valueOf(data.getProductName()));
         } else {
             wonNumber.setText("_ _");
         }
-        if (data.getWinnerDate() !=null){
+        if (data.getWinnerDate() != null) {
             comingDate.setText(String.valueOf(data.getWinnerDate()));
 
-        }else {
-            comingDate.setText("--");
+        } else {
+            comingDate.setText("");
         }
+
+
     }
 
     public void selectedSlot(int adapterPosition) {

@@ -8,6 +8,7 @@ import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
 import com.imuons.saddaadda.EntityClass.ChatEntity;
 import com.imuons.saddaadda.EntityClass.CompleteSlotEntity;
+import com.imuons.saddaadda.EntityClass.FundTransEntity;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
@@ -32,6 +33,7 @@ import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
+import com.imuons.saddaadda.responseModel.FundTransferResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
@@ -231,5 +233,11 @@ public interface AppService {
     //tabish
     @GET("user/zero_to_nine_last_winning_date")
     Call<WinningDateResponse> WINNING_DATE_RESPONSE_CALL();
+
+
+    //tabish
+    @POST("user/transfer-fund")
+    Call<FundTransferResponse> FUND_TRANSFER_RESPONSE_CALL(
+            @Body FundTransEntity fundTransEntity);
 
 }

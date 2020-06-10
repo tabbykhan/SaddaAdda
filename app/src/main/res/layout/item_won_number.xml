@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="2dp">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/nxt"
+        android:background="@drawable/green_box">
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#a3ffaf" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#a3ffaf" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_regular"
+                android:gravity="center"
+                android:shadowColor="#cd9b0e"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="5"
+                android:text="Amount"
+                android:textColor="#cd9b0e"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#a3ffaf" />
+
+            <TextView
+                android:id="@+id/number"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_regular"
+                android:gravity="center"
+                android:shadowColor="#c774ac"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="5"
+                android:text="Number"
+                android:textColor="#c774ac"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#a3ffaf" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_regular"
+                android:gravity="center"
+                android:shadowColor="#0045EE"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="5"
+                android:text="Status"
+                android:textColor="#0045EE"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#a3ffaf" />
+
+            <TextView
+                android:id="@+id/Winning_money"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/amazon_regular"
+                android:gravity="center"
+                android:shadowColor="#d64447"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="5"
+                android:text="You won"
+                android:textColor="#d64447"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="#a3ffaf" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
