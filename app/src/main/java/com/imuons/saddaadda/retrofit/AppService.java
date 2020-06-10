@@ -260,7 +260,6 @@ public interface AppService {
     Call<CompleteSlotResponse> ShatakCompleteSolts(
             @Body CompleteSlotEntity completeSlotEntity);
 
-    //tabish
     @POST("user/damdar_shatak_leadership")
     Call<WinningNumberResponse> ShatakLeadership(
             @Body WinningNumberEntity winningNumberEntity);

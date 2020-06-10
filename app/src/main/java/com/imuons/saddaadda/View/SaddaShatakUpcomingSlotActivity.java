@@ -46,7 +46,7 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upcoming_slot);
+        setContentView(R.layout.activity_shatak_upcoming_slot);
         ButterKnife.bind(this);
         reportData = new ArrayList<>();
         upcomingSlotAdapter = new SaddaShatakUpcomingSlotAdapter(this, reportData);
