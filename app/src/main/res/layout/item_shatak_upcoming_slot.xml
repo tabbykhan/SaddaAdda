@@ -78,7 +78,8 @@
                 android:gravity="center"
                 android:text="Remind me"
                 android:textColor="#6C1772"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                />
         </LinearLayout>
 
         <TextView
@@ -143,7 +144,7 @@
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/amazon_bold"
                 android:gravity="center_vertical"
-                android:text="4:00pm"
+                android:text=""
                 android:textColor="#6C1772"
                 android:textSize="12sp" />
 

@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class ShatakLeaderBoardAdapter extends RecyclerView.Adapter<ShatakLeaderB
     @Override
     public void onBindViewHolder(@NonNull LeaderBoardHolder holder, int position) {
         CompleteSlotRecord completeSlotRecord = reportDataArrayList.get(position);
+        holder.slot.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.item_animation_fall_down));
         if (completeSlotRecord.getDate() != null) {
             holder.date.setText(String.valueOf(completeSlotRecord.getDate()));
 
@@ -85,10 +87,11 @@ public class ShatakLeaderBoardAdapter extends RecyclerView.Adapter<ShatakLeaderB
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        @OnClick(R.id.slot)
-        void selectSlot(){
 
-            ((SaddaShatakLeaderBoardActivity)activity).selectedSlot(getAdapterPosition());
+        @OnClick(R.id.slot)
+        void selectSlot() {
+
+            ((SaddaShatakLeaderBoardActivity) activity).selectedSlot(getAdapterPosition());
         }
 
     }

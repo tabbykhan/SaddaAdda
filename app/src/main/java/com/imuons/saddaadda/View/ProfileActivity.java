@@ -61,6 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.logOut)
     TextView logOut;
 
+    String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -218,7 +220,7 @@ public class ProfileActivity extends AppCompatActivity {
             etBranchName.setText("");
         }
 
-
+        userID = String.valueOf(data.getUserId());
         txUserId.setText(String.valueOf(data.getUserId()));
     }
 
@@ -344,9 +346,10 @@ public class ProfileActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             //String shareMessage= "\nLet me recommend you this application\n\n";
            // shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-            String shareMessage = "Share Message here";
+            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" +"LINK="+userID+ " to head to my profile now";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "choose one"));
+
         } catch(Exception e) {
             //e.toString();
         }
