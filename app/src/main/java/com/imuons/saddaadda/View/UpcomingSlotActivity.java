@@ -42,12 +42,10 @@ import retrofit2.Response;
 
 public class UpcomingSlotActivity extends AppCompatActivity {
 
-
     @BindView(R.id.recycler_view)
     RecyclerView recycleView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-
 
     LinearLayoutManager mLayoutManager;
     UpcomingSlotAdapter upcomingSlotAdapter;

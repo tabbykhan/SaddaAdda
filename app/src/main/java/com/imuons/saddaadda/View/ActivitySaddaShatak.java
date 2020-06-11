@@ -2,6 +2,7 @@ package com.imuons.saddaadda.View;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -390,6 +392,12 @@ Map<String,Boolean> selectelBix=new HashMap<>();
             // no internet
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    @OnClick(R.id.gotoRules)
+    void goToShatakRule(){
+        startActivity(new Intent(this, ShatakRules.class));
 
     }
 }

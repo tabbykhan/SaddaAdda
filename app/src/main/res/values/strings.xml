@@ -31,4 +31,5 @@
     <string name="default_notification_channel_name" translatable="true">SaddaAdda</string>
     <!-- [END fcm_default_icon_string] -->
     <string name="fcm_message">FCM Message</string>
+    <string name="for_example_1_if_you_place_a_bet_of_100_on_number_9_and_the_winning_number_in_leaderboard_comes_number_9_then_your_winning_amount_is_90_times_of_100_which_means_your_winning_amount_is_9000">For Example \n 1) If you place a bet of 100/- on number 9 and the winning number in leaderboard comes number 9 then your winning amount is 90 times of 100/- ,which means your winning amount is 9000/-.</string>
 </resources>
