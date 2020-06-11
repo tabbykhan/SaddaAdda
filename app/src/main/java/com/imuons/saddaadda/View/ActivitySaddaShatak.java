@@ -65,11 +65,11 @@ public class ActivitySaddaShatak extends AppCompatActivity {
         CallProduct();
         slot_number = getIntent().getIntExtra("pos", 0);
 
+
+        CallShatakReport(slot_number);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             setLayer();
         }
-        CallShatakReport(slot_number);
-
     }
 
     private void CallProduct() {
@@ -118,6 +118,7 @@ public class ActivitySaddaShatak extends AppCompatActivity {
         recycler_view.setNestedScrollingEnabled(true);
         ItemSaddaShatakListView adapter = new ItemSaddaShatakListView(getApplicationContext(), ActivitySaddaShatak.this, data);
         recycler_view.setAdapter(adapter);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -165,13 +166,24 @@ public class ActivitySaddaShatak extends AppCompatActivity {
                 main_layer.addView(ll_box);
 
                 ll_box.setTag(j);
+
                 textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Log.d("click event", "----" + ll_box.getTag().toString());
                         if (ll_box.isSelected()) {
-                            ll_box.setSelected(false);
-                            textView.setTextColor(getResources().getColor(R.color.lightgreen));
+                            if(selectelBix.containsKey(ll_box.getTag().toString())){
+                                last_click_numbre = ll_box;
+                                last_click_text = textView;
+                                openDialog(ll_box.getTag().toString());
+                                ll_box.setSelected(true);
+                                textView.setActivated(true);
+                                textView.setTextColor(getResources().getColor(R.color.colorBlack));
+                            }else{
+                                ll_box.setSelected(false);
+                                textView.setTextColor(getResources().getColor(R.color.lightgreen));
+                            }
+
                         } else {
                             last_click_numbre = ll_box;
                             last_click_text = textView;
@@ -250,7 +262,7 @@ public class ActivitySaddaShatak extends AppCompatActivity {
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();
     }
-
+Map<String,Boolean> selectelBix=new HashMap<>();
     private void callSerivice(String product_id, String amount) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ActivitySaddaShatak.this);
@@ -274,22 +286,27 @@ public class ActivitySaddaShatak extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             is_invest = true;
+                            selectelBix.put(product_id, true);
                             CallShatakReport(slot_number);
                             Toast.makeText(ActivitySaddaShatak.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else {
+                            if(!selectelBix.containsKey(product_id)) {
+                                if (last_click_numbre != null) {
+                                    last_click_numbre.setSelected(false);
+                                    last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
+                                    last_click_numbre = null;
+                                }
+                            }
+                            Toast.makeText(ActivitySaddaShatak.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        if(!selectelBix.containsKey(product_id)) {
                             if (last_click_numbre != null) {
                                 last_click_numbre.setSelected(false);
                                 last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
                                 last_click_numbre = null;
                             }
-                            Toast.makeText(ActivitySaddaShatak.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        if (last_click_numbre != null) {
-                            last_click_numbre.setSelected(false);
-                            last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
-                            last_click_numbre = null;
                         }
                         AppCommon.getInstance(ActivitySaddaShatak.this).showDialog(ActivitySaddaShatak.this, "Server Error");
                     }
@@ -300,10 +317,12 @@ public class ActivitySaddaShatak extends AppCompatActivity {
                     if (dialog != null) {
                         dialog.dismiss();
                     }
-                    if (last_click_numbre != null) {
-                        last_click_numbre.setSelected(false);
-                        last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
-                        last_click_numbre = null;
+                    if(!selectelBix.containsKey(product_id)) {
+                        if (last_click_numbre != null) {
+                            last_click_numbre.setSelected(false);
+                            last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
+                            last_click_numbre = null;
+                        }
                     }
                     AppCommon.getInstance(ActivitySaddaShatak.this).clearNonTouchableFlags(ActivitySaddaShatak.this);
                     // loaderView.setVisibility(View.GONE);
@@ -314,10 +333,12 @@ public class ActivitySaddaShatak extends AppCompatActivity {
 
         } else {
             // no internet
-            if (last_click_numbre != null) {
-                last_click_numbre.setSelected(false);
-                last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
-                last_click_numbre = null;
+            if(!selectelBix.containsKey(product_id)) {
+                if (last_click_numbre != null) {
+                    last_click_numbre.setSelected(false);
+                    last_click_text.setTextColor(getResources().getColor(R.color.lightgreen));
+                    last_click_numbre = null;
+                }
             }
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
