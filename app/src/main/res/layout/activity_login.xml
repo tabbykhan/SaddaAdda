@@ -85,7 +85,7 @@
                 android:background="@drawable/edit_bg"
                 android:fontFamily="@font/amazon_regular"
                 android:hint="Password"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"

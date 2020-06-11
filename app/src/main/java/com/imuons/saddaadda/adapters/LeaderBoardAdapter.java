@@ -49,6 +49,8 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     @Override
     public void onBindViewHolder(@NonNull LeaderBoardHolder holder, int position) {
         CompleteSlotRecord completeSlotRecord = reportDataArrayList.get(position);
+        holder.slot.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.item_animation_fall_down));
+
         if (completeSlotRecord.getDate() != null) {
             holder.date.setText(String.valueOf(completeSlotRecord.getDate()));
 
