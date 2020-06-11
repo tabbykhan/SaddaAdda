@@ -349,7 +349,7 @@ public class ProfileActivity extends AppCompatActivity {
             String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" +"LINK="+userID+ " to head to my profile now";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "choose one"));
-            
+
         } catch(Exception e) {
             //e.toString();
         }
