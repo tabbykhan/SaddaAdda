@@ -90,7 +90,7 @@ public class ActivityMore extends AppCompatActivity {
         changePin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               callsendOtp(true);
+                callsendOtp(true);
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +102,7 @@ public class ActivityMore extends AppCompatActivity {
     }
 
     private void callsendOtp(boolean b) {
+
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ActivityMore.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
@@ -117,9 +118,9 @@ public class ActivityMore extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Toast.makeText(ActivityMore.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            if (b){
+                            if (b) {
                                 startActivity(new Intent(getApplicationContext(), ChangePin.class));
-                            }else{
+                            } else {
                                 startActivity(new Intent(ActivityMore.this, ChangePassword.class));
                             }
 
@@ -178,12 +179,12 @@ public class ActivityMore extends AppCompatActivity {
     }
 
     @OnClick(R.id.menu_buyTransReport)
-    void buyTransReport(){
+    void buyTransReport() {
         startActivity(new Intent(getApplicationContext(), BuyTransReportActivity.class));
     }
 
     @OnClick(R.id.menu_withTransReport)
-    void withTransReport(){
+    void withTransReport() {
         startActivity(new Intent(getApplicationContext(), WithDrawTransReportActivity.class));
     }
 }
