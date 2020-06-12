@@ -64,6 +64,7 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
             holder.cBal.setText(String.valueOf(reportData.getAmount()));
          //   holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
+            holder.status.setText(reportData.getStatus());
 
             holder.tranDate.setText(parseDate(reportData.getSellDate()));
             //holder.type.setText(reportData.getType());
@@ -127,6 +128,8 @@ public class SellReportAdapter extends RecyclerView.Adapter<SellReportAdapter.Se
         TextView tranDate;
         @BindView(R.id.rmark)
         TextView remark;
+        @BindView(R.id.status)
+        TextView status;
 
         @BindView(R.id.nxt)
         RelativeLayout nxt;

@@ -246,6 +246,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/stausLayout"
                 android:layout_width="match_parent"
                 android:layout_height="20dp">
 
