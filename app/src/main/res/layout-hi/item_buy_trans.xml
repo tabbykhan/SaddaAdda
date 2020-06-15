@@ -15,7 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/sr_hindi" />
+            android:src="@drawable/sr_no_new" />
 
         <ImageView
             android:layout_width="0dp"
@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:src="@drawable/confirm_date" />
+            android:src="@drawable/lastdate" />
 
     </LinearLayout>
 
