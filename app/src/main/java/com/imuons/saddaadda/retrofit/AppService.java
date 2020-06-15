@@ -31,6 +31,7 @@ import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.CommonResponseModel;
 import com.imuons.saddaadda.responseModel.CompleteSlotResponse;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
+import com.imuons.saddaadda.responseModel.DirectReport;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
 import com.imuons.saddaadda.responseModel.FundTransferResponse;
@@ -248,10 +249,10 @@ public interface AppService {
     Call<CommonResponseModel> DumdarShatak(@Body Map<String, Object> param);
 
     @POST("user/get-damdatshatak-topup")
-    Call<SaddaxReportResponse> GetShtakReport(@Body  SaddaXTopUp saddaXTopUp);
+    Call<SaddaxReportResponse> GetShtakReport(@Body SaddaXTopUp saddaXTopUp);
 
     @POST("user/upcoming_damdar_shatak_slots")
-    Call <UpcomingSlotResponse>GetShatakUpcomingSolt(@Body Map<String, Object> paparam);
+    Call<UpcomingSlotResponse> GetShatakUpcomingSolt(@Body Map<String, Object> paparam);
 
     @GET("user/damdar_shatak_last_winning_date")
     Call<WinningDateResponse> ShatakWinningDate();
@@ -263,5 +264,15 @@ public interface AppService {
     @POST("user/damdar_shatak_leadership")
     Call<WinningNumberResponse> ShatakLeadership(
             @Body WinningNumberEntity winningNumberEntity);
+
+    @GET("user/zerotonine-direct-income")
+    Call<DirectReport> DIRECT_REPORT_CALL();
+
+    @GET("user/7updown-direct-income")
+    Call<DirectReport> Seven_DIRECT_REPORT_CALL();
+
+    @GET("user/damdar-direct-income")
+    Call<DirectReport> Satak_DIRECT_REPORT_CALL();
+
 
 }
