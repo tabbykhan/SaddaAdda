@@ -142,7 +142,7 @@
     <string name="number">संख्या</string>
     <string name="status">स्थिति</string>
     <string name="you_won">तुम जीते</string>
-    <string name="paytm_no">पेटीएम नं</string>
+    <string name="paytm_no">पेटीएम नंबर</string>
     <string name="enter_number">नंबर दर्ज करें</string>
     <string name="bank_details">बैंक विवरण</string>
     <string name="account_holder_name">खाताधारक का नाम</string>
@@ -179,4 +179,16 @@
     <string name="join_now">अब शामिल हों</string>
     <string name="enter_your_bet_here">अपनी शर्त यहाँ दर्ज करें</string>
     <string name="pls_enter_amount">कृपया राशि दर्ज करें</string>
+    <string name="you_can_place_bet_on_any_number_of_your_choice_from_1_to_100">आप अपनी पसंद के किसी भी नंबर पर दांव को 1 से लेकर 100 तक लगाएं</string>
+    <string
+        name="player_is_free_to_place_bet_on_any_number_of_his_choice_and_also_on_multiple_numbers">खिलाड़ी अपनी पसंद के किसी भी नंबर पर और कई नंबरों पर दांव लगाने के लिए स्वतंत्र है।.</string>
+    <string name="amount_in_multiples_of_10_from_10_to_unlimited">10 के गुणकों में राशि (10 / - से असीमित तक)</string>
+    <string
+        name="you_just_have_to_select_any_number_between_1_to_100_and_enter_the_amount_of_your_choice_and_click_on_submit">आपको बस 1 से 100 के बीच की किसी भी संख्या को चुनना होगा और अपनी पसंद की राशि दर्ज करनी होगी और सबमिट पर क्लिक करना होगा</string>
+    <string
+        name="for_example_1_if_you_place_a_bet_of_100_on_number_9_and_the_winning_number_in_leaderboard_comes_number_9_then_your_winning_amount_is_90_times_of_100_which_means_your_winning_amount_is_9000">उदाहरण के लिए 1) यदि आप नंबर ९ पर १०० रुपये का दांव लगाते हैं और लीडरबोर्ड में जीतने वाला नंबर ९ आता है तो आपकी जीतने वाली राशि १०० का ९ ० गुना है जिसका मतलब है कि आपकी जीतने वाली राशि ९000 रुपये है</string>
+    <string name="please_enter_old_pin">कृपया पुराना पिन दर्ज करें</string>
+    <string name="pls_enter_message">कृपया संदेश दर्ज करें</string>
+    <string name="withdraow_tran_hinstory">निकासी लेनदेन रिपोर्ट</string>
+    <string name="help_id">मदद आईडी</string>
 </resources>

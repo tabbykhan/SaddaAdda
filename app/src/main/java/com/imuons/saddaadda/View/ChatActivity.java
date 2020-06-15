@@ -1,18 +1,17 @@
 package com.imuons.saddaadda.View;
 
+import android.app.Dialog;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.app.Dialog;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.FetchChatDataModel;
@@ -22,15 +21,12 @@ import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.ChatRoomAdapter;
-import com.imuons.saddaadda.responseModel.CommonResponse;
 import com.imuons.saddaadda.responseModel.FetchChatResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
-import com.imuons.saddaadda.responseModel.TicketResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -142,7 +138,7 @@ public class ChatActivity extends AppCompatActivity {
     void sendMessage(){
         String msg = etMessage.getText().toString().trim();
         if(msg.isEmpty()){
-            Toast.makeText(this, "Please enter message", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pls_enter_message), Toast.LENGTH_SHORT).show();
         }else {
             etMessage.setText("");
             callSendMessage(msg);

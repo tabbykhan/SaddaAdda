@@ -45,7 +45,8 @@ public class ProfileActivity extends AppCompatActivity {
     EditText etGooglePay;
     @BindView(R.id.etPhonePay)
     EditText etPhonePay;
-
+    @BindView(R.id.et_paytm_no)
+    EditText et_paytm_no;
     @BindView(R.id.etAccountName)
     EditText etAccountName;
     @BindView(R.id.etIFSC)
@@ -96,17 +97,19 @@ public class ProfileActivity extends AppCompatActivity {
         String ifsc = etIFSC.getText().toString().trim();
         String branch = etBranchName.getText().toString().trim();
         String accountNo = etAccountNo.getText().toString().trim();
+        String paytm_no=et_paytm_no.getText().toString().trim();
 
-        updateProfile(name, mobile, googlePay, phonePay, accountName, ifsc, branch, accountNo);
+        updateProfile(name, mobile, googlePay, phonePay, accountName, ifsc, branch, accountNo,paytm_no);
     }
 
-    private void updateProfile(String name, String mobile, String googlePay, String phonePay, String accountName, String ifsc, String branch, String accountNo) {
+    private void updateProfile(String name, String mobile, String googlePay, String phonePay, String accountName, String ifsc, String branch, String accountNo, String paytm_no) {
 
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.UPDATE_PROFILE_RESPONSE_CALL(new UpdateProfileEntity(name, mobile, accountNo, accountName, branch, ifsc, googlePay, phonePay));
+            Call call = apiService.UPDATE_PROFILE_RESPONSE_CALL(new UpdateProfileEntity(name,
+                    mobile, accountNo, accountName, branch, ifsc, googlePay, phonePay,paytm_no));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -189,32 +192,38 @@ public class ProfileActivity extends AppCompatActivity {
         etName.setText(String.valueOf(data.getFullname()));
         etMobile.setText(String.valueOf(data.getMobile()));
         if (data.getTezNo() != null) {
-            etGooglePay.setText(String.valueOf(data.getTezNo()));
+            etGooglePay.setText(data.getTezNo());
         } else {
             etGooglePay.setText("");
         }
         if (data.getPhonepeNo() != null) {
-            etPhonePay.setText(String.valueOf(data.getPhonepeNo()));
+            etPhonePay.setText(data.getPhonepeNo());
         } else {
             etPhonePay.setText("");
         }
+        if(data.getPaytm_no()!=null){
+            et_paytm_no.setText(data.getPaytm_no());
+        }else{
+            et_paytm_no.setText("");
+        }
+
         if (data.getBankName() != null) {
-            etAccountName.setText(String.valueOf(data.getBankName()));
+            etAccountName.setText(data.getBankName());
         } else {
             etAccountName.setText("");
         }
         if (data.getAccountNo() != null) {
-            etAccountNo.setText(String.valueOf(data.getAccountNo()));
+            etAccountNo.setText(data.getAccountNo());
         } else {
             etAccountNo.setText("");
         }
         if (data.getIfscCode() != null) {
-            etIFSC.setText(String.valueOf(data.getIfscCode()));
+            etIFSC.setText(data.getIfscCode());
         } else {
             etIFSC.setText("");
         }
         if (data.getBranchName() != null) {
-            etBranchName.setText(String.valueOf(data.getBranchName()));
+            etBranchName.setText(data.getBranchName());
 
         } else {
             etBranchName.setText("");
@@ -339,18 +348,18 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.share)
-    void shareImage(){
+    void shareImage() {
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             //String shareMessage= "\nLet me recommend you this application\n\n";
-           // shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" +"LINK="+userID+ " to head to my profile now";
+            // shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" + "LINK=" + userID + " to head to my profile now";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "choose one"));
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             //e.toString();
         }
     }

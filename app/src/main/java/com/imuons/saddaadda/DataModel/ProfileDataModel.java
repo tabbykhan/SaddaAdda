@@ -84,6 +84,18 @@ public class ProfileDataModel {
     @Expose
     private String phonepeNo;
 
+  public   String getPaytm_no() {
+        return paytm_no;
+    }
+
+    void setPaytm_no(String paytm_no) {
+        this.paytm_no = paytm_no;
+    }
+
+    @SerializedName("paytm_no")
+    @Expose
+    private String paytm_no;
+
     public String getSponser() {
         return sponser;
     }

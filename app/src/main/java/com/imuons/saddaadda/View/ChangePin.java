@@ -1,18 +1,16 @@
 package com.imuons.saddaadda.View;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.ChangePinEntity;
-import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
@@ -27,7 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChangePin  extends Activity {
+public class ChangePin extends AppCompatActivity {
 
     @BindView(R.id.etOtp)
     EditText oldPin;
@@ -51,13 +49,13 @@ public class ChangePin  extends Activity {
         String cPin = confirmPin.getText().toString().trim();
         String otpNew = etOtp2.getText().toString().trim();
         if(otpTxt.isEmpty()){
-            oldPin.setError("Please Enter old pin");
+            oldPin.setError(getResources().getString(R.string.please_enter_old_pin));
         }else if(newPinTxt.isEmpty()){
-            newPin.setError("Please error new pin");
+            newPin.setError(getString(R.string.pls_enter_new_pin));
         }else if(cPin.isEmpty()){
-            confirmPin.setError("Please error new pin");
+            confirmPin.setError(getString(R.string.pls_enter_new_pin));
         }else if(otpNew.isEmpty()){
-            etOtp2.setError("Please error OTP");
+            etOtp2.setError(getString(R.string.pls_enter_otp));
         }else {
             callChangePin(otpTxt , newPinTxt , cPin , otpNew);
         }

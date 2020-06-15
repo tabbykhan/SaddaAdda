@@ -141,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nxt"
-        android:visibility="gone"
+        android:visibility="visible"
       >
 
         <LinearLayout
@@ -169,7 +169,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="Amount"
+                    android:text="@string/amount"
                     android:textColor="#a3ffaf"
                     android:textSize="14sp" />
 
@@ -219,7 +219,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="Help ID"
+                    android:text="@string/help_id"
                     android:textColor="#a3ffaf"
                     android:textSize="14sp" />
 
@@ -270,7 +270,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="Status"
+                    android:text="@string/status"
                     android:textColor="#a3ffaf"
                     android:textSize="14sp" />
 
@@ -314,7 +314,7 @@
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="Remark"
+                    android:text="@string/remark"
                     android:textColor="#a3ffaf"
                     android:textSize="14sp" />
 

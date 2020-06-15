@@ -1,6 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,20 +7,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.imuons.saddaadda.DataModel.BuyRecord;
 import com.imuons.saddaadda.DataModel.TransRecord;
 import com.imuons.saddaadda.DataModel.TransReportData;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
-import com.imuons.saddaadda.adapters.BuyReportAdapter;
 import com.imuons.saddaadda.adapters.BuyTransAdapter;
-import com.imuons.saddaadda.responseModel.BuyHistoryResponse;
 import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -36,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BuyTransReportActivity extends Activity {
+public class BuyTransReportActivity extends AppCompatActivity {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
     //SellReportAdapter reportAdapter;
@@ -53,7 +50,7 @@ public class BuyTransReportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
-        glowingText.setText("Buy Transaction Report");
+        glowingText.setText(getString(R.string.buy_transaction_report));
         reportData = new ArrayList<>();
         reportAdapter = new BuyTransAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

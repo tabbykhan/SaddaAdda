@@ -173,4 +173,16 @@
     <string name="join_now">JOIN NOW</string>
     <string name="enter_your_bet_here">Enter your bet here</string>
     <string name="pls_enter_amount">Please Enter Amount</string>
+    <string name="you_can_place_bet_on_any_number_of_your_choice_from_1_to_100">You can place bet on any number of your choice from 1 to 100</string>
+    <string
+        name="player_is_free_to_place_bet_on_any_number_of_his_choice_and_also_on_multiple_numbers">Player is free to place bet on any number of his choice and also on multiple numbers.</string>
+    <string name="amount_in_multiples_of_10_from_10_to_unlimited">Amount in multiples of 10(from 10/- to unlimited)</string>
+    <string
+        name="you_just_have_to_select_any_number_between_1_to_100_and_enter_the_amount_of_your_choice_and_click_on_submit">You just have to select any number between 1 to 100 and enter the amount of your choice and click on submit</string>
+    <string
+        name="for_example_1_if_you_place_a_bet_of_100_on_number_9_and_the_winning_number_in_leaderboard_comes_number_9_then_your_winning_amount_is_90_times_of_100_which_means_your_winning_amount_is_9000">for example \n 1) if you place  a bet of  rupees 100 on number 9 and the winning number in leaderboard  comes 9 then your winning amount is 90 times of 100 which means your winning amount is 9000 rupees</string>
+    <string name="please_enter_old_pin">Please Enter old pin</string>
+    <string name="pls_enter_message">Please enter message</string>
+    <string name="withdraow_tran_hinstory">Withdrawal Transaction Report</string>
+    <string name="help_id">Help ID</string>
 </resources>

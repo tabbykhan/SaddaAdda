@@ -21,9 +21,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -31,7 +31,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"
+                    android:layout_weight="0.3"
                     android:gravity="center">
 
                     <ImageView
@@ -44,7 +44,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.7"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -84,7 +84,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
+                        android:layout_height="80dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -148,9 +148,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="10dp"
                 android:weightSum="1">
 
                 <LinearLayout
@@ -215,9 +215,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/bg_green_border"
                 android:orientation="horizontal"
                 android:shadowDx="0.0"
@@ -334,7 +334,7 @@
                         android:singleLine="true"
                         android:textColor="#e535cd"
                         android:textColorHint="#e535cd"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
 
                 <View
@@ -395,7 +395,7 @@
                         android:singleLine="true"
                         android:textColor="#e535cd"
                         android:textColorHint="#e535cd"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
                 <View
                     android:layout_width="2dp"
@@ -417,7 +417,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/google"></ImageView>
+                        android:background="@drawable/paytm_image"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -455,7 +455,7 @@
                         android:singleLine="true"
                         android:textColor="#e535cd"
                         android:textColorHint="#e535cd"
-                        android:textSize="12sp" />
+                        android:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -463,9 +463,9 @@
                 android:id="@+id/glowingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/amazon_bold"
                 android:shadowColor="#a3ffaf"
                 android:shadowDx="0.0"
@@ -479,9 +479,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="5dp"
                 android:backgroundTint="@color/yellow"
                 android:orientation="vertical"
                 android:visibility="visible">

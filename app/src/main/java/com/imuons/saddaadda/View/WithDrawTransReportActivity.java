@@ -1,6 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WithDrawTransReportActivity extends Activity {
+public class WithDrawTransReportActivity extends AppCompatActivity {
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
     //SellReportAdapter reportAdapter;
@@ -50,7 +50,7 @@ public class WithDrawTransReportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_history_report);
         ButterKnife.bind(this);
-        glowingText.setText("Withdrawal Transaction Report");
+        glowingText.setText(getString(R.string.withdraow_tran_hinstory));
         reportData = new ArrayList<>();
         reportAdapter = new BuyTransAdapter(this, reportData);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

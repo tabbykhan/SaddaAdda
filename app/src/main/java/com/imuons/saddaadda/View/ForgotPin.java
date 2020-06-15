@@ -1,6 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.ResetPinEntity;
@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ForgotPin extends Activity {
+public class ForgotPin extends AppCompatActivity {
 
     @BindView(R.id.etOtp)
     EditText etOtp;

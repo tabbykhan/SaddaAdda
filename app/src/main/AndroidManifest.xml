@@ -80,6 +80,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".View.HelpDetailsActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".View.ShatakRules"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".FirebaseClasses.MyFirebaseMessagingService"
             android:exported="false">

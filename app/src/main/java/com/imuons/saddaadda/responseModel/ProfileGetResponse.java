@@ -18,6 +18,7 @@ public class ProfileGetResponse {
     @Expose
     private ProfileDataModel data;
 
+
     public Integer getCode() {
         return code;
     }
