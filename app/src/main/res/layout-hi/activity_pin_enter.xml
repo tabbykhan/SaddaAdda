@@ -24,7 +24,7 @@
             android:id="@+id/logoutText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Logout"
+            android:text="Logout"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/amazon_bold"
@@ -54,7 +54,7 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="20"
-            android:text="@string/enter_pin"
+            android:text="Enter Pin"
             android:textColor="#a3ffaf"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -181,7 +181,7 @@
             android:shadowDy="0.0"
             android:onClick="forgotPin"
             android:shadowRadius="20"
-            android:text="@string/forgot_pin"
+            android:text="Forgot Pin?"
             android:textColor="#a3ffaf"
             android:textSize="16sp"
             android:textStyle="bold" />
