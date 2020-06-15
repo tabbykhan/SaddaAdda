@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".View.ActivitySaddaShatak"></activity>
+        <activity android:name=".View.ActivityLangSelection"></activity>
+        <activity android:name=".View.ActivitySaddaShatak"/>
         <activity android:name=".View.Activity7_up_Rules"/>
         <activity android:name=".View.LeaderBoardActivity"/>
         <activity android:name=".View.SaddaShatakLeaderBoardActivity"/>
@@ -80,23 +81,21 @@
         <activity android:name=".View.HelpDetailsActivity"
             android:screenOrientation="portrait"/>
 
-        <service
-            android:name=".FirebaseClasses.MyFirebaseMessagingService"
+        <service android:name=".FirebaseClasses.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
 
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_action_notification" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_action_notification"/>
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent"/>
     </application>
-
 
 </manifest>

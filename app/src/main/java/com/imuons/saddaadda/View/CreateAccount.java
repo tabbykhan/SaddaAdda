@@ -1,8 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,9 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -160,23 +160,23 @@ public class CreateAccount extends AppCompatActivity {
         String cpintxt = cpin.getText().toString().trim();
 
         if (userId.isEmpty()) {
-            etUserId.setError("Please enter User ID");
+            etUserId.setError(getResources().getString(R.string.pls_enter_user_id));
         } else if (password.isEmpty()) {
-            etPassword.setError("Please enter Password");
+            etPassword.setError(getResources().getString(R.string.psl_enter_password));
         } else if (name.isEmpty()) {
-            etName.setError("Please enter Name");
+            etName.setError(getResources().getString(R.string.psl_enter_name));
         } else if (referralCode.isEmpty()) {
-            etRefralCode.setError("Please enter Referral code");
+            etRefralCode.setError(getResources().getString(R.string.psl_enter_ref_code));
         } else if (mobile.isEmpty()) {
-            etMobile.setError("Please enter Mobile no ");
+            etMobile.setError(getResources().getString(R.string.pls_enter_mobiel_no_10));
         } else if (cmf_password.isEmpty()) {
-            etCmfPassword.setError("Please enter Confirm password");
+            etCmfPassword.setError(getResources().getString(R.string.ps_enter_conf_pwd));
         } else if (!cmf_password.matches(password)) {
-            etCmfPassword.setError("Confirm Password not match");
+            etCmfPassword.setError(getResources().getString(R.string.cofirm_pwd_not_match));
         } else if (pintxt.isEmpty()) {
-            pin.setError("Please enter pin");
+            pin.setError(getResources().getString(R.string.enter_pin));
         } else if (!cmf_password.matches(password)) {
-            cpin.setError("Confirm pin not match");
+            cpin.setError(getResources().getString(R.string.confim_pin_not_match));
         } else
             callRegisterApi(userId, name, password, mobile, referralCode , pintxt);
 
@@ -241,7 +241,7 @@ public class CreateAccount extends AppCompatActivity {
                         if (authResponse.getCode() == 200) {
                             AppCommon.getInstance(CreateAccount.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(CreateAccount.this).setToken(authResponse.getData().getAccessToken());
-                            AppCommon.getInstance(CreateAccount.this).setUserLogin(loginEntity.getUser_id());
+                            AppCommon.getInstance(CreateAccount.this).setUserLogin(loginEntity.getUser_id(), true);
                             AppCommon.getInstance(CreateAccount.this).setSesstionId(authResponse.getData().getSession_id());
                             startActivity(new Intent(CreateAccount.this, HomeActivity.class));
                         } else {

@@ -182,7 +182,7 @@ public class DusKaDamActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String amount = editView.getText().toString();
                 if (amount.isEmpty()) {
-                    editView.setError("Please Enter Amount");
+                    editView.setError(getResources().getString(R.string.pls_enter_amount));
                 } else {
                     dialogBuilder.dismiss();
                     betApi(product_id, amount, userId, slotId);

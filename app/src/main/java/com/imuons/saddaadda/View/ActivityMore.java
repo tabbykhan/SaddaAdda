@@ -48,7 +48,14 @@ public class ActivityMore extends AppCompatActivity {
         LinearLayout changePin = findViewById(R.id.menu_changePin);
         LinearLayout logout = findViewById(R.id.menu_logout);
         LinearLayout buyHistory = findViewById(R.id.menu_buyHistory);
+        LinearLayout setting=findViewById(R.id.menu_setting);
 
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityMore.this, ActivityLangSelection.class));
+            }
+        });
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,8 +159,8 @@ public class ActivityMore extends AppCompatActivity {
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle(getResources().getString(R.string.app_name));
         adb.setIcon(R.mipmap.ic_launcher_round);
-        adb.setMessage("Are you sure you want to Logout?");
-        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        adb.setMessage(getString(R.string.r_u_sure_logout_message));
+        adb.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -162,14 +169,15 @@ public class ActivityMore extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                AppCommon.getInstance(ActivityMore.this).clearPreference();
+               // AppCommon.getInstance(ActivityMore.this).clearPreference();
+                AppCommon.getInstance(ActivityMore.this).setUserLogin(AppCommon.getInstance(ActivityMore.this).getUserId(), false);
                 startActivity(new Intent(ActivityMore.this, SelectionPage.class));
                 finishAffinity();
-                Toast.makeText(ActivityMore.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityMore.this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show();
             }
 
         });
-        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

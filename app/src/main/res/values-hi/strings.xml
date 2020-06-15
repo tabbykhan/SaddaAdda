@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सड्डा अडा</string>
+    <string name="ruleone">एलेक्स एकल नंबर (उदाहरण के लिए 2) पर 100 रुपये का निवेश करता है और फिर यह नंबर जीत रहा है, वह 900 जीत जाएगा</string>
+    <string name="ruletwo">एलेक्स दो नंबरों पर 100 / - निवेश करता है (उदाहरण 2 और 3 के लिए) और फिर उनमें से कोई एक विजेता संख्या है जो वह 450 / - जीतेगा।</string>
+    <string name="rulethree">एलेक्स तीन नंबरों पर 100 रुपये का निवेश करता है (उदाहरण के लिए 1 2 और 3) और फिर उनमें से कोई एक विजेता संख्या है जो वह 300 रुपये जीतेगा</string>
+    <string name="rulefour">एलेक्स 4 नंबरों पर 100 रुपये का निवेश करता है (उदाहरण के लिए 0 1 2 और 3) और फिर उनमें से कोई एक विजेता नंबर है जो वह 200 रुपये
+जीतेंगे।</string>
+    <string name="Capture_photo_from_camera">कैमरे से फोटो खींचे</string>
+    <string name="Select_photo_from_gallery">गैलरी से फोटो का चयन करें</string>
+
+    <string name="canclecaptcheimage">कैद की गई छवि अपलोड नहीं हुई</string>
+    <string name="failedtocaptch">माफ़ करना! छवि कैप्चर करने में विफल</string>
+    <string name="cancle_imagegselect">चयनित छवि अपलोड नहीं की गई</string>
+    <string name="flaid_select_image">कोई छवि नहीं चुनी गई</string>
+    <string name="something_went_wrong">कुछ गलत हो गया</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date_time"><![CDATA[दिनांक और समय  -]]></string>
+    <string name="saven_up_r_1">आप 2 से 6 के बीच या 7 नंबर पर या 8 से 12 के बीच की संख्या पर शर्त लगा सकते हैं</string>
+    <string name="saven_up_r_2">खिलाड़ी अपनी पसंद के किसी भी स्लॉट पर शर्त रखने के लिए स्वतंत्र है</string>
+    <string name="saven_up_r_3">10 के गुणकों में राशि (10/- से 1000/- तक)</string>
+    <string name="saven_up_r_4">आपको बस 2 से 6 या 7 नंबर या 8 से 12 के बीच की संख्या का चयन करना होगा और रोल पासा पर क्लिक करना होगा</string>
+    <string name="saven_up_r_5">यदि आप 8 से 12 के बीच संख्या पर 100/- की शर्त रखते हैं और यदि संख्या 8 से 12 के बीच आती है तो आप 200/- जीतते हैं जिसका अर्थ है कि आपकी जीत की राशि दोगुनी हो जाती है</string>
+    <string name="saven_up_r_6">यदि आप 8 से 12 के बीच संख्या पर 100/- की शर्त रखते हैं और यदि संख्या 8 से 12 के बीच आती है तो आप 200/- जीतते हैं जिसका अर्थ है कि आपकी जीत की राशि दोगुनी हो जाती है</string>
+    <string name="saven_up_r_7">यदि आप 7 नंबर पर १०० की शर्त जगह है और अगर संख्या सटीक 7 आता है तो आप ३०० जीत जिसका अर्थ है अपनी जीत राशि तीन गुना है</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <!-- [START fcm_default_icon_string] -->
+    <string name="default_notification_channel_name" translatable="true">SaddaAdda</string>
+    <!-- [END fcm_default_icon_string] -->
+    <string name="fcm_message">FCM Message</string>
+    <string name="Logout">लॉग आउट</string>
+    <string name="enter_pin">पिन दर्ज करें</string>
+    <string name="forgot_pin">पिन भूल गए?</string>
+    <string name="sgin_in">साइन इन करें</string>
+    <string name="password">पास वर्ड </string>
+    <string name="user_id">यूज़र आईडी</string>
+    <string name="forget_password">पासवर्ड भूल गए?</string>
+    <string name="submit">प्रस्तुत</string>
+    <string name="enter_user_d">यूज़र आईडी दर्ज करें</string>
+    <string name="enter_passsword">पास वर्ड दर्ज करें</string>
+    <string name="create_account">खाता बनाएं</string>
+    <string name="name">नाम</string>
+    <string name="enter_referral_code">रेफरल कोड दर्ज करें</string>
+    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="enter_password">पास वर्ड दर्ज करें</string>
+    <string name="confirm_password">पासवर्ड की पुष्टि कीजिये</string>
+    <string name="enter_4_digit_pin">4 अंकों का पिन दर्ज करें</string>
+    <string name="confirm_4_digit_pin">4 अंकों की पिन की पुष्टि करें</string>
+    <string name="pls_enter_user_id">कृपया यूजर आईडी दर्ज करें</string>
+    <string name="psl_enter_password">कृपया पास वर्ड दर्ज करें</string>
+    <string name="psl_enter_name">कृपया पासवर्ड दर्ज करें</string>
+    <string name="psl_enter_ref_code">कृपया रेफ़रल कोड दर्ज करें</string>
+    <string name="pls_enter_mobiel_no_10">कृपया मोबाइल नंबर दर्ज करें</string>
+    <string name="cofirm_pwd_not_match">पुष्टि पासवर्ड मेल नहीं</string>
+    <string name="ps_enter_conf_pwd">कृपया पासवर्ड की पुष्टि करें</string>
+    <string name="confim_pin_not_match">पुष्टि पिन मेल नहीं</string>
+    <string name="select_lang">भाषा का चयन करें</string>
+    <string name="english">अंग्रेज़ी (English)</string>
+    <string name="hindi">हिन्दी</string>
+    <string name="setting">स्थापना</string>
+    <string name="profile">प्रोफ़ाइल</string>
+    <string name="change_pin">पिन बदलें</string>
+    <string name="change_password">पासवर्ड बदलें</string>
+    <string name="withdrawal">वापसी</string>
+    <string name="sell_history">बिक्री इतिहास</string>
+    <string name="buy_history">खरीदारी  इतिहास</string>
+    <string name="buy_transaction_report">लेन-देन की रिपोर्ट</string>
+    <string name="withdrawal_transaction_report">वापसी लेनदेन रिपोर्ट</string>
+    <string name="more">अधिक</string>
+    <string name="r_u_sure_logout_message">क्या आप लॉग आउट करना चाहते हैं?</string>
+    <string name="ok">ठीक है</string>
+    <string name="logout_success">लॉगआउट सफलतापूर्वक</string>
+    <string name="Cancel">रद्द करना</string>
+    <string name="old_password">पुराना पासवर्ड</string>
+    <string name="new_password">नया पासवर्ड</string>
+    <string name="please_enter_otp">कृपया ओटीपी दर्ज करें</string>
+    <string name="update">अपडेट करें</string>
+    <string name="pls_enter_old_pwd">कृपया पुराना पासवर्ड दर्ज करें</string>
+    <string name="pls_enter_new_pwd">कृपया नया पासवर्ड दर्ज करें</string>
+    <string name="pls_confirm_pwd">कृपया पासवर्ड दर्ज करें</string>
+    <string name="pls_enter_otp">कृपया ओटीपी दर्ज करें</string>
+    <string name="old_pin">पुराना पिन</string>
+    <string name="new_pin">नया पिन</string>
+    <string name="confirm_pin">पिन की पुष्टि करें</string>
+    <string name="pls_enter_new_pin">कृपया नया पिन दर्ज करें</string>
+    <string name="home">घर</string>
+    <string name="account">लेखा</string>
+    <string name="chat">बातचीत</string>
+    <string name="let_s_understand_the_exciting_benefits_of_the_game_with_simple_example">सरल उदाहरण के साथ खेल के रोमांचक लाभों को समझते हैं</string>
+    <string name="buy_coins">सिक्के खरीदें</string>
+    <string name="enter_amount_here">यहां राशि दर्ज करें</string>
+    <string name="are_you_sure_you_wanted_to_n_confirm_this_transaction">क्या आप वाकई इस लेनदेन की पुष्टि करना चाहते हैं?</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="are_you_sure_you_wanted_to_n_reject_this_transaction">क्या आप वाकई इस लेनदेन को अस्वीकार करना चाहते हैं?</string>
+    <string name="transaction_slip">लेन-देन की पर्ची</string>
+    <string name="choose_file">फ़ाइल का चयन करें</string>
+    <string name="no_file_chosen">कोई फ़ाइल नहीं चुनी गई</string>
+    <string name="minimum_50_maximum_10000">(न्यूनतम 50 अधिकतम 10000)</string>
+
+    <string name="buy_no">लेनदेन आईडी</string>
+    <string name="amount">रकम</string>
+    <string name="receiver_name">प्राप्तकर्ता का नाम</string>
+    <string name="buy">खरीदें</string>
+    <string name="assign_date">दिनांक निर्दिष्ट करें</string>
+    <string name="to_user_id">उपयोगकर्ता आईडी के लिए</string>
+    <string name="details">विवरण</string>
+    <string name="send_sms">संदेश भेजो</string>
+    <string name="reject">अस्वीकार</string>
+    <string name="confirm">पुष्टि करें</string>
+    <string name="view_slip">स्लिप देखें</string>
+    <string name="upload_slip">स्लिप अपलोड करें</string>
+    <string name="pls_chose_file">कृपया फ़ाइल चुनें</string>
+    <string name="uploa_fail">अपलोड विफल</string>
+    <string name="givers_name">दाता का नाम</string>
+    <string name="Sell">बेचना</string>
+    <string name="date">तारीख</string>
+    <string name="balance">रकम</string>
+    <string name="remark">टिप्पणी</string>
+    <string name="type_your_message_here">अपना संदेश यहां टंकित करें</string>
+    <string name="rs">रुपये</string>
+    <string name="ticket">टिकट</string>
+    <string name="help_details">सहायता विवरण</string>
+    <string name="from_user">उपयोगकर्ता से</string>
+    <string name="to_user">प्रयोगकर्ता के लिए</string>
+
+    <string name="contact_no">संपर्क नंबर</string>
+    <string name="google_pay_no">google पे नंबर</string>
+    <string name="phonepe_no">फ़ोन पे नंबर</string>
+    <string name="holder_name">धारक का नाम</string>
+    <string name="account_no">खाता क्रमांक</string>
+    <string name="branch_name">शाखा का नाम</string>
+    <string name="bank_name">बैंक का नाम</string>
+    <string name="ifsc_code">IFSC कोड</string>
+    <string name="select_date">तारीख़ चुनें</string>
+    <string name="winner_number">विजेता संख्या</string>
+    <string name="number">संख्या</string>
+    <string name="status">स्थिति</string>
+    <string name="you_won">तुम जीते</string>
+    <string name="paytm_no">पेटीएम नं</string>
+    <string name="enter_number">नंबर दर्ज करें</string>
+    <string name="bank_details">बैंक विवरण</string>
+    <string name="account_holder_name">खाताधारक का नाम</string>
+    <string name="enter_name">नाम दर्ज करें</string>
+    <string name="enter_ifsc_code">Ifsc कोड दर्ज करें</string>
+    <string name="enter_branch_name">शाखा का नाम दर्ज करें</string>
+    <string name="account_number">खाता संख्या</string>
+    <string name="enter_account_number">खाता संख्या दर्ज करें</string>
+    <string name="all_transactions">सभी लेन - देन</string>
+    <string name="trans_type">ट्रांस प्रकार</string>
+    <string name="sadda_x">Sadda X</string>
+    <string
+        name="say_alex_has_100_to_invest_now_he_can_put_the_money_on_any_and_multiple_numbers_from_0_to_9">एलेक्स के पास निवेश करने के लिए 100 रुपये हैं अब वह किसी भी और कई नंबरों पर 0 से 9 तक पैसा लगा सकता है.</string>
+    <string
+        name="let_s_have_a_look_on_what_are_the_possibilities_for_alex_to_benefit_from_his_investment">आइए एक नजर डालते हैं कि एलेक्स को अपने निवेश से लाभ होने की क्या संभावनाएं हैं</string>
+    <string name="note">ध्यान दें:</string>
+    <string name="player_is_free_to_invest_amount_on_multiple_numbers">•\tखिलाड़ी कई नंबरों पर राशि का निवेश करने के लिए स्वतंत्र है</string>
+    <string name="amount_in_multiples_of_10_from_10_to_1000_on_set_numbers">•\tसेट संख्याओं पर 10
+        (10 / - से 1000 / - तक) के गुणकों में राशि</string>
+    <string name="_1_investing_on_single_number_x9_returns">1. नंबर पर निवेश (x9 रिटर्न)</string>
+    <string name="_2_investing_on_two_numbers_x4_5_returns">2. नंबरों पर निवेश (x4.5 रिटर्न)</string>
+    <string name="_3_investing_on_three_numbers_x3_returns">3. नंबर पर निवेश (x3 रिटर्न)</string>
+    <string name="_4_investing_on_four_numbers_x2_returns_double">4. नंबर (x2 रिटर्न / डबल) पर
+        निवेश</string>
+    <string name="sell_coins"> सिक्काबेचे</string>
+    <string name="wallet_balance_transfer">वॉलेट शेष राशि स्थानांतरण</string>
+    <string name="available_coins">उपलब्ध सिक्के</string>
+    <string name="transfer">स्थानांतरण</string>
+    <string name="bet">शर्त</string>
+    <string name="roll_dice">पासा फेकना</string>
+    <string name="start_at">शुरू करे</string>
+    <string name="end_at">पर समाप्त</string>
+    <string name="remind_me">मुझे याद दिलाना</string>
+    <string name="join_now">अब शामिल हों</string>
+    <string name="enter_your_bet_here">अपनी शर्त यहाँ दर्ज करें</string>
+    <string name="pls_enter_amount">कृपया राशि दर्ज करें</string>
+</resources>

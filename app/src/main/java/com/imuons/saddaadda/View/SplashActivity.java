@@ -1,9 +1,9 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
@@ -24,11 +24,16 @@ public class SplashActivity extends AppCompatActivity {
                     sleep(2000);
                     String token = AppCommon.getInstance(SplashActivity.this).getToken();
                     //SharedPreferenceUtils.getAccesstoken(SplashScreen.this);
-
-                    if (token == null || token.isEmpty()) {
-                        startActivity(new Intent(SplashActivity.this, SelectionPage.class));
-                    } else {
+                  //  token == null || token.isEmpty()
+                    if (AppCommon.getInstance(SplashActivity.this).isUserLogIn()) {
                         startActivity(new Intent(SplashActivity.this, PinEnterActivity.class));
+                    } else {
+                        if ( AppCommon.getInstance(SplashActivity.this).GetIsLangSelected()){
+                            startActivity(new Intent(SplashActivity.this, SelectionPage.class));
+                        }else{
+                            startActivity(new Intent(SplashActivity.this, ActivityLangSelection.class));
+                        }
+
                     }
                     finish();
 
@@ -39,6 +44,8 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
         thread.start();
-
     }
+
+
+
 }

@@ -175,7 +175,7 @@
                         android:drawableLeft="@drawable/aount_1"
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center"
-                        android:text="Amount"
+                        android:text="@string/amount"
                         android:textColor="#d3d32b"
                         android:paddingRight="20dp"
                         android:textSize="15dp">

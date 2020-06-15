@@ -1,8 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -17,19 +14,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
-import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.PinEntitiy;
-import com.imuons.saddaadda.EntityClass.RegitrationEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
-import com.imuons.saddaadda.Utils.GenericTextWatcher;
 import com.imuons.saddaadda.Utils.ViewUtils;
-import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
-import com.imuons.saddaadda.responseModel.RegisterResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -39,8 +34,6 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.imuons.saddaadda.Utils.MyPreference.userId;
 
 public class PinEnterActivity extends AppCompatActivity {
 
@@ -285,21 +278,24 @@ public class PinEnterActivity extends AppCompatActivity {
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle(getResources().getString(R.string.app_name));
         adb.setIcon(R.mipmap.ic_launcher_round);
-        adb.setMessage("Are you sure you want to Logout?");
-        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        adb.setMessage(getResources().getString(R.string.r_u_sure_logout_message));
+        adb.setPositiveButton(getResources().getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                AppCommon.getInstance(PinEnterActivity.this).clearPreference();
+                //AppCommon.getInstance(PinEnterActivity.this).clearPreference();
+                AppCommon.getInstance(PinEnterActivity.this).setUserLogin(AppCommon.getInstance(PinEnterActivity.this).getUserId(), false);
                 startActivity(new Intent(PinEnterActivity.this, SelectionPage.class));
                 finishAffinity();
-                Toast.makeText(PinEnterActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PinEnterActivity.this, getString(R.string.logout_success),
+                        Toast.LENGTH_SHORT).show();
                 //startActivity(new Intent());
                 // finishAffinity();
             }
 
         });
-        adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton(getString(R.string.Cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

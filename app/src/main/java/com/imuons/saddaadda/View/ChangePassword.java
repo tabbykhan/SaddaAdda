@@ -1,12 +1,12 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.ChangePasswordEntity;
@@ -14,7 +14,6 @@ import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.ChangePasswordResponse;
-import com.imuons.saddaadda.responseModel.PinResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -49,13 +48,13 @@ public class ChangePassword extends AppCompatActivity {
         String cPin = confirmPin.getText().toString().trim();
         String otpNew = etOtp2.getText().toString().trim();
         if(otpTxt.isEmpty()){
-            oldPin.setError("Please Enter old password");
+            oldPin.setError(getString(R.string.pls_enter_old_pwd));
         }else if(newPinTxt.isEmpty()){
-            newPin.setError("Please Enter new password");
+            newPin.setError(getString(R.string.pls_enter_new_pwd));
         }else if(cPin.isEmpty()){
-            confirmPin.setError("Please Enter confirm password");
+            confirmPin.setError(getString(R.string.pls_confirm_pwd));
         }else if(otpNew.isEmpty()){
-            etOtp2.setError("Please Enter OTP");
+            etOtp2.setError(getString(R.string.pls_enter_otp));
         }else {
             callChangePassword(otpTxt , newPinTxt , cPin , otpNew);
         }

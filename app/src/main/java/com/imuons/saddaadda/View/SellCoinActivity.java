@@ -1,7 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,18 +7,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.CoinsDataModel;
-import com.imuons.saddaadda.EntityClass.BuyCoinEntity;
 import com.imuons.saddaadda.EntityClass.FundTransEntity;
 import com.imuons.saddaadda.EntityClass.SellCoinEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
-
 import com.imuons.saddaadda.responseModel.CoinsResponseModel;
 import com.imuons.saddaadda.responseModel.FundTransferResponse;
-import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -68,7 +65,7 @@ public class SellCoinActivity extends AppCompatActivity {
         String amount = etAmount.getText().toString().trim();
 
         if (amount.isEmpty()) {
-            etAmount.setError("Please enter Amount");
+            etAmount.setError(getResources().getString(R.string.enter_amount_here));
         } else
             callSellCoinApi(new SellCoinEntity(amount));
 

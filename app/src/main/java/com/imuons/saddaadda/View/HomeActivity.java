@@ -1,7 +1,6 @@
 package com.imuons.saddaadda.View;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -18,6 +17,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.imuons.saddaadda.DataModel.DashboardData;
@@ -39,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.gotoProfile)
     RelativeLayout gotoProfile;
     @BindView(R.id.txUserId)

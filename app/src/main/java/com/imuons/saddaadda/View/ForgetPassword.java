@@ -1,7 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,15 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.ResetPasswordEntity;
-import com.imuons.saddaadda.EntityClass.UpdateProfileEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.ForgetPasswordResponse;
-import com.imuons.saddaadda.responseModel.LoginResponseModel;
-import com.imuons.saddaadda.responseModel.UpdateProfileResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -28,8 +25,6 @@ import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.imuons.saddaadda.Utils.MyPreference.userId;
 
 public class ForgetPassword extends AppCompatActivity {
     @BindView(R.id.submitBtn)
@@ -50,7 +45,7 @@ public class ForgetPassword extends AppCompatActivity {
     void forgetPassword() {
         String userId = et_userId.getText().toString().trim();
         if (userId.isEmpty()) {
-            et_userId.setError("Please enter User ID");
+            et_userId.setError(getString(R.string.pls_enter_user_id));
         }
         callForResetPass(new ResetPasswordEntity(userId));
 

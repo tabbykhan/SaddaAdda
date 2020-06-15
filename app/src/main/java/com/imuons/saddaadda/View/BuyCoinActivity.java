@@ -496,7 +496,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
         is_layerOpen = true;
         ll_upload.setVisibility(View.VISIBLE);
         filePath = "";
-        txt_file_name.setText("No File Chosen");
+        txt_file_name.setText(getString(R.string.no_file_chosen));
         iv_image_preview.setImageBitmap(null);
     }
 
@@ -885,8 +885,8 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
     @OnClick(R.id.iv_send)
     void uploadFile() {
         if (filePath.equals("")) {
-            Toast.makeText(getBaseContext(), "Choose File ", Toast.LENGTH_LONG).show();
-            txt_file_name.setError("Please Choose File");
+            Toast.makeText(getBaseContext(), getString(R.string.choose_file), Toast.LENGTH_LONG).show();
+            txt_file_name.setError(getString(R.string.pls_chose_file));
             txt_file_name.requestFocus();
             return;
         }
@@ -1002,7 +1002,8 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 handleResponse(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
-                Toast.makeText(getBaseContext(), "Upload fail", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), getString(R.string.uploa_fail),
+                        Toast.LENGTH_LONG).show();
                 AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(BuyCoinActivity.this);
             }
         }, new com.android.volley.Response.ErrorListener() {

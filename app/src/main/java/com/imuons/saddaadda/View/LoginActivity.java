@@ -1,8 +1,5 @@
 package com.imuons.saddaadda.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +7,9 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -84,9 +84,9 @@ public class LoginActivity extends AppCompatActivity {
         String userId = et_userId.getText().toString().trim();
 
         if (userId.isEmpty()) {
-            et_userId.setError("Please enter User ID");
+            et_userId.setError(getResources().getString(R.string.enter_user_d));
         } else if (password.isEmpty()) {
-            et_userId.setError("Please enter password");
+            et_userId.setError(getResources().getString(R.string.enter_passsword));
         } else
             callLoginApi(new LoginEntity(userId, password , fireBase) );
 
@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.i("token:::" , authResponse.getData().getAccessToken());
                             AppCommon.getInstance(LoginActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(LoginActivity.this).setToken(authResponse.getData().getAccessToken());
-                            AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim());
+                            AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim(),true);
                             AppCommon.getInstance(LoginActivity.this).setPassword(et_password.getText().toString().trim());
                             AppCommon.getInstance(LoginActivity.this).setSesstionId(authResponse.getData().getSession_id());
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));

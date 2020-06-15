@@ -25,7 +25,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="35dp"
             android:fontFamily="@font/amazon_bold"
-            android:text="Start At"
+            android:text="@string/start_at"
             android:textColor="#000000"
             android:textSize="12sp" />
 
@@ -76,7 +76,7 @@
                 android:drawableTop="@drawable/notification_img"
                 android:fontFamily="@font/amazon_bold"
                 android:gravity="center"
-                android:text="Remind me"
+                android:text="@string/remind_me"
                 android:textColor="#6C1772"
                 android:textSize="12sp"
                 />
@@ -88,7 +88,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/amazon_bold"
-            android:text="End At"
+            android:text="@string/end_at"
             android:textColor="#000000"
             android:textSize="12sp" />
 
@@ -231,7 +231,7 @@
         android:fontFamily="@font/amazon_bold"
         android:gravity="center"
         android:padding="6dp"
-        android:text="JOIN NOW"
+        android:text="@string/join_now"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="bold" />

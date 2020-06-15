@@ -15,4 +15,8 @@ public class MyPreference {
     public static String BTCAddress = "BtcAddress";
     public static String password = "PASSWORD";
     public static String PrizmAddress = "PrizmAddress";
+    public static final String PREFS_LANGUAGE_IS_SELECTED = "LANGUAGE_IS_SELECTED";
+    public static final String LANG_ENGLISH = "en";
+    public static final String LANG_HINDI = "hi";
+    public static final String SELECTEDlANG="SELECTEDlANG";
 }

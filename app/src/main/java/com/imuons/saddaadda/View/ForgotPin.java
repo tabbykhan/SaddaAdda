@@ -11,12 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
-import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.EntityClass.ResetPinEntity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
-import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.responseModel.PinResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
@@ -50,11 +48,11 @@ public class ForgotPin extends Activity {
         String newPinTxt = newPin.getText().toString().trim();
         String cPin = confirmPin.getText().toString().trim();
         if(otpTxt.isEmpty()){
-            etOtp.setError("Please Enter otp");
+            etOtp.setError(getString(R.string.please_enter_otp));
         }else if(newPinTxt.isEmpty()){
-            newPin.setError("Please error new pin");
+            newPin.setError(getString(R.string.pls_enter_new_pin));
         }else if(cPin.isEmpty()){
-            confirmPin.setError("Please error new pin");
+            confirmPin.setError(getString(R.string.confirm_pin));
         }else {
             callResetPin(otpTxt , newPinTxt , cPin);
         }

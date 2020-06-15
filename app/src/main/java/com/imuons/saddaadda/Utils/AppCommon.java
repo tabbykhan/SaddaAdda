@@ -71,9 +71,9 @@ public class AppCommon {
         return false;
     }
 
-    public void setUserLogin(String userId) {
+    public void setUserLogin(String userId, boolean b) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
-        editor.putBoolean(MyPreference.login, true);
+        editor.putBoolean(MyPreference.login, b);
         editor.putString(MyPreference.userId, userId);
         editor.apply();
     }
@@ -221,8 +221,32 @@ public class AppCommon {
         editor.putInt(MyPreference.ID, id);
         editor.apply();
     }
+
     public int  getID(){
         SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
         return prefs.getInt(MyPreference.ID, 0);
     }
+
+    public void IslangSelected(boolean flag) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putBoolean(MyPreference.PREFS_LANGUAGE_IS_SELECTED, flag);
+        editor.apply();
+    }
+    public boolean  GetIsLangSelected(){
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getBoolean(MyPreference.PREFS_LANGUAGE_IS_SELECTED, false);
+    }
+
+
+    public void setSeleectedLan(String flag) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putString(MyPreference.SELECTEDlANG, flag);
+        editor.apply();
+    }
+    public String  GetLangSelected(){
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getString(MyPreference.SELECTEDlANG, "");
+    }
+
+
 }

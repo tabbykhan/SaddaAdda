@@ -75,9 +75,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
 
             }
             if (ticketRecordModel.getTranid() != null) {
-                holder.txt_trasactionID.setText("Transaction ID " + ticketRecordModel.getTranid());
+                holder.txt_trasactionID.setText(context.getString(R.string.buy_no) + ticketRecordModel.getTranid());
             } else {
-                holder.txt_trasactionID.setText("Transaction ID " + "");
+                holder.txt_trasactionID.setText(context.getString(R.string.buy_no)+ "");
 
             }
             if (ticketRecordModel.getTranid() != null) {
@@ -105,7 +105,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.btn_confirm.setVisibility(View.GONE);
             }
 
-            if (ticketRecordModel.getStatus().equals("Pending") && ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() && ticketRecordModel.getReceiptStatus() == 0) {
+            if (ticketRecordModel.getStatus().equals("Pending") && ticketRecordModel.getFromid() == AppCommon.getInstance(context).getID() && ticketRecordModel.getReceiptStatus() == 0) {
                 holder.btn_upload.setBackgroundResource(R.drawable.btn_ticketbuy);
                 holder.btn_upload.setVisibility(View.VISIBLE);
             } else {
@@ -127,13 +127,13 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
             }
             if (ticketRecordModel.getFromFullname() != null) {
                 holder.txtRecName.setText(ticketRecordModel.getFromFullname());
-                holder.name.setText("Giver's Name");
+                holder.name.setText(context.getResources().getString(R.string.givers_name));
             } else {
                 holder.txtRecName.setText("");
             }
             if (ticketRecordModel.getFromMobile() != null) {
                 holder.txtBuy.setText(ticketRecordModel.getFromMobile());
-                holder.status.setText("Sell");
+                holder.status.setText(context.getString(R.string.Sell));
             } else {
                 holder.txtBuy.setText("");
             }
@@ -143,9 +143,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                 holder.txtToUserId.setText("");
             }
             if (ticketRecordModel.getTranid() != null) {
-                holder.txt_trasactionID.setText("Transaction ID " + ticketRecordModel.getTranid());
+                holder.txt_trasactionID.setText(context.getString(R.string.buy_no) + ticketRecordModel.getTranid());
             } else {
-                holder.txt_trasactionID.setText("Transaction ID " + "");
+                holder.txt_trasactionID.setText(context.getString(R.string.buy_no) + "");
             }
             if (ticketRecordModel.getTranid() != null) {
                 holder.txtAssignDate.setText(String.valueOf(ticketRecordModel.getAssignDate()));
@@ -174,7 +174,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.TicketHold
                     ticketRecordModel.getToid() == AppCommon.getInstance(context).getID() &&
                     ticketRecordModel.getReceiptStatus() == 0) {
                 holder.btn_upload.setBackgroundResource(R.drawable.btn_ticketbuy_green);
-                holder.btn_upload.setVisibility(View.VISIBLE);
+                holder.btn_upload.setVisibility(View.GONE);
             } else {
                 holder.btn_upload.setVisibility(View.GONE);
 
