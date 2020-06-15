@@ -185,4 +185,10 @@
     <string name="pls_enter_message">Please enter message</string>
     <string name="withdraow_tran_hinstory">Withdrawal Transaction Report</string>
     <string name="help_id">Help ID</string>
+    <string name="tran_api">sdksdks</string>
+
+    <string name="nineReport">0-9 Direct Income Report</string>
+    <string name="sevenUpDown">7 Up Down Direct Income Report</string>
+    <string name="shatakReport">"Shatak Direct Income Report "</string>
+
 </resources>

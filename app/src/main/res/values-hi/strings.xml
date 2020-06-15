@@ -191,4 +191,10 @@
     <string name="pls_enter_message">कृपया संदेश दर्ज करें</string>
     <string name="withdraow_tran_hinstory">निकासी लेनदेन रिपोर्ट</string>
     <string name="help_id">मदद आईडी</string>
+    <string name="tran_api">sdksdks</string>
+
+    <string name="nineReport">0-9 प्रत्यक्ष आय रिपोर्ट</string>
+    <string name="sevenUpDown">7 अप डाउन डायरेक्ट इनकम रिपोर्ट</string>
+    <string name="shatakReport">शतक डायरेक्ट इनकम रिपोर्ट</string>
+
 </resources>
