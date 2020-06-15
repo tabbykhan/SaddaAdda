@@ -102,6 +102,10 @@
         <activity
             android:name=".View.HelpDetailsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.IncomeDirectReport"
+            android:screenOrientation="portrait" />
+
 
         <service
             android:name=".FirebaseClasses.MyFirebaseMessagingService"
