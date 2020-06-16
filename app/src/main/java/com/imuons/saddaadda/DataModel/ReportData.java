@@ -37,6 +37,9 @@ public class ReportData {
     @SerializedName("pin")
     @Expose
     private String pin;
+    @SerializedName("wallet")
+    @Expose
+    private String wallet;
     @SerializedName("status")
     @Expose
     private String status;

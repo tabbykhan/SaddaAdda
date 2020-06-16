@@ -122,6 +122,7 @@ public class BuyActivityHistory extends AppCompatActivity {
             reportData.add(0, new BuyRecord());
         }
         reportAdapter.updateList(reportData , offsetLevel);
+
     }
 
     public void checkOpen(int adapterPosition) {

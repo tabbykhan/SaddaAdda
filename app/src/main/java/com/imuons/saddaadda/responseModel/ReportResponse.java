@@ -2,6 +2,7 @@ package com.imuons.saddaadda.responseModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.imuons.saddaadda.DataModel.RecordData;
 import com.imuons.saddaadda.DataModel.ReportData;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class ReportResponse {
     private String message;
     @SerializedName("data")
     @Expose
-    private ArrayList<ReportData> data ;
+    private RecordData data ;
 
     public Integer getCode() {
         return code;
@@ -44,11 +45,11 @@ public class ReportResponse {
         this.message = message;
     }
 
-    public ArrayList<ReportData> getData() {
+    public RecordData getData() {
         return data;
     }
 
-    public void setData(ArrayList<ReportData> data) {
+    public void setData(RecordData data) {
         this.data = data;
     }
 }

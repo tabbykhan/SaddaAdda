@@ -127,9 +127,10 @@ public interface AppService {
     Call<VerifyUserResponse> checkUserApi(
             @Body OtpEnitity resetPasswordEntity
     );
-
+    @FormUrlEncoded
     @POST("user/all-transactions-report")
     Call<ReportResponse> REPORT_CALL(
+            @FieldMap Map<String, String> loginMap
     );
 
     @FormUrlEncoded

@@ -12,7 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.imuons.saddaadda.DataModel.BuyRecord;
 import com.imuons.saddaadda.DataModel.ReportData;
+import com.imuons.saddaadda.View.BuyActivityHistory;
 import com.imuons.saddaadda.View.ReportActivity;
 
 import java.text.ParseException;
@@ -27,6 +29,7 @@ import butterknife.OnClick;
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHolder> {
     Activity activity;
     ArrayList<ReportData> reportDataArrayList;
+    int offset = 20;
 
     public ReportAdapter(Activity activity, ArrayList<ReportData> reportDataArrayList) {
         this.activity = activity;
@@ -59,13 +62,9 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
             holder.cBal.setText(String.valueOf(reportData.getBalance()));
             holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
-           /* if (reportData.getTrType().equalsIgnoreCase("Debit")) {
-                holder.tranType.setText("DR");
-            } else {
-                holder.tranType.setText("CR");
-            }*/
-
+            holder.tranType.setText(reportData.getType());
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
+
             //holder.type.setText(reportData.getType());
            /* if(position == reportDataArrayList.size()-1){
                 holder.botto_line.setVisibility(View.VISIBLE);
@@ -74,6 +73,9 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+        }
+        if(position == offset){
+            ((ReportActivity)activity).callapi(position);
         }
     }
 
@@ -102,6 +104,11 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
     }
 
     public void update(ArrayList<ReportData> reportData) {
+        reportDataArrayList = reportData;
+        notifyDataSetChanged();
+    }
+    public void updateList(ArrayList<ReportData> reportData , int offsetLevel) {
+        offset = 20*(offsetLevel+1);
         reportDataArrayList = reportData;
         notifyDataSetChanged();
     }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="transType" >
+        <item>0-9 Sadda X </item>
+        <item>Sadda 7 up down</item>
+        <item>Sadda Shatak</item>
+    </string-array>
+</resources>

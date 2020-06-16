@@ -195,6 +195,25 @@ public class ActivityMore extends AppCompatActivity {
     void withTransReport() {
         startActivity(new Intent(getApplicationContext(), WithDrawTransReportActivity.class));
     }
+    @OnClick(R.id.menu_nineReport)
+    void ransReport(){
+        startActivity(new Intent(getApplicationContext(), IncomeDirectReport.class)
+                .putExtra("title" , getString(R.string.nineReport))
+                .putExtra("type" ,0));
+    }
+    @OnClick(R.id.menu_sevenUpDwon)
+    void withTransReport1(){
+        startActivity(new Intent(getApplicationContext(), IncomeDirectReport.class)
+                .putExtra("title" , getString(R.string.sevenUpDown))
+                .putExtra("type" ,1));
+    }
+    @OnClick(R.id.menu_shatakDirectReport)
+    void withTransReport2(){
+        startActivity(new Intent(getApplicationContext(), IncomeDirectReport.class)
+                .putExtra("title" , getString(R.string.shatakReport))
+                .putExtra("type" ,2));
+    }
+
 
 
 }
