@@ -195,4 +195,6 @@ public class ActivityMore extends AppCompatActivity {
     void withTransReport() {
         startActivity(new Intent(getApplicationContext(), WithDrawTransReportActivity.class));
     }
+
+
 }
