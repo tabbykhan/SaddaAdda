@@ -13,11 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.saddaadda.DataModel.DirectRecord;
-import com.imuons.saddaadda.DataModel.SellRecord;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.View.IncomeDirectReport;
-import com.imuons.saddaadda.View.ReportActivity;
-import com.imuons.saddaadda.View.SellHistoryReportActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,11 +60,8 @@ public class DirectIncomeReportAdapter extends RecyclerView.Adapter<DirectIncome
             //  holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
            // holder.remark.setText(reportData.getRemark());
             holder.status.setText(reportData.getStatus());
-
             holder.date.setText(parseDate(reportData.getEntryTime()));
             //holder.type.setText(reportData.getType());
-
-
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
