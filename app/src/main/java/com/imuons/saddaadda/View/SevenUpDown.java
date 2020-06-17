@@ -720,17 +720,26 @@ public class SevenUpDown extends AppCompatActivity {
             tol12.setText("");
             tol1.setText(String.valueOf(totalVal));
         }
-        fullImage.setVisibility(View.VISIBLE);
-        if (staus.equalsIgnoreCase("Win")) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
+        Handler handler = new Handler();
+        Runnable r = new Runnable() {
+            public void run() {
+                fullImage.setVisibility(View.VISIBLE);
+                if (staus.equalsIgnoreCase("Win")) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
+                    }
+                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        fullImage.setImageDrawable(getDrawable(R.drawable.lose));
+                    }
+                }
+                setAnimtion();
             }
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                fullImage.setImageDrawable(getDrawable(R.drawable.lose));
-            }
-        }
-        setAnimtion();
+        };
+        handler.postDelayed(r, 1000);
+
+
+
     }
 
 
