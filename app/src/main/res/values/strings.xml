@@ -34,7 +34,7 @@
     <string name="Logout">Logout</string>
     <string name="enter_pin">Enter Pin</string>
     <string name="forgot_pin">Forgot Pin?</string>
-    <string name="sgin_in">Sgin in</string>
+    <string name="sgin_in">Sign in</string>
     <string name="user_id">User Id</string>
     <string name="password">Password</string>
     <string name="forget_password">Forget Password</string>
@@ -59,7 +59,7 @@
     <string name="select_lang">Select Language</string>
     <string name="english">English</string>
     <string name="hindi">Hindi(हिन्दी)</string>
-    <string name="setting">Setting</string>
+    <string name="setting">Change language</string>
     <string name="profile">Profile</string>
     <string name="change_pin">Change Pin</string>
     <string name="change_password">Change Password</string>

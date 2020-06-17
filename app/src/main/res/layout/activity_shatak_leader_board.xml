@@ -146,7 +146,7 @@
                     android:shadowRadius="20"
                     android:text="--"
                     android:textColor="#FDFF2D"
-                    android:textSize="30sp"
+                    android:textSize="40sp"
                     android:textStyle="bold" />
 
 
