@@ -51,6 +51,8 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
             holder.top_bar.setVisibility(View.GONE);
             holder.nxt.setVisibility(View.VISIBLE);
             TransRecord reportData = reportDataArrayList.get(position);
+            holder.expend_image.setVisibility(View.GONE);
+            reportData.setOpen(true);
             if (reportData.isOpen()) {
                 holder.dropdown_menu.setVisibility(View.VISIBLE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend_1));
@@ -58,6 +60,7 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
                 holder.dropdown_menu.setVisibility(View.GONE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend));
             }
+
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getAmount()));
             holder.status.setText(reportData.getStatus().trim());
@@ -68,6 +71,7 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+            holder.dropdown_menu.setVisibility(View.GONE);
         }
         if(position == offset){
             if (activity instanceof BuyTransReportActivity)

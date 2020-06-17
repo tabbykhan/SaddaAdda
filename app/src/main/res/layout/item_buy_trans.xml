@@ -64,7 +64,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/expend" />
+                    android:src="@drawable/expend"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/sno"
@@ -141,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nxt"
-        android:visibility="visible"
+        android:visibility="gone"
       >
 
         <LinearLayout

@@ -47,6 +47,8 @@ public class DirectIncomeReportAdapter extends RecyclerView.Adapter<DirectIncome
             holder.top_bar.setVisibility(View.GONE);
             holder.nxt.setVisibility(View.VISIBLE);
             DirectRecord reportData = directRecordArrayList.get(position);
+            holder.expend_image.setVisibility(View.GONE);
+            reportData.setOpen(true);
             if (reportData.isOpen()) {
                 holder.dropdown_menu.setVisibility(View.VISIBLE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend_1));
@@ -65,6 +67,7 @@ public class DirectIncomeReportAdapter extends RecyclerView.Adapter<DirectIncome
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+            holder.dropdown_menu.setVisibility(View.GONE);
         }
     }
     private String parseDate(String entryTime) {

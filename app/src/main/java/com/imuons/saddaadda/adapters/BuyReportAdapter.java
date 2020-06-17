@@ -49,6 +49,8 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
             holder.top_bar.setVisibility(View.GONE);
             holder.nxt.setVisibility(View.VISIBLE);
             BuyRecord reportData = reportDataArrayList.get(position);
+            holder.expend_image.setVisibility(View.GONE);
+            reportData.setOpen(true);
             if (reportData.isOpen()) {
                 holder.dropdown_menu.setVisibility(View.VISIBLE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend_1));
@@ -56,6 +58,7 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
                 holder.dropdown_menu.setVisibility(View.GONE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend));
             }
+            holder.status.setText(reportData.getStatus());
             holder.sno.setText(String.valueOf(position));
             holder.amt.setText(String.valueOf(reportData.getBuyAmount()));
             holder.cBal.setText(String.valueOf(reportData.getOldBalance()));
@@ -69,6 +72,7 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+            holder.dropdown_menu.setVisibility(View.GONE);
         }
         if(position == offset){
             ((BuyActivityHistory)activity).callapi(position);
@@ -117,6 +121,8 @@ public class BuyReportAdapter extends RecyclerView.Adapter<BuyReportAdapter.BuyH
 
         @BindView(R.id.amt)
         TextView amt;
+ @BindView(R.id.status)
+        TextView status;
 
 
         @BindView(R.id.cBal)

@@ -50,6 +50,8 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
             holder.top_bar.setVisibility(View.GONE);
             holder.nxt.setVisibility(View.VISIBLE);
             ReportData reportData = reportDataArrayList.get(position);
+            holder.expend_image.setVisibility(View.GONE);
+            reportData.setOpen(true);
             if (reportData.isOpen()) {
                 holder.dropdown_menu.setVisibility(View.VISIBLE);
                 holder.expend_image.setImageDrawable(activity.getResources().getDrawable(R.drawable.expend_1));
@@ -73,6 +75,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
         } else {
             holder.top_bar.setVisibility(View.VISIBLE);
             holder.nxt.setVisibility(View.GONE);
+            holder.dropdown_menu.setVisibility(View.GONE);
         }
         if(position == offset){
             ((ReportActivity)activity).callapi(position);
