@@ -13,20 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.imuons.saddaadda.DataModel.DirectData;
 import com.imuons.saddaadda.DataModel.DirectRecord;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.DirectIncomeReportAdapter;
 import com.imuons.saddaadda.responseModel.DirectReport;
-import com.imuons.saddaadda.responseModel.TransReportResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,7 +68,7 @@ public class IncomeDirectReport extends Activity {
 
             Call call = null;
             if(type ==0)
-               call = apiService.DIRECT_REPORT_CALL();
+               call = apiService.GetDirectIncome();
             else if(type ==1)
                call= apiService.Seven_DIRECT_REPORT_CALL();
               else
@@ -85,7 +81,7 @@ public class IncomeDirectReport extends Activity {
                     finalDialog.dismiss();
                     DirectReport authResponse = (DirectReport) response.body();
                     if (authResponse != null) {
-                        Log.i("Response::", new Gson().toJson(authResponse));
+                        Log.i("direct income::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             setData(authResponse.getData().getRecords());
                         } else {

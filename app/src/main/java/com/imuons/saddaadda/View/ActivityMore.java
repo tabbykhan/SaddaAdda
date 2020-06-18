@@ -49,7 +49,16 @@ public class ActivityMore extends AppCompatActivity {
         LinearLayout logout = findViewById(R.id.menu_logout);
         LinearLayout buyHistory = findViewById(R.id.menu_buyHistory);
         LinearLayout setting=findViewById(R.id.menu_setting);
+        LinearLayout menu_direct_income=findViewById(R.id.menu_direct_income);
 
+        menu_direct_income.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), IncomeDirectReport.class)
+                        .putExtra("title" , getString(R.string.direct_income))
+                        .putExtra("type" ,0));
+            }
+        });
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

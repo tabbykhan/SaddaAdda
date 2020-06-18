@@ -12,9 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.imuons.saddaadda.DataModel.BuyRecord;
 import com.imuons.saddaadda.DataModel.ReportData;
-import com.imuons.saddaadda.View.BuyActivityHistory;
 import com.imuons.saddaadda.View.ReportActivity;
 
 import java.text.ParseException;
@@ -64,8 +62,33 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
             holder.cBal.setText(String.valueOf(reportData.getBalance()));
             holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
-            holder.tranType.setText(reportData.getType());
+           holder.status.setText(reportData.getType());
+
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
+
+            if(reportData.getTrType().equals("Debit")){
+                holder.tranType.setText("Loss");
+                holder.tranType.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.sno.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.amt.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.cBal.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.pBal.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.remark.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.status.setTextColor(activity.getResources().getColor(R.color.red));
+                holder.tranDate.setTextColor(activity.getResources().getColor(R.color.red));
+            }else{
+                holder.tranType.setText("Win");
+                holder.tranType.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.sno.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.amt.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.cBal.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.pBal.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.remark.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.status.setTextColor(activity.getResources().getColor(R.color.green));
+                holder.tranDate.setTextColor(activity.getResources().getColor(R.color.green));
+            }
+
+
 
             //holder.type.setText(reportData.getType());
            /* if(position == reportDataArrayList.size()-1){
@@ -158,6 +181,8 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
         LinearLayout top_bar;
         @BindView(R.id.dropdown_menu)
         RelativeLayout dropdown_menu;
+        @BindView(R.id.status)
+        TextView status;
 
 
        /* @BindView(R.id.botto_line)

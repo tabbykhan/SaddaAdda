@@ -73,9 +73,6 @@
                     android:fontFamily="@font/amazon_regular"
                     android:gravity="center"
                     android:shadowColor="#cd9b0e"
-                    android:shadowDx="0.0"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="5"
                     android:text="1"
                     android:textColor="#cd9b0e"
                     android:textSize="16sp" />
@@ -94,9 +91,6 @@
                 android:fontFamily="@font/amazon_regular"
                 android:gravity="center"
                 android:shadowColor="#c774ac"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="5"
                 android:text="@string/date"
                 android:textColor="#c774ac"
                 android:textSize="16sp" />
@@ -114,9 +108,6 @@
                 android:fontFamily="@font/amazon_regular"
                 android:gravity="center"
                 android:shadowColor="#d64447"
-                android:shadowDx="0.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="5"
                 android:text="@string/amount"
                 android:textColor="#d64447"
                 android:textSize="16sp" />
@@ -141,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/nxt"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -165,11 +156,11 @@
                     android:gravity="start|center_vertical"
                     android:paddingLeft="20dp"
                     android:shadowColor="#a3ffaf"
+                    android:text="@string/status"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="@string/trans_type"
-                    android:textColor="#a3ffaf"
+                    android:textColor="#cd9b0e"
                     android:textSize="14sp" />
 
                 <TextView
@@ -180,10 +171,6 @@
                     android:fontFamily="@font/amazon_regular"
                     android:gravity="start|center_vertical"
                     android:shadowColor="#cd9b0e"
-                    android:shadowDx="0.0"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="5"
-                    android:text="7 up dwon"
                     android:textColor="#cd9b0e"
                     android:textSize="14sp" />
 
@@ -219,7 +206,7 @@
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
                     android:text="@string/balance"
-                    android:textColor="#a3ffaf"
+                    android:textColor="#cd9b0e"
                     android:textSize="14sp" />
 
                 <TextView
@@ -230,9 +217,6 @@
                     android:fontFamily="@font/amazon_regular"
                     android:gravity="start|center_vertical"
                     android:shadowColor="#cd9b0e"
-                    android:shadowDx="0.0"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="5"
                     android:text="500000"
                     android:textColor="#cd9b0e"
                     android:textSize="14sp" />
@@ -265,7 +249,7 @@
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
                     android:text="@string/date"
-                    android:textColor="#a3ffaf"
+                    android:textColor="#cd9b0e"
                     android:textSize="14sp" />
 
                 <TextView
@@ -276,9 +260,6 @@
                     android:fontFamily="@font/amazon_regular"
                     android:gravity="start|center_vertical"
                     android:shadowColor="#cd9b0e"
-                    android:shadowDx="0.0"
-                    android:shadowDy="0.0"
-                    android:shadowRadius="5"
                     android:text="15-Jun-2012"
                     android:textColor="#cd9b0e"
                     android:textSize="14sp" />
@@ -311,7 +292,7 @@
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
                     android:text="@string/remark"
-                    android:textColor="#a3ffaf"
+                    android:textColor="#cd9b0e"
                     android:textSize="14sp" />
 
                 <TextView
@@ -322,11 +303,52 @@
                     android:fontFamily="@font/amazon_regular"
                     android:gravity="start|center_vertical"
                     android:shadowColor="#cd9b0e"
+                    android:text="7 up dwon"
+                    android:textColor="#cd9b0e"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#a3ffaf" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="20dp">
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#a3ffaf" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/amazon_regular"
+                    android:gravity="start|center_vertical"
+                    android:paddingLeft="20dp"
+                    android:shadowColor="#a3ffaf"
                     android:shadowDx="0.0"
                     android:shadowDy="0.0"
                     android:shadowRadius="5"
-                    android:text="7 up dwon"
+                    android:text="@string/type"
                     android:textColor="#cd9b0e"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/amazon_regular"
+                    android:gravity="start|center_vertical"
+                    android:shadowColor="#cd9b0e"
+                    android:text="7 up dwon"
+                    android:textColor="@color/red"
                     android:textSize="14sp" />
 
                 <View
