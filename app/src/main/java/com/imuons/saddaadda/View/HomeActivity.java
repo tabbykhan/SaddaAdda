@@ -6,9 +6,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,17 +23,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.imuons.saddaadda.DataModel.AppUpdateRespponse;
 import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.Utils.AppCommon;
+import com.imuons.saddaadda.Utils.AppUpdateUtils;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,6 +77,58 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        GetAppVersion();
+    }
+
+    private void ShowUpdateDialog(String url) {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(getResources().getString(R.string.app_name));
+        adb.setIcon(R.mipmap.ic_launcher_round);
+        adb.setMessage(getString(R.string.app_update));
+        adb.setCancelable(false);
+        adb.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                Log.d("back", "---" + keyCode);
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    finishAffinity();
+                }
+                return false;
+            }
+        });
+        adb.setPositiveButton(getString(R.string.update), new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                openBrowser(url);
+
+            }
+
+        });
+        adb.setNegativeButton(getString(R.string.not_now), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finishAffinity();
+            }
+        });
+        adb.show();
+    }
+
+    private void openBrowser(String url) {
+        try {
+            final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            startActivity(intent);
+        } catch (Exception e) {
+
+        }
     }
 
     private void getDashboardInfo() {
@@ -113,7 +172,6 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     private void setDashboardData(DashboardData data) {
@@ -165,8 +223,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void saddaShatak(View view) {
-       // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getApplicationContext(),SaddaShatakUpcomingSlotActivity.class));
+        // Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), SaddaShatakUpcomingSlotActivity.class));
     }
 
     public void saddaQuiz(View view) {
@@ -197,7 +255,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void changeMoneyType(boolean isDemo) {
-        LoginEntity loginEntity = new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword() , "");
+        LoginEntity loginEntity = new LoginEntity(AppCommon.getInstance(this).getUserId(), AppCommon.getInstance(this).getPassword(), "");
         if (isDemo) {
             ServiceGenerator.changeApiBaseUrl("https://www.saddaadda.games/saddaddapanel/api/");
 
@@ -362,6 +420,51 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(new Intent(HomeActivity.this, ChangePassword.class));
                         } else {
                             Toast.makeText(HomeActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    dialog.dismiss();
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(HomeActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void GetAppVersion() {
+        if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
+            Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
+            Map<String, Object> param = new HashMap<>();
+            param.put("device_type", "A");
+            param.put("version_code", AppUpdateUtils.getAppInstalledVersionCode(getApplicationContext()));
+            Call call = apiService.GetAppUpdate(param);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    dialog.dismiss();
+                    AppUpdateRespponse authResponse = (AppUpdateRespponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("Response::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            if (authResponse.getData() != null) {
+                                ShowUpdateDialog(authResponse.getData().getAppLink());
+                            }
+                        } else {
+                           // Toast.makeText(HomeActivity.this, authResponse.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");

@@ -1,6 +1,7 @@
 package com.imuons.saddaadda.retrofit;
 
 
+import com.imuons.saddaadda.DataModel.AppUpdateRespponse;
 import com.imuons.saddaadda.DataModel.DetailsTicketResponseModel;
 import com.imuons.saddaadda.DataModel.ShatakProductResponseModel;
 import com.imuons.saddaadda.DataModel.TransactionSlipResponseModel;
@@ -70,14 +71,10 @@ import retrofit2.http.POST;
 public interface AppService {
 
     @POST("login")
-    Call<LoginResponseModel> LoginApi(
-            @Body LoginEntity loginEntity
-    );
+    Call<LoginResponseModel> LoginApi(@Body LoginEntity loginEntity);
 
     @POST("register")
-    Call<RegisterResponse> RegisterApi(
-            @Body RegitrationEntity registerEntity
-    );
+    Call<RegisterResponse> RegisterApi(@Body RegitrationEntity registerEntity);
 
     @GET("generate-userid")
     Call<RandomUserIdResponse> GetRendomNumber();
@@ -89,73 +86,48 @@ public interface AppService {
     Call<DashboardResponse> Get_DashboardInfo();
 
     @POST("user/user-update")
-    Call<UpdateProfileResponse> UPDATE_PROFILE_RESPONSE_CALL(
-            @Body UpdateProfileEntity updateProfileEntity
-    );
+    Call<UpdateProfileResponse> UPDATE_PROFILE_RESPONSE_CALL(@Body UpdateProfileEntity updateProfileEntity);
 
     @POST("user/seven_up_down")
-    Call<SathKaDamResponse> SATH_KA_DAM_RESPONSE_Call(
-            @Body SathKaDamEntity sathKaDamEntity
-    );
+    Call<SathKaDamResponse> SATH_KA_DAM_RESPONSE_Call(@Body SathKaDamEntity sathKaDamEntity);
 
     @POST("newreset-password")
-    Call<ForgetPasswordResponse> FORGET_PASSWORD_CALL(
-            @Body ResetPasswordEntity resetPasswordEntity
-    );
+    Call<ForgetPasswordResponse> FORGET_PASSWORD_CALL(@Body ResetPasswordEntity resetPasswordEntity);
 
     @POST("user/verify-pin")
-    Call<PinResponse> pinApi(
-            @Body PinEntitiy resetPasswordEntity
-    );
+    Call<PinResponse> pinApi(@Body PinEntitiy resetPasswordEntity);
 
     @POST("send-otp")
-    Call<OptResponse> SendOTP_FOR_PIN(
-            @Body OtpEnitity resetPasswordEntity
-    );
+    Call<OptResponse> SendOTP_FOR_PIN(@Body OtpEnitity resetPasswordEntity);
 
     @POST("reset-pin")
-    Call<PinResponse> ResetPinApi(
-            @Body ResetPinEntity resetPasswordEntity
-    );
+    Call<PinResponse> ResetPinApi(@Body ResetPinEntity resetPasswordEntity);
 
     @POST("user/change-pin")
-    Call<PinResponse> ChangePinApi(
-            @Body ChangePinEntity resetPasswordEntity
-    );
+    Call<PinResponse> ChangePinApi(@Body ChangePinEntity resetPasswordEntity);
 
     @POST("checkuserexist")
-    Call<VerifyUserResponse> checkUserApi(
-            @Body OtpEnitity resetPasswordEntity
-    );
+    Call<VerifyUserResponse> checkUserApi(@Body OtpEnitity resetPasswordEntity);
+
     @FormUrlEncoded
     @POST("user/all-transactions-report")
-    Call<ReportResponse> REPORT_CALL(
-            @FieldMap Map<String, String> loginMap
-    );
+    Call<ReportResponse> REPORT_CALL(@FieldMap Map<String, String> loginMap);
 
     @FormUrlEncoded
     @POST("user/sell-report")
-    Call<SellHistoryReport> SellREPORT_CALL(
-            @FieldMap Map<String, String> loginMap
-    );
+    Call<SellHistoryReport> SellREPORT_CALL(@FieldMap Map<String, String> loginMap);
 
     @FormUrlEncoded
     @POST("user/buy-report")
-    Call<BuyHistoryResponse> BuyREPORT_CALL(
-            @FieldMap Map<String, String> loginMap
-    );
+    Call<BuyHistoryResponse> BuyREPORT_CALL(@FieldMap Map<String, String> loginMap);
 
     @POST("user/buy-balance")
-    Call<BuyCoinResponse> buyCoin(
-            @Body BuyCoinEntity buyCoinEntity
-    );
+    Call<BuyCoinResponse> buyCoin(@Body BuyCoinEntity buyCoinEntity);
 
 
     //tabish
     @POST("user/sell-wallet-balance")
-    Call<SellResponseModel> sellCoin(
-            @Body SellCoinEntity sellCoinEntity
-    );
+    Call<SellResponseModel> sellCoin(@Body SellCoinEntity sellCoinEntity);
 
     //tabish
     @GET("user/get-wallet-balance")
@@ -163,39 +135,28 @@ public interface AppService {
 
     //tabish
     @POST("user/change-newpassword")
-    Call<ChangePasswordResponse> change_password(
-            @Body ChangePasswordEntity changePasswordEntity
-    );
+    Call<ChangePasswordResponse> change_password(@Body ChangePasswordEntity changePasswordEntity);
 
     //tabish
     @POST("user/zero_to_nine")
-    Call<SaddaXResponse> SADDA_X_RESPONSE_CALL(
-            @Body SaddaXEntity saddaXEntity
-    );
+    Call<SaddaXResponse> SADDA_X_RESPONSE_CALL(@Body SaddaXEntity saddaXEntity);
 
     //tabish
     @POST("user/get-zerotonine-topup")
-    Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL(
-            @Body SaddaXTopUp saddaXTopUp);
+    Call<SaddaxReportResponse> SADDAX_REPORT_RESPONSE_CALL(@Body SaddaXTopUp saddaXTopUp);
 
 
     //tabish
     @POST("user/link-report")
-    Call<TicketResponse> TICKET_RESPONSE_CALL(
-            @Body TicketEntity ticketEntity
-    );
+    Call<TicketResponse> TICKET_RESPONSE_CALL(@Body TicketEntity ticketEntity);
 
     @POST("user/fetch-message")
-    Call<FetchChatResponse> getChatList(
-            @Body ChatEntity chatEntity
-    );
+    Call<FetchChatResponse> getChatList(@Body ChatEntity chatEntity);
     //azhar
 
     @FormUrlEncoded
     @POST("user/all-transactions-report")
-    Call<TransReportResponse> BuyTransREPORT_CALL(
-            @FieldMap Map<String, String> loginMap
-    );
+    Call<TransReportResponse> BuyTransREPORT_CALL(@FieldMap Map<String, String> loginMap);
 
     //tabish
     @GET("user/upcoming_zero_to_nine_slots")
@@ -218,19 +179,15 @@ public interface AppService {
     Call<TransactionSlipResponseModel> GetSlip(@Body Map<String, Object> map);
 
     @POST("user/send-message")
-    Call<PinResponse> sendMessage(
-            @Body SendMessage sendMessage
-    );
+    Call<PinResponse> sendMessage(@Body SendMessage sendMessage);
 
     //tabish
     @POST("user/zero_to_nine_completed_slots")
-    Call<CompleteSlotResponse> COMPLETE_SLOT_RESPONSE_CALL(
-            @Body CompleteSlotEntity completeSlotEntity);
+    Call<CompleteSlotResponse> COMPLETE_SLOT_RESPONSE_CALL(@Body CompleteSlotEntity completeSlotEntity);
 
     //tabish
     @POST("user/zero_to_nine_leadership")
-    Call<WinningNumberResponse> WINNING_NUMBER_RESPONSE_CALL(
-            @Body WinningNumberEntity winningNumberEntity);
+    Call<WinningNumberResponse> WINNING_NUMBER_RESPONSE_CALL(@Body WinningNumberEntity winningNumberEntity);
 
     //tabish
     @GET("user/zero_to_nine_last_winning_date")
@@ -239,8 +196,7 @@ public interface AppService {
 
     //tabish
     @POST("user/transfer-fund")
-    Call<FundTransferResponse> FUND_TRANSFER_RESPONSE_CALL(
-            @Body FundTransEntity fundTransEntity);
+    Call<FundTransferResponse> FUND_TRANSFER_RESPONSE_CALL(@Body FundTransEntity fundTransEntity);
 
 
     @GET("user/get-products-damdarshatak")
@@ -259,12 +215,10 @@ public interface AppService {
     Call<WinningDateResponse> ShatakWinningDate();
 
     @POST("user/damdar_shatak_completed_slots")
-    Call<CompleteSlotResponse> ShatakCompleteSolts(
-            @Body CompleteSlotEntity completeSlotEntity);
+    Call<CompleteSlotResponse> ShatakCompleteSolts(@Body CompleteSlotEntity completeSlotEntity);
 
     @POST("user/damdar_shatak_leadership")
-    Call<WinningNumberResponse> ShatakLeadership(
-            @Body WinningNumberEntity winningNumberEntity);
+    Call<WinningNumberResponse> ShatakLeadership(@Body WinningNumberEntity winningNumberEntity);
 
     @GET("user/zerotonine-direct-income")
     Call<DirectReport> DIRECT_REPORT_CALL();
@@ -275,5 +229,10 @@ public interface AppService {
     @GET("user/damdar-direct-income")
     Call<DirectReport> Satak_DIRECT_REPORT_CALL();
 
+    @POST("user/check_app_version")
+    Call<AppUpdateRespponse> GetAppUpdate(@Body Map<String, Object> param);
+
+    @GET("user/direct-income")
+    Call<DirectReport> GetDirectIncome();
 
 }

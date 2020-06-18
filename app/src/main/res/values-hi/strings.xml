@@ -196,5 +196,9 @@
     <string name="nineReport">0-9 प्रत्यक्ष आय रिपोर्ट</string>
     <string name="sevenUpDown">7 अप डाउन डायरेक्ट इनकम रिपोर्ट</string>
     <string name="shatakReport">शतक डायरेक्ट इनकम रिपोर्ट</string>
+    <string name="app_update">ऐप अपडेट उपलब्ध है</string>
+    <string name="not_now">अभी नहीं</string>
+    <string name="type">प्रकार</string>
+    <string name="direct_income">प्रत्यक्ष आय</string>
 
 </resources>

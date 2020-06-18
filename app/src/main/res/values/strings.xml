@@ -190,5 +190,9 @@
     <string name="nineReport">0-9 Direct Income Report</string>
     <string name="sevenUpDown">7 Up Down Direct Income Report</string>
     <string name="shatakReport">"Shatak Direct Income Report "</string>
+    <string name="app_update">App Update Is Available</string>
+    <string name="not_now">Not Now</string>
+    <string name="type">Type</string>
+    <string name="direct_income">Direct Income</string>
 
 </resources>
