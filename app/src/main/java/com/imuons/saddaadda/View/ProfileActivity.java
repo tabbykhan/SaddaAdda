@@ -97,9 +97,9 @@ public class ProfileActivity extends AppCompatActivity {
         String ifsc = etIFSC.getText().toString().trim();
         String branch = etBranchName.getText().toString().trim();
         String accountNo = etAccountNo.getText().toString().trim();
-        String paytm_no=et_paytm_no.getText().toString().trim();
+        String paytm_no = et_paytm_no.getText().toString().trim();
 
-        updateProfile(name, mobile, googlePay, phonePay, accountName, ifsc, branch, accountNo,paytm_no);
+        updateProfile(name, mobile, googlePay, phonePay, accountName, ifsc, branch, accountNo, paytm_no);
     }
 
     private void updateProfile(String name, String mobile, String googlePay, String phonePay, String accountName, String ifsc, String branch, String accountNo, String paytm_no) {
@@ -109,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
             Call call = apiService.UPDATE_PROFILE_RESPONSE_CALL(new UpdateProfileEntity(name,
-                    mobile, accountNo, accountName, branch, ifsc, googlePay, phonePay,paytm_no));
+                    mobile, accountNo, accountName, branch, ifsc, googlePay, phonePay, paytm_no));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -201,9 +201,9 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             etPhonePay.setText("");
         }
-        if(data.getPaytm_no()!=null){
+        if (data.getPaytm_no() != null) {
             et_paytm_no.setText(data.getPaytm_no());
-        }else{
+        } else {
             et_paytm_no.setText("");
         }
 
@@ -355,7 +355,7 @@ public class ProfileActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             //String shareMessage= "\nLet me recommend you this application\n\n";
             // shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" + "LINK=" + userID + " to head to my profile now";
+            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" + "https://www.saddaadda.games/saddadda.apk" + "=" + userID + " to head to my profile now";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "choose one"));
 
