@@ -60,15 +60,14 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         // Get new Instance ID token
-                        fireBase= task.getResult().getToken();
+                        fireBase = task.getResult().getToken();
 
                         // Log and toast
-                       // String msg = getString(R.string.msg_token_fmt, token);
+                        // String msg = getString(R.string.msg_token_fmt, token);
                         Log.i("token::", fireBase);
-                     //   Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //   Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-
 
 
     }
@@ -88,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
         } else if (password.isEmpty()) {
             et_userId.setError(getResources().getString(R.string.enter_passsword));
         } else
-            callLoginApi(new LoginEntity(userId, password , fireBase) );
+            callLoginApi(new LoginEntity(userId, password, fireBase));
 
     }
 
@@ -106,11 +105,11 @@ public class LoginActivity extends AppCompatActivity {
                     LoginResponseModel authResponse = (LoginResponseModel) response.body();
                     if (authResponse != null) {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
-                        if (authResponse.getCode() == 200 ) {
-                            Log.i("token:::" , authResponse.getData().getAccessToken());
+                        if (authResponse.getCode() == 200) {
+                            Log.i("token:::", authResponse.getData().getAccessToken());
                             AppCommon.getInstance(LoginActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(LoginActivity.this).setToken(authResponse.getData().getAccessToken());
-                            AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim(),true);
+                            AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim(), true);
                             AppCommon.getInstance(LoginActivity.this).setPassword(et_password.getText().toString().trim());
                             AppCommon.getInstance(LoginActivity.this).setSesstionId(authResponse.getData().getSession_id());
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
@@ -120,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                     //   AppCommon.getInstance(LoginActivity.this).showDialog(LoginActivity.this, "Server Error");
+                        //   AppCommon.getInstance(LoginActivity.this).showDialog(LoginActivity.this, "Server Error");
                         Toast.makeText(LoginActivity.this, "The user credentials were incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }

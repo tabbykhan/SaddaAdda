@@ -355,7 +355,7 @@ public class ProfileActivity extends AppCompatActivity {
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             //String shareMessage= "\nLet me recommend you this application\n\n";
             // shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
-            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" + "https://www.saddaadda.games/saddadda.apk" + "=" + userID + " to head to my profile now";
+            String shareMessage = "Follow me on Sadda Adda and check out my latest updates! Tap \n" + "https://www.saddaadda.games/saddadda.apk " + "=" + userID + " to head to my profile now";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             startActivity(Intent.createChooser(shareIntent, "choose one"));
 
