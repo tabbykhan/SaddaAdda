@@ -638,7 +638,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_setting"
+                android:background="@drawable/ic_language_black_24dp"
                 android:backgroundTint="#a3ffaf"
                 />
 
