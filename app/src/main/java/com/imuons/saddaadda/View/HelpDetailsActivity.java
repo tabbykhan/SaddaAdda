@@ -55,7 +55,8 @@ public class HelpDetailsActivity extends AppCompatActivity {
     TextView bank_name;
     @BindView(R.id.ifsc_code)
     TextView ifsc_code;
-
+    @BindView(R.id.txt_paytm)
+    TextView txt_paytm;
 
     private Bundle bundle;
     private String trna_id;
@@ -136,6 +137,7 @@ public class HelpDetailsActivity extends AppCompatActivity {
         txt_contact.setText(validString(dataModel.getToMobile()));
         txt_google_pay.setText(validString(dataModel.getToTezNo()));
         txt_phone_pay.setText(validString(dataModel.getToPhonepeNo()));
+        txt_paytm.setText(validString(dataModel.getToPaytmNo()));
         account_no.setText(validString(dataModel.getToAccountNo()));
         branch_name.setText(validString(dataModel.getToBranchName()));
         bank_name.setText(validString(dataModel.getToBankName()));

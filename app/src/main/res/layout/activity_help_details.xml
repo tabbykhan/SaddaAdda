@@ -45,7 +45,7 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:text="Help Details"
+            android:text="@string/help_details"
             android:textColor="#edea73"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -93,7 +93,7 @@
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center"
                         android:paddingRight="20dp"
-                        android:text="From user"
+                        android:text="@string/from_user"
                         android:textColor="#d3d32b"
                         android:textSize="15dp">
                     </TextView>
@@ -126,7 +126,7 @@
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center"
                         android:paddingRight="20dp"
-                        android:text="To user"
+                        android:text="@string/to_user"
                         android:textColor="#d3d32b"
                         android:textSize="15dp">
                     </TextView>
@@ -208,7 +208,7 @@
                         android:drawableLeft="@drawable/contactno_1"
                         android:fontFamily="@font/amazon_bold"
                         android:gravity="center"
-                        android:text="Contact No"
+                        android:text="@string/contact_no"
                         android:paddingRight="20dp"
                         android:textColor="#d3d32b"
                         android:textSize="15dp">
@@ -249,9 +249,9 @@
                     android:id="@+id/txt_google_pay"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
-                    android:text="Google Pay No"
+                    android:text="@string/google_pay_no"
                     android:textColor="@color/yellow"
-                    android:drawablePadding="20dp"
+                    android:drawablePadding="30dp"
                     android:textSize="17dp"
                     android:drawableLeft="@drawable/googlepay_1"
                     android:layout_height="40dp">
@@ -278,11 +278,31 @@
                     android:id="@+id/txt_phone_pay"
                     android:layout_width="match_parent"
                     android:gravity="center_vertical"
-                    android:text="PhonePe No"
+                    android:text="@string/phonepe_no"
+                    android:textColor="@color/yellow"
+                    android:drawablePadding="30dp"
+                    android:textSize="17dp"
+                    android:drawableLeft="@drawable/phonepe_1"
+                    android:layout_height="40dp">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/txt_paytm"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/paytm_no"
                     android:textColor="@color/yellow"
                     android:drawablePadding="20dp"
                     android:textSize="17dp"
-                    android:drawableLeft="@drawable/phonepe_1"
+                    android:drawableLeft="@drawable/paytm_image"
                     android:layout_height="40dp">
 
                 </TextView>
@@ -309,7 +329,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="center_vertical"
-                    android:text="Holder Name"
+                    android:text="@string/holder_name"
                     android:textColor="#d3d32b"
                     android:textSize="15dp">
                 </TextView>
@@ -340,7 +360,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="center_vertical"
-                    android:text="Account No"
+                    android:text="@string/account_no"
                     android:textColor="#db0f4d"
                     android:textSize="15dp">
                 </TextView>
@@ -371,7 +391,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="center_vertical"
-                    android:text="Branch Name"
+                    android:text="@string/branch_name"
                     android:textColor="#31c8cc"
                     android:textSize="15dp">
                 </TextView>
@@ -402,7 +422,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="center_vertical"
-                    android:text="Bank Name"
+                    android:text="@string/bank_name"
                     android:textColor="#31c8cc"
                     android:textSize="17dp">
                 </TextView>
@@ -434,7 +454,7 @@
                     android:layout_height="30dp"
                     android:fontFamily="@font/amazon_bold"
                     android:gravity="center_vertical"
-                    android:text="IFSC Code"
+                    android:text="@string/ifsc_code"
                     android:textColor="#ac6d1c"
                     android:textSize="17dp">
                 </TextView>

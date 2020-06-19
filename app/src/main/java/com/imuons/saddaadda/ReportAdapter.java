@@ -63,11 +63,11 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
             holder.pBal.setText(String.valueOf(reportData.getPrevBalance()));
             holder.remark.setText(reportData.getRemark());
            holder.status.setText(reportData.getType());
-
+            holder.tranType.setText(reportData.getTrType());
             holder.tranDate.setText(parseDate(reportData.getEntryTime()));
 
             if(reportData.getTrType().equals("Debit")){
-                holder.tranType.setText("Loss");
+
                 holder.tranType.setTextColor(activity.getResources().getColor(R.color.red));
                 holder.sno.setTextColor(activity.getResources().getColor(R.color.red));
                 holder.amt.setTextColor(activity.getResources().getColor(R.color.red));
@@ -77,7 +77,6 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportHold
                 holder.status.setTextColor(activity.getResources().getColor(R.color.red));
                 holder.tranDate.setTextColor(activity.getResources().getColor(R.color.red));
             }else{
-                holder.tranType.setText("Win");
                 holder.tranType.setTextColor(activity.getResources().getColor(R.color.green));
                 holder.sno.setTextColor(activity.getResources().getColor(R.color.green));
                 holder.amt.setTextColor(activity.getResources().getColor(R.color.green));
