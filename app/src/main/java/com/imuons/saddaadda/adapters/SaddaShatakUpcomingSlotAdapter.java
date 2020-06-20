@@ -47,7 +47,8 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
         UpcomingSlotData upcomingSlotData = reportDataArrayList.get(position);
         holder.row.setAnimation(AnimationUtils.loadAnimation(activity,R.anim.item_animation_fall_down));
         holder.price.setText(String.valueOf(upcomingSlotData.getSlotNo()));
-        holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
+       // holder.dateTime.setText(parseDate1(String.valueOf(upcomingSlotData.getEntryTime())));
+        holder.dateTime.setText(String.valueOf(upcomingSlotData.getFromDaytime()));
         holder.starDate.setText(String.valueOf(upcomingSlotData.getFromDate()));
         holder.starTime.setText(String.valueOf(upcomingSlotData.getFromTime()));
         holder.endDate.setText(String.valueOf(upcomingSlotData.getToDate()));

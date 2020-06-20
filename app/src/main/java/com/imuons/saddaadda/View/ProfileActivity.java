@@ -189,8 +189,20 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setProfileInfo(ProfileDataModel data) {
-        etName.setText(String.valueOf(data.getFullname()));
-        etMobile.setText(String.valueOf(data.getMobile()));
+
+
+
+        if (data.getFullname() !=null){
+            etName.setText(String.valueOf(data.getFullname()));
+        }else {
+            etName.setText("");
+        }
+        if (data.getMobile() !=null){
+            etMobile.setText(String.valueOf(data.getMobile()));
+        }else {
+            etMobile.setText("");
+        }
+
         if (data.getTezNo() != null) {
             etGooglePay.setText(data.getTezNo());
         } else {
@@ -209,28 +221,96 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (data.getBankName() != null) {
             etAccountName.setText(data.getBankName());
+
         } else {
             etAccountName.setText("");
         }
         if (data.getAccountNo() != null) {
             etAccountNo.setText(data.getAccountNo());
+
         } else {
             etAccountNo.setText("");
         }
         if (data.getIfscCode() != null) {
             etIFSC.setText(data.getIfscCode());
+
         } else {
             etIFSC.setText("");
+
         }
         if (data.getBranchName() != null) {
             etBranchName.setText(data.getBranchName());
 
         } else {
             etBranchName.setText("");
+
         }
 
         userID = String.valueOf(data.getUserId());
         txUserId.setText(String.valueOf(data.getUserId()));
+
+        if (data.getFullname() == null || data.getFullname().equals("")) {
+            etName.setEnabled(true);
+        } else {
+            etName.setEnabled(false);
+        }if (data.getMobile() == null || data.getMobile().equals("")) {
+            etMobile.setEnabled(true);
+        } else {
+            etMobile.setEnabled(false);
+        }
+        if (data.getIfscCode() == null || data.getIfscCode().equals("")) {
+            etIFSC.setEnabled(true);
+        } else {
+            etIFSC.setEnabled(false);
+        }
+
+        if (data.getTezNo() == null || data.getTezNo().equals("")) {
+
+            etGooglePay.setEnabled(true);
+        } else {
+            etGooglePay.setEnabled(false);
+        }
+
+        if (data.getPhonepeNo() == null || data.getPhonepeNo().equals("")) {
+
+            etPhonePay.setEnabled(true);
+        } else {
+            etPhonePay.setEnabled(false);
+        }
+
+        if (data.getPaytm_no() == null || data.getPaytm_no().equals("")) {
+
+            et_paytm_no.setEnabled(true);
+        } else {
+            et_paytm_no.setEnabled(false);
+        }
+
+        if (data.getBankName() == null || data.getBankName().equals("")) {
+
+            etAccountName.setEnabled(true);
+
+        } else {
+            etAccountName.setEnabled(false);
+        }
+
+        if (data.getAccountNo() == null || data.getAccountNo().equals("")) {
+
+            etAccountNo.setEnabled(true);
+
+        } else {
+            etAccountNo.setEnabled(false);
+        }
+
+        if (data.getBranchName() == null || data.getBranchName().equals("")) {
+
+            etBranchName.setEnabled(true);
+
+
+        } else {
+            etBranchName.setEnabled(false);
+        }
+
+
     }
 
     private void showAlertDialog() {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">सड्डा अडा</string>
-    <string name="ruleone">एलेक्स एकल नंबर (उदाहरण के लिए 2) पर 100 रुपये का निवेश करता है और फिर यह नंबर जीत रहा है, वह 900 जीत जाएगा</string>
-    <string name="ruletwo">एलेक्स दो नंबरों पर 100 / - निवेश करता है (उदाहरण 2 और 3 के लिए) और फिर उनमें से कोई एक विजेता संख्या है जो वह 450 / - जीतेगा।</string>
-    <string name="rulethree">एलेक्स तीन नंबरों पर 100 रुपये का निवेश करता है (उदाहरण के लिए 1 2 और 3) और फिर उनमें से कोई एक विजेता संख्या है जो वह 300 रुपये जीतेगा</string>
-    <string name="rulefour">एलेक्स 4 नंबरों पर 100 रुपये का निवेश करता है (उदाहरण के लिए 0 1 2 और 3) और फिर उनमें से कोई एक विजेता नंबर है जो वह 200 रुपये
+    <string name="ruleone">एलेक्स एकल नंबर (उदाहरण के लिए 2) पर 100 रुपये का शर्त करता है और फिर यह नंबर जीत रहा है, वह 900 जीत जाएगा</string>
+    <string name="ruletwo">एलेक्स दो नंबरों पर 100 / - शर्त करता है (उदाहरण 2 और 3 के लिए) और फिर उनमें से कोई एक विजेता संख्या है जो वह 450 / - जीतेगा।</string>
+    <string name="rulethree">एलेक्स तीन नंबरों पर 100 रुपये का शर्त करता है (उदाहरण के लिए 1 2 और 3) और फिर उनमें से कोई एक विजेता संख्या है जो वह 300 रुपये जीतेगा</string>
+    <string name="rulefour">एलेक्स 4 नंबरों पर 100 रुपये का शर्त करता है (उदाहरण के लिए 0 1 2 और 3) और फिर उनमें से कोई एक विजेता नंबर है जो वह 200 रुपये
 जीतेंगे।</string>
     <string name="Capture_photo_from_camera">कैमरे से फोटो खींचे</string>
     <string name="Select_photo_from_gallery">गैलरी से फोटो का चयन करें</string>
@@ -155,18 +155,18 @@
     <string name="trans_type">ट्रांस प्रकार</string>
     <string name="sadda_x">Sadda X</string>
     <string
-        name="say_alex_has_100_to_invest_now_he_can_put_the_money_on_any_and_multiple_numbers_from_0_to_9">एलेक्स के पास निवेश करने के लिए 100 रुपये हैं अब वह किसी भी और कई नंबरों पर 0 से 9 तक पैसा लगा सकता है.</string>
+        name="say_alex_has_100_to_invest_now_he_can_put_the_money_on_any_and_multiple_numbers_from_0_to_9">एलेक्स के पास शर्त करने के लिए 100 रुपये हैं अब वह किसी भी और कई नंबरों पर 0 से 9 तक पैसा लगा सकता है.</string>
     <string
-        name="let_s_have_a_look_on_what_are_the_possibilities_for_alex_to_benefit_from_his_investment">आइए एक नजर डालते हैं कि एलेक्स को अपने निवेश से लाभ होने की क्या संभावनाएं हैं</string>
+        name="let_s_have_a_look_on_what_are_the_possibilities_for_alex_to_benefit_from_his_investment">आइए एक नजर डालते हैं कि एलेक्स को अपने शर्त से लाभ होने की क्या संभावनाएं हैं</string>
     <string name="note">ध्यान दें:</string>
-    <string name="player_is_free_to_invest_amount_on_multiple_numbers">•\tखिलाड़ी कई नंबरों पर राशि का निवेश करने के लिए स्वतंत्र है</string>
+    <string name="player_is_free_to_invest_amount_on_multiple_numbers">•\tखिलाड़ी कई नंबरों पर राशि का शर्त करने के लिए स्वतंत्र है</string>
     <string name="amount_in_multiples_of_10_from_10_to_1000_on_set_numbers">•\tसेट संख्याओं पर 10
         (10 / - से 1000 / - तक) के गुणकों में राशि</string>
-    <string name="_1_investing_on_single_number_x9_returns">1. नंबर पर निवेश (x9 रिटर्न)</string>
-    <string name="_2_investing_on_two_numbers_x4_5_returns">2. नंबरों पर निवेश (x4.5 रिटर्न)</string>
-    <string name="_3_investing_on_three_numbers_x3_returns">3. नंबर पर निवेश (x3 रिटर्न)</string>
+    <string name="_1_investing_on_single_number_x9_returns">1. नंबर पर शर्त (x9 रिटर्न)</string>
+    <string name="_2_investing_on_two_numbers_x4_5_returns">2. नंबरों पर शर्त (x4.5 रिटर्न)</string>
+    <string name="_3_investing_on_three_numbers_x3_returns">3. नंबर पर शर्त (x3 रिटर्न)</string>
     <string name="_4_investing_on_four_numbers_x2_returns_double">4. नंबर (x2 रिटर्न / डबल) पर
-        निवेश</string>
+        शर्त</string>
     <string name="sell_coins"> सिक्काबेचे</string>
     <string name="wallet_balance_transfer">वॉलेट शेष राशि स्थानांतरण</string>
     <string name="available_coins">उपलब्ध सिक्के</string>
