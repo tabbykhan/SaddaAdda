@@ -82,6 +82,7 @@ public class BuyTransAdapter extends RecyclerView.Adapter<BuyTransAdapter.BuyHol
         }
     }
 
+
     private String parseDate(String entryTime) {
         String inputPattern = "yyyy-MM-dd HH:mm:ss";
         String outputPattern = "dd-MMM-yy";

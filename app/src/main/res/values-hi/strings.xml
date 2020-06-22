@@ -196,9 +196,13 @@
     <string name="nineReport">0-9 प्रत्यक्ष आय रिपोर्ट</string>
     <string name="sevenUpDown">7 अप डाउन डायरेक्ट इनकम रिपोर्ट</string>
     <string name="shatakReport">शतक डायरेक्ट इनकम रिपोर्ट</string>
-    <string name="app_update">ऐप अपडेट उपलब्ध है</string>
+    <string name="app_update">सड्डा अडा अपडेट उपलब्ध है</string>
     <string name="not_now">अभी नहीं</string>
     <string name="type">प्रकार</string>
     <string name="direct_income">प्रत्यक्ष आय</string>
+    <string name="check_out_whats_new">सड्डा अडा में देखें कि नया क्या है</string>
+    <string
+        name="imrovements_to_app_game_game_performance">Improvments to app and Game Performance</string>
+    <string name="bug_fix_and_optimizations">बग फिक्स और अनुकूलन</string>
 
 </resources>

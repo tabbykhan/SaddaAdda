@@ -190,9 +190,14 @@
     <string name="nineReport">0-9 Direct Income Report</string>
     <string name="sevenUpDown">7 Up Down Direct Income Report</string>
     <string name="shatakReport">"Shatak Direct Income Report "</string>
-    <string name="app_update">App Update Is Available</string>
+    <string name="app_update">Sadda Adda Update Is Available</string>
     <string name="not_now">Not Now</string>
     <string name="type">Type</string>
     <string name="direct_income">Direct Income</string>
+    <string name="check_out_whats_new">Check Out What\'s New in Sadda Adda</string>
+    <string
+        name="imrovements_to_app_game_game_performance">Improvements to app and Game
+        Performance</string>
+    <string name="bug_fix_and_optimizations">Bug fixes and Optimizations</string>
 
 </resources>
