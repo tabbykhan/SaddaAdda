@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -87,12 +89,33 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void ShowUpdateDialog(String url) {
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle(getResources().getString(R.string.app_name));
-        adb.setIcon(R.mipmap.ic_launcher_round);
-        adb.setMessage(getString(R.string.app_update));
-        adb.setCancelable(false);
-        adb.setOnKeyListener(new DialogInterface.OnKeyListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.dialog_app_update,
+                viewGroup, false);
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.show();
+
+        TextView txtxt_update = (TextView) dialogView.findViewById(R.id.txt_update);
+        TextView not_now = (TextView) dialogView.findViewById(R.id.txt_not_now);
+        txtxt_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openBrowser(url);
+            }
+        });
+        not_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+            }
+        });
+
+        alertDialog.setCancelable(false);
+        alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                 Log.d("back", "---" + keyCode);
@@ -102,23 +125,6 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-        adb.setPositiveButton(getString(R.string.update), new DialogInterface.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                openBrowser(url);
-
-            }
-
-        });
-        adb.setNegativeButton(getString(R.string.not_now), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                finishAffinity();
-            }
-        });
-        adb.show();
     }
 
     private void openBrowser(String url) {

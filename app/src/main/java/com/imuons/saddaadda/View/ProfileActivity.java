@@ -252,16 +252,19 @@ public class ProfileActivity extends AppCompatActivity {
         if (data.getFullname() == null || data.getFullname().equals("")) {
             etName.setEnabled(true);
         } else {
+            etName.setCompoundDrawables(null, null, null, null);
             etName.setEnabled(false);
         }if (data.getMobile() == null || data.getMobile().equals("")) {
             etMobile.setEnabled(true);
         } else {
             etMobile.setEnabled(false);
+            etMobile.setCompoundDrawables(null, null, null, null);
         }
         if (data.getIfscCode() == null || data.getIfscCode().equals("")) {
             etIFSC.setEnabled(true);
         } else {
             etIFSC.setEnabled(false);
+            etIFSC.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getTezNo() == null || data.getTezNo().equals("")) {
@@ -269,6 +272,7 @@ public class ProfileActivity extends AppCompatActivity {
             etGooglePay.setEnabled(true);
         } else {
             etGooglePay.setEnabled(false);
+            etGooglePay.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getPhonepeNo() == null || data.getPhonepeNo().equals("")) {
@@ -276,6 +280,7 @@ public class ProfileActivity extends AppCompatActivity {
             etPhonePay.setEnabled(true);
         } else {
             etPhonePay.setEnabled(false);
+            etPhonePay.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getPaytm_no() == null || data.getPaytm_no().equals("")) {
@@ -283,6 +288,7 @@ public class ProfileActivity extends AppCompatActivity {
             et_paytm_no.setEnabled(true);
         } else {
             et_paytm_no.setEnabled(false);
+            et_paytm_no.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getBankName() == null || data.getBankName().equals("")) {
@@ -291,6 +297,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         } else {
             etAccountName.setEnabled(false);
+            etAccountName.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getAccountNo() == null || data.getAccountNo().equals("")) {
@@ -299,15 +306,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         } else {
             etAccountNo.setEnabled(false);
+            etAccountNo.setCompoundDrawables(null, null, null, null);
         }
 
         if (data.getBranchName() == null || data.getBranchName().equals("")) {
-
             etBranchName.setEnabled(true);
-
-
         } else {
             etBranchName.setEnabled(false);
+            etBranchName.setCompoundDrawables(null, null, null, null);
         }
 
 
