@@ -199,5 +199,5 @@
         name="imrovements_to_app_game_game_performance">Improvements to app and Game
         Performance</string>
     <string name="bug_fix_and_optimizations">Bug fixes and Optimizations</string>
-
+    <string name="enter_email_id">Enter Email Id (Optional)</string>
 </resources>
