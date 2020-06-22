@@ -44,7 +44,7 @@
                 android:layout_height="22dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:src="@drawable/coin" />
+                android:src="@drawable/rupees" />
 
             <ImageView
                 android:id="@+id/coinBuy"

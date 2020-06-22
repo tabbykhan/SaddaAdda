@@ -194,5 +194,6 @@
     <string name="not_now">Not Now</string>
     <string name="type">Type</string>
     <string name="direct_income">Direct Income</string>
+    <string name="enter_email_id">Enter Email Id (Optional)</string>
 
 </resources>

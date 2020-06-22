@@ -315,7 +315,6 @@ public class SevenUpDown extends AppCompatActivity {
                     }
                 }
 
-
                 @Override
                 public void onFailure(Call call, Throwable t) {
                     // dialog.dismiss();
@@ -329,8 +328,6 @@ public class SevenUpDown extends AppCompatActivity {
                     Toast.makeText(SevenUpDown.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
             });
-
-
         } else {
             // no internet
             dais_img.setImageResource(R.drawable.firstlevelanimation);

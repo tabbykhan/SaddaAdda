@@ -65,6 +65,32 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/edit_bg"
+                android:fontFamily="@font/amazon_regular"
+                android:hint="@string/enter_email_id"
+                android:imeOptions="actionNext"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="10dp"
+                android:shadowColor="#dba3ff"
+                android:shadowDx="0.0"
+                android:shadowDy="0.0"
+                android:shadowRadius="20"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="#dba3ff"
+                android:textColorHint="#dba3ff"
+                android:textSize="16sp" />
+
+            <EditText
                 android:id="@+id/etRefralCode"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"

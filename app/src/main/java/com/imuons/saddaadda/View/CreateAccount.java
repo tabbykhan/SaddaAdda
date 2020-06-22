@@ -56,6 +56,8 @@ public class CreateAccount extends AppCompatActivity {
     EditText pin;
     @BindView(R.id.c_pin)
     EditText cpin;
+    @BindView(R.id.etEmail)
+    EditText etEmail;
 
     @BindView(R.id.submitBtn)
     TextView submitBtn;
@@ -158,6 +160,7 @@ public class CreateAccount extends AppCompatActivity {
         String cmf_password = etCmfPassword.getText().toString().trim();
         String pintxt = pin.getText().toString().trim();
         String cpintxt = cpin.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
 
         if (userId.isEmpty()) {
             etUserId.setError(getResources().getString(R.string.pls_enter_user_id));
@@ -178,16 +181,16 @@ public class CreateAccount extends AppCompatActivity {
         } else if (!cmf_password.matches(password)) {
             cpin.setError(getResources().getString(R.string.confim_pin_not_match));
         } else
-            callRegisterApi(userId, name, password, mobile, referralCode , pintxt);
+            callRegisterApi(userId, name, password, mobile, referralCode , pintxt,email);
 
     }
 
-    private void callRegisterApi(String userId, String name, String password, String mobile, String referralCode , String pin) {
+    private void callRegisterApi(String userId, String name, String password, String mobile, String referralCode , String pin, String email) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.RegisterApi(new RegitrationEntity(userId, name, password, mobile, referralCode , pin));
+            Call call = apiService.RegisterApi(new RegitrationEntity(userId, name, password, mobile, referralCode , pin,email));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
