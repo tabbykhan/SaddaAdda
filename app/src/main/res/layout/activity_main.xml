@@ -233,7 +233,7 @@
                 android:fontFamily="@font/amazon_regular"
                 android:hint="@string/enter_4_digit_pin"
                 android:inputType="numberPassword"
-                android:digits="123456789"
+                android:digits="1234567890"
                 android:maxLength="4"
                 android:paddingLeft="20dp"
                 android:paddingTop="10dp"
