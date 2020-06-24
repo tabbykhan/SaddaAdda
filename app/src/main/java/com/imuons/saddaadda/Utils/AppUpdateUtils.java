@@ -32,7 +32,7 @@ public class AppUpdateUtils {
     }
 
     public static String getAppInstalledVersionName(Context context) {
-        String versionName = "";
+         String versionName = "";
 
         try {
             versionName = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
