@@ -2,6 +2,7 @@ package com.imuons.saddaadda.View;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -37,17 +38,15 @@ import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
 
+    public static final int OTP_COUNTER = 1 * 60 * 1000;
     @BindView(R.id.rvChat)
     RecyclerView recyclerView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     @BindView(R.id.etMessage)
     EditText etMessage;
-
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefreshLayout;
-
-
     ChatRoomAdapter chatRoomAdapter;
     ArrayList<FetchChatDataModel> chatDataArrayList;
 
@@ -63,24 +62,55 @@ public class ChatActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(chatRoomAdapter);
         callChatApi();
-        swipeRefreshLayout.setColorSchemeColors(
-                getResources().getColor(R.color.lightgreen) ,
-                getResources().getColor(R.color.pink) ,
-                getResources().getColor(R.color.darkGry)
-        );
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.lightgreen), getResources().getColor(R.color.pink), getResources().getColor(R.color.darkGry));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 callChatApi();
             }
         });
+
+    }
+
+    public void startCounter(final long millisecond) {
+
+        long remainMin = (millisecond / (60 * 1000));
+        long remainSec = (millisecond - (remainMin * 60 * 1000)) / 1000;
+
+        CountDownTimer downTimer = new CountDownTimer(millisecond, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                if (isFinishing()) {
+                    return;
+                }
+                callRefreshapi();
+                //                long remainMin = (millisUntilFinished / (60 * 1000));
+                //                long remainSec = (millisUntilFinished - (remainMin * 60 * 1000)) / 1000;
+                Log.d("timer", "----" + millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish() {
+                if (isFinishing()) {
+                    return;
+                }
+
+            }
+        };
+        downTimer.start();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startCounter(OTP_COUNTER);
     }
 
     private void callChatApi() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = null;
-            if(!swipeRefreshLayout.isRefreshing())
-             dialog = ViewUtils.getProgressBar(ChatActivity.this);
+            if (!swipeRefreshLayout.isRefreshing())
+                dialog = ViewUtils.getProgressBar(ChatActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.getChatList(new ChatEntity("1"));
@@ -89,8 +119,8 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags(ChatActivity.this);
-                    if(finalDialog != null)
-                     finalDialog.dismiss();
+                    if (finalDialog != null)
+                        finalDialog.dismiss();
                     else
                         swipeRefreshLayout.setRefreshing(false);
                     FetchChatResponse authResponse = (FetchChatResponse) response.body();
@@ -110,7 +140,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    if(finalDialog != null)
+                    if (finalDialog != null)
                         finalDialog.dismiss();
                     else
                         swipeRefreshLayout.setRefreshing(false);
@@ -128,6 +158,38 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    private void callRefreshapi() {
+        AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
+        Call call = apiService.getChatList(new ChatEntity("1"));
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                if (isFinishing()) {
+                    return;
+                }
+                FetchChatResponse authResponse = (FetchChatResponse) response.body();
+                if (authResponse != null) {
+                    Log.i("Response::", new Gson().toJson(authResponse));
+                    if (authResponse.getCode() == 200) {
+                        recyclerView.scrollToPosition(authResponse.getData().size());
+                        setAdapter(authResponse.getData());
+                        //Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    AppCommon.getInstance(ChatActivity.this).showDialog(ChatActivity.this, "Server Error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
+    }
+
     private void setAdapter(ArrayList<FetchChatDataModel> data) {
         chatDataArrayList = data;
         chatRoomAdapter.updateList(chatDataArrayList);
@@ -135,34 +197,38 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btSend)
-    void sendMessage(){
+    void sendMessage() {
         String msg = etMessage.getText().toString().trim();
-        if(msg.isEmpty()){
+        if (msg.isEmpty()) {
             Toast.makeText(this, getString(R.string.pls_enter_message), Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             etMessage.setText("");
             callSendMessage(msg);
         }
     }
 
     private void callSendMessage(String msg) {
-        AppCommon.getInstance(this).onHideKeyBoard(this);
+
+        // AppCommon.getInstance(this).onHideKeyBoard(this);
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(ChatActivity.this);
-            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            // Dialog dialog = ViewUtils.getProgressBar(ChatActivity.this);
+            // AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.sendMessage(new SendMessage(msg));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
-                    AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags(ChatActivity.this);
-                    dialog.dismiss();
+                    // AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags
+                    // (ChatActivity.this);
+                    //  dialog.dismiss();
+                    if (isFinishing()) {
+                        return;
+                    }
                     PinResponse authResponse = (PinResponse) response.body();
                     if (authResponse != null) {
                         Log.i("SendResponse::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            callChatApi();
-                            Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(ChatActivity.this, authResponse.getMessage(),Toast.LENGTH_SHORT).show();
                         } else {
 
                             Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -174,8 +240,9 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
-                    AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags(ChatActivity.this);
+                    //  dialog.dismiss();
+                    //  AppCommon.getInstance(ChatActivity.this).clearNonTouchableFlags
+                    //  (ChatActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(ChatActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                 }
