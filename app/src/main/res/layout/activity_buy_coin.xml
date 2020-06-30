@@ -73,6 +73,16 @@
             android:text="@string/minimum_50_maximum_10000"
             android:textColor="@color/yellow"
             />
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:text="@string/for_buy_sell_coins_contact_this_number_9970899147"
+            android:textColor="@color/yellow"
+            />
 
 
         <RelativeLayout

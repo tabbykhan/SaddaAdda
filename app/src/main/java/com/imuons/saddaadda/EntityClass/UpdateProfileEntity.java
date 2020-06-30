@@ -10,7 +10,6 @@ public class UpdateProfileEntity {
         this.fullname = fullname;
         this.mobile = mobile;
         this.account_no = account_no;
-
         this.bank_name = bank_name;
         this.branch_name = branch_name;
         this.ifsc_code = ifsc_code;
