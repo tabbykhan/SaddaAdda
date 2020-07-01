@@ -22,6 +22,9 @@ import com.imuons.saddaadda.responseModel.SellResponseModel;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -118,7 +121,9 @@ public class SellCoinActivity extends AppCompatActivity {
             AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(SellCoinActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
             Dialog dialog = ViewUtils.getProgressBar(SellCoinActivity.this);
-            Call call = apiService.get_Coins_Details();
+            Map<String, String> roiMap = new HashMap<>();
+            roiMap.put("mode", AppCommon.getInstance(this).isDemo());
+            Call call = apiService.get_Coins_Details(roiMap);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

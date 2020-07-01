@@ -246,6 +246,7 @@ public class CreateAccount extends AppCompatActivity {
                             AppCommon.getInstance(CreateAccount.this).setToken(authResponse.getData().getAccessToken());
                             AppCommon.getInstance(CreateAccount.this).setUserLogin(loginEntity.getUser_id(), true);
                             AppCommon.getInstance(CreateAccount.this).setSesstionId(authResponse.getData().getSession_id());
+                            AppCommon.getInstance(CreateAccount.this).setDemo("Live");
                             startActivity(new Intent(CreateAccount.this, HomeActivity.class));
                         } else {
                             Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();

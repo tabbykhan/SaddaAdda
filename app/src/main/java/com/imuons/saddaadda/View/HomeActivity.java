@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -62,6 +63,9 @@ public class HomeActivity extends AppCompatActivity {
 
     @BindView(R.id.img_menu)
     ImageView img_menu;
+
+    @BindView(R.id.imDemo)
+    Button imDemo;
     private PopupWindow mypopupWindow;
 
     @Override
@@ -79,6 +83,11 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+        if (AppCommon.getInstance(this).isDemo().equalsIgnoreCase("Live")) {
+            imDemo.setActivated(true);
+        } else {
+            imDemo.setActivated(false);
+        }
 
     }
 
@@ -142,13 +151,16 @@ public class HomeActivity extends AppCompatActivity {
         if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
             AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
-           // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
-            Call call = apiService.Get_DashboardInfo();
+            //Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            Map<String, String> roiMap = new HashMap<>();
+            roiMap.put("mode", AppCommon.getInstance(this).isDemo());
+            //Call call = apiService.Get_DashboardInfo(AppCommon.getInstance(this).isDemo());
+            Call call = apiService.Get_DashboardInfo(roiMap);
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(HomeActivity.this);
-                   // dialog.dismiss();
+                    // dialog.dismiss();
                     DashboardResponse authResponse = (DashboardResponse) response.body();
                     if (authResponse != null) {
                         Log.i("CategoryResponse::", new Gson().toJson(authResponse));
@@ -165,7 +177,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                 //   dialog.dismiss();
+                      //dialog.dismiss();
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
@@ -216,7 +228,10 @@ public class HomeActivity extends AppCompatActivity {
     @OnClick(R.id.coinBuy)
     void goToBuyCoin() {
 
-        startActivity(new Intent(this, BuyCoinActivity.class));
+        if (AppCommon.getInstance(this).isDemo().equalsIgnoreCase("Live"))
+            startActivity(new Intent(this, BuyCoinActivity.class));
+        else
+            Toast.makeText(this, "For this Service you need to real money", Toast.LENGTH_SHORT).show();
     }
 
     public void sevenClick(View view) {
@@ -450,7 +465,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void GetAppVersion() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-           // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, Object> param = new HashMap<>();
@@ -461,7 +476,7 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
-                 //   dialog.dismiss();
+                    //   dialog.dismiss();
                     AppUpdateRespponse authResponse = (AppUpdateRespponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
@@ -470,7 +485,7 @@ public class HomeActivity extends AppCompatActivity {
                                 ShowUpdateDialog(authResponse.getData().getAppLink());
                             }
                         } else {
-                           // Toast.makeText(HomeActivity.this, authResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(HomeActivity.this, authResponse.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         AppCommon.getInstance(HomeActivity.this).showDialog(HomeActivity.this, "Server Error");
@@ -479,7 +494,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                   // dialog.dismiss();
+                    // dialog.dismiss();
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(HomeActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
@@ -491,6 +506,18 @@ public class HomeActivity extends AppCompatActivity {
             // no internet
             Toast.makeText(this, "Please check your internet", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @OnClick(R.id.imDemo)
+    void demo() {
+        if (AppCommon.getInstance(this).isDemo().equalsIgnoreCase("Live")) {
+            AppCommon.getInstance(this).setDemo("Demo");
+            imDemo.setActivated(false);
+        } else {
+            AppCommon.getInstance(this).setDemo("Live");
+            imDemo.setActivated(true);
+        }
+            getDashboardInfo();
     }
 }
 

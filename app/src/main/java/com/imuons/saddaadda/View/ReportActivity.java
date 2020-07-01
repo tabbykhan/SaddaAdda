@@ -99,6 +99,7 @@ public class ReportActivity extends AppCompatActivity {
                 roiMap.put("table_name", "damdar_shatak");
             roiMap.put("start", String.valueOf(start));
             roiMap.put("length", "20");
+            roiMap.put("mode", AppCommon.getInstance(this).isDemo());
             Call call = apiService.REPORT_CALL(roiMap);
             Dialog finalDialog = dialog;
             call.enqueue(new Callback() {

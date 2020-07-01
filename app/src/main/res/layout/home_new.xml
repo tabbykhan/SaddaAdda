@@ -64,20 +64,22 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <TextView
+          <!--  <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="@font/amazon_bold"
                 android:text="Demo"
                 android:textColor="@color/white"
-                android:visibility="gone" />
+                />-->
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
+            <Button
+                android:id="@+id/imDemo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:visibility="gone" />
+                android:background="@drawable/demo"
+                 />
 
         </LinearLayout>
 

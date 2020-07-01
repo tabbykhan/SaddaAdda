@@ -14,6 +14,7 @@ public class MyPreference {
     public static String TokenValue = "LAST_UPDATE";
     public static String BTCAddress = "BtcAddress";
     public static String password = "PASSWORD";
+    public static String IsDemo = "IsDemo";
     public static String PrizmAddress = "PrizmAddress";
     public static final String PREFS_LANGUAGE_IS_SELECTED = "LANGUAGE_IS_SELECTED";
     public static final String LANG_ENGLISH = "en";

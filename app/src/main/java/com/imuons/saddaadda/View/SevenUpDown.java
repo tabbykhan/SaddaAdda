@@ -281,7 +281,8 @@ public class SevenUpDown extends AppCompatActivity {
             //Dialog dialog = ViewUtils.getProgressBar(SevenUpDown.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-            Call call = apiService.SATH_KA_DAM_RESPONSE_Call(new SathKaDamEntity(id, AppCommon.getInstance(this).getUserId(), bitText.getText().toString().trim()));
+            Call call = apiService.SATH_KA_DAM_RESPONSE_Call(new SathKaDamEntity(id, AppCommon.getInstance(this).getUserId(), bitText.getText().toString().trim()
+            ,AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override

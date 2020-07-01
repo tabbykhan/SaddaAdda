@@ -92,6 +92,15 @@ public class AppCommon {
         editor.putString(MyPreference.password, password);
         editor.apply();
     }
+    public String isDemo() {
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getString(MyPreference.IsDemo, "Live");
+    }
+    public void setDemo(String demo) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putString(MyPreference.IsDemo , demo);
+        editor.apply();
+    }
 
     public void onHideKeyBoard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);

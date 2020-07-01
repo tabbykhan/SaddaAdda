@@ -274,6 +274,7 @@ Map<String,Boolean> selectelBix=new HashMap<>();
             param.put("slot_no", slot_number);
             param.put("product_id", reportData.get(Integer.parseInt(product_id) - 1).getId());
             param.put("amount", amount);
+            param.put("mode", AppCommon.getInstance(this).isDemo());
             Log.d("Param pass", "-----param--" + param);
             Call call = apiService.DumdarShatak(param);
             call.enqueue(new Callback() {
@@ -350,7 +351,7 @@ Map<String,Boolean> selectelBix=new HashMap<>();
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(ActivitySaddaShatak.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.GetShtakReport(new SaddaXTopUp(String.valueOf(slotId)));
+            Call call = apiService.GetShtakReport(new SaddaXTopUp(String.valueOf(slotId) , AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

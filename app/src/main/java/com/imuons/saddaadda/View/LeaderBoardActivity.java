@@ -260,7 +260,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(LeaderBoardActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.WINNING_NUMBER_RESPONSE_CALL(new WinningNumberEntity(sNo, "0", "10"));
+            Call call = apiService.WINNING_NUMBER_RESPONSE_CALL(new WinningNumberEntity(sNo, "0", "10"
+                    , AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

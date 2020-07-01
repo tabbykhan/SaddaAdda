@@ -64,6 +64,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /*
  * Created by Tabish on 19-05-2020.
@@ -82,8 +83,12 @@ public interface AppService {
     @GET("user/get-profile-info")
     Call<ProfileGetResponse> Get_ProfileInfo();
 
-    @GET("user/user-details")
-    Call<DashboardResponse> Get_DashboardInfo();
+    @FormUrlEncoded
+    @POST("user/user-details")
+    Call<DashboardResponse> Get_DashboardInfo(
+            //@Query("mode") String mode
+            @FieldMap Map<String, String> loginMap
+    );
 
     @POST("user/user-update")
     Call<UpdateProfileResponse> UPDATE_PROFILE_RESPONSE_CALL(@Body UpdateProfileEntity updateProfileEntity);
@@ -130,8 +135,10 @@ public interface AppService {
     Call<SellResponseModel> sellCoin(@Body SellCoinEntity sellCoinEntity);
 
     //tabish
-    @GET("user/get-wallet-balance")
-    Call<CoinsResponseModel> get_Coins_Details();
+
+
+    @POST("user/get-wallet-balance")
+    Call<CoinsResponseModel> get_Coins_Details(@Body Map<String, String> map);
 
     //tabish
     @POST("user/change-newpassword")

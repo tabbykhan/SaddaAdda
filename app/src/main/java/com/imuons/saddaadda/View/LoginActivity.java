@@ -112,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                             AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim(), true);
                             AppCommon.getInstance(LoginActivity.this).setPassword(et_password.getText().toString().trim());
                             AppCommon.getInstance(LoginActivity.this).setSesstionId(authResponse.getData().getSession_id());
+                            AppCommon.getInstance(LoginActivity.this).setDemo("Live");
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                             finish();
                             Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();

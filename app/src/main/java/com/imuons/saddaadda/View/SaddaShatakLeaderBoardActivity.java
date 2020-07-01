@@ -246,7 +246,8 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(SaddaShatakLeaderBoardActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.ShatakLeadership(new WinningNumberEntity(sNo, "0", "10"));
+            Call call = apiService.ShatakLeadership(new WinningNumberEntity(sNo, "0", "10"
+                    , AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

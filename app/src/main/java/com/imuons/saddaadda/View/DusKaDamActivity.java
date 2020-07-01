@@ -117,7 +117,7 @@ public class DusKaDamActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL(new SaddaXTopUp(slotId));
+            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL(new SaddaXTopUp(slotId ,  AppCommon.getInstance(this).isDemo()) );
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -207,7 +207,7 @@ public class DusKaDamActivity extends AppCompatActivity {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id, slotid));
+            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id, slotid , AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

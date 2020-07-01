@@ -87,13 +87,21 @@ public class ActivityMore extends AppCompatActivity {
         sellHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SellHistoryReportActivity.class));
+                if (AppCommon.getInstance(getApplicationContext()).isDemo().equalsIgnoreCase("Live"))
+                    startActivity(new Intent(getApplicationContext(), SellHistoryReportActivity.class));
+                else
+                    Toast.makeText(getApplicationContext(), "For this Service you need to real money", Toast.LENGTH_SHORT).show();
+
             }
         });
         buyHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), BuyActivityHistory.class));
+                if (AppCommon.getInstance(getApplicationContext()).isDemo().equalsIgnoreCase("Live"))
+                    startActivity(new Intent(getApplicationContext(), BuyActivityHistory.class));
+                else
+                    Toast.makeText(getApplicationContext(), "For this Service you need to real money", Toast.LENGTH_SHORT).show();
+
             }
         });
         changePassword.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +186,7 @@ public class ActivityMore extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-               // AppCommon.getInstance(ActivityMore.this).clearPreference();
+               //AppCommon.getInstance(ActivityMore.this).clearPreference();
                 AppCommon.getInstance(ActivityMore.this).setUserLogin(AppCommon.getInstance(ActivityMore.this).getUserId(), false);
                 startActivity(new Intent(ActivityMore.this, SelectionPage.class));
                 finishAffinity();
