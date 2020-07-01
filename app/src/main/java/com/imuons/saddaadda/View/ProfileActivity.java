@@ -105,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateProfile(String name, String mobile, String googlePay, String phonePay, String accountName, String ifsc, String branch, String accountNo, String paytm_no) {
 
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
+           // Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
             Call call = apiService.UPDATE_PROFILE_RESPONSE_CALL(new UpdateProfileEntity(name,
@@ -114,7 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(ProfileActivity.this).clearNonTouchableFlags(ProfileActivity.this);
-                    dialog.dismiss();
+                    //dialog.dismiss();
                     UpdateProfileResponse authResponse = (UpdateProfileResponse) response.body();
                     if (authResponse != null) {
                         Log.i("ResponseUpdate::", new Gson().toJson(authResponse));
@@ -131,7 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                    //dialog.dismiss();
                     AppCommon.getInstance(ProfileActivity.this).clearNonTouchableFlags(ProfileActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(ProfileActivity.this, "Server Error", Toast.LENGTH_SHORT).show();

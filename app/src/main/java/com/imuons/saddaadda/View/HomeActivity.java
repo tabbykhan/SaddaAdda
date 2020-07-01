@@ -231,7 +231,7 @@ public class HomeActivity extends AppCompatActivity {
         if (AppCommon.getInstance(this).isDemo().equalsIgnoreCase("Live"))
             startActivity(new Intent(this, BuyCoinActivity.class));
         else
-            Toast.makeText(this, "For this Service you need to real money", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.useLive), Toast.LENGTH_SHORT).show();
     }
 
     public void sevenClick(View view) {

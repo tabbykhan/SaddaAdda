@@ -90,7 +90,7 @@ public class ActivityMore extends AppCompatActivity {
                 if (AppCommon.getInstance(getApplicationContext()).isDemo().equalsIgnoreCase("Live"))
                     startActivity(new Intent(getApplicationContext(), SellHistoryReportActivity.class));
                 else
-                    Toast.makeText(getApplicationContext(), "For this Service you need to real money", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.useLive), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -100,7 +100,7 @@ public class ActivityMore extends AppCompatActivity {
                 if (AppCommon.getInstance(getApplicationContext()).isDemo().equalsIgnoreCase("Live"))
                     startActivity(new Intent(getApplicationContext(), BuyActivityHistory.class));
                 else
-                    Toast.makeText(getApplicationContext(), "For this Service you need to real money", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.useLive), Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -131,7 +131,7 @@ public class ChatActivity extends AppCompatActivity {
                             //Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else {
-                            Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         AppCommon.getInstance(ChatActivity.this).showDialog(ChatActivity.this, "Server Error");
@@ -176,7 +176,7 @@ public class ChatActivity extends AppCompatActivity {
                         //Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ChatActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     AppCommon.getInstance(ChatActivity.this).showDialog(ChatActivity.this, "Server Error");
