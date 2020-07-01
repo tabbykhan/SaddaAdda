@@ -193,7 +193,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(ticketAdapter);
 
-        getTickets(new TicketEntity("10", "0", "0"));
+       // getTickets(new TicketEntity("10", "0", "0"));
     }
 
     @OnClick(R.id.txt_confirm_yes)
@@ -382,7 +382,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
 
     private void getTickets(TicketEntity ticketEntity) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
+         //   Dialog dialog = ViewUtils.getProgressBar(BuyCoinActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.TICKET_RESPONSE_CALL(ticketEntity);
@@ -390,7 +390,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
-                    dialog.dismiss();
+                  //  dialog.dismiss();
                     TicketResponse authResponse = (TicketResponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
@@ -408,7 +408,7 @@ public class BuyCoinActivity extends AppCompatActivity implements TicketAdapter.
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                   // dialog.dismiss();
                     AppCommon.getInstance(BuyCoinActivity.this).clearNonTouchableFlags(BuyCoinActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(BuyCoinActivity.this, "Server Error", Toast.LENGTH_SHORT).show();

@@ -64,7 +64,8 @@
             android:singleLine="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/txForgetPass"
@@ -74,14 +75,26 @@
             android:fontFamily="@font/amazon_regular"
             android:gravity="center"
             android:text="@string/minimum_50_maximum_10000"
-            android:textColor="@color/yellow" />
+            android:textColor="@color/yellow"
+            android:visibility="gone"/>
 
-
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/amazon_regular"
+            android:gravity="center"
+            android:text="@string/for_buy_sell_coins_contact_this_number_9970899147"
+            android:textColor="@color/yellow"
+            android:textSize="16sp"
+            android:textStyle="bold" />
         <RelativeLayout
             android:layout_width="200dp"
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/button_bg">
+            android:background="@drawable/button_bg"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/submitBtn"
