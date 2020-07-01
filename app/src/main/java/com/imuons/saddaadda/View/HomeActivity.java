@@ -142,13 +142,13 @@ public class HomeActivity extends AppCompatActivity {
         if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
             AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
-            Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+           // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
             Call call = apiService.Get_DashboardInfo();
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(HomeActivity.this);
-                    dialog.dismiss();
+                   // dialog.dismiss();
                     DashboardResponse authResponse = (DashboardResponse) response.body();
                     if (authResponse != null) {
                         Log.i("CategoryResponse::", new Gson().toJson(authResponse));
@@ -165,7 +165,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                 //   dialog.dismiss();
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
@@ -450,7 +450,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void GetAppVersion() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-            Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+           // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, Object> param = new HashMap<>();
@@ -461,7 +461,7 @@ public class HomeActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
-                    dialog.dismiss();
+                 //   dialog.dismiss();
                     AppUpdateRespponse authResponse = (AppUpdateRespponse) response.body();
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
@@ -479,7 +479,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                   // dialog.dismiss();
                     AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(HomeActivity.this, "Server Error", Toast.LENGTH_SHORT).show();

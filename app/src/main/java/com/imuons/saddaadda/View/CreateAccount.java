@@ -275,13 +275,13 @@ public class CreateAccount extends AppCompatActivity {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
+           // Dialog dialog = ViewUtils.getProgressBar(CreateAccount.this);
             Call call = apiService.GetRendomNumber();
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
-                    dialog.dismiss();
+                  //  dialog.dismiss();
                     RandomUserIdResponse authResponse = (RandomUserIdResponse) response.body();
                     if (authResponse != null) {
                         Log.i("RendomResponse::", new Gson().toJson(authResponse));
@@ -297,7 +297,7 @@ public class CreateAccount extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                //    dialog.dismiss();
                     AppCommon.getInstance(CreateAccount.this).clearNonTouchableFlags(CreateAccount.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(CreateAccount.this, "Server Error", Toast.LENGTH_SHORT).show();
