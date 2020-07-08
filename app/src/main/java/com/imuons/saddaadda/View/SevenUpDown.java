@@ -1,10 +1,15 @@
 package com.imuons.saddaadda.View;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -22,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.gson.Gson;
 import com.imuons.saddaadda.EntityClass.SathKaDamEntity;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.Service.HomeWatcher;
+import com.imuons.saddaadda.Service.MusicService;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.responseModel.SathKaDamResponse;
 import com.imuons.saddaadda.retrofit.AppService;
@@ -96,8 +103,10 @@ public class SevenUpDown extends AppCompatActivity {
     AnimationDrawable anim;
     AnimationDrawable anim2;
     boolean isOn;
-
+    HomeWatcher mHomeWatcher;
     int selectedType = 0;
+    @BindView(R.id.sound)
+    ImageView sound;
     Runnable run = new Runnable() {
         @Override
         public void run() {
@@ -117,6 +126,7 @@ public class SevenUpDown extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seven_up_down);
         ButterKnife.bind(this);
+
         twoClick.setActivated(true);
         dais_img.setVisibility(View.GONE);
         dais_img1.setVisibility(View.GONE);
@@ -150,8 +160,131 @@ public class SevenUpDown extends AppCompatActivity {
             }
         });
         //Animation();
+        if (AppCommon.getInstance(this).isSound()) {
+            sound.setActivated(true);
+            callSound();
+        } else {
+            sound.setActivated(false);
+        }
+    }
+
+    private void callSound() {
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this, MusicService.class);
+        startService(music);
+
+        //Start HomeWatcher
+        mHomeWatcher = new HomeWatcher(this);
+        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+        });
+        mHomeWatcher.startWatch();
+    }
+
+    @OnClick(R.id.sound)
+    void soundonOff() {
+        if (AppCommon.getInstance(this).isSound()) {
+            sound.setActivated(false);
+            AppCommon.getInstance(this).setSound(false);
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+
+
+        } else {
+            sound.setActivated(true);
+            AppCommon.getInstance(this).setSound(true);
+            callSound();
+        }
+    }
+
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder) binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService() {
+        if (mIsBound) {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mServ != null) {
+            mServ.resumeMusic();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //Detect idle screen
+        PowerManager pm = (PowerManager)
+                getSystemService(Context.POWER_SERVICE);
+        boolean isScreenOn = false;
+        if (pm != null) {
+            isScreenOn = pm.isScreenOn();
+        }
+
+        if (!isScreenOn) {
+            if (mServ != null) {
+                mServ.pauseMusic();
+            }
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            //UNBIND music service
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        } catch (Exception e) {
+
+        }
 
     }
+
 
     private void Animation() {
         dais_img.setImageDrawable(null);
@@ -227,7 +360,7 @@ public class SevenUpDown extends AppCompatActivity {
 
     @OnClick(R.id.rule)
     void ruleactivity() {
-        startActivity(new Intent(getApplicationContext(),Activity7_up_Rules.class));
+        startActivity(new Intent(getApplicationContext(), Activity7_up_Rules.class));
     }
 
     @OnClick({R.id.dais_img1, R.id.dais_img, R.id.rolldice})
@@ -282,7 +415,7 @@ public class SevenUpDown extends AppCompatActivity {
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Call call = apiService.SATH_KA_DAM_RESPONSE_Call(new SathKaDamEntity(id, AppCommon.getInstance(this).getUserId(), bitText.getText().toString().trim()
-            ,AppCommon.getInstance(this).isDemo()));
+                    , AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                 @Override
@@ -364,91 +497,6 @@ public class SevenUpDown extends AppCompatActivity {
             }
         }
 
-       /*int dice1 = authResponse.getData().getDice1();
-        int dice2 = authResponse.getData().getDice2();
-        anim.stop();
-        anim2.stop();
-        int totalVal = dice1 + dice2;
-        AppCommon.getInstance(this).setAccount(authResponse.getData().getTopUpWalletBalance());
-        tv_balance.setText(String.valueOf(AppCommon.getInstance(this).getAccount()));
-        if (dice1 == 1) {
-            dais_img.setImageResource(R.drawable.single_1);
-        } else if (dice1 == 2) {
-            dais_img.setImageResource(R.drawable.single_2);
-        } else if (dice1 == 3) {
-            dais_img.setImageResource(R.drawable.single_3);
-        } else if (dice1 == 4) {
-            dais_img.setImageResource(R.drawable.single_4);
-        } else if (dice1 == 5) {
-            dais_img.setImageResource(R.drawable.single_5);
-        } else if (dice1 == 6) {
-            dais_img.setImageResource(R.drawable.single_6);
-        }
-        if (dice2 == 1) {
-            dais_img1.setImageResource(R.drawable.single_1);
-        } else if (dice2 == 2) {
-            dais_img1.setImageResource(R.drawable.single_2);
-        } else if (dice2 == 3) {
-            dais_img1.setImageResource(R.drawable.single_3);
-        } else if (dice2 == 4) {
-            dais_img1.setImageResource(R.drawable.single_4);
-        } else if (dice2 == 5) {
-            dais_img1.setImageResource(R.drawable.single_5);
-        } else if (dice2 == 6) {
-            dais_img1.setImageResource(R.drawable.single_6);
-        }
-
-        if (tol1.getText().toString().trim().isEmpty()) {
-            tol1.setText(String.valueOf(totalVal));
-        } else if (tol2.getText().toString().trim().isEmpty()) {
-            tol2.setText(String.valueOf(totalVal));
-        } else if (tol3.getText().toString().trim().isEmpty()) {
-            tol3.setText(String.valueOf(totalVal));
-        } else if (tol4.getText().toString().trim().isEmpty()) {
-            tol4.setText(String.valueOf(totalVal));
-        } else if (tol5.getText().toString().trim().isEmpty()) {
-            tol5.setText(String.valueOf(totalVal));
-        } else if (tol6.getText().toString().trim().isEmpty()) {
-            tol6.setText(String.valueOf(totalVal));
-        } else if (tol7.getText().toString().trim().isEmpty()) {
-            tol7.setText(String.valueOf(totalVal));
-        } else if (tol8.getText().toString().trim().isEmpty()) {
-            tol8.setText(String.valueOf(totalVal));
-        } else if (tol9.getText().toString().trim().isEmpty()) {
-            tol9.setText(String.valueOf(totalVal));
-        } else if (tol10.getText().toString().trim().isEmpty()) {
-            tol10.setText(String.valueOf(totalVal));
-        } else if (tol11.getText().toString().trim().isEmpty()) {
-            tol11.setText(String.valueOf(totalVal));
-        } else if (tol12.getText().toString().trim().isEmpty()) {
-            tol12.setText(String.valueOf(totalVal));
-        } else {
-            tol1.setText("");
-            tol2.setText("");
-            tol3.setText("");
-            tol4.setText("");
-            tol5.setText("");
-            tol6.setText("");
-            tol7.setText("");
-            tol8.setText("");
-            tol9.setText("");
-            tol10.setText("");
-            tol11.setText("");
-            tol12.setText("");
-            tol1.setText(String.valueOf(totalVal));
-        }
-*/
-       /* fullImage.setVisibility(View.VISIBLE);
-        if (authResponse.getData().getStatus().equalsIgnoreCase("Win")) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                fullImage.setImageDrawable(getDrawable(R.drawable.new_winner1));
-            }
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                fullImage.setImageDrawable(getDrawable(R.drawable.lose));
-            }
-        }
-        setAnimtion();*/
     }
 
     private void setAnimtion() {
@@ -735,7 +783,6 @@ public class SevenUpDown extends AppCompatActivity {
             }
         };
         handler.postDelayed(r, 1000);
-
 
 
     }

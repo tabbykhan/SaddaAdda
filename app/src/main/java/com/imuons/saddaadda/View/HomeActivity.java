@@ -3,12 +3,16 @@ package com.imuons.saddaadda.View;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -31,12 +35,15 @@ import com.imuons.saddaadda.DataModel.DashboardData;
 import com.imuons.saddaadda.EntityClass.LoginEntity;
 import com.imuons.saddaadda.EntityClass.OtpEnitity;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.Service.HomeWatcher;
+import com.imuons.saddaadda.Service.MusicService;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.AppUpdateUtils;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.responseModel.DashboardResponse;
 import com.imuons.saddaadda.responseModel.LoginResponseModel;
 import com.imuons.saddaadda.responseModel.OptResponse;
+import com.imuons.saddaadda.responseModel.ProfileGetResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
@@ -67,6 +74,10 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.imDemo)
     Button imDemo;
     private PopupWindow mypopupWindow;
+    HomeWatcher mHomeWatcher;
+    int selectedType = 0;
+    @BindView(R.id.sound)
+    ImageView sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +99,137 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             imDemo.setActivated(false);
         }
+        if(AppCommon.getInstance(this).isSound()){
+            sound.setActivated(true);
+            callSound();
+        }
+        else {
+            sound.setActivated(false);
+        }
+        if (AppCommon.getInstance(this).getUserObject() == null)
+            getUserProfileInfo();
 
     }
+
+    private void callSound() {
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this, MusicService.class);
+        startService(music);
+
+        //Start HomeWatcher
+        mHomeWatcher = new HomeWatcher(this);
+        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+        });
+        mHomeWatcher.startWatch();
+    }
+
+    @OnClick(R.id.sound)
+    void soundonOff() {
+        if (AppCommon.getInstance(this).isSound()) {
+            sound.setActivated(false);
+            AppCommon.getInstance(this).setSound(false);
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+
+
+        }else {
+            sound.setActivated(true);
+            AppCommon.getInstance(this).setSound(true);
+            callSound();
+        }
+    }
+
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder) binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService() {
+        if (mIsBound) {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //Detect idle screen
+        PowerManager pm = (PowerManager)
+                getSystemService(Context.POWER_SERVICE);
+        boolean isScreenOn = false;
+        if (pm != null) {
+            isScreenOn = pm.isScreenOn();
+        }
+
+        if (!isScreenOn) {
+            if (mServ != null) {
+                mServ.pauseMusic();
+            }
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            //UNBIND music service
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        }catch (Exception e){
+
+        }
+
+    }
+
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
         GetAppVersion();
+        getDashboardInfo();
+        if (mServ != null) {
+            mServ.resumeMusic();
+        }
     }
 
     private void ShowUpdateDialog(String url) {
@@ -149,7 +284,7 @@ public class HomeActivity extends AppCompatActivity {
     private void getDashboardInfo() {
         Log.d("token", AppCommon.getInstance(getApplicationContext()).getToken());
         if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
-            AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
+           // AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
             //Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
             Map<String, String> roiMap = new HashMap<>();
@@ -234,7 +369,8 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.useLive), Toast.LENGTH_SHORT).show();
     }
 
-    public void sevenClick(View view) {
+    @OnClick(R.id.sevenClick)
+    public void sevenClick() {
         startActivity(new Intent(this, SevenUpDown.class));
     }
 
@@ -261,11 +397,11 @@ public class HomeActivity extends AppCompatActivity {
         finishAffinity();
     }
 
-    @Override
+   /* @Override
     protected void onResume() {
         super.onResume();
-        getDashboardInfo();
-    }
+
+    }*/
 
     public void ludo_game(View view) {
         Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
@@ -466,7 +602,7 @@ public class HomeActivity extends AppCompatActivity {
     private void GetAppVersion() {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
-            AppCommon.getInstance(this).setNonTouchableFlags(this);
+            //AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
             Map<String, Object> param = new HashMap<>();
             param.put("device_type", "A");
@@ -518,6 +654,53 @@ public class HomeActivity extends AppCompatActivity {
             imDemo.setActivated(true);
         }
             getDashboardInfo();
+    }
+
+
+    // profile api
+    private void getUserProfileInfo() {
+        if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
+           // AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(HomeActivity.this);
+            AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
+            // Dialog dialog = ViewUtils.getProgressBar(HomeActivity.this);
+            Call call = apiService.Get_ProfileInfo();
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(HomeActivity.this);
+                    //dialog.dismiss();
+                    ProfileGetResponse authResponse = (ProfileGetResponse) response.body();
+                    if (authResponse != null) {
+                        Log.i("ResponseProfile::", new Gson().toJson(authResponse));
+                        if (authResponse.getCode() == 200) {
+                            AppCommon.getInstance(HomeActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
+                            Long tsLong = System.currentTimeMillis();
+                            String ts = tsLong.toString();
+                            AppCommon.getInstance(HomeActivity.this).setCurrentTime(ts);
+                            // setProfileInfo(authResponse.getData());
+                            // Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        AppCommon.getInstance(getApplicationContext()).showDialog(HomeActivity.this, "Server Error");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    //dialog.dismiss();
+                    AppCommon.getInstance(HomeActivity.this).clearNonTouchableFlags(HomeActivity.this);
+                    // loaderView.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            // no internet
+            Toast.makeText(getApplicationContext(), "Please check your internet", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 

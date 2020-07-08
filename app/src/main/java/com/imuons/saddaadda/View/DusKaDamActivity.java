@@ -2,12 +2,18 @@ package com.imuons.saddaadda.View;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +28,8 @@ import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.EntityClass.SaddaXEntity;
 import com.imuons.saddaadda.EntityClass.SaddaXTopUp;
 import com.imuons.saddaadda.R;
+import com.imuons.saddaadda.Service.HomeWatcher;
+import com.imuons.saddaadda.Service.MusicService;
 import com.imuons.saddaadda.Utils.AppCommon;
 import com.imuons.saddaadda.Utils.ViewUtils;
 import com.imuons.saddaadda.adapters.SaddaXReportAdapters;
@@ -94,6 +102,9 @@ public class DusKaDamActivity extends AppCompatActivity {
     RecyclerView recycleView;
     int mSlotId;
     String slotId;
+    HomeWatcher mHomeWatcher;
+    @BindView(R.id.sound)
+    ImageView sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,15 +120,135 @@ public class DusKaDamActivity extends AppCompatActivity {
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setNestedScrollingEnabled(true);
         recycleView.setAdapter(reportAdapter);
+        if(AppCommon.getInstance(this).isSound()){
+            sound.setActivated(true);
+            callSound();
+        }
+        else {
+            sound.setActivated(false);
+        }
         CallApiForSaddaxReport(slotId);
     }
 
+    @OnClick(R.id.sound)
+    void soundonOff() {
+        if (AppCommon.getInstance(this).isSound()) {
+            sound.setActivated(false);
+            AppCommon.getInstance(this).setSound(false);
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
 
+
+        }else {
+            sound.setActivated(true);
+            AppCommon.getInstance(this).setSound(true);
+            callSound();
+        }
+    }
+    private void callSound() {
+        doBindService();
+        Intent music = new Intent();
+        music.setClass(this, MusicService.class);
+        startService(music);
+
+        //Start HomeWatcher
+        mHomeWatcher = new HomeWatcher(this);
+        mHomeWatcher.setOnHomePressedListener(new HomeWatcher.OnHomePressedListener() {
+            @Override
+            public void onHomePressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+
+            @Override
+            public void onHomeLongPressed() {
+                if (mServ != null) {
+                    mServ.pauseMusic();
+                }
+            }
+        });
+        mHomeWatcher.startWatch();
+    }
+    private boolean mIsBound = false;
+    private MusicService mServ;
+    private ServiceConnection Scon = new ServiceConnection() {
+
+        public void onServiceConnected(ComponentName name, IBinder
+                binder) {
+            mServ = ((MusicService.ServiceBinder) binder).getService();
+        }
+
+        public void onServiceDisconnected(ComponentName name) {
+            mServ = null;
+        }
+    };
+
+    void doBindService() {
+        bindService(new Intent(this, MusicService.class),
+                Scon, Context.BIND_AUTO_CREATE);
+        mIsBound = true;
+    }
+
+    void doUnbindService() {
+        if (mIsBound) {
+            unbindService(Scon);
+            mIsBound = false;
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mServ != null) {
+            mServ.resumeMusic();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        //Detect idle screen
+        PowerManager pm = (PowerManager)
+                getSystemService(Context.POWER_SERVICE);
+        boolean isScreenOn = false;
+        if (pm != null) {
+            isScreenOn = pm.isScreenOn();
+        }
+
+        if (!isScreenOn) {
+            if (mServ != null) {
+                mServ.pauseMusic();
+            }
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        try {
+            //UNBIND music service
+            doUnbindService();
+            Intent music = new Intent();
+            music.setClass(this, MusicService.class);
+            stopService(music);
+        }catch (Exception e){
+
+        }
+
+    }
     private void CallApiForSaddaxReport(String slotId) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
-            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL(new SaddaXTopUp(slotId ,  AppCommon.getInstance(this).isDemo()) );
+            Call call = apiService.SADDAX_REPORT_RESPONSE_CALL(new SaddaXTopUp(slotId, AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
@@ -207,7 +338,7 @@ public class DusKaDamActivity extends AppCompatActivity {
             Dialog dialog = ViewUtils.getProgressBar(DusKaDamActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(this).getToken());
-            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id, slotid , AppCommon.getInstance(this).isDemo()));
+            Call call = apiService.SADDA_X_RESPONSE_CALL(new SaddaXEntity(product_id, amount, id, slotid, AppCommon.getInstance(this).isDemo()));
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {

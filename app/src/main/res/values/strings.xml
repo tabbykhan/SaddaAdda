@@ -78,6 +78,7 @@
     <string name="new_password">New Password</string>
     <string name="please_enter_otp">Please enter OTP</string>
     <string name="update">Update</string>
+
     <string name="pls_enter_old_pwd">Please Enter old password</string>
     <string name="pls_enter_new_pwd">Please Enter new password</string>
     <string name="pls_confirm_pwd">Please Enter confirm password</string>
@@ -201,5 +202,7 @@
     <string name="bug_fix_and_optimizations">Bug fixes and Optimizations</string>
     <string name="enter_email_id">Enter Email Id (Optional)</string>
     <string name="for_buy_sell_coins_contact_this_number_9970899147">For Buy/sell coins contact this number 9970899147</string>
-    <string name="useLive">Same for home screen Live | Demo</string>
+    <string name="useLive">For this service you need to ON Live mode </string>
+    <string name="resentOtp">Resend OTP</string>
+    <string name="sendOtp">Send OTP</string>
 </resources>

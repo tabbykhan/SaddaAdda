@@ -107,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             Log.i("token:::", authResponse.getData().getAccessToken());
-                            AppCommon.getInstance(LoginActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(LoginActivity.this).setToken(authResponse.getData().getAccessToken());
                             AppCommon.getInstance(LoginActivity.this).setUserLogin(et_userId.getText().toString().trim(), true);
                             AppCommon.getInstance(LoginActivity.this).setPassword(et_password.getText().toString().trim());

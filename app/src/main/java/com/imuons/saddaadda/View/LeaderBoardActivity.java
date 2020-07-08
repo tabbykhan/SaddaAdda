@@ -156,7 +156,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
         Date dateobj = new Date();
         System.out.println(df.format(dateobj));
         CallWinningDate();
-        CallApiCompleteSlot(String.valueOf(dateobj));
+        windate.setText(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
+        CallApiCompleteSlot(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
+        //CallApiCompleteSlot(String.valueOf(dateobj));
 
     }
 
@@ -221,9 +223,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData().getRecords();
-
-                            setAdapter(authResponse.getData().getRecords());
-                            Toast.makeText(LeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            leaderBoardAdapter.update(reportData);
+                           // setAdapter(authResponse.getData().getRecords());
+                           // Toast.makeText(LeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(LeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -325,8 +327,17 @@ public class LeaderBoardActivity extends AppCompatActivity {
     public void selectedSlot(int adapterPosition) {
         if (reportData.get(adapterPosition).getSlotNo() != null) {
             String slotNo = String.valueOf(reportData.get(adapterPosition).getSlotNo());
-
             CallWinningNumber(slotNo);
+            for(int i = 0 ; i<reportData.size() ;i++ ){
+                if(adapterPosition != i)
+                reportData.get(i).setSeleted(false);
+                else
+                reportData.get(i).setSeleted(true);
+            }
+
+            leaderBoardAdapter.update(reportData);
+            leaderBoardAdapter.notifyDataSetChanged();
+           // setAdapter(reportData);
         }
     }
 }

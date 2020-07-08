@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.imuons.saddaadda.DataModel.NotiObj;
+import com.imuons.saddaadda.DataModel.NotificationListObject;
 import com.imuons.saddaadda.DataModel.ReportData;
 import com.imuons.saddaadda.DataModel.SellRecord;
 import com.imuons.saddaadda.DataModel.UpcomingSlot;
@@ -54,6 +56,7 @@ public class UpcomingSlotActivity extends AppCompatActivity {
     Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     int offsetLevel = 0;
+    ArrayList<NotificationListObject> notificationListObject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,11 @@ public class UpcomingSlotActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        if(AppCommon.getInstance(this).getNotificationObj()!= null){
+            notificationListObject = new Gson().fromJson(AppCommon.getInstance(this).getNotificationObj() , NotiObj.class).getNotificationListObject();
+        }
 
 
         CallApiUpcomingSlot();
@@ -163,4 +171,12 @@ public class UpcomingSlotActivity extends AppCompatActivity {
 
     public void callapi(int position) {
     }
+
+    /*public void notificationCall(int adapterPosition) {
+        if(notificationListObject != null){
+            if(notificationListObject.containsAll(reportData.get(adapterPosition).getSlotNo()));
+            notificationListObject.add(new NotificationListObject(reportData.get(adapterPosition).getSlotNo()
+                    , reportData.get(adapterPosition).getId() ,  String.valueOf(System.currentTimeMillis()),true));
+        }
+    }*/
 }

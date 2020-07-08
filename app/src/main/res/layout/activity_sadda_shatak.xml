@@ -40,7 +40,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:gravity="center"
             >
             <ImageView
@@ -66,6 +66,23 @@
                 android:layout_height="50dp"
                 android:gravity="center|end"
                 android:src="@drawable/rules"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            >
+
+
+            <ImageView
+                android:id="@+id/sound"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:tint="@color/green"
+                android:src="@drawable/sound"
                 />
         </RelativeLayout>
     </LinearLayout>

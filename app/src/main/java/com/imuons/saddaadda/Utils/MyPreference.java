@@ -15,9 +15,13 @@ public class MyPreference {
     public static String BTCAddress = "BtcAddress";
     public static String password = "PASSWORD";
     public static String IsDemo = "IsDemo";
+    public static String sound = "SOUND";
     public static String PrizmAddress = "PrizmAddress";
     public static final String PREFS_LANGUAGE_IS_SELECTED = "LANGUAGE_IS_SELECTED";
     public static final String LANG_ENGLISH = "en";
     public static final String LANG_HINDI = "hi";
     public static final String SELECTEDlANG="SELECTEDlANG";
+    public static final String CurentTime="CurretTime";
+    public static String language = "LANGUAGE";
+    public static String notificationObj = "NotificationObj";
 }

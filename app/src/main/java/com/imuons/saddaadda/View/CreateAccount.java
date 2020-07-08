@@ -200,7 +200,12 @@ public class CreateAccount extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword() , fireBase));
+                            AppCommon.getInstance(CreateAccount.this).setToken(authResponse.getData().getAccessToken());
+                            AppCommon.getInstance(CreateAccount.this).setUserLogin(authResponse.getData().getUserId(), true);
+                            AppCommon.getInstance(CreateAccount.this).setSesstionId(authResponse.getData().getSessionId());
+                            AppCommon.getInstance(CreateAccount.this).setDemo("Live");
+                            startActivity(new Intent(CreateAccount.this, HomeActivity.class));
+                           // callLoginApi(new LoginEntity(authResponse.getData().getUserId(), authResponse.getData().getPassword() , fireBase));
                         } else {
                             Toast.makeText(CreateAccount.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -242,7 +247,6 @@ public class CreateAccount extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("LoginResponse::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            AppCommon.getInstance(CreateAccount.this).setUserObject(new Gson().toJson(authResponse.getData()));
                             AppCommon.getInstance(CreateAccount.this).setToken(authResponse.getData().getAccessToken());
                             AppCommon.getInstance(CreateAccount.this).setUserLogin(loginEntity.getUser_id(), true);
                             AppCommon.getInstance(CreateAccount.this).setSesstionId(authResponse.getData().getSession_id());

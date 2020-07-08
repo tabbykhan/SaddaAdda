@@ -56,6 +56,7 @@ public class PinEnterActivity extends AppCompatActivity {
         et2.addTextChangedListener(new GenericTextWatcher(et2));
         et3.addTextChangedListener(new GenericTextWatcher(et3));
         et4.addTextChangedListener(new GenericTextWatcher(et4));*/
+
         et1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -284,7 +285,7 @@ public class PinEnterActivity extends AppCompatActivity {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //AppCommon.getInstance(PinEnterActivity.this).clearPreference();
+                AppCommon.getInstance(PinEnterActivity.this).clearPreference();
                 AppCommon.getInstance(PinEnterActivity.this).setUserLogin(AppCommon.getInstance(PinEnterActivity.this).getUserId(), false);
                 startActivity(new Intent(PinEnterActivity.this, SelectionPage.class));
                 finishAffinity();

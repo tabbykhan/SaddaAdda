@@ -69,17 +69,31 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        getUserProfileInfo();
+        if (AppCommon.getInstance(this).getUserObject() == null) {
+            getUserProfileInfo();
+
+        } else {
+            String saveTime = AppCommon.getInstance(this).getCurrentTime();
+            long saveTs = Long.parseLong(saveTime);
+            long currentTs = System.currentTimeMillis();
+            long diff = currentTs - saveTs;
+            if (diff > 1800000) {
+                getUserProfileInfo();
+            } else
+                setProfileInfo(new Gson().fromJson(AppCommon.getInstance(this).getUserObject(), ProfileDataModel.class));
+        }
     }
 
     @OnClick(R.id.txt_changePin)
     void changePin() {
-        callsendOtp(false);
+        //callsendOtp(true);
+        startActivity(new Intent(ProfileActivity.this, ChangePin.class));
     }
 
     @OnClick(R.id.txt_change_password)
     void changePwd() {
-        callsendOtp(true);
+        startActivity(new Intent(ProfileActivity.this, ChangePassword.class));
+        //callsendOtp(false);
     }
 
     @OnClick(R.id.logOut)
@@ -105,7 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void updateProfile(String name, String mobile, String googlePay, String phonePay, String accountName, String ifsc, String branch, String accountNo, String paytm_no) {
 
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
-           // Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
+            // Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             AppCommon.getInstance(this).setNonTouchableFlags(this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
             Call call = apiService.UPDATE_PROFILE_RESPONSE_CALL(new UpdateProfileEntity(name,
@@ -119,7 +133,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("ResponseUpdate::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
-                            Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                             getUserProfileInfo();
                         } else {
                             Toast.makeText(ProfileActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -151,17 +165,21 @@ public class ProfileActivity extends AppCompatActivity {
         if (AppCommon.getInstance(getApplicationContext()).isConnectingToInternet(getApplicationContext())) {
             AppCommon.getInstance(getApplicationContext()).setNonTouchableFlags(ProfileActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class, AppCommon.getInstance(getApplicationContext()).getToken());
-            Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
+            // Dialog dialog = ViewUtils.getProgressBar(ProfileActivity.this);
             Call call = apiService.Get_ProfileInfo();
             call.enqueue(new Callback() {
                 @Override
                 public void onResponse(Call call, Response response) {
                     AppCommon.getInstance(getApplicationContext()).clearNonTouchableFlags(ProfileActivity.this);
-                    dialog.dismiss();
+                    //dialog.dismiss();
                     ProfileGetResponse authResponse = (ProfileGetResponse) response.body();
                     if (authResponse != null) {
                         Log.i("ResponseProfile::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
+                            AppCommon.getInstance(ProfileActivity.this).setUserObject(new Gson().toJson(authResponse.getData()));
+                            Long tsLong = System.currentTimeMillis();
+                            String ts = tsLong.toString();
+                            AppCommon.getInstance(ProfileActivity.this).setCurrentTime(ts);
                             setProfileInfo(authResponse.getData());
                             // Toast.makeText(LoginActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         } else {
@@ -174,7 +192,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call call, Throwable t) {
-                    dialog.dismiss();
+                    //dialog.dismiss();
                     AppCommon.getInstance(ProfileActivity.this).clearNonTouchableFlags(ProfileActivity.this);
                     // loaderView.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Server Error", Toast.LENGTH_SHORT).show();
@@ -191,15 +209,14 @@ public class ProfileActivity extends AppCompatActivity {
     private void setProfileInfo(ProfileDataModel data) {
 
 
-
-        if (data.getFullname() !=null){
+        if (data.getFullname() != null) {
             etName.setText(String.valueOf(data.getFullname()));
-        }else {
+        } else {
             etName.setText("");
         }
-        if (data.getMobile() !=null){
+        if (data.getMobile() != null) {
             etMobile.setText(String.valueOf(data.getMobile()));
-        }else {
+        } else {
             etMobile.setText("");
         }
 
@@ -254,7 +271,8 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             etName.setCompoundDrawables(null, null, null, null);
             etName.setEnabled(false);
-        }if (data.getMobile() == null || data.getMobile().equals("")) {
+        }
+        if (data.getMobile() == null || data.getMobile().equals("")) {
             etMobile.setEnabled(true);
         } else {
             etMobile.setEnabled(false);

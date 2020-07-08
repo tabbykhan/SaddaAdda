@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/on_sound" android:state_active="true"></item>
+    <item android:drawable="@drawable/off" android:state_activated="false"></item>
+    <item android:drawable="@drawable/on_sound"></item>
+
+</selector>

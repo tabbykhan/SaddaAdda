@@ -2,6 +2,7 @@ package com.imuons.saddaadda.adapters;
 
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imuons.saddaadda.DataModel.CompleteSlotRecord;
@@ -32,6 +34,7 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     AnimationDrawable anim;
     Activity activity;
     ArrayList<CompleteSlotRecord> reportDataArrayList;
+    int selectedPos = -1;
 
     public LeaderBoardAdapter(Activity activity, ArrayList<CompleteSlotRecord> reportDataArrayList) {
         this.activity = activity;
@@ -49,6 +52,12 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     @Override
     public void onBindViewHolder(@NonNull LeaderBoardHolder holder, int position) {
         CompleteSlotRecord completeSlotRecord = reportDataArrayList.get(position);
+        if(completeSlotRecord.isSeleted()){
+            holder.time.setTextColor(activity.getResources().getColor(R.color.green));
+           // holder.slot.setBackgroundTintList(activity.getResources().getColorStateList(R.color.green));
+        }else {
+            holder.time.setTextColor(activity.getResources().getColor(R.color.yellow));
+        }
         holder.slot.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.item_animation_fall_down));
 
         if (completeSlotRecord.getDate() != null) {
@@ -63,6 +72,7 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
         } else {
             holder.time.setText("");
         }
+
     }
 
     @Override
@@ -76,10 +86,19 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     }
 
     public void update(ArrayList<CompleteSlotRecord> reportData, int pos) {
-        reportDataArrayList = reportData;
+        //reportDataArrayList = reportData;
+        reportDataArrayList.clear();
+        reportDataArrayList.addAll(reportData);
         notifyItemChanged(pos);
     }
 
+   /* public void selectedBox(ArrayList<CompleteSlotRecord> reportDataArrayList) {
+       this.reportDataArrayList = reportDataArrayList;
+       // selectedPos = adapterPosition;
+        notifyDataSetChanged();
+       // notifyItemChanged(selectedPos);
+    }
+*/
     public class LeaderBoardHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.date)
@@ -97,6 +116,7 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
         void selectSlot(){
 
             ((LeaderBoardActivity)activity).selectedSlot(getAdapterPosition());
+            //reportDataArrayList.get(getAdapterPosition()).setSeleted(true);
         }
 
     }

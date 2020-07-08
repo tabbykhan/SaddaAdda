@@ -108,7 +108,7 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
         recycleViewWonNUmber.setNestedScrollingEnabled(false);
         recycleViewWonNUmber.setAdapter(wonPriceAdapter);
 
-        datelistPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  datelistPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 windate.setText(datelist.get(i).getDate());
@@ -117,7 +117,7 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
 
                 datelistPopupWindow.dismiss();
             }
-        });
+        });*/
         datelistPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -138,11 +138,12 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
             }
         });
 
-        DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+       /* DateFormat df = new SimpleDateFormat("dd MMM yyyy");
         Date dateobj = new Date();
-        System.out.println(df.format(dateobj));
+        System.out.println(df.format(dateobj));*/
         CallWinningDate();
-        CallApiCompleteSlot(String.valueOf(dateobj));
+        windate.setText(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
+        CallApiCompleteSlot(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
 
     }
 
@@ -190,6 +191,8 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
         for (int i = 0; i < dateRecords.size(); i++) {
             listDateName.add(dateRecords.get(i).getDate());
         }
+        datelistPopupWindow.performItemClick(0);
+
     }
 
     private void CallApiCompleteSlot(String d) {
@@ -207,9 +210,9 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
                         Log.i("complete solt::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
                             reportData = authResponse.getData().getRecords();
-
-                            setAdapter(authResponse.getData().getRecords());
-                            Toast.makeText(SaddaShatakLeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            leaderBoardAdapter.update(reportData);
+                            //setAdapter(authResponse.getData().getRecords());
+                            //Toast.makeText(SaddaShatakLeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(SaddaShatakLeaderBoardActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -311,8 +314,16 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
     public void selectedSlot(int adapterPosition) {
         if (reportData.get(adapterPosition).getSlotNo() != null) {
             String slotNo = String.valueOf(reportData.get(adapterPosition).getSlotNo());
-
+            for(int i = 0 ; i<reportData.size() ;i++ ){
+                if(adapterPosition != i)
+                    reportData.get(i).setSeleted(false);
+                else
+                    reportData.get(i).setSeleted(true);
+            }
+            leaderBoardAdapter.update(reportData);
             CallWinningNumber(slotNo);
         }
     }
+
+
 }

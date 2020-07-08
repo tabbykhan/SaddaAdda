@@ -101,6 +101,15 @@ public class AppCommon {
         editor.putString(MyPreference.IsDemo , demo);
         editor.apply();
     }
+    public boolean isSound() {
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getBoolean(MyPreference.sound, true);
+    }
+    public void setSound(boolean demo) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putBoolean(MyPreference.sound , demo);
+        editor.apply();
+    }
 
     public void onHideKeyBoard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -248,13 +257,32 @@ public class AppCommon {
 
 
     public void setSeleectedLan(String flag) {
-        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.language, MODE_PRIVATE).edit();
         editor.putString(MyPreference.SELECTEDlANG, flag);
         editor.apply();
     }
     public String  GetLangSelected(){
-        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.language, MODE_PRIVATE);
         return prefs.getString(MyPreference.SELECTEDlANG, "");
+    }
+
+    public void setCurrentTime(String flag) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putString(MyPreference.CurentTime, flag);
+        editor.apply();
+    }
+    public String  getCurrentTime(){
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getString(MyPreference.CurentTime, "000");
+    }
+    public void storeNotificationObject(String flag) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE).edit();
+        editor.putString(MyPreference.notificationObj, flag);
+        editor.apply();
+    }
+    public String  getNotificationObj(){
+        SharedPreferences prefs = mContext.getSharedPreferences(MyPreference.mUserLogin, MODE_PRIVATE);
+        return prefs.getString(MyPreference.notificationObj, null);
     }
 
 

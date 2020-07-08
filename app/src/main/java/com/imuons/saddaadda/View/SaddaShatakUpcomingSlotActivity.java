@@ -42,7 +42,7 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
 
     SaddaShatakUpcomingSlotAdapter upcomingSlotAdapter;
     ArrayList<UpcomingSlotData> reportData;
-
+    int offsetLevel = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,23 +54,21 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recycleView.setLayoutManager(mLayoutManager);
         recycleView.setAdapter(upcomingSlotAdapter);
-        CallApiUpcomingSlot();
+        CallApiUpcomingSlot(1);
     }
 
     @OnClick(R.id.leaderBoard)
     void learderBoard() {
         startActivity(new Intent(this, SaddaShatakLeaderBoardActivity.class));
       //  Toast.makeText(this, "Work In progress", Toast.LENGTH_SHORT).show();
-
-
     }
 
-    private void CallApiUpcomingSlot() {
+    private void CallApiUpcomingSlot(int start) {
         if (AppCommon.getInstance(this).isConnectingToInternet(this)) {
             Dialog dialog = ViewUtils.getProgressBar(SaddaShatakUpcomingSlotActivity.this);
             AppService apiService = ServiceGenerator.createService(AppService.class);
             Map<String, Object>paparam = new HashMap<>();
-            paparam.put("start", 0);
+            paparam.put("start", start);
             paparam.put("length",10);
             Call call = apiService.GetShatakUpcomingSolt(paparam);
             call.enqueue(new Callback() {
@@ -82,9 +80,12 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
                     if (authResponse != null) {
                         Log.i("Response::", new Gson().toJson(authResponse));
                         if (authResponse.getCode() == 200) {
+                            if(reportData.size() == 0)
                             reportData = authResponse.getData().getRecords();
+                            else
+                                reportData.addAll(authResponse.getData().getRecords());
                             if (reportData.size() != 0) {
-                                upcomingSlotAdapter.update(reportData);
+                                upcomingSlotAdapter.updateList(reportData , offsetLevel);
                             }
                         } else {
                             Toast.makeText(SaddaShatakUpcomingSlotActivity.this, authResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -118,6 +119,11 @@ public class SaddaShatakUpcomingSlotActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        CallApiUpcomingSlot();
+
+    }
+    public void callapi(int position) {
+        offsetLevel = offsetLevel+1;
+        if(reportData.size()!= 0)
+        CallApiUpcomingSlot(reportData.size());
     }
 }

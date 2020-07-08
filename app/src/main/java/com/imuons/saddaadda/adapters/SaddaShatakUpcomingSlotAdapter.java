@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.imuons.saddaadda.DataModel.UpcomingSlotData;
 import com.imuons.saddaadda.R;
 import com.imuons.saddaadda.View.ActivitySaddaShatak;
+import com.imuons.saddaadda.View.SaddaShatakLeaderBoardActivity;
+import com.imuons.saddaadda.View.SaddaShatakUpcomingSlotActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,6 +30,7 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
 
     Activity activity;
     ArrayList<UpcomingSlotData> reportDataArrayList;
+    int offset = 9;
 
     public SaddaShatakUpcomingSlotAdapter(Activity activity, ArrayList<UpcomingSlotData> reportDataArrayList) {
         this.activity = activity;
@@ -63,6 +66,9 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
                 activity.startActivity(intent);
             }
         });
+        if(position == offset){
+            ((SaddaShatakUpcomingSlotActivity)activity).callapi(position);
+        }
 
     }
 
@@ -136,6 +142,12 @@ public class SaddaShatakUpcomingSlotAdapter extends RecyclerView.Adapter<SaddaSh
     public void update(ArrayList<UpcomingSlotData> reportData, int pos) {
         reportDataArrayList = reportData;
         notifyItemChanged(pos);
+    }
+
+    public void updateList(ArrayList<UpcomingSlotData> reportData, int offsetLevel) {
+        offset = (10*(offsetLevel+1))-1;
+        this.reportDataArrayList = reportData;
+        notifyDataSetChanged();
     }
 
     public class UpcomingSlotHolder extends RecyclerView.ViewHolder {

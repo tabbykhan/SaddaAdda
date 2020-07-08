@@ -20,6 +20,15 @@ public class CompleteSlotRecord {
     @SerializedName("time")
     @Expose
     private String time;
+    boolean isSeleted ;
+
+    public boolean isSeleted() {
+        return isSeleted;
+    }
+
+    public void setSeleted(boolean seleted) {
+        isSeleted = seleted;
+    }
 
     public Integer getSlotNo() {
         return slotNo;

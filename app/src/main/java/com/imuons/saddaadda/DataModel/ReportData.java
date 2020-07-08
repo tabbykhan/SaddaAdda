@@ -49,14 +49,6 @@ public class ReportData {
 
     boolean isOpen;
 
-    public boolean isOpen() {
-        return isOpen;
-    }
-
-    public void setOpen(boolean open) {
-        isOpen = open;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -145,6 +137,14 @@ public class ReportData {
         this.pin = pin;
     }
 
+    public String getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(String wallet) {
+        this.wallet = wallet;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -159,5 +159,13 @@ public class ReportData {
 
     public void setEntryTime(String entryTime) {
         this.entryTime = entryTime;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean open) {
+        isOpen = open;
     }
 }

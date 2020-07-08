@@ -45,6 +45,12 @@ public class ShatakLeaderBoardAdapter extends RecyclerView.Adapter<ShatakLeaderB
     public void onBindViewHolder(@NonNull LeaderBoardHolder holder, int position) {
         CompleteSlotRecord completeSlotRecord = reportDataArrayList.get(position);
         holder.slot.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.item_animation_fall_down));
+        if(completeSlotRecord.isSeleted()){
+            holder.time.setTextColor(activity.getResources().getColor(R.color.green));
+            // holder.slot.setBackgroundTintList(activity.getResources().getColorStateList(R.color.green));
+        }else {
+            holder.time.setTextColor(activity.getResources().getColor(R.color.yellow));
+        }
         if (completeSlotRecord.getDate() != null) {
             holder.date.setText(String.valueOf(completeSlotRecord.getDate()));
 

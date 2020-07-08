@@ -3,17 +3,22 @@ package com.imuons.saddaadda.Utils;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.imuons.saddaadda.R;
 
-public class ViewUtils {
+public class ViewUtils extends AppCompatActivity {
+    private static  Dialog alertDialogProgressBar;
     public static Dialog getProgressBar(Activity activity) {
         Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -22,7 +27,7 @@ public class ViewUtils {
         dialog.setContentView(R.layout.progress_bar);
         ProgressBar progressBar = dialog.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-        progressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
+        progressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.dark_graw), PorterDuff.Mode.MULTIPLY);
         dialog.setCancelable(false);
         dialog.show();
         return dialog;
@@ -39,6 +44,27 @@ public class ViewUtils {
         dialog.setCancelable(false);
         dialog.show();
         return dialog;
+    }
+
+    public static void displayProgressBar(Activity activity) {
+        //dismissProgressBar();
+        if (activity.isFinishing()) return;
+        alertDialogProgressBar = new Dialog(activity,
+                R.style.DialogWait);
+        alertDialogProgressBar.setCancelable(false);
+        alertDialogProgressBar
+                .requestWindowFeature(Window.FEATURE_NO_TITLE);
+        alertDialogProgressBar.setContentView(R.layout.progress_bar);
+
+
+        try {
+            alertDialogProgressBar.getWindow().setBackgroundDrawable(
+                    new ColorDrawable(Color.TRANSPARENT));
+            alertDialogProgressBar.show();
+
+        } catch (Exception ignore) {
+
+        }
     }
 
     // Dialog dialog = ViewUtils.getProgressBar(MainActivity.this);

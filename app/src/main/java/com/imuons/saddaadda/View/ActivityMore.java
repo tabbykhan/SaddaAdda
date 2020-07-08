@@ -81,7 +81,12 @@ public class ActivityMore extends AppCompatActivity {
         withdrawal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SellCoinActivity.class));
+                if (AppCommon.getInstance(getApplicationContext()).isDemo().equalsIgnoreCase("Live"))
+                    startActivity(new Intent(getApplicationContext(), SellCoinActivity.class));
+                else
+                    Toast.makeText(getApplicationContext(), getString(R.string.useLive), Toast.LENGTH_SHORT).show();
+
+
             }
         });
         sellHistory.setOnClickListener(new View.OnClickListener() {
@@ -107,14 +112,16 @@ public class ActivityMore extends AppCompatActivity {
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callsendOtp(false);
+                startActivity(new Intent(ActivityMore.this, ChangePassword.class));
+                //callsendOtp(false);
                 //startActivity(new Intent(getApplicationContext(), ChangePassword.class));
             }
         });
         changePin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callsendOtp(true);
+               // callsendOtp(true);
+                startActivity(new Intent(getApplicationContext(), ChangePin.class));
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
@@ -186,7 +193,7 @@ public class ActivityMore extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-               //AppCommon.getInstance(ActivityMore.this).clearPreference();
+                AppCommon.getInstance(ActivityMore.this).clearPreference();
                 AppCommon.getInstance(ActivityMore.this).setUserLogin(AppCommon.getInstance(ActivityMore.this).getUserId(), false);
                 startActivity(new Intent(ActivityMore.this, SelectionPage.class));
                 finishAffinity();

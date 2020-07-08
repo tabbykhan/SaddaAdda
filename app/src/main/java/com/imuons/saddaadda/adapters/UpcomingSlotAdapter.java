@@ -26,6 +26,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapter.UpcomingSlotHolder> {
 
@@ -172,6 +173,10 @@ public class UpcomingSlotAdapter extends RecyclerView.Adapter<UpcomingSlotAdapte
             ((UpcomingSlotActivity) activity).Open(getAdapterPosition());
 
         }*/
+      /* @OnClick(R.id.bellIcon)
+        void notification(){
+           //((UpcomingSlotActivity) activity).notificationCall(getAdapterPosition());
+       }*/
     }
 
 }
