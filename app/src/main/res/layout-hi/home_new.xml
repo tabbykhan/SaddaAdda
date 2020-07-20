@@ -64,20 +64,21 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:fontFamily="@font/amazon_bold"
-                android:text="Demo"
-                android:textColor="@color/white"
-                android:visibility="gone" />
+            <!--  <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_vertical"
+                  android:fontFamily="@font/amazon_bold"
+                  android:text="Demo"
+                  android:textColor="@color/white"
+                  />-->
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:visibility="gone" />
+            <Button
+                android:id="@+id/imDemo"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:background="@drawable/demo"
+                />
 
         </LinearLayout>
 
@@ -133,14 +134,28 @@
               android:layout_weight="3"
               android:layout_marginTop="20dp"
               android:src="@drawable/logo" />-->
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/gidFile"
-            android:layout_width="250dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:src="@drawable/logo_animation" />
+            android:layout_weight="1">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gidFile"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/logo_animation" />
+            <ImageView
+                android:id="@+id/sound"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:tint="@color/green"
+                android:src="@drawable/sound"
+                />
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -150,10 +165,10 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/sevenClick"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="sevenClick"
                 android:src="@drawable/sadda_img" />
 
             <ImageView
