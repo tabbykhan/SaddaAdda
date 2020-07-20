@@ -38,7 +38,6 @@ import com.imuons.saddaadda.responseModel.WinningNumberResponse;
 import com.imuons.saddaadda.retrofit.AppService;
 import com.imuons.saddaadda.retrofit.ServiceGenerator;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -307,8 +306,6 @@ public class SaddaShatakLeaderBoardActivity extends AppCompatActivity {
         } else {
             comingDate.setText("");
         }
-
-
     }
 
     public void selectedSlot(int adapterPosition) {
