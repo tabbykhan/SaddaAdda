@@ -468,7 +468,6 @@ public class HomeActivity extends AppCompatActivity {
     private void setPopUpWindow() {
         LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.menu_item_view, null);
-
         LinearLayout profile = view.findViewById(R.id.menu_profile);
         LinearLayout all_Transaction = view.findViewById(R.id.menu_allTransaction);
         LinearLayout withdrawal = view.findViewById(R.id.menu_withdraw);
@@ -477,7 +476,6 @@ public class HomeActivity extends AppCompatActivity {
         LinearLayout changePin = view.findViewById(R.id.menu_changePin);
         LinearLayout logout = view.findViewById(R.id.menu_logout);
         LinearLayout buyHistory = view.findViewById(R.id.menu_buyHistory);
-
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -513,7 +511,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 callsendOtp();
-                //startActivity(new Intent(getApplicationContext(), ChangePassword.class));
             }
         });
         changePin.setOnClickListener(new View.OnClickListener() {

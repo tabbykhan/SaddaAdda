@@ -11,8 +11,7 @@ import android.os.IBinder;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.firebase.FirebaseApp;
-import com.imuons.saddaadda.Service.HomeWatcher;
-import com.imuons.saddaadda.Service.MusicService;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
