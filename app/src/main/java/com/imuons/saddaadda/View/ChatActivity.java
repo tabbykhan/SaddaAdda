@@ -191,6 +191,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void setAdapter(ArrayList<FetchChatDataModel> data) {
+
+
         chatDataArrayList = data;
         chatRoomAdapter.updateList(chatDataArrayList);
         recyclerView.smoothScrollToPosition(chatDataArrayList.size() - 1);

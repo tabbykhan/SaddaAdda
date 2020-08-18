@@ -2,6 +2,7 @@ package com.imuons.saddaadda.DataModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.imuons.saddaadda.responseModel.MessageDataModel;
 
 import java.util.List;
 
@@ -51,6 +52,31 @@ public class FetchChatDataModel {
     @SerializedName("position")
     @Expose
     private String position;
+
+
+    @SerializedName("showtime")
+    @Expose
+    private String showtime;
+    @SerializedName("msgdata")
+    @Expose
+    private List<MessageDataModel> msgdata = null;
+    private final static long serialVersionUID = -7268028891896210323L;
+
+    public String getShowtime() {
+        return showtime;
+    }
+
+    public void setShowtime(String showtime) {
+        this.showtime = showtime;
+    }
+
+    public List<MessageDataModel> getMsgdata() {
+        return msgdata;
+    }
+
+    public void setMsgdata(List<MessageDataModel> msgdata) {
+        this.msgdata = msgdata;
+    }
 
     public Integer getId() {
         return id;
